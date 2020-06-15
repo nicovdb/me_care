@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   after_create :send_welcome_email
-  has_one :subscription
+  has_one :subscription, dependent: :destroy
   has_one :plan, through: :subscription
 
   private
