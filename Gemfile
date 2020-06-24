@@ -21,6 +21,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'redis', '~> 4.0'
 gem 'pundit'
 gem 'money-rails'
+gem 'stripe'
 
 
 # Use Active Model has_secure_password
