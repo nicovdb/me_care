@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Plan, type: :model do
+RSpec.describe Product, type: :model do
 
   context 'validations' do
   end
@@ -10,6 +10,6 @@ RSpec.describe Plan, type: :model do
   # end
 
   context 'associations' do
-    it { should have_many(:subscriptions) }
+    # it { should have_many(:subscriptions) }
   end
 end
