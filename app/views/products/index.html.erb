@@ -1,0 +1,5 @@
+<% @products.each do |product| %>
+  <%= product.name %>
+  <%= product.price.unit_amount %>
+  <%= link_to "Buy", subscriptions_path(price_id: product.price.id), method: :post, class: "btn btn-danger" %>
+<% end %>
