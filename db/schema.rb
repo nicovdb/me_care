@@ -27,12 +27,12 @@ ActiveRecord::Schema.define(version: 2020_06_24_085731) do
 
   create_table "products", force: :cascade do |t|
     t.string "name"
-    t.boolean "actuality"
-    t.boolean "algorythm"
-    t.boolean "forum"
-    t.boolean "info_endo"
-    t.boolean "webinar"
-    t.boolean "agenda"
+    t.boolean "actuality", default: false
+    t.boolean "algorythm", default: false
+    t.boolean "forum", default: false
+    t.boolean "info_endo", default: false
+    t.boolean "webinar", default: false
+    t.boolean "agenda", default: false
     t.string "stripe_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2020_06_24_085731) do
     t.bigint "price_id", null: false
     t.datetime "start_date"
     t.string "stripe_id"
+    t.string "status", default: "pending"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["price_id"], name: "index_subscriptions_on_price_id"
