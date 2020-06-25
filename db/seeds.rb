@@ -14,7 +14,7 @@ puts "Users created"
 # Prices creation
 Price.destroy_all
 puts "Create Prices"
-Price.create!(product: basic, stripe_id: "price_1GxTgDBCt2fCpZSz78oYC7GC")
+Price.create!(product: basic, stripe_id: "price_1GxTgDBCt2fCpZSz78oYC7GC", unit_amount: 300)
 puts "Price created"
 
 # Subscriptions creation

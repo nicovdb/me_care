@@ -1,0 +1,15 @@
+<% @products.each do |product| %>
+  <%= form_tag subscriptions_path do %>
+    <%= product.name %>
+    <%= product.price.unit_amount %>
+    <%= hidden_field_tag :price_stripe_id, product.price.stripe_id %>
+    <%= hidden_field_tag :price_id, product.price.id %>
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>"
+          data-name="Easy Endo"
+          data-description="Abonnement au plan <%= product.name %>"
+          data-email="<%= current_user.email %>"
+          data-locale="auto">
+    </script>
+  <% end %>
+<% end %>

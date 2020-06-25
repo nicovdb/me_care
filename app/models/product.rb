@@ -1,3 +1,3 @@
 class Product < ApplicationRecord
-  has_many :prices
+  has_one :price
 end
