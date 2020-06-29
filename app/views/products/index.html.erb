@@ -1,15 +1,33 @@
-<% @products.each do |product| %>
-  <%= form_tag subscriptions_path do %>
-    <%= product.name %>
-    <%= product.price.unit_amount %>
-    <%= hidden_field_tag :price_stripe_id, product.price.stripe_id %>
-    <%= hidden_field_tag :price_id, product.price.id %>
-    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>"
-          data-name="Easy Endo"
-          data-description="Abonnement au plan <%= product.name %>"
-          data-email="<%= current_user.email %>"
-          data-locale="auto">
-    </script>
-  <% end %>
+<% @products_and_sessions.each do |ps| %>
+  <%= ps[:product].name %>
+  <button class="btn btn-primary mb-5 mt-2 checkout-button" role="link" data-session-id="<%= ps[:checkout_id] %>">
+      Continuer vers la page de paiement
+  </button>
+
 <% end %>
+
+
+<div id="error-message"></div>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+  var stripe = Stripe("<%= ENV["STRIPE_PUBLISHABLE_KEY"] %>");
+
+  var checkoutButtons = document.querySelectorAll('.checkout-button');
+  checkoutButtons.forEach(checkoutButton => {
+    checkoutButton.addEventListener('click', function () {
+      stripe.redirectToCheckout({
+        sessionId: checkoutButton.dataset.sessionId
+      })
+      .then(function (result) {
+        if (result.error) {
+          // If `redirectToCheckout` fails due to a browser or network
+          // error, display the localized error message to your customer.
+          var displayError = document.getElementById('error-message');
+          displayError.textContent = result.error.message;
+        }
+      });
+    });
+  });
+
+</script>
