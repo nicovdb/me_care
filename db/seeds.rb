@@ -2,7 +2,7 @@
 Product.destroy_all
 puts "Create Plans"
 basic = Product.create!(name: "Basic", actuality: true, info_endo: true, algorythm: true, forum:true, stripe_id: "prod_HWWjYJUAk80nUh")
-# advanced = Product.create!(name: "Advanced", price: 6, actuality: true, info_endo: true, algorythm: true, forum:true, agenda:true, webinar: true)
+trial = Product.create!(name: "Trial", actuality: true, info_endo: true, algorythm: true, forum:true, agenda:true, webinar: true)
 puts "Plans created"
 
 # Users creation
@@ -15,11 +15,5 @@ puts "Users created"
 Price.destroy_all
 puts "Create Prices"
 Price.create!(product: basic, stripe_id: "price_1GxTgDBCt2fCpZSz78oYC7GC", unit_amount: 300)
+Price.create!(product: trial, unit_amount: 0)
 puts "Price created"
-
-# Subscriptions creation
-# Subscription.destroy_all
-# puts "Create Subscriptions"
-# Subscription.create!(user: claire, plan: basic)
-# Subscription.create!(user: nico, plan: advanced)
-# puts "Subscriptions created"
