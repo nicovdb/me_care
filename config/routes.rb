@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
   root to: 'pages#home'
   resources :products, only: :index
-  resources :subscriptions, only: :create
+  resources :subscriptions, only: [:index, :destroy]
 end
