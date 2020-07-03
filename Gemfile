@@ -23,7 +23,7 @@ gem 'pundit'
 gem 'money-rails'
 gem 'stripe'
 gem 'stripe_event'
-
+gem 'thredded', '~> 0.16.16'
 
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
