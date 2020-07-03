@@ -7,8 +7,14 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-require('thredded_imports.js');
 
+<% timeago_root = File.join(Gem.loaded_specs['timeago_js'].full_gem_path, 'assets', 'javascripts') %>
+import "<%= File.join(timeago_root, 'timeago.js') %>";
+<%= %w[fr].map { |locale| %(import "#{File.join(timeago_root, "timeago/locales/#{locale}.js")}";) } * "\n" %>
+<%= Thredded::WebpackAssets.javascripts %>
+
+
+require('thredded_imports.js');
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
