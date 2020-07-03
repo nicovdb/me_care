@@ -1,0 +1,55 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-md-8 offset-md-2">
+      <h1 class="text-center">Une question, un avis à donner, écrivez-nous !</h1>
+      <%= form_for @contact do |f| %>
+        <div class="row">
+          <div class="col">
+            <div>
+              <%= f.label :first_name %>
+            </div>
+            <div>
+              <%= f.text_field :first_name, required: true, class:'w-100' %>
+            </div>
+          </div>
+          <div class="col">
+            <div>
+              <%= f.label :last_name %>
+            </div>
+            <div>
+              <%= f.text_field :last_name, required: true, class:'w-100' %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div>
+              <%= f.label :email %>
+            </div>
+            <div>
+              <%= f.email_field :email, required: true, class:'w-100' %>
+            </div>
+          </div>
+        </div>
+        <div>
+          <%= f.label :message %>
+        </div>
+        <div>
+          <%= f.text_area :message, as: :text, class:"w-100 px-3" %>
+        </div>
+        <div class="hidden d-none">
+          <%= f.label :nickname %>
+          <%= f.text_field :nickname, hint: "Leave this field blank" %>
+        </div>
+        <div class="row">
+          <div class="col align-self-center">
+            contact.easyendo@gmail.com
+          </div>
+          <div class="col align-self-center">
+            <%= f.submit 'Envoyer', class: "btn btn-primary w-100" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
