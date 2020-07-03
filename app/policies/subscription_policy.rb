@@ -1,11 +1,11 @@
 class SubscriptionPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.where.not(status: "cancelled").where(user: user)
     end
   end
 
-  def create?
+  def destroy?
     true
   end
 end
