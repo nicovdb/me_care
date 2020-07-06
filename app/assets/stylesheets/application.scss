@@ -7,22 +7,6 @@
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-
-.thredded--is-compact li:not(.title) {
-  opacity: 1 !important;
-  height: auto !important;
-  visibility: visible !important;
-}
-.thredded--is-compact input[type="submit"], .thredded--is-compact label {
-  opacity: 1 !important;
-  height: auto !important;
-  visibility: visible !important;
-}
-
-.thredded--form-list--admin-options {
-  display: none;
-}
-
 @import "thredded";
 
 // Your CSS partials

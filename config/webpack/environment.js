@@ -1,6 +1,6 @@
 const { environment } = require('@rails/webpacker')
 const erb = require('./loaders/erb')
-
+const path = require('path');
 const webpack = require('webpack');
 // Preventing Babel from transpiling NodeModules packages
 environment.loaders.delete('nodeModules');
@@ -8,7 +8,7 @@ environment.loaders.delete('nodeModules');
 environment.plugins.prepend('Provide',
   new webpack.ProvidePlugin({
     $: 'jquery',
-    jQuery: 'jquery',
+    jQuery: path.resolve(path.join(__dirname, '../../node_modules', 'jquery')),
     Popper: ['popper.js', 'default']
   })
 );
