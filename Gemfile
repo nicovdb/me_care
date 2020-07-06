@@ -23,6 +23,7 @@ gem 'pundit'
 gem 'money-rails'
 gem 'stripe'
 gem 'stripe_event'
+gem 'mail_form'
 
 
 # Use Active Model has_secure_password
