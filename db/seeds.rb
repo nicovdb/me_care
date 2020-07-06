@@ -8,7 +8,7 @@ puts "Plans created"
 # Users creation
 User.destroy_all
 puts "Create Users"
-nico = User.create!(email: "nico@gmail.com", password: "password", stripe_id:"cus_HWWkBAAqicIOn2" )
+nico = User.create!(email: "nico@gmail.com", password: "password", stripe_id:"cus_HWWkBAAqicIOn2", admin: true )
 puts "Users created"
 
 # Prices creation
