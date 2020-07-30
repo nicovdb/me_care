@@ -1,0 +1,19 @@
+<% if policy(Article).new? %>
+  <%= link_to "Nouvel article", new_article_path %>
+<% end %>
+
+
+
+<% @articles.each do |article| %>
+  <div>
+    <%= article.title %>
+    <br>
+    <% if policy(Article).edit? %>
+      <%= link_to "edit article", edit_article_path(article) %>
+    <% end %>
+    <br>
+    <% if policy(Article).destroy? %>
+      <%= link_to "destroy", article_path(article), method: :delete, data: {confirm: "Souhaitez-vous supprimer définitvement cet article ? Cette action est irréversible."} %>
+    <% end %>
+  </div>
+<% end %>

@@ -1,5 +1,8 @@
 <div class="container">
   <h1>News</h1>
+  <% if @article.cover.attached? %>
+  <%= cl_image_tag @article.cover.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
   <p><%= @article.category %></p>
   <h2><%= @article.title %></h2>
   <p><%= @article.created_at %> - <%= @article.author %></p>
