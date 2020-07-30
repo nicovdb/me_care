@@ -1,0 +1,11 @@
+<div class="container">
+  <h1>News</h1>
+  <p><%= @article.category %></p>
+  <h2><%= @article.title %></h2>
+  <p><%= @article.created_at %> - <%= @article.author %></p>
+  <p>Temps de lecture: <%= @article.reading_time %></p>
+
+  <h2>Cover</h2>
+  <p><%= @article.cover_credit %></p>
+  <%= @article.content %>
+</div>
