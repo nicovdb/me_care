@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     resources :contacts, only: [:new, :create]
     resources :products, only: :index
     resources :subscriptions, only: [:index, :destroy]
+    resources :articles
   end
 end
