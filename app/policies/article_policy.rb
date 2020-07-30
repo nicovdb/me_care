@@ -5,7 +5,7 @@ class ArticlePolicy < ApplicationPolicy
     end
   end
 
-  def index?
+  def show?
     true
   end
 
@@ -13,8 +13,12 @@ class ArticlePolicy < ApplicationPolicy
     is_admin?
   end
 
-  def show?
-    true
+  def update?
+    is_admin?
+  end
+
+  def destroy?
+    is_admin?
   end
 
   private

@@ -1,5 +1,13 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:show]
+  before_action :set_article, only: [:show, :edit, :update, :destroy]
+
+  def index
+    @articles = policy_scope(Article)
+  end
+
+  def show
+    authorize @article
+  end
 
   def new
     @article = Article.new
@@ -18,8 +26,23 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def show
+  def edit
     authorize @article
+  end
+
+  def update
+    authorize @article
+    if @article.update(article_params)
+      redirect_to article_path(@article)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    authorize @article
+    @article.destroy
+    redirect_to articles_path
   end
 
   private
@@ -29,11 +52,7 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    article_params = params.require(:article).permit(:title, :content, :author, :media_type, :category, :reading_time, :cover_credit)
-
-    article_params[:media_type] = article_params[:media_type].to_i
-    article_params[:category] = article_params[:category].to_i
-
+    article_params = params.require(:article).permit(:title, :cover, :content, :author, :media_type, :category, :reading_time, :cover_credit)
     article_params
   end
 end

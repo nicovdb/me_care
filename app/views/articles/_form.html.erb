@@ -1,0 +1,13 @@
+<div class="container">
+  <%= simple_form_for article do |f| %>
+    <%= f.input :title %>
+    <%= f.input :cover, as: :file %>
+    <%= f.input :author %>
+    <%= f.input :content, as: :rich_text_area, label: 'Content', placeholder: "Contenu de l'article", class: 'form-control' %>
+    <%= f.input :reading_time %>
+    <%= f.input :cover_credit %>
+    <%= f.input :media_type, collection: Article.media_types.keys %>
+    <%= f.input :category, collection: Article.categories.keys %>
+    <%= f.submit %>
+  <% end %>
+</div>

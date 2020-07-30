@@ -27,6 +27,8 @@ gem 'thredded', '~> 0.16.16'
 gem 'rails-i18n'
 gem 'kaminari-i18n'
 gem 'mail_form'
+gem 'cloudinary', '~> 1.12.0'
+
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
