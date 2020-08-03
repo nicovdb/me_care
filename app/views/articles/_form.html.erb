@@ -1,13 +1,13 @@
 <div class="container">
   <%= simple_form_for article do |f| %>
-    <%= f.input :title %>
-    <%= f.input :cover, as: :file %>
-    <%= f.input :author %>
-    <%= f.input :content, as: :rich_text_area, label: 'Content', placeholder: "Contenu de l'article", class: 'form-control customized-min-height' %>
-    <%= f.input :reading_time %>
-    <%= f.input :cover_credit %>
-    <%= f.input :media_type, collection: Article.media_types.keys %>
-    <%= f.input :category, collection: Article.categories.keys %>
-    <%= f.submit %>
+    <%= f.input :title, label: t('.title') %>
+    <%= f.input :cover, as: :file, label: t('.cover') %>
+    <%= f.input :author, label: t('.author') %>
+    <%= f.input :content, as: :rich_text_area, label: t('.content'), placeholder: "Contenu de l'article", class: 'form-control' %>
+    <%= f.input :reading_time, label: t('.reading_time') %>
+    <%= f.input :cover_credit, label: t('.cover_credit') %>
+    <%= f.input :media_type, collection: Article.media_types.keys.collect { |m| [t("article.#{m.downcase}"), m] }, label: t('.media_type') %>
+    <%= f.input :category, collection: Article.categories.keys.collect { |m| [t("article.#{m.downcase}"), m] }, label: t('.category') %>
+    <%= f.submit "Confirmer", class: 'btn btn-primary btn-ee w-100' %>
   <% end %>
 </div>
