@@ -1,6 +1,8 @@
 class Article < ApplicationRecord
   belongs_to :user
 
+  validates :title, :content, :category, :media_type, :reading_time, :author, :cover_credit, presence: true
+
   has_rich_text :content
   has_one_attached :cover
 
