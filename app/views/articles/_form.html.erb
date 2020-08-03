@@ -6,7 +6,7 @@
     <%= f.input :content, as: :rich_text_area, label: t('.content'), placeholder: "Contenu de l'article", class: 'form-control' %>
     <%= f.input :reading_time, label: t('.reading_time') %>
     <%= f.input :cover_credit, label: t('.cover_credit') %>
-    <%= f.input :media_type, collection: Article.media_types.keys.collect { |m| [t("article.#{m.downcase}"), m] }, label: t('.media_type') %>
+    <%= f.input :media_type, collection: Article.media_types.keys.map { |m| [t("article.#{m.downcase}"), m] }, label: t('.media_type') %>
     <%= f.input :category, collection: Article.categories.keys.collect { |m| [t("article.#{m.downcase}"), m] }, label: t('.category') %>
     <%= f.submit "Confirmer", class: 'btn btn-primary btn-ee w-100' %>
   <% end %>

@@ -12,7 +12,7 @@
     <div class="row">
       <% Article.categories.keys.each do |category| %>
         <div class="col-4">
-          <div class="d-flex align-items-center justify-content-center mb-2 ml-3">
+          <div class="d-flex align-items-center justify-content-center mb-2 mx-2">
             <span class="category-bullet <%= category %>"></span>
             <h2 class="ml-2 mb-0">  <%= t("article.#{category}") %></h2>
           </div>
@@ -24,7 +24,7 @@
   <div class="col-12 d-block d-md-none">
     <div class="wrapper-bullets-mobile d-flex text-center">
       <% Article.categories.keys.each do |category| %>
-        <div class="d-flex align-items-center mb-2 ml-3">
+        <div class="d-flex align-items-center mb-2 mx-2">
           <span class="category-bullet <%= category %>"></span>
           <h2 class="ml-2 mb-0">  <%= t("article.#{category}") %></h2>
         </div>
@@ -38,7 +38,7 @@
     <div class="row">
       <% Article.media_types.keys.each do |media| %>
         <div class="col-4 text-center">
-          <div class="d-flex align-items-center justify-content-center mb-2 ml-3">
+          <div class="d-flex align-items-center justify-content-center mb-2 mx-2">
             <%= image_tag "#{media}.svg", class: 'media-type-icon' %>
             <h2 class="ml-2 mb-0"><%= t("article.#{media}")%></h2>
           </div>
@@ -46,8 +46,6 @@
       <% end %>
     </div>
   </div>
-
-  <div class="dropdown-divider m-5"></div>
 
   <div class="col-12 col-md-10 offset-md-1 mt-4">
     <% @articles.each do |article| %>
