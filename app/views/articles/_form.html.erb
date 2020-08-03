@@ -3,7 +3,7 @@
     <%= f.input :title %>
     <%= f.input :cover, as: :file %>
     <%= f.input :author %>
-    <%= f.input :content, as: :rich_text_area, label: 'Content', placeholder: "Contenu de l'article", class: 'form-control' %>
+    <%= f.input :content, as: :rich_text_area, label: 'Content', placeholder: "Contenu de l'article", class: 'form-control customized-min-height' %>
     <%= f.input :reading_time %>
     <%= f.input :cover_credit %>
     <%= f.input :media_type, collection: Article.media_types.keys %>

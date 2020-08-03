@@ -1,4 +1,17 @@
 fr:
+  article:
+    food: Alimentation
+    generalities: Généralités
+    diagnostic: Diagnostic
+    treatment: Traitements
+    fertility: Fertilité
+    sexuality: Sexualité
+    sport: Sport
+    administrative: Administratif
+    research: Recherche
+    article: Articles
+    event: Événements
+    media: Médias
   thredded:
     content_moderation_states:
       content_blocked_notice: Bloqué
