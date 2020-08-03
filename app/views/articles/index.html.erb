@@ -3,7 +3,6 @@
 <% end %>
 
 
-
 <% @articles.each do |article| %>
   <div>
     <%= article.title %>
@@ -17,3 +16,5 @@
     <% end %>
   </div>
 <% end %>
+
+<%= will_paginate @articles %>
