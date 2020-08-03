@@ -2,3 +2,20 @@
 @import "alert";
 @import "avatar";
 @import "navbar";
+
+h1,h2,h3 {
+  color: $primary;
+  font-weight: 700;
+}
+
+a {
+  color: $primary;
+  font-weight: 700;
+  &:hover {
+    color: $primary;
+  }
+}
+
+p,text {
+  font-weight: 400;
+}

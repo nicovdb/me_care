@@ -1,14 +1,15 @@
 <div class="container">
-  <h1>News</h1>
+  <span class="part-name">News</span>
+
+  <h2><%= @article.category %></h2>
+  <h1><%= @article.title %></h1>
+  <p class="text-info"><%= @article.created_at %> - <%= @article.author %></p>
+  <p class="text-info">Temps de lecture: <%= @article.reading_time %></p>
+
   <% if @article.cover.attached? %>
   <%= cl_image_tag @article.cover.key, height: 300, width: 400, crop: :fill %>
   <% end %>
-  <p><%= @article.category %></p>
-  <h2><%= @article.title %></h2>
-  <p><%= @article.created_at %> - <%= @article.author %></p>
-  <p>Temps de lecture: <%= @article.reading_time %></p>
+  <p class="text-info"><%= @article.cover_credit %></p>
 
-  <h2>Cover</h2>
-  <p><%= @article.cover_credit %></p>
   <%= @article.content %>
 </div>
