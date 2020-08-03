@@ -1,0 +1,13 @@
+.bg {
+  background-image: image-url("backgrounds/bg-desktop.svg");
+  background-position: 0% 0%;
+  background-repeat: no-repeat;
+  background-size: 90% auto;
+}
+
+@media (max-width: 768px)  {
+  .bg {
+    background-image: image-url("backgrounds/bg-mobile.svg");
+    background-size: 100% auto;
+  }
+}
