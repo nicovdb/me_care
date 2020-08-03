@@ -44,14 +44,3 @@
 .research {
   background-color: #197278;
 }
-
-.wrapper-bullets-1 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 0px;
-  grid-auto-rows: minmax(40px, auto);
-}
-
-.wrapper-bullets-mobile {
-  overflow-x: scroll;
-}
