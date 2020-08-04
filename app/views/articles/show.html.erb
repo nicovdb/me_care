@@ -7,11 +7,11 @@
     <div class="col-12 col-md-8 offset-md-2 mt-4 position-relative">
       <% if @favorite.present? %>
         <%= link_to favorite_path(@favorite), method: :delete, remote: true, class:"favorite-icon" do %>
-          <i class="fas fa-heart text-danger"></i>
+          <%= image_tag "heart-full.svg" %>
         <% end %>
       <% else %>
         <%= link_to favorites_path(article: @article), method: :post, remote: true,  class:"favorite-icon" do %>
-          <i class="fas fa-heart"></i>
+          <%= image_tag "heart.svg" %>
         <% end %>
       <% end %>
       <div class="text-md-center">
