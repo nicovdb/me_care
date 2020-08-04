@@ -8,6 +8,10 @@
   font-family: "Quicksand";
 }
 
+.min-100-vh-with-navbar-footer {
+  min-height: calc(100vh - 10rem);
+}
+
 .text-underline {
   border-bottom: $green 2px solid;
 }
