@@ -1,0 +1,20 @@
+@media (max-width: 768px)  {
+  input#query.form-control {
+    width: 100%;
+  }
+}
+
+@media (min-width: 769px)  {
+  input#query.form-control {
+    width: 340px;
+  }
+}
+
+input#query.form-control {
+  border-radius: 30px;
+  border: $light-green-gray 1px solid;
+}
+
+input#query::placeholder {
+  color: $light-green-gray;
+}
