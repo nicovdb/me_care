@@ -13,23 +13,26 @@
       <%= render "search-bar" %>
     </div>
 
-    <%= render "categories-desktop" %>
+    <div class="col-12 col-md-8 offset-md-2 mt-4">
 
-    <%= render "categories-mobile" %>
+      <%= render "categories-desktop" %>
 
-    <div class="dropdown-divider dropdown-divider-short my-4 my-md-5 mx-auto"></div>
+      <%= render "categories-mobile" %>
 
-    <%= render "media-types-desktop" %>
+      <div class="dropdown-divider dropdown-divider-short my-4 my-md-5 mx-auto"></div>
 
-    <%= render "media-types-mobile" %>
+      <%= render "media-types-desktop" %>
 
-    <div class="col-12 col-md-10 offset-md-1 mt-4">
-      <% @articles.each do |article| %>
-        <%= render "article", article: article %>
-      <% end %>
-    </div>
-    <div class="d-flex justify-content-center">
-      <%= will_paginate @articles %>
+      <%= render "media-types-mobile" %>
+
+      <div class="col-12 col-md-10 offset-md-1 mt-4">
+        <% @articles.each do |article| %>
+          <%= render "article", article: article %>
+        <% end %>
+      </div>
+      <div class="d-flex justify-content-center">
+        <%= will_paginate @articles %>
+      </div>
     </div>
   </div>
 </div>

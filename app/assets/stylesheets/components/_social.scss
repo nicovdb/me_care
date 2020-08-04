@@ -1,0 +1,15 @@
+.social-share-button {
+  .ssb-icon {
+    background-size: 25px 25px;
+    height: 25px;
+    width: 25px;
+  }
+}
+
+.social-share-button .ssb-facebook {
+  background-image: image-url('Facebook.svg');
+}
+.social-share-button .ssb-twitter {
+  background-image: image-url('Twitter.svg');
+}
+

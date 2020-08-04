@@ -30,9 +30,11 @@
               <%= cl_image_tag @article.cover.key, class:"mb-2" %>
               <p class="text-info text-mini text-right text-md-center"><%= @article.cover_credit %></p>
             <% end %>
+            <div class="text-right">
+              <%= social_share_button_tag('Share to Facebook',allow_sites: %w(facebook twitter), url: article_path(@article), desc: @article.title) %>
+            </div>
           </div>
         </div>
-
       </div>
 
       <%= @article.content %>
