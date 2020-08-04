@@ -6,54 +6,26 @@
     <% end %>
     </div>
 
-    <div>
-      <span class="feature-name">News</span>
+    <div class="d-md-flex justify-content-between my-5">
+      <div class="d-none d-md-block">
+        <span class="feature-name">News</span>
+      </div>
+      <%= render "search-bar" %>
     </div>
-
-    <%= render "search-bar" %>
 
     <%= render "categories-desktop" %>
 
     <%= render "categories-mobile" %>
 
-    <div class="dropdown-divider dropdown-divider-short my-5 mx-auto"></div>
+    <div class="dropdown-divider dropdown-divider-short my-4 my-md-5 mx-auto"></div>
 
-    <%= render "media-types" %>
+    <%= render "media-types-desktop" %>
+
+    <%= render "media-types-mobile" %>
 
     <div class="col-12 col-md-10 offset-md-1 mt-4">
       <% @articles.each do |article| %>
-        <div class="article-card">
-          <div class="dropdown-divider"></div>
-          <div class="my-4">
-            <div class="d-flex justify-content-between">
-              <div class="d-flex">
-                <div class="mr-4 my-auto">
-                  <span class="category-bullet-big <%= article.category %>"></span>
-                </div>
-                <div class="my-auto">
-                  <div class="text-small text-info">
-                    <%= t("article.#{article.category}") %>
-                  </div>
-                  <h1 class="my-1"><%= article.title %></h1>
-                  <div class="text-mini text-info"><%= l(article.created_at, format:"%d %B %Y") %> - <%= article.reading_time %></div>
-                  <div class="d-flex">
-                    <% if policy(Article).edit? %>
-                      <%= link_to "Modifier", edit_article_path(article), class: 'text-mini' %>
-                    <% end %>
-                    <% if policy(Article).destroy? %>
-                      <%= link_to "Supprimer", article_path(article), method: :delete, data: {confirm: "Souhaitez-vous supprimer définitvement cet article ? Cette action est irréversible."}, class: "ml-2 text-mini" %>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <% if article.cover.attached? %>
-                  <%= cl_image_tag article.cover.key %>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        </div>
+        <%= render "article", article: article %>
       <% end %>
     </div>
 

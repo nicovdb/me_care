@@ -1,7 +1,9 @@
-<%= form_tag articles_path, method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "douleur, alimentation..."
-  %>
-<% end %>
+<div>
+  <%= form_tag articles_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "douleur, alimentation..."
+    %>
+  <% end %>
+</div>
