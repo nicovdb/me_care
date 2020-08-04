@@ -6,6 +6,7 @@ class User < ApplicationRecord
   after_create :send_welcome_email, :set_stripe_customer, :set_trial
   has_many :subscriptions, dependent: :destroy
   has_one :plan, through: :subscription
+  has_many :favorites, dependent: :destroy
 
   private
 
