@@ -1,0 +1,28 @@
+.pagination {
+  background: white;
+  cursor: default;
+}
+.pagination a, .pagination span, .pagination em {
+  padding: 0.2em 0.5em;
+  display: block;
+  float: left;
+  margin-right: 1px;
+}
+.pagination .disabled {
+  color: #999999;
+}
+.pagination .current {
+  font-style: normal;
+  font-weight: bold;
+  background: $green;
+  color: white;
+}
+.pagination a {
+  text-decoration: none;
+  color: $green;
+}
+.pagination a:hover, .pagination a:focus {
+  color: #000033;
+}
+
+
