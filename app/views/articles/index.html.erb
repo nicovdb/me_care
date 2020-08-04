@@ -9,6 +9,15 @@
     <span class="feature-name">News</span>
   </div>
 
+  <%= form_tag articles_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "douleur, alimentation..."
+    %>
+    <%#= submit_tag "" %>
+  <% end %>
+
   <%= render "categories-desktop" %>
 
   <%= render "categories-mobile" %>

@@ -2,7 +2,9 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:category].present?
+    if params[:query].present?
+      @articles = policy_scope(Article).search_by_content_and_title_and_author(params[:query]).paginate(page: params[:page], per_page: 8)
+    elsif params[:category].present?
       @articles = policy_scope(Article).where(category: params[:category]).paginate(page: params[:page], per_page: 8)
     elsif params[:media_type].present?
       @articles = policy_scope(Article).where(media_type: params[:media_type]).paginate(page: params[:page], per_page: 8)
