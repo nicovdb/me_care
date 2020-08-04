@@ -15,6 +15,7 @@ class ArticlesController < ApplicationController
 
   def show
     authorize @article
+    @favorite = current_user.favorites.find_by(article: @article)
   end
 
   def new

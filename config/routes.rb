@@ -10,5 +10,6 @@ Rails.application.routes.draw do
     resources :products, only: :index
     resources :subscriptions, only: [:index, :destroy]
     resources :articles
+    resources :favorites, only: [:create, :destroy]
   end
 end
