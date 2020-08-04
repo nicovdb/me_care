@@ -7,3 +7,11 @@
   font-weight: 700;
   font-family: "Quicksand";
 }
+
+.text-underline {
+  border-bottom: $green 2px solid;
+}
+
+a:hover {
+  text-decoration: none;
+}
