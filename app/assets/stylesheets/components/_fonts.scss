@@ -1,0 +1,57 @@
+h1,h2,h3 {
+  color: $primary;
+}
+
+h1 {
+  font-size: 38px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+a {
+  color: $primary;
+  font-weight: 700;
+  font-size: 26px;
+  &:hover {
+    color: $primary;
+  }
+}
+
+body,p,text, label {
+  font-weight: 400;
+  font-size: 26px;
+}
+
+.text-small {
+  font-size: 20px;
+}
+.text-mini {
+  font-size: 14px;
+}
+
+
+@media (max-width: 1400px)  {
+  body,p,text,a, label {
+    font-size: 19px;
+  }
+
+  h1 {
+    font-size: 25px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  .text-small {
+  font-size: 15px;
+  }
+
+  .text-mini {
+    font-size: 13px;
+  }
+}
