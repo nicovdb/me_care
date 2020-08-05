@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     get '/mentions-legales', to: 'pages#legals', as: :legals
     get '/politique-de-confidentialité', to: 'pages#policy', as: :policy
     get '/conditions-generales', to: 'pages#conditions', as: :conditions
-    get '/quefairesi', to: 'pages#algorythm'
+    get '/que-faire-si', to: 'pages#algorythm', as: :algorythm
     get '/mon-profil/:id', to: 'users#show'
     resources :contacts, only: [:new, :create]
     resources :products, only: :index

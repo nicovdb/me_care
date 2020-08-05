@@ -9,8 +9,13 @@
           <%= link_to "Log out", main_app.destroy_user_session_path, method: :delete, class: "dropdown-item" %>
         </div>
       </div>
-
-      <h1><%= t("#{controller_name}")%></h1>
+      <% if controller_name == "pages" %>
+      <h1><%= t("views.controller_name.pages.action_name.#{action_name}")%></h1>
+      <% elsif controller_name == "contacts"%>
+      <h1><%= t("views.controller_name.contacts.action_name.#{action_name}")%></h1>
+      <% else %>
+      <h1><%= t("views.controller_name.#{controller_name}")%></h1>
+      <% end %>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
