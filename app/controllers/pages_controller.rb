@@ -15,4 +15,7 @@ class PagesController < ApplicationController
 
   def conditions
   end
+  
+  def algorythm
+  end
 end
