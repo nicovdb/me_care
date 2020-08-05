@@ -1,8 +1,10 @@
-<h1>Mes abo</h1>
-<% @subscriptions.each do |sub| %>
-  <%= sub.product.name %>
-  <% unless sub.product.name == "Trial" %>
-    <%= link_to 'supprimer mon abo', subscription_path(sub), method: :delete, data: {confirm: "Sure?"}  %>
+<div class="container padding-top-navbar">
+  <h1>Mes abo</h1>
+  <% @subscriptions.each do |sub| %>
+    <%= sub.product.name %>
+    <% unless sub.product.name == "Trial" %>
+      <%= link_to 'supprimer mon abo', subscription_path(sub), method: :delete, data: {confirm: "Sure?"}  %>
+    <% end %>
+    <br><br>
   <% end %>
-  <br><br>
-<% end %>
+</div>

@@ -9,6 +9,7 @@ fr:
       cover_credit: Crédit photo
       media_type: Type d'article
       category: Catégorie
+  articles: News
   article:
     food: Alimentation
     generalities: Généralités
