@@ -9,7 +9,6 @@ fr:
       cover_credit: Crédit photo
       media_type: Type d'article
       category: Catégorie
-  articles: News
   article:
     food: Alimentation
     generalities: Généralités
@@ -295,6 +294,19 @@ fr:
       user_posted_in_topic_html: "%{user_link} a commenté dans %{topic_link}"
       user_since_html: Utilisateur depuis %{time_ago}
       user_started_topic_html: "%{user_link} démarré %{topic_link}"
+  views:
+    controller_name:
+      articles: News
+      contacts:
+        action_name:
+          new: Nous contacter
+      pages:
+        action_name:
+          algorythm: Algorithme
+          team: Équipe
+          legals: Mentions légales
+          policy: Politique de confidentialité
+          conditions: Conditions générales
   will_paginate:
     previous_label: <i class="fas fa-chevron-left"></i>
     next_label: <i class="fas fa-chevron-right"></i>

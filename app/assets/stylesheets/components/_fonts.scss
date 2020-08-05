@@ -55,3 +55,9 @@ body,p,text, label {
     font-size: 13px;
   }
 }
+
+@media (max-width: 500px)  {
+  .navbar h1 {
+    font-size: 14px;
+  }
+}

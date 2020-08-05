@@ -8,6 +8,6 @@
     <%= f.input :cover_credit, label: t('.cover_credit') %>
     <%= f.input :media_type, collection: Article.media_types.keys.map { |m| [t("article.#{m.downcase}"), m] }, label: t('.media_type') %>
     <%= f.input :category, collection: Article.categories.keys.collect { |m| [t("article.#{m.downcase}"), m] }, label: t('.category') %>
-    <%= f.submit "Confirmer", class: 'btn btn-primary btn-ee w-100' %>
+    <%= f.submit "Confirmer et publier l'article", class: 'btn btn-primary btn-ee w-100 mb-4' %>
   <% end %>
 </div>
