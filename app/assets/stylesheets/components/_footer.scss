@@ -1,0 +1,33 @@
+footer {
+  height: 380px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: $green;
+  color: white;
+}
+
+.logo-footer {
+  max-width: 200px;
+}
+
+.footer-title {
+  font-weight: 700;
+  padding-bottom: 8px;
+  border-bottom: 1px solid white;
+  font-family: 'Lato';
+  font-size: 16px;
+  display: inline-block;
+}
+
+.footer-subtitle {
+  a {
+    color: white;
+    font-family: 'Quicksand';
+    font-size: 15px;
+    font-weight: 400;
+    i {
+      font-size: 20px;
+    }
+  }
+}
