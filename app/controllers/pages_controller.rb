@@ -6,4 +6,7 @@ class PagesController < ApplicationController
 
   def team
   end
+
+  def algorythm
+  end
 end

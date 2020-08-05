@@ -23,11 +23,11 @@ input#query::placeholder {
   color: $light-green-gray;
 }
 
-label {
+label.search-bar {
   position: relative;
 }
 
-label:before {
+label.search-bar:before {
   content: "";
   position: absolute;
   left: 16px;
