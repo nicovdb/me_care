@@ -1,10 +1,11 @@
-<% @products_and_sessions.each do |ps| %>
-  <%= ps[:product].name %>
-  <button class="btn btn-primary mb-5 mt-2 checkout-button" role="link" data-session-id="<%= ps[:checkout_id] %>">
-      Continuer vers la page de paiement
-  </button>
-
-<% end %>
+<div class="container padding-top-navbar">
+  <% @products_and_sessions.each do |ps| %>
+    <%= ps[:product].name %>
+    <button class="btn btn-primary mb-5 mt-2 checkout-button" role="link" data-session-id="<%= ps[:checkout_id] %>">
+        Continuer vers la page de paiement
+    </button>
+  <% end %>
+</div>
 
 
 <div id="error-message"></div>

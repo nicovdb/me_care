@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  height: 90px;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -8,5 +8,47 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 175px;
+}
+
+.navbar-bg {
+  background: $light-pink;
+  position: fixed;
+  width: 100%;
+  z-index:1000;
+}
+
+.navbar {
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+}
+
+a.nav-link {
+  color: $green !important;
+  font-family: "Quicksand";
+  font-size: 16px;
+}
+
+.nav-item {
+  margin: 0px 6px;
+}
+
+.nav-item.dropdown {
+  margin: 0px
+}
+
+.navbar-light .navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler:focus {
+  outline: 0px auto !important;
+}
+
+.navbar-light .navbar-toggler-icon {
+  background-image: image-url("burger-menu.svg");
+}
+
+.padding-top-navbar {
+  padding-top: 120px;
 }

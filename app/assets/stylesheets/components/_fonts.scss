@@ -15,7 +15,7 @@ h2 {
 a {
   color: $primary;
   font-weight: 700;
-  font-size: 26px;
+  font-size: 24px;
   &:hover {
     color: $primary;
   }
@@ -23,7 +23,7 @@ a {
 
 body,p,text, label {
   font-weight: 400;
-  font-size: 26px;
+  font-size: 24px;
 }
 
 .text-small {
@@ -36,11 +36,11 @@ body,p,text, label {
 
 @media (max-width: 1400px)  {
   body,p,text,a, label {
-    font-size: 19px;
+    font-size: 18px;
   }
 
   h1 {
-    font-size: 25px;
+    font-size: 24px;
   }
 
   h2 {
@@ -48,7 +48,7 @@ body,p,text, label {
   }
 
   .text-small {
-  font-size: 15px;
+  font-size: 16px;
   }
 
   .text-mini {
