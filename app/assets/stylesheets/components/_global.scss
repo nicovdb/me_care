@@ -9,7 +9,7 @@
 }
 
 .min-100-vh-with-navbar-footer {
-  min-height: calc(100vh - 10rem);
+  min-height: calc(100vh - 480px); // minus navbar and footer
 }
 
 .text-underline {
@@ -18,4 +18,12 @@
 
 a:hover {
   text-decoration: none;
+}
+
+.main-container {
+ min-height: 100vh; /* will cover the 100% of viewport */
+ overflow: hidden;
+ display: block;
+ position: relative;
+ padding-bottom: 380px; /* height of your footer */
 }

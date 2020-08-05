@@ -20,21 +20,26 @@
   </head>
 
   <body>
-    <div class="navbar-bg">
-      <% if user_signed_in? %>
-        <div class="d-none d-lg-block">
-          <%= render "shared/navbar-desktop" %>
-        </div>
-        <div class="d-block d-lg-none">
-          <%= render "shared/navbar-mobile" %>
-        </div>
-      <% else %>
-        <%= render "shared/navbar-disconnected" %>
-      <% end %>
+
+    <div class="main-container">
+      <div class="navbar-bg">
+        <% if user_signed_in? %>
+          <div class="d-none d-lg-block">
+            <%= render "shared/navbar-desktop" %>
+          </div>
+          <div class="d-block d-lg-none">
+            <%= render "shared/navbar-mobile" %>
+          </div>
+        <% else %>
+          <%= render "shared/navbar-disconnected" %>
+        <% end %>
+      </div>
+
+      <%= render 'shared/flashes' %>
+
+      <%= yield %>
+
+      <%= render 'shared/footer' %>
     </div>
-
-    <%= render 'shared/flashes' %>
-
-    <%= yield %>
   </body>
 </html>

@@ -4,7 +4,10 @@ Rails.application.routes.draw do
     mount Thredded::Engine => '/forum'
     devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
     root to: 'pages#home'
-    get '/equipe', to: 'pages#team'
+    get '/equipe', to: 'pages#team', as: :team
+    get '/mentions-legales', to: 'pages#legals', as: :legals
+    get '/politique-de-confidentialité', to: 'pages#policy', as: :policy
+    get '/conditions-generales', to: 'pages#conditions', as: :conditions
     get '/quefairesi', to: 'pages#algorythm'
     get '/mon-profil/:id', to: 'users#show'
     resources :contacts, only: [:new, :create]
