@@ -6,8 +6,12 @@
 
 @media (min-width: 769px)  {
   input#query.form-control {
-    width: 340px;
+    width: 400px;
   }
+}
+
+input#query {
+  text-indent: 35px;
 }
 
 input#query.form-control {
@@ -17,4 +21,18 @@ input#query.form-control {
 
 input#query::placeholder {
   color: $light-green-gray;
+}
+
+label {
+  position: relative;
+}
+
+label:before {
+  content: "";
+  position: absolute;
+  left: 16px;
+  top: 0;
+  bottom: 0;
+  width: 24px;
+  background: image-url("search.svg") center / contain no-repeat;
 }
