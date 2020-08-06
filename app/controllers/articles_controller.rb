@@ -61,7 +61,6 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    article_params = params.require(:article).permit(:title, :cover, :content, :author, :media_type, :category, :reading_time, :cover_credit)
-    article_params
+    params.require(:article).permit(:title, :cover, :content, :author, :media_type, :category, :reading_time, :cover_credit)
   end
 end
