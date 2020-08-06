@@ -41,17 +41,21 @@ footer {
 }
 
 @media (min-width: 993px)  {
-  a {
-    i {
-      font-size: 20px;
+  footer {
+    a {
+      i {
+        font-size: 20px;
+      }
     }
   }
 }
 
 @media (max-width: 992px)  {
-  a {
-    i {
-      font-size: 30px;
+  footer {
+    a {
+      i {
+        font-size: 30px;
+      }
     }
   }
 }
