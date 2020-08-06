@@ -18,7 +18,4 @@ class PagesController < ApplicationController
 
   def algorythm
   end
-
-  def dashboard
-  end
 end
