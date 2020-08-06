@@ -302,9 +302,9 @@ fr:
           new: Nous contacter
       pages:
         action_name:
-          algorythm: Algorithme
+          algorythm: Que faire si...
           team: Équipe
-          legals: Mentions légales
+          legals: RGPD
           policy: Politique de confidentialité
           conditions: Conditions générales
   will_paginate:
