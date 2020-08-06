@@ -1,12 +1,12 @@
 <div class="navbar-bg">
   <% if user_signed_in? %>
     <div class="d-none d-lg-block">
-      <%= render "navbar-desktop" %>
+      <%= render "shared/navbar-desktop" %>
     </div>
     <div class="d-block d-lg-none">
-      <%= render "navbar-mobile" %>
+      <%= render "shared/navbar-mobile" %>
     </div>
   <% else %>
-    <%= render "navbar-disconnected" %>
+    <%= render "shared/navbar-disconnected" %>
   <% end %>
 </div>

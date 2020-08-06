@@ -1,5 +1,16 @@
+@media (min-width: 993px)  {
+  footer {
+    height: 380px;
+  }
+}
+
+@media (max-width: 992px)  {
+  footer {
+    height: 500px;
+  }
+}
+
 footer {
-  height: 380px;
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -8,7 +19,7 @@ footer {
 }
 
 .logo-footer {
-  max-width: 200px;
+  max-width: 175px;
 }
 
 .footer-title {
@@ -26,8 +37,29 @@ footer {
     font-family: 'Quicksand';
     font-size: 15px;
     font-weight: 400;
-    i {
-      font-size: 20px;
+  }
+}
+
+@media (min-width: 993px)  {
+  footer {
+    a {
+      i {
+        font-size: 20px;
+      }
     }
   }
+}
+
+@media (max-width: 992px)  {
+  footer {
+    a {
+      i {
+        font-size: 30px;
+      }
+    }
+  }
+}
+
+.border-col-footer-mobile {
+  border-right: 1px solid white;
 }
