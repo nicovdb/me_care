@@ -8,8 +8,16 @@
   font-family: "Quicksand";
 }
 
-.min-100-vh-with-navbar-footer {
-  min-height: calc(100vh - 480px); // minus navbar and footer
+@media (min-width: 993px)  {
+  .min-100-vh-with-navbar-footer {
+    min-height: calc(100vh - 470px); // minus navbar and footer
+  }
+}
+
+@media (max-width: 992px)  {
+  .min-100-vh-with-navbar-footer {
+    min-height: calc(100vh - 590px); // minus navbar and footer
+  }
 }
 
 .text-underline {
@@ -20,10 +28,22 @@ a:hover {
   text-decoration: none;
 }
 
+@media (min-width: 992px)  {
+  .main-container {
+    padding-bottom: 380px; /* height of your footer */
+  }
+}
+
+@media (max-width: 991px)  {
+  .main-container {
+    padding-bottom: 500px; /* height of your footer */
+  }
+}
+
+
 .main-container {
  min-height: 100vh; /* will cover the 100% of viewport */
  overflow: hidden;
  display: block;
  position: relative;
- padding-bottom: 380px; /* height of your footer */
 }

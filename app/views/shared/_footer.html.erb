@@ -1,77 +1,8 @@
-<footer class="d-none d-lg-block">
-  <div class="d-flex justify-content-center pt-4">
-    <div class="mx-3">
-      <%= image_tag 'logo_green.svg', class: 'logo-footer' %>
-    </div>
-    <div>
-      <div class="footer-title mx-3">
-        Mes services
-      </div>
-      <div class="ml-3">
-        <div class="footer-subtitle my-2">
-          <%= link_to "Mon agenda", main_app.root_path  %>
-        </div>
-        <div class="footer-subtitle my-2">
-          <%= link_to "À savoir", main_app.root_path  %>
-        </div>
-        <div class="footer-subtitle my-2">
-          <%= link_to "News", main_app.articles_path  %>
-        </div>
-        <div class="footer-subtitle my-2">
-          <%= link_to "Que faire si...", main_app.algorythm_path  %>
-        </div>
-        <div class="footer-subtitle my-2">
-          <%= link_to "Forum", main_app.root_path  %>
-        </div>
-        <div class="footer-subtitle my-2">
-          <%= link_to "easy Live", main_app.root_path  %>
-        </div>
-        <div class="footer-subtitle my-2">
-          <%= link_to "Abonnement", main_app.root_path  %>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div class="footer-title mx-3">
-        Qui nous sommes
-      </div>
-      <div class="ml-3">
-        <div class="footer-subtitle my-2">
-          <%= link_to "Équipe", main_app.team_path  %>
-        </div>
-        <div class="footer-subtitle my-2">
-          <%= link_to "Contact", main_app.new_contact_path  %>
-        </div>
-        <div class="footer-subtitle my-2">
-          <div class="d-flex">
-            <div><i class="fab fa-facebook-f mr-2"></i></div>
-            <div><i class="fab fa-instagram mr-2"></i></div>
-            <div><i class="fab fa-linkedin-in mr-2"></i></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div class="footer-title mx-3">
-        Cadre réglementaire
-      </div>
-      <div class="ml-3">
-        <div class="footer-subtitle my-2">
-          <%= link_to "Mentions légales", main_app.legals_path  %>
-        </div>
-        <div class="footer-subtitle my-2">
-          <%= link_to "Politique de confidentialité<br />et gestion des cookies".html_safe, main_app.policy_path  %>
-        </div>
-        <div class="footer-subtitle my-2">
-          <%= link_to "Conditions générales des services", main_app.conditions_path  %>
-        </div>
-      </div>
-    </div>
-    <div class="mx-3">
-        petits logos
-    </div>
-  </div>
-  <div class="text-center text-mini">
-    © 2020 M&E Care - easy endo
-  </div>
-</footer>
+<div class="d-none d-lg-block">
+  <%= render 'shared/footer-desktop' %>
+</div>
+
+<div class="d-block d-lg-none">
+  <%= render 'shared/footer-mobile' %>
+</div>
+
