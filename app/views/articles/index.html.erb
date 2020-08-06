@@ -27,8 +27,10 @@
       <%= render "media-types-desktop" %>
 
       <%= render "media-types-mobile" %>
+    </div>
 
-      <div class="col-12 col-md-10 offset-md-1 mt-4">
+    <div class="col-12 col-md-8 offset-md-2 px-0">
+      <div class="col-12 col-md-10 offset-md-1 mt-4 px-0">
         <% @articles.each do |article| %>
           <%= render "article", article: article %>
         <% end %>
