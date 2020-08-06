@@ -15,7 +15,10 @@ class PagesController < ApplicationController
 
   def conditions
   end
-  
+
   def algorythm
+  end
+
+  def dashboard
   end
 end

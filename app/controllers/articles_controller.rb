@@ -51,7 +51,7 @@ class ArticlesController < ApplicationController
   def destroy
     authorize @article
     @article.destroy
-    redirect_to articles_path
+    redirect_to dashboard_path
   end
 
   private

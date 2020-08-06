@@ -17,14 +17,6 @@
             <div class="text-mini text-info d-block d-md-none"> Temps de lecture : <%= article.reading_time %>
             </div>
           <% end %>
-          <div class="d-flex">
-            <% if policy(Article).edit? %>
-              <%= link_to "Modifier", edit_article_path(article), class: 'text-mini' %>
-            <% end %>
-            <% if policy(Article).destroy? %>
-              <%= link_to "Supprimer", article_path(article), method: :delete, data: {confirm: "Souhaitez-vous supprimer définitvement cet article ? Cette action est irréversible."}, class: "ml-2 text-mini" %>
-            <% end %>
-          </div>
         </div>
       </div>
       <div class='my-auto'>
