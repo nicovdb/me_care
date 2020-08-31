@@ -13,7 +13,11 @@ Rails.application.routes.draw do
     resources :contacts, only: [:new, :create]
     resources :products, only: :index
     resources :subscriptions, only: [:index, :destroy]
-    resources :articles
+    resources :articles, only: [:index, :show, :create, :update, :destroy]
     resources :favorites, only: [:create, :destroy]
+    get '/dashboard', to: 'dashboards#show'
+    namespace :dashboards do
+      resources :articles, only: [:new, :edit]
+    end
   end
 end

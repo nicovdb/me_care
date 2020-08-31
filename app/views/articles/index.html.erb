@@ -8,12 +8,6 @@
       <%= render "search-bar" %>
     </div>
 
-    <div class="col-12 col-md-10 offset-md-1">
-      <% if policy(Article).new? %>
-        <%= link_to "Écrire un nouvel article", new_article_path %>
-      <% end %>
-    </div>
-
     <div class="col-12 col-md-10 offset-md-1 mt-4">
 
       <%= render "categories-desktop" %>
