@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
+  prepend_before_action(only: [:create, :destroy]) { request.env["devise.skip_timeout"] = true }
   # before_action :configure_sign_in_params, only: [:create]
   #after_action :check_trial_end_date, only: [:create]
   # GET /resource/sign_in
