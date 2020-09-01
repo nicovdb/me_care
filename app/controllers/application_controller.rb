@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   private
 
   def skip_pundit?
-    devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/ || controller_name == 'moderation'|| controller_name == 'preferences'
+    devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/ || controller_name == 'moderation'|| controller_name == 'preferences' || controller_name == 'messageboard_groups'
   end
 
   def set_locale

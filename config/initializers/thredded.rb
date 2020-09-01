@@ -53,10 +53,10 @@ Thredded.content_visible_while_pending_moderation = true
 # :position            (default) set the position manually (new messageboards go to the bottom, by creation timestamp)
 # :last_post_at_desc   most recent post first
 # :topics_count_desc   most topics first
-Thredded.messageboards_order = :position
+Thredded.messageboards_order = :last_post_at_desc
 
 # Whether admin users see button to delete entire messageboards on the messageboard edit page.
-Thredded.show_messageboard_delete_button = false
+Thredded.show_messageboard_delete_button = true
 
 # Whether MessageboardGroup show page is enabled.
 Thredded.show_messageboard_group_page = true
