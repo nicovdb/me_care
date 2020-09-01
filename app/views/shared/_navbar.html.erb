@@ -1,12 +1,23 @@
-<div class="navbar-bg">
-  <% if user_signed_in? %>
-    <div class="d-none d-lg-block">
-      <%= render "shared/navbar-desktop" %>
-    </div>
-    <div class="d-block d-lg-none">
-      <%= render "shared/navbar-mobile" %>
-    </div>
-  <% else %>
-    <%= render "shared/navbar-disconnected" %>
-  <% end %>
-</div>
+<% if user_signed_in? %>
+  <div class="d-none d-lg-block">
+    <%= render "shared/navbar-desktop" %>
+  </div>
+  <div class="d-block d-lg-none">
+    <% if action_name == "home" %>
+      <%= render "shared/navbar-mobile-white" %>
+    <% else %>
+      <%= render "shared/navbar-mobile-pink" %>
+    <% end %>
+  </div>
+<% else %>
+  <div class="d-none d-lg-block">
+    <%= render "shared/navbar-disconnected-desktop" %>
+  </div>
+  <div class="d-block d-lg-none">
+    <% if action_name == "home" || (devise_controller? && resource_name == :user && action_name == 'new') || (devise_controller? && resource_name == :session && action_name == 'new') %>
+      <%= render "shared/navbar-disconnected-mobile-white" %>
+    <% else %>
+      <%= render "shared/navbar-disconnected-mobile-pink" %>
+    <% end %>
+  </div>
+<% end %>
