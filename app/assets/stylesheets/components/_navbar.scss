@@ -18,6 +18,13 @@
   z-index:1000;
 }
 
+.navbar-bg-white {
+  background: white;
+  position: fixed;
+  width: 100%;
+  z-index:1000;
+}
+
 .navbar {
   padding-right: 0px !important;
   padding-left: 0px !important;
@@ -51,4 +58,8 @@ a.nav-link {
 
 .padding-top-navbar {
   padding-top: 120px;
+}
+
+.w-54 {
+  width: 54px;
 }
