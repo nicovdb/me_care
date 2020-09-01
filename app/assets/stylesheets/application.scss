@@ -18,7 +18,12 @@
 
 
 .thredded--main-container {
-  font-family: $body-font;
+  p {
+    font-family: $body-font;
+  }
+  h1,h2,h3,h4,h5,h6,a,span, button {
+    font-family: $headers-font;
+  }
   padding-top: 110px;
   a {
     color: $green;
@@ -28,7 +33,7 @@
     color: $green;
   }
   .thredded--form--submit {
-    font-family: $body-font;
+    font-family: $headers-font;
   }
 }
 
@@ -42,12 +47,12 @@
 
 input.thredded--button, button.thredded--form--submit {
   background-color: $green;
-  font-family: $body-font;
+  font-family: $headers-font;
 }
 
 a.thredded--button, a.thredded--button:hover, a.thredded--button:focus, input.thredded--button input.thredded--button:hover, input.thredded--button:focus, .thredded--button, .thredded--button:hover, .thredded--button:focus, .thredded--form--submit, .thredded--form--submit:hover, .thredded--form--submit:focus {
   background-color: $green;
-  font-family: $body-font;
+  font-family: $headers-font;
   color: white;
 }
 
