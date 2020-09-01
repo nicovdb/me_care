@@ -18,5 +18,41 @@
 
 
 .thredded--main-container {
+  font-family: $body-font;
   padding-top: 110px;
+  a {
+    color: $green;
+  }
+
+  a:hover {
+    color: $green;
+  }
+  .thredded--form--submit {
+    font-family: $body-font;
+  }
 }
+
+.thredded--messageboard--unread-followed-topics-count, .thredded--user-navigation--private-topics--unread, .thredded--user-navigation--moderation--pending-count, .thredded--user-navigation--unread-topics--followed-count, .thredded--topic-unread > .thredded--topics--posts-count {
+  background-color: $pink;
+}
+
+.thredded--topics--updated-by a, .thredded--topics--messageboard a, .thredded--topics--title a, .thredded--topic-header--follow-info form input[type=submit], .thredded--topic-header--follow-info form button, .thredded--topic-header--edit-topic, .thredded--topic-header--started-by a, .thredded--topic-header--participants--participant > a, .thredded--post--content--spoiler--summary, .thredded--post--content a, .thredded--post--user a, .thredded--post--topic a, .thredded--post--user-and-topic a, .thredded--messageboard, .thredded--link, .thredded--post-moderation-record--content-changed-notice a, .thredded--post-moderation-record--moderation-state-notice a, a.thredded--link, span.thredded--nav-text, .thredded--post--dropdown--toggle, .thredded--pending-moderation .thredded--moderation-navigation--pending a, .thredded--moderation-history .thredded--moderation-navigation--history a, .thredded--moderation-users .thredded--moderation-navigation--users a, .thredded--moderation-user .thredded--moderation-navigation--users a, .thredded--moderation-activity .thredded--moderation-navigation--activity a, .thredded--user-navigation--item.thredded--is-current a, .thredded--post--dropdown--actions--item, .thredded--post--dropdown--actions--item:hover {
+  color: $green;
+}
+
+input.thredded--button, button.thredded--form--submit {
+  background-color: $green;
+  font-family: $body-font;
+}
+
+a.thredded--button, a.thredded--button:hover, a.thredded--button:focus, input.thredded--button input.thredded--button:hover, input.thredded--button:focus, .thredded--button, .thredded--button:hover, .thredded--button:focus, .thredded--form--submit, .thredded--form--submit:hover, .thredded--form--submit:focus {
+  background-color: $green;
+  font-family: $body-font;
+  color: white;
+}
+
+.thredded--post--dropdown--actions--item:active, .thredded--post--dropdown--actions--item:focus, .thredded--post--dropdown--actions--item:hover {
+  background-color: $light-pink;
+}
+
+
