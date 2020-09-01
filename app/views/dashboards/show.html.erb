@@ -6,13 +6,13 @@
 
   <% @articles.each do |article| %>
     <div class="mb-2">
-      <%= article.title %>
       <% if policy(Article).edit? %>
         <%= link_to 'Modifier cette news', edit_dashboards_article_path(article), class:"btn btn-primary" %>
       <% end %>
       <% if policy(Article).destroy? %>
         <%= link_to 'Supprimer cette news', article_path(article), method: :delete, remote: true, data:{confirm: "Êtes vous sûr.e ?"}, class:"btn btn-danger" %>
       <% end %>
+      <%= article.title %>
     </div>
   <% end %>
 
