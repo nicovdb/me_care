@@ -7,6 +7,15 @@ class User < ApplicationRecord
   has_many :subscriptions, dependent: :destroy
   has_one :plan, through: :subscription
   has_many :favorites, dependent: :destroy
+  has_one_attached :avatar
+
+  def profile_picture
+    if avatar.attached?
+      avatar.key
+    else
+      "avatar/avatar_somlf0"
+    end
+  end
 
   private
 
