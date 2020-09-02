@@ -64,3 +64,9 @@ body,p,text, label {
     font-size: 13px;
   }
 }
+
+.text-pink {
+  color: $pink;
+  font-weight: 600;
+  font-family: $headers-font;
+}
