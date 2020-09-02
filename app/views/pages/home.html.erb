@@ -1,3 +1,5 @@
-<div class="container padding-top-navbar">
-  <h1>Home</h1>
-</div>
+<% if user_signed_in? %>
+  <%= render "pages/home-connected" %>
+<% else %>
+  <%= render "pages/home-disconnected" %>
+<% end %>
