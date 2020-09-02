@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     # For additional fields in app/views/devise/registrations/new.html.erb
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
     # For additional in app/views/devise/registrations/edit.html.erb
-    #devise_parameter_sanitizer.permit(:account_update, keys: [:username])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :avatar, :username])
   end
 
   def user_not_authorized
