@@ -1,0 +1,22 @@
+.form-control {
+  border-color: $light-green-gray;
+  border-radius: 8px;
+}
+
+.form-control::placeholder {
+  color: $light-green-gray;
+  font-size: 14px;
+}
+
+.text-muted {
+  color: $light-green-gray !important;
+}
+
+label {
+  color: $green;
+  font-size: 14px !important;
+}
+
+.form-check-input {
+  margin-top: 0.5rem;
+}

@@ -33,6 +33,10 @@ body,p,text, label {
   font-size: 14px;
 }
 
+.text-green {
+  color: $green;
+}
+
 
 @media (max-width: 1400px)  {
   body,p,text,a, label {
