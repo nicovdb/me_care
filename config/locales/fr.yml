@@ -112,7 +112,7 @@ fr:
         page_title: 'Groupe de babillard: %{name}'
     moderation:
       approve_btn: Approuver
-      block_btn: Bloqué
+      block_btn: Bloquer
       moderation_state:
         name: État de modération
       pending:
@@ -250,7 +250,7 @@ fr:
         messageboard_label: Catégorie
         title_label: Titre
         title_placeholder: :thredded.topics.form.title_label
-        title_placeholder_start: Commencer un nouveau sujet
+        title_placeholder_start: Créer un sujet de discussion
         update_btn: Mettre à jour le sujet
       in_messageboard_html: dans %{messageboard_link}
       locked:
