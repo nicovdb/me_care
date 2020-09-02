@@ -22,8 +22,7 @@ Thredded.user_name_column = :email
 # If the lambda returns nil, a span element is returned instead of a link; so
 # setting this to always return nil effectively disables all user links.
 Thredded.user_path = ->(user) {
-  user_path = :"root_path"
-  main_app.respond_to?(user_path) ? main_app.send(user_path, user) : "/users/#{user.to_param}"
+  nil
 }
 
 # This method is used by Thredded controllers and views to fetch the currently signed-in user
