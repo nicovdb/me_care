@@ -1,1 +1,9 @@
-// Specific CSS for your home-page
+.home-service {
+  font-family: $headers-font;
+  color: $green;
+  font-weight: 600;
+}
+
+.home-service-logo {
+  width: 50px;
+}
