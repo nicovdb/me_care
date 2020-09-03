@@ -8,6 +8,11 @@ h1 {
 }
 
 h2 {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+h3 {
   font-size: 24px;
   font-weight: 600;
 }
@@ -56,6 +61,10 @@ label {
   }
 
   h2 {
+    font-size: 20px;
+  }
+
+  h3 {
     font-size: 18px;
   }
 
@@ -71,4 +80,10 @@ label {
   font-size: 14px;
 }
 
+}
+
+.text-pink {
+  color: $pink;
+  font-weight: 600;
+  font-family: $headers-font;
 }

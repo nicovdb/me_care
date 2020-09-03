@@ -1,0 +1,44 @@
+<div class="bg padding-top-navbar">
+  <div class="container pb-5">
+    <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+      <div class="text-justify">
+
+        <h1 class="mt-md-5 mb-5 text-center">easy endo vous aide à mieux vivre votre endométriose</h1>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/qZM7a6DXWnA" class="w-100" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        <div class="d-flex justify-content-between d-block d-md-none mt-4">
+          <%= link_to "JE M'INSCRIS", new_user_registration_path, class: "btn-ee btn btn-primary " %>
+
+          <%= link_to "JE ME CONNECTE", new_user_session_path, class: "btn btn-primary btn-ee" %>
+        </div>
+
+        <h2 class="mt-4 mt-md-5 mb-4 text-center">À propos</h2>
+        <p class=" mb-4">L’endométriose est une maladie chronique qui touche une femme sur sept. Elle est encore mal connue des médecins et sous-diagnostiquée. C’est pourquoi nous avons créé </p>
+        <div class="text-center">
+          <%= image_tag "logo-pink.svg" %>
+        </div>
+        <p class="mt-4 ">Cette application web vous donne accès aux dernières actualités de l’endo, à des informations d’experts, ainsi qu’à des informations personnalisées pluridisciplinaires. Vous pourrez évaluer vos symptômes au quotidien, et surtout partager vos expériences et ressentis avec d’autres femmes.</p>
+
+        <h2 class="mt-5 mb-5 mb-md-4 text-center">Vos services</h2>
+
+        <div class="d-none d-md-block">
+          <%= render "pages/services-desktop" %>
+        </div>
+
+        <div class="d-block d-md-none">
+          <%= render "pages/services-mobile" %>
+        </div>
+
+        <p><span class="text-pink">easy endo</span> vous accompagne dans une approche experte et bienveillante dans tous les aspects relatifs à votre maladie.</p>
+        <h2 class="text-center mt-4 mb-5">Rejoignez-nous !</h2>
+        <p class="text-center home-service mb-4">Ils parlent de nous</p>
+        <div class="d-flex align-items-center justify-content-around">
+          <p>Logo</p>
+          <p>Logo</p>
+          <p>Logo</p>
+          <p>Logo</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

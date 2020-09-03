@@ -1,1 +1,17 @@
-// Specific CSS for your home-page
+.home-service {
+  font-family: $headers-font;
+  color: $green;
+  font-weight: 600;
+}
+
+.home-service-logo {
+  width: 50px;
+}
+
+.home-service-category {
+  background-color: $light-green;
+  padding: 20px 12px;
+  border-radius: 10px;
+  height: 100%;
+  box-shadow: #0A5E706E 0 0 4px;
+}
