@@ -1,7 +1,7 @@
 class ArticlePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all.includes([:cover_attachment])
+      scope.all
     end
   end
 
