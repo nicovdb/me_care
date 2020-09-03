@@ -1,3 +1,68 @@
-<div class="container padding-top-navbar">
-  <h1>coucou c'est moi <%= @user.email %></h1>
+<div class="bg padding-top-navbar">
+  <div class="container text-green">
+    <div class="row">
+      <div class="d-md-flex justify-content-between mb-3 col-12 col-md-10 offset-md-1">
+        <div class="d-none d-md-block">
+          <span class="feature-name">Profil</span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-8 offset-md-2">
+        <div class="row">
+          <div class="col-12 col-md-6 text-center text-md-right">
+            <%= cl_image_tag @user.profile_picture, class: "avatar-xl" %>
+          </div>
+          <div class="col-12 col-md-6 text-center text-md-left">
+            <div class="d-flex">
+              <p class='mb-0'><strong> <%= @user.full_name %></strong> </p>
+              <%= link_to edit_user_registration_path, class: "ml-2" do %>
+                <%= image_tag "pencil-xl.svg", class: 'icon-edit' %>
+              <% end %>
+            </div>
+            <p class='mb-0'><%= @user.email %> </p>
+            <p class='mb-0'>pseudo : <%= @user.pseudo %> </p>
+            <p class='mb-0'>mot de passe: ******** </p>
+            <div class="text-mini">Votre profil est complété à 10%</div>
+            <div class="meter mb-1 mt-2">
+              <span style="width: 25%"></span>
+            </div>
+            <div class="d-flex">
+              <p class="text-mini mb-0 mt-1">Compléter mon profil</p>
+              <%= link_to edit_user_registration_path, class: "ml-2" do %>
+                <%= image_tag "pencil-xl.svg", class: 'icon-edit-small' %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <div>
+          <h2 class="profil-category-title text-center"><strong>Mes abonnements</strong></h2>
+          <p>Vous n’avez pas encore d’abonnement. Rendez-vous sur la page Abonnement pour souscrire à notre offre.</p>
+        </div>
+        <div class="dropdown-divider mx-5"></div>
+        <div>
+          <h2 class="profil-category-title text-center"><strong>Mes discussions</strong></h2>
+          <p>Vous n’avez participé à encore aucune discussion du Forum.</p>
+        </div>
+        <div class="dropdown-divider mx-5"></div>
+        <div>
+          <h2 class="profil-category-title text-center"><strong>Mes rdv easy Live</strong></h2>
+          <p>Vous n’êtes pas encore inscrite à un webinar d’easy endo.</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-6">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="text-center">
+          <%= link_to "JE SUPPRIME MON COMPTE", registration_path(@user), data: { confirm: t(".are_you_sure") }, method: :delete, class: 'btn btn-primary btn-ee my-4' %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

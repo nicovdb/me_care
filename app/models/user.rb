@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_one :plan, through: :subscription
   has_many :favorites, dependent: :destroy
   has_one_attached :avatar
+  validate :password_complexity
 
   def profile_picture
     if avatar.attached?
@@ -15,6 +16,16 @@ class User < ApplicationRecord
     else
       "avatar/avatar_somlf0"
     end
+  end
+
+  def password_complexity
+    return if password.blank? || password =~ /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,70}$/
+
+    errors.add :password, "Votre mot de passe n'est pas assez complexe, il doit contenir au minimum 8 caractères dont 1 caractère spécial, 1 majuscule, 1 chiffre"
+  end
+
+  def full_name
+    "#{first_name.capitalize} #{last_name.capitalize}"
   end
 
   private

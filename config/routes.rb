@@ -9,13 +9,13 @@ Rails.application.routes.draw do
     get '/politique-de-confidentialité', to: 'pages#policy', as: :policy
     get '/conditions-generales', to: 'pages#conditions', as: :conditions
     get '/que-faire-si', to: 'pages#algorythm', as: :algorythm
-    get '/mon-profil/:id', to: 'users#show'
     resources :contacts, only: [:new, :create]
     resources :products, only: :index
     resources :subscriptions, only: [:index, :destroy]
     resources :articles, only: [:index, :show, :create, :update, :destroy]
     resources :favorites, only: [:create, :destroy]
     get '/dashboard', to: 'dashboards#show'
+    get '/profil/:id', to: 'users#show'
     namespace :dashboards do
       resources :articles, only: [:new, :edit]
     end
