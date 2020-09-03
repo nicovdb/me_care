@@ -2,17 +2,18 @@
   <h1 class="mb-5">DASHBOARD</h1>
   <span class="feature-name">News</span>
   <br>
-  <%= link_to 'Créer une news', new_dashboards_article_path, class:"btn btn-primary mt-4 mb-4" %>
+  <%= link_to 'Créer une news', new_dashboards_article_path, class:"btn btn-primary mt-4" %>
 
   <% @articles.each do |article| %>
-    <div class="mb-2">
+    <div class="">
+    <div class="dropdown-divider dropdown-divider-short my-3"></div>
+      <p><%= article.title %></p>
       <% if policy(Article).edit? %>
-        <%= link_to 'Modifier cette news', edit_dashboards_article_path(article), class:"btn btn-primary" %>
+        <%= link_to 'Modifier', edit_dashboards_article_path(article), class:"btn btn-outline-primary" %>
       <% end %>
       <% if policy(Article).destroy? %>
-        <%= link_to 'Supprimer cette news', article_path(article), method: :delete, remote: true, data:{confirm: "Êtes vous sûr.e ?"}, class:"btn btn-danger" %>
+        <%= link_to 'Supprimer', article_path(article), method: :delete, remote: true, data:{confirm: "Êtes vous sûr.e ?"}, class:"btn btn-danger ml-2" %>
       <% end %>
-      <%= article.title %>
     </div>
   <% end %>
 
