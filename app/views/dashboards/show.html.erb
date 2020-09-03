@@ -1,7 +1,7 @@
 <div class="container padding-top-navbar pb-5">
   <h1 class="mb-5">DASHBOARD</h1>
-  <span class="feature-name">News</span>
-  <br>
+  <div class="mt-5"><span class="feature-name">News</span></div>
+
   <%= link_to 'Créer une news', new_dashboards_article_path, class:"btn btn-primary btn-ee-square mt-4" %>
 
   <% @articles.each do |article| %>
@@ -17,4 +17,6 @@
     </div>
   <% end %>
 
+  <div class="mt-5"><span class="feature-name">Easy Live</span></div>
+  <%= link_to 'Créer un live', new_dashboards_webinar_path, class:"btn btn-primary btn-ee-square mt-4" %>
 </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_02_102217) do
+ActiveRecord::Schema.define(version: 2020_09_03_142919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -366,6 +366,25 @@ ActiveRecord::Schema.define(version: 2020_09_02_102217) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "webinar_subscriptions", force: :cascade do |t|
+    t.bigint "webinar_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_webinar_subscriptions_on_user_id"
+    t.index ["webinar_id"], name: "index_webinar_subscriptions_on_webinar_id"
+  end
+
+  create_table "webinars", force: :cascade do |t|
+    t.string "speaker_name"
+    t.string "title"
+    t.datetime "start_at"
+    t.text "description"
+    t.integer "category"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "articles", "users"
   add_foreign_key "favorites", "articles"
@@ -377,4 +396,6 @@ ActiveRecord::Schema.define(version: 2020_09_02_102217) do
   add_foreign_key "thredded_messageboard_users", "thredded_user_details", on_delete: :cascade
   add_foreign_key "thredded_user_post_notifications", "thredded_posts", column: "post_id", on_delete: :cascade
   add_foreign_key "thredded_user_post_notifications", "users", on_delete: :cascade
+  add_foreign_key "webinar_subscriptions", "users"
+  add_foreign_key "webinar_subscriptions", "webinars"
 end
