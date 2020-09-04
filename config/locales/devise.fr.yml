@@ -5,7 +5,7 @@ fr:
       send_instructions: "Vous allez recevoir les instructions nécessaires à la confirmation de votre compte dans quelques minutes."
       send_paranoid_instructions: "Si votre e-mail existe dans notre base de données, vous allez bientôt recevoir un e-mail contenant les instructions de confirmation de votre compte."
     failure:
-      already_authenticated: "Vous êtes déjà connecté."
+      already_authenticated: "Vous êtes déjà connectée."
       inactive: "Votre compte n'est pas encore activé."
       invalid: "Email et/ou mot de passe incorrect(s)."
       last_attempt: "Vous avez droit à une tentative avant que votre compte ne soit verrouillé."
@@ -39,9 +39,9 @@ fr:
         forgot_your_password: J'ai oublié mon mot de passe
     registrations:
       destroyed: "Votre compte a été supprimé avec succès. Nous espérons vous revoir bientôt."
-      signed_up: "Bienvenue, vous êtes connecté."
-      signed_up_but_inactive: "Vous êtes bien enregistré. Vous ne pouvez cependant pas vous connecter car votre compte n'est pas encore activé."
-      signed_up_but_locked: "Vous êtes bien enregistré. Vous ne pouvez cependant pas vous connecter car votre compte est verrouillé."
+      signed_up: "Bienvenue, vous êtes connectée."
+      signed_up_but_inactive: "Vous êtes bien enregistrée. Vous ne pouvez cependant pas vous connecter car votre compte n'est pas encore activé."
+      signed_up_but_locked: "Vous êtes bien enregistrée. Vous ne pouvez cependant pas vous connecter car votre compte est verrouillé."
       signed_up_but_unconfirmed: "Un message contenant un lien de confirmation a été envoyé à votre adresse email. Ouvrez ce lien pour activer votre compte."
       update_needs_confirmation: "Votre compte a bien été mis à jour mais nous devons vérifier votre nouvelle adresse email. Merci de vérifier vos emails et de cliquer sur le lien de confirmation pour finaliser la validation de votre nouvelle adresse."
       updated: "Votre compte a été modifié avec succès."
@@ -49,9 +49,9 @@ fr:
       new:
         sign_up: Créer mon compte
     sessions:
-      signed_in: "Connecté."
-      signed_out: "Déconnecté."
-      already_signed_out: "Déconnecté."
+      signed_in: "Connectée."
+      signed_out: "Déconnectée."
+      already_signed_out: "Déconnectée."
       new:
         sign_in: Je me connecte
     shared:
