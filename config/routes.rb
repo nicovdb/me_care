@@ -15,7 +15,11 @@ Rails.application.routes.draw do
     resources :articles, only: [:index, :show, :create, :update, :destroy]
     resources :favorites, only: [:create, :destroy]
     get '/dashboard', to: 'dashboards#show'
-    get '/profil/:id', to: 'users#show'
+    get '/profil/:id', to: 'users#show', as: :profil
+    get '/profil/:user_id/informations/new', to: 'informations#new', as: :new_user_information
+    post '/profil/:user_id/informations', to: 'informations#create', as: :user_information_create
+    get '/profil/:user_id/informations/:id/edit', to: 'informations#edit', as: :edit_user_information
+    patch '/profil/:user_id/informations/:id', to: 'informations#update', as: :user_information_update
     namespace :dashboards do
       resources :articles, only: [:new, :edit]
     end

@@ -22,6 +22,10 @@ fr:
     article: Articles
     event: Événements
     media: Médias
+  information:
+    maried: mariée
+    relationship: en couple
+    single: célibataire
   thredded:
     content_moderation_states:
       content_blocked_notice: Bloqué

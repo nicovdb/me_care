@@ -1,4 +1,9 @@
 <div class="bg padding-top-navbar">
+  <% if current_user.information %>
+    <%= link_to "questionnaire", edit_user_information_path(@user, @user.information)  %>
+  <% else %>
+    <%= link_to "questionnaire", new_user_information_path(@user)  %>
+  <% end %>
   <div class="container text-green">
     <div class="row">
       <div class="d-md-flex justify-content-between mb-3 col-12 col-md-10 offset-md-1">
