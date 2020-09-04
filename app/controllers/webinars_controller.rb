@@ -1,5 +1,5 @@
 class WebinarsController < ApplicationController
-  before_action :set_webinar, only: [:show]
+  before_action :set_webinar, only: [:show, :edit, :update, :destroy]
 
   def index
     @webinars = policy_scope(Webinar)
@@ -18,6 +18,26 @@ class WebinarsController < ApplicationController
 
   def show
     authorize @webinar
+    @subscription = current_user.webinar_subscriptions.find_by(webinar: @webinar)
+  end
+
+  def edit
+    authorize @webinar
+  end
+
+  def update
+    authorize @webinar
+    if @webinar.update(webinar_params)
+      redirect_to webinar_path(@webinar)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    authorize @webinar
+    @webinar.destroy
+    redirect_to dashboard_path
   end
 
   private

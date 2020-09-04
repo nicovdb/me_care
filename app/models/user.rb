@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :subscriptions, dependent: :destroy
   has_one :plan, through: :subscription
   has_many :favorites, dependent: :destroy
+  has_many :webinar_subscriptions, dependent: :destroy
+  has_many :webinars, through: :webinar_subscriptions
   has_one_attached :avatar
 
   def profile_picture
