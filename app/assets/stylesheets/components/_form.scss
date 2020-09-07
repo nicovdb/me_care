@@ -89,7 +89,13 @@ input[type='radio']:checked:after {
 }
 
 .edit_information, .new_information {
-  .form-control::placeholder {
+  .form-control#information_diagnosis_age::placeholder {
+    text-align: right;
+  }
+  .form-control#information_size::placeholder,  {
+    text-align: right;
+  }
+  .form-control#information_weight::placeholder,  {
     text-align: right;
   }
   input[type= 'text'] {
@@ -97,7 +103,7 @@ input[type='radio']:checked:after {
     margin: auto;
   }
   input[type= 'number'] {
-    max-width: 100px;
+    max-width: 80px;
     margin: auto;
   }
   .form-group {
@@ -135,6 +141,34 @@ input[type='radio']:checked:after {
     label {
       font-size: 12px;
     }
+  }
+}
+
+@media (min-width: 992px) {
+  .edit_information, .new_information {
+    input[type= 'number'] {
+      max-width: 100px;
+      margin: auto;
+    }
+  }
+}
+
+.information_imc, .information_size, .information_weight {
+  text-align:center;
+}
+
+.center-radio {
+  justify-content: space-evenly;
+}
+
+.information_children_number, .information_abortion_number, .information_endo_surgery_number {
+  margin-right: 10px;
+  position: relative;
+  input {
+    position: absolute;
+    top : -70px;
+    right: 0;
+    left: 0;
   }
 }
 

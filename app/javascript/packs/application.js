@@ -28,6 +28,7 @@ require('packs/social-share-button.js.erb');
 // External imports
 import "bootstrap";
 import "../plugins/flatpickr";
+import "../components/form_information";
 
 
 // Internal imports, e.g:
