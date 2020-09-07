@@ -11,10 +11,16 @@
   </div>
 <% else %>
   <div class="d-none d-lg-block">
-    <%= render "shared/navbar-disconnected-desktop" %>
+    <% if (controller_name == "sessions" || controller_name == "registrations") && action_name == "new" %>
+      <%= render "shared/navbar-connexion-desktop" %>
+    <% else %>
+      <%= render "shared/navbar-disconnected-desktop" %>
+    <% end %>
   </div>
   <div class="d-block d-lg-none">
-    <% if action_name == "home" || (devise_controller? && resource_name == :user && action_name == 'new') || (devise_controller? && resource_name == :session && action_name == 'new') %>
+    <% if (controller_name == "sessions" || controller_name == "registrations") && action_name == "new" %>
+      <%= render "shared/navbar-connexion-mobile" %>
+    <% elsif action_name == "home" %>
       <%= render "shared/navbar-disconnected-mobile-white" %>
     <% else %>
       <%= render "shared/navbar-disconnected-mobile-pink" %>

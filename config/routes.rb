@@ -13,11 +13,15 @@ Rails.application.routes.draw do
     resources :products, only: :index
     resources :subscriptions, only: [:index, :destroy]
     resources :articles, only: [:index, :show, :create, :update, :destroy]
+    resources :webinars, only: [:index, :show, :create, :update, :destroy] do
+      resources :webinar_subscriptions, only: [:create]
+    end
     resources :favorites, only: [:create, :destroy]
     get '/dashboard', to: 'dashboards#show'
     get '/profil/:id', to: 'users#show'
     namespace :dashboards do
       resources :articles, only: [:new, :edit]
+      resources :webinars, only: [:new, :edit]
     end
   end
 end

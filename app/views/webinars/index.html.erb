@@ -1,0 +1,21 @@
+<div class="bg pb-5 padding-top-navbar">
+  <div class="container">
+    <div class="d-md-flex justify-content-between mb-md-5 col-12 col-md-10 offset-md-1">
+      <div class="d-none d-md-block">
+        <span class="feature-name">easy Live</span>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-8 offset-md-2 text-green">
+      <p><b>easy Live</b> est votre <b>rendez-vous mensuel</b> au cours duquel vous pouvez poser toutes vos questions sur un thème spécifique.</p>
+      <p>Pour chaque sujet, nous invitons un <b>expert</b> à passer 2 heures en direct avec vous. Vous recevez ensuite par mail un résumé des points clés abordés.</p>
+      <p><b>N’oubliez pas de vous inscrire à chaque webinar pour participer !</b></p>
+    </div>
+
+    <div class="col-12 col-md-8 offset-md-2 mt-5 px-0">
+      <% @webinars.each do |webinar| %>
+        <%= render "webinar", webinar: webinar %>
+      <% end %>
+    </div>
+  </div>
+</div>
