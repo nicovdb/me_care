@@ -1,5 +1,5 @@
-<div class="container padding-top-navbar">
-  <h2><%= t(".forgot_your_password") %></h2>
+<div class="container padding-top-navbar pb-5">
+  <h2 class="mb-3"><%= t(".forgot_your_password") %></h2>
 
   <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
     <%= f.error_notification %>
@@ -11,8 +11,8 @@
                   input_html: { autocomplete: "email" } %>
     </div>
 
-    <div class="form-actions">
-      <%= f.button :submit, t(".send_me_reset_password_instructions") %>
+    <div class="form-actions mt-4 mb-5">
+      <%= f.button :submit, t(".send_me_reset_password_instructions"), class:"btn btn-primary btn-ee" %>
     </div>
   <% end %>
 

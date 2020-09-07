@@ -20,6 +20,10 @@ label {
   margin-top: 0.5rem;
 }
 
+.form-control:focus {
+    border-color: transparent;
+}
+
 input.new_information {
   width: 200px;
 }
