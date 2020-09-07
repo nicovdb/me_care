@@ -35,7 +35,7 @@ fr:
       updated: "Votre mot de passe a été édité avec succès, vous êtes maintenant connecté."
       updated_not_active: "Votre mot de passe a été changé avec succès."
       new:
-        send_me_reset_password_instructions: M'envoyer les instructions pour retrouver mon mot de passe
+        send_me_reset_password_instructions: Envoyer
         forgot_your_password: J'ai oublié mon mot de passe
     registrations:
       destroyed: "Votre compte a été supprimé avec succès. Nous espérons vous revoir bientôt."
