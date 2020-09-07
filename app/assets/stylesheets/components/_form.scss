@@ -173,5 +173,8 @@ input[type='radio']:checked:after {
     right: 0;
     left: 0;
   }
+
+.form-control:focus {
+    border-color: transparent;
 }
 
