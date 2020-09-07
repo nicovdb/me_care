@@ -16,6 +16,6 @@ class InformationPolicy < ApplicationPolicy
   private
 
   def is_current_user_or_admin?
-    record == user || user.admin
+    record.user == user || user.admin
   end
 end
