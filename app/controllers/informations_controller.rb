@@ -1,13 +1,14 @@
 class InformationsController < ApplicationController
 
+  before_action :set_user, only: [:new, :create, :edit, :update]
+  before_action :set_information, only: [:edit, :update]
+
   def new
-    @user = User.find(params[:user_id])
     @information = Information.new
     authorize @information
   end
 
   def create
-    @user = User.find(params[:user_id])
     @information = Information.new(information_params)
     authorize @information
     @information.user = @user
@@ -19,20 +20,26 @@ class InformationsController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:user_id])
-    @information = Information.find(params[:id])
     authorize @information
   end
 
   def update
-    @user = User.find(params[:user_id])
-    @information = Information.find(params[:id])
     authorize @information
     if @information.update(information_params)
       redirect_to profil_path(@user)
     else
       render 'edit'
     end
+  end
+
+  private
+
+  def set_user
+    @user = User.find(params[:user_id])
+  end
+
+  def set_information
+    @information = Information.find(params[:id])
   end
 
   def information_params
