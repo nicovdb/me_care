@@ -307,6 +307,7 @@ fr:
           legals: RGPD
           policy: Politique de confidentialité
           conditions: Conditions générales
+      webinars: easy Live
   will_paginate:
     previous_label: <i class="fas fa-chevron-left"></i>
     next_label: <i class="fas fa-chevron-right"></i>
