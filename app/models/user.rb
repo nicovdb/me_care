@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_one :plan, through: :subscription
   has_many :favorites, dependent: :destroy
   has_one_attached :avatar
+  after_create :send_to_mailchimp #if Rails.env.production?
 
   def profile_picture
     if avatar.attached?
@@ -18,6 +19,10 @@ class User < ApplicationRecord
   end
 
   private
+
+  def send_to_mailchimp
+    Zapier::UserCreated.new(self).post_to_zapier
+  end
 
   def send_welcome_email
     UserMailer.with(user: self).welcome.deliver_now
