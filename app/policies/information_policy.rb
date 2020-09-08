@@ -6,7 +6,7 @@ class InformationPolicy < ApplicationPolicy
   end
 
   def create?
-    is_current_user_or_admin?
+    true
   end
 
   def update?

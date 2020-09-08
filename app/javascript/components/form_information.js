@@ -1,4 +1,4 @@
-const fields = ['children', 'abortion', 'endo_surgery'];
+const fields = ['children', 'abortion', 'endo_surgery', 'miscarriage'];
 
 fields.forEach((field) => {
   const radio_buttons = document.querySelectorAll(`.information_${field} input`);

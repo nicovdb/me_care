@@ -1,9 +1,4 @@
 <div class="bg padding-top-navbar">
-  <% if current_user.information %>
-    <%= link_to "questionnaire", edit_user_information_path(@user, @user.information)  %>
-  <% else %>
-    <%= link_to "questionnaire", new_user_information_path(@user)  %>
-  <% end %>
   <div class="container text-green">
     <div class="row">
       <div class="d-md-flex justify-content-between mb-3 col-12 col-md-10 offset-md-1">
@@ -36,8 +31,14 @@
             </div>
             <div class="d-flex">
               <p class="text-mini mb-0 mt-1">Compléter mon profil</p>
-              <%= link_to edit_user_registration_path, class: "ml-2" do %>
-                <%= image_tag "pencil-xl.svg", class: 'icon-edit-small' %>
+              <% if current_user.information %>
+                <%= link_to edit_user_information_path(@user, @user.information), class: "ml-2" do %>
+                  <%= image_tag "pencil-xl.svg", class: 'icon-edit-small' %>
+                <% end %>
+              <% else %>
+              <%= link_to new_user_information_path(@user), class: "ml-2" do %>
+                  <%= image_tag "pencil-xl.svg", class: 'icon-edit-small' %>
+                <% end %>
               <% end %>
             </div>
           </div>
