@@ -18,11 +18,11 @@
 # Price.create!(product: trial, unit_amount: 0)
 # puts "Price created"
 
-# FamMemberAnte.destroy_all
-# FamMemberAnte.create!(title: 'mother')
-# FamMemberAnte.create!(title: 'sister')
-# FamMemberAnte.create!(title: 'aunt')
-# FamMemberAnte.create!(title: 'grand_mother')
+FamMemberAnte.destroy_all
+FamMemberAnte.create!(title: 'mère')
+FamMemberAnte.create!(title: 'soeur')
+FamMemberAnte.create!(title: 'tante')
+FamMemberAnte.create!(title: 'grand-mère')
 
 # Disease.destroy_all
 # Disease.create!(name: 'Pathologie thyroïdienne (Hashimoto ou Basedow)')
@@ -38,10 +38,10 @@
 # Disease.create!(name: 'Polyarthrite rhumatoïde')
 # Disease.create!(name: 'Autres')
 
-AlternativeTherapy.destroy_all
-AlternativeTherapy.create!(name:'Naturopathie')
-AlternativeTherapy.create!(name:'Homéopathie')
-AlternativeTherapy.create!(name:'Aromathérapie')
-AlternativeTherapy.create!(name:'Acupuncture')
-AlternativeTherapy.create!(name:'Alimentation anti-inflammatoire')
-AlternativeTherapy.create!(name:'Autre')
+# AlternativeTherapy.destroy_all
+# AlternativeTherapy.create!(name:'Naturopathie')
+# AlternativeTherapy.create!(name:'Homéopathie')
+# AlternativeTherapy.create!(name:'Aromathérapie')
+# AlternativeTherapy.create!(name:'Acupuncture')
+# AlternativeTherapy.create!(name:'Alimentation anti-inflammatoire')
+# AlternativeTherapy.create!(name:'Autre')

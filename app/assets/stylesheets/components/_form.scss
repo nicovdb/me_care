@@ -183,3 +183,47 @@ input[type='radio']:checked:after {
     border-color: transparent;
 }
 
+.information_fam_member_antes, .information_diseases, .information_alternative_therapies {
+  legend {
+    display:none;
+  }
+  input[type=checkbox] {
+    display: none;
+    vertical-align: middle;
+
+    & + label:before {
+      width: 14px;
+      height: 14px;
+      border-radius: 14px;
+      top: 2px;
+      right: 0px;
+      position: relative;
+      background-color: white;
+      content: '';
+      display: inline-block;
+      visibility: visible;
+      border: 1px solid $pink;
+    }
+
+    &:checked + label:before {
+      width: 14px;
+      height: 14px;
+      border-radius: 14px;
+      top: 2px;
+      right: 0px;
+      position: relative;
+      background-color: $pink;
+      content: '';
+      display: inline-block;
+      visibility: visible;
+    }
+  }
+}
+
+.information_auto_immune_antecedent, .information_family_antecedent, .information_alternative_therapy {
+  margin-bottom:15px !important;
+}
+
+
+
+
