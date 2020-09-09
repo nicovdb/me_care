@@ -4,11 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   after_create :send_welcome_email, :set_stripe_customer, :set_trial
+  after_create :send_to_mailchimp if Rails.env.production?
   has_many :subscriptions, dependent: :destroy
   has_one :plan, through: :subscription
   has_many :favorites, dependent: :destroy
   has_one_attached :avatar
-  after_create :send_to_mailchimp #if Rails.env.production?
 
   def profile_picture
     if avatar.attached?
