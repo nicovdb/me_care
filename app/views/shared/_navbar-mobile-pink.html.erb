@@ -25,41 +25,12 @@
         <h1><%= t("views.controller_name.#{controller_name}")%></h1>
       <% end %>
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button id="menu-burger" class="navbar-toggler">
         <span class="navbar-toggler-icon"></span>
       </button>
 
     </div>
-    <div class="collapse navbar-collapse pb-3" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to "Home", main_app.root_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Mon agenda", "#", class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "À savoir", "#", class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "News", main_app.articles_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Que faire si...", main_app.algorythm_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Forum", "#", class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "easy Live", "#", class: "nav-link" %>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
   </div>
 </div>
+
+<%= render "shared/navbar-mobile-menu" %>

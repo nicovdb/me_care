@@ -28,14 +28,16 @@ require('packs/social-share-button.js.erb');
 // External imports
 import "bootstrap";
 import "../plugins/flatpickr";
-import "../components/form_information";
-import "../components/imc_calculation";
+// import "../components/form_information";
+// import "../components/imc_calculation";
 
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+import { navbarMenu } from '../components/navbar_menu';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  navbarMenu();
 });
