@@ -36,17 +36,23 @@
             </div>
           </div>
           <%= f.input :family_antecedent, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label:'Antécédents familiaux d’endométriose' %>
+          <%= f.association :fam_member_antes, as: :check_boxes, collection: FamMemberAnte.all %>
           <%= f.input :children, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label: 'Enfants' %>
           <%= f.input :children_number, disabled: !@information.children, label: false, placeholder: 'nombre' %>
+          <%= f.input :miscarriage, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label:'Antécédents de fausse couche' %>
+          <%= f.input :miscarriage_number, disabled: !@information.abortion, label: false, placeholder: 'nombre' %>
           <%= f.input :abortion, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label:'Antécédents d’interruption volontaire de grossesse' %>
           <%= f.input :abortion_number, disabled: !@information.abortion, label: false, placeholder: 'nombre' %>
           <%= f.input :pma, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label: 'Antécédents ou en cours de procréation médicalement assistée' %>
+          <%= f.input :auto_immune_antecedent, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label: 'Antécédents personnels de maladie auto-immune ou inflammatoire chronique' %>
+          <%= f.association :diseases, as: :check_boxes, collection: Disease.all %>
           <%= f.input :endo_surgery, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label:'Antécédents de chirurgie de l’endométriose' %>
           <%= f.input :endo_surgery_number, disabled: !@information.endo_surgery, label: false, placeholder: 'nombre' %>
           <%= f.input :pain_center, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label:'Prise en charge par un centre de la douleur' %>
           <%= f.input :physiotherapist, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label: 'Recours à la kinésithérapie' %>
           <%= f.input :ostheopath, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label: 'Recours à l’osthéopathie' %>
-          <%= f.input :alternative_therapy, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label: 'Antécédents personnels de maladie auto-immune ou inflammatoire chronique' %>
+          <%= f.input :alternative_therapy, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label: 'Recours à des thérapies complémentaires' %>
+          <%= f.association :alternative_therapies, as: :check_boxes, collection: AlternativeTherapy.all, label: false %>
           <%= f.input :terms_conditions, as: :boolean, label:'En cochant cette case, j’accepte expressément que mes données personnelles de santé soient traitées par easy endo aux fins d’amélioration de mon expérience d’utilisation de l’application. Je suis également informée que, sauf opposition expresse de ma part, mes données, préalablement pseudonymisées conformément à la réglementation applicable à la protection des données personnelles, pourront être transmises par easy endo à des laboratoires publics ou privés de recherche aux fins de mener des études et projets de recherche clinique sur l’endométriose et/ou les maladies et syndromes apparentés. Enfin, je suis informée que mes données de santé, à l’exclusion de toute donnée personnelle me concernant, pourront être réutilisées par easy endo aux fins de réaliser des enquêtes épidémiologiques, scientifiques et/ou statistiques pour faire avancer tant la prise en charge médicale que la couverture sociale des patientes. <br><br> Pour en savoir plus sur les traitements de vos données opérés par easy endo et les droits que vous détenez sur celles-ci, nous vous invitons à lire attentivement notre politique de confidentialité.'.html_safe %>
           <div class="text-center">
             <%= f.button :submit, "JE VALIDE", class: 'btn btn-primary btn-ee my-4' %>

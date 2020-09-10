@@ -25,6 +25,9 @@ class InformationsController < ApplicationController
 
   def update
     authorize @information
+    delete_info_diseases
+    delete_info_alternative_therapies
+    delete_info_fam_member_antes
     if @information.update(information_params)
       redirect_to profil_path(@user)
     else
@@ -33,6 +36,24 @@ class InformationsController < ApplicationController
   end
 
   private
+
+  def delete_info_diseases
+    if params[:information][:auto_immune_antecedent] == 'false'
+      @information.info_diseases.destroy_all
+    end
+  end
+
+  def delete_info_alternative_therapies
+    if params[:information][:alternative_therapy] == 'false'
+      @information.info_alternative_therapies.destroy_all
+    end
+  end
+
+  def delete_info_fam_member_antes
+    if params[:information][:family_antecedent] == 'false'
+      @information.info_fam_member_antes.destroy_all
+    end
+  end
 
   def set_user
     @user = User.find(params[:user_id])
@@ -43,6 +64,6 @@ class InformationsController < ApplicationController
   end
 
   def information_params
-    params.require(:information).permit(:date_of_birth, :family_situation, :job, :diagnosis_age, :size, :weight, :imc, :family_antecedent, :children, :children_number, :abortion, :abortion_number, :pma, :endo_surgery, :endo_surgery_number, :pain_center, :physiotherapist, :ostheopath, :alternative_therapy, :terms_conditions)
+    params.require(:information).permit(:auto_immune_antecedent, :date_of_birth, :family_situation, :job, :diagnosis_age, :size, :weight, :imc, :family_antecedent, :children, :children_number, :abortion, :abortion_number, :pma, :endo_surgery, :endo_surgery_number, :pain_center, :physiotherapist, :ostheopath, :alternative_therapy, :terms_conditions, :miscarriage, :miscarriage_number, {fam_member_ante_ids: [] }, {alternative_therapy_ids: [] }, {disease_ids: [] })
   end
 end

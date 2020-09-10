@@ -13,10 +13,11 @@
 
           <div class="form-inputs mt-0 mt-md-4">
             <div class="text-center">
-              <%= cl_image_tag resource.profile_picture, class: "avatar-xl" %>
+              <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
+              <%= cl_image_tag resource.profile_picture, class: "avatar-xl", id:'current-avatar' %>
             </div>
             <div class="text-center">
-              <%= f.input :avatar, as: :file, input_html: { class: 'd-none' }, label: 'Modifier mon image' %>
+              <%= f.input :avatar, as: :file, input_html: { class: 'd-none', id: 'photo-input' }, label: 'Modifier mon image' %>
             </div>
             <%= f.input :first_name, required: true, autofocus: true, label: "Prénom" %>
             <%= f.input :last_name, required: true, autofocus: true, label: "Nom" %>
