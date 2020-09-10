@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   after_create :send_welcome_email, :set_stripe_customer, :set_trial
+  after_create :send_to_mailchimp if Rails.env.production?
   has_many :subscriptions, dependent: :destroy
   has_one :plan, through: :subscription
   has_one :information
@@ -32,6 +33,10 @@ class User < ApplicationRecord
   end
 
   private
+
+  def send_to_mailchimp
+    Zapier::UserCreated.new(self).post_to_zapier
+  end
 
   def send_welcome_email
     UserMailer.with(user: self).welcome.deliver_now
