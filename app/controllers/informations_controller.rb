@@ -25,6 +25,9 @@ class InformationsController < ApplicationController
 
   def update
     authorize @information
+    delete_info_diseases
+    delete_info_alternative_therapies
+    delete_info_fam_member_antes
     if @information.update(information_params)
       redirect_to profil_path(@user)
     else
@@ -33,6 +36,24 @@ class InformationsController < ApplicationController
   end
 
   private
+
+  def delete_info_diseases
+    if params[:information][:auto_immune_antecedent] == 'false'
+      @information.info_diseases.destroy_all
+    end
+  end
+
+  def delete_info_alternative_therapies
+    if params[:information][:alternative_therapy] == 'false'
+      @information.info_alternative_therapies.destroy_all
+    end
+  end
+
+  def delete_info_fam_member_antes
+    if params[:information][:family_antecedent] == 'false'
+      @information.info_fam_member_antes.destroy_all
+    end
+  end
 
   def set_user
     @user = User.find(params[:user_id])

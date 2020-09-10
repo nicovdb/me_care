@@ -1,6 +1,11 @@
 .form-control {
   border-color: $light-green-gray;
   border-radius: 8px;
+  padding: 0.375rem;
+}
+
+.form-control.is_valid {
+  padding: 0.75rem;
 }
 
 .form-control::placeholder {
@@ -107,7 +112,7 @@ input[type='radio']:checked:after {
     margin: auto;
   }
   input[type= 'number'] {
-    max-width: 80px;
+    max-width: 70px;
     margin: auto;
   }
   .form-group {
@@ -146,12 +151,16 @@ input[type='radio']:checked:after {
       font-size: 12px;
     }
   }
+  .form-check-input[disabled] ~ .form-check-label, .form-check-input:disabled ~ .form-check-label {
+    opacity: 0.2;
+    color: $green;
+  }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 540px) {
   .edit_information, .new_information {
     input[type= 'number'] {
-      max-width: 120px;
+      max-width: 80px;
       margin: auto;
     }
   }
