@@ -11,3 +11,12 @@
     background-size: 100% auto;
   }
 }
+
+.bg-darker {
+  background-color: $green;
+  background-image: image-url("backgrounds/bg-mobile-darker.svg");
+  background-position: 0% 20px;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+
