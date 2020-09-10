@@ -4,4 +4,6 @@ class ProductPolicy < ApplicationPolicy
       scope.where.not(name: 'Trial')
     end
   end
+
+
 end

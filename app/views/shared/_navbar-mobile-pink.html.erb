@@ -17,8 +17,6 @@
         <% end %>
       <% elsif controller_name == "pages" %>
         <h1><%= t("views.controller_name.pages.action_name.#{action_name}")%></h1>
-        <% elsif controller_name == "users" || controller_name == 'registrations' %>
-        <h1>Profil</h1>
       <% elsif controller_name == "contacts"%>
         <h1><%= t("views.controller_name.contacts.action_name.#{action_name}")%></h1>
       <% else %>

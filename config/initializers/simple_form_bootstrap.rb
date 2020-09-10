@@ -186,11 +186,11 @@ SimpleForm.setup do |config|
   end
 
   # horizontal input for inline radio buttons and check boxes
-  config.wrappers :horizontal_collection_inline, item_wrapper_class: 'form-check form-check-inline mx-2 flex-column-reverse', item_label_class: 'form-check-label', tag: 'div', class: 'form-group row', error_class: 'form-group-invalid', valid_class: 'form-group-valid' do |b|
+  config.wrappers :horizontal_collection_inline, item_wrapper_class: 'form-check form-check-inline', item_label_class: 'form-check-label', tag: 'div', class: 'form-group row', error_class: 'form-group-invalid', valid_class: 'form-group-valid' do |b|
     b.use :html5
     b.optional :readonly
-    b.use :label, class: 'col-sm-12 col-form-label pt-0'
-    b.wrapper :grid_wrapper, tag: 'div', class: 'col-sm-12 text-center d-flex center-radio' do |ba|
+    b.use :label, class: 'col-sm-3 col-form-label pt-0'
+    b.wrapper :grid_wrapper, tag: 'div', class: 'col-sm-9' do |ba|
       ba.use :input, class: 'form-check-input', error_class: 'is-invalid', valid_class: 'is-valid'
       ba.use :full_error, wrap_with: { tag: 'div', class: 'invalid-feedback d-block' }
       ba.use :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }

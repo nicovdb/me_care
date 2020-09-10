@@ -36,7 +36,6 @@ body,p,text {
 }
 .text-mini {
   font-size: 14px;
-  font-weight: 400;
 }
 
 label {
@@ -83,20 +82,8 @@ label {
 
 }
 
-.text-ee {
+.text-pink {
   color: $pink;
   font-weight: 600;
   font-family: $headers-font;
-}
-
-.text-pink {
-  color: $pink;
-}
-
-.text-header {
-  font-family: $headers-font;
-}
-
-.text-body-font {
-  font-family: $body-font;
 }

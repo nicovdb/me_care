@@ -11,7 +11,6 @@ require("thredded_imports.js");
 require("trix");
 require("@rails/actiontext");
 require('packs/social-share-button.js.erb');
-
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
@@ -27,9 +26,7 @@ require('packs/social-share-button.js.erb');
 
 // External imports
 import "bootstrap";
-import "../plugins/flatpickr";
-import "../components/form_information";
-import "../components/imc_calculation";
+
 
 
 // Internal imports, e.g:

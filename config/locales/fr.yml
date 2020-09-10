@@ -22,10 +22,6 @@ fr:
     article: Articles
     event: Événements
     media: Médias
-  information:
-    maried: mariée
-    relationship: en couple
-    single: célibataire
   thredded:
     content_moderation_states:
       content_blocked_notice: Bloqué
@@ -311,7 +307,6 @@ fr:
           legals: RGPD
           policy: Politique de confidentialité
           conditions: Conditions générales
-      webinars: easy Live
   will_paginate:
     previous_label: <i class="fas fa-chevron-left"></i>
     next_label: <i class="fas fa-chevron-right"></i>
