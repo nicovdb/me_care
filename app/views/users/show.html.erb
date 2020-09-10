@@ -13,7 +13,7 @@
           <div class="text-center text-md-right">
             <%= cl_image_tag @user.profile_picture, class: "avatar-xl" %>
           </div>
-          <div class='ml-5'>
+          <div class='ml-0 ml-md-5'>
             <div class="d-flex justify-content-center justify-content-md-start">
               <p class='mb-0'><strong> <%= @user.full_name %></strong> </p>
               <%= link_to edit_user_registration_path, class: "ml-2" do %>
@@ -64,6 +64,7 @@
         </div>
       </div>
       <div class="col-12 col-md-6 px-5">
+        <div class="dropdown-divider my-5 mx-5 d-block d-md-none"></div>
         <div class="text-center profile-favorite">
           <h3 class="profil-category-title"><strong>Mes favoris</strong></h3>
           <% if @user.favorites.any? %>
