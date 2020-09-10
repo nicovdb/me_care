@@ -18,13 +18,12 @@ class User < ApplicationRecord
     if avatar.attached?
       avatar.key
     else
-      "avatar/avatar_somlf0"
+      "avatar/avatar_default"
     end
   end
 
   def password_complexity
     return if password.blank? || password =~ /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,70}$/
-
     errors.add :password, "Votre mot de passe n'est pas assez complexe, il doit contenir au minimum 8 caractères dont 1 caractère spécial, 1 majuscule, 1 chiffre"
   end
 

@@ -1,3 +1,3 @@
 class Disease < ApplicationRecord
-  has_many :user_antecedent_diseases
+  has_many :info_diseases
 end
