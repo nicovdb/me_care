@@ -24,15 +24,23 @@ const formInformation = () => {
       });
     })
 
-
-
-    document.addEventListener("DOMContentLoaded", (event) => {
+    if( document.readyState !== 'loading' ) {
       if (document.getElementById(`information_family_antecedent_true`).checked) {
         document.querySelector(`.information_fam_member_antes`).disabled = false;
       } else {
+        console.log('coucou');
         document.querySelector(`.information_fam_member_antes`).disabled = true;
       };
-    });
+    } else {
+        document.addEventListener("DOMContentLoaded", (event) => {
+        if (document.getElementById(`information_family_antecedent_true`).checked) {
+          document.querySelector(`.information_fam_member_antes`).disabled = false;
+        } else {
+          document.querySelector(`.information_fam_member_antes`).disabled = true;
+        };
+      });
+    }
+
 
     check_boxes_antecedents.forEach((button) => {
       button.addEventListener("click", (event) => {
@@ -48,14 +56,23 @@ const formInformation = () => {
     });
 
 
-
-    document.addEventListener("DOMContentLoaded", (event) => {
+    if( document.readyState !== 'loading' ) {
       if (document.getElementById(`information_auto_immune_antecedent_true`).checked) {
         document.querySelector(`.information_diseases`).disabled = false;
       } else {
         document.querySelector(`.information_diseases`).disabled = true;
       };
-    });
+    } else {
+        document.addEventListener("DOMContentLoaded", (event) => {
+          if (document.getElementById(`information_auto_immune_antecedent_true`).checked) {
+            document.querySelector(`.information_diseases`).disabled = false;
+          } else {
+            document.querySelector(`.information_diseases`).disabled = true;
+          };
+        });
+    }
+
+
 
     check_boxes_auto_immune.forEach((button) => {
       button.addEventListener("click", (event) => {
@@ -71,14 +88,22 @@ const formInformation = () => {
     });
 
 
-
-    document.addEventListener("DOMContentLoaded", (event) => {
-      if (document.getElementById(`information_alternative_therapy_true`).checked) {
-        document.querySelector(`.information_alternative_therapies`).disabled = false;
+      if( document.readyState !== 'loading' ) {
+        if (document.getElementById(`information_alternative_therapy_true`).checked) {
+          document.querySelector(`.information_alternative_therapies`).disabled = false;
+        } else {
+          document.querySelector(`.information_alternative_therapies`).disabled = true;
+        };
       } else {
-        document.querySelector(`.information_alternative_therapies`).disabled = true;
-      };
-    });
+          document.addEventListener("DOMContentLoaded", (event) => {
+            if (document.getElementById(`information_alternative_therapy_true`).checked) {
+              document.querySelector(`.information_alternative_therapies`).disabled = false;
+            } else {
+              document.querySelector(`.information_alternative_therapies`).disabled = true;
+            };
+          });
+      }
+
 
     check_boxes_alternative_therapy.forEach((button) => {
       button.addEventListener("click", (event) => {
