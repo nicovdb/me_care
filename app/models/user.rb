@@ -18,7 +18,7 @@ class User < ApplicationRecord
     if avatar.attached?
       avatar.key
     else
-      "avatar/avatar_somlf0"
+      "avatar/avatar_default"
     end
   end
 
