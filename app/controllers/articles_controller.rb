@@ -18,11 +18,6 @@ class ArticlesController < ApplicationController
     @favorite = current_user.favorites.find_by(article: @article)
   end
 
-  def new
-    @article = Article.new
-    authorize @article
-  end
-
   def create
     @article = Article.new(article_params)
     authorize @article
@@ -31,12 +26,8 @@ class ArticlesController < ApplicationController
     if @article.save
       redirect_to article_path(@article)
     else
-      render :new
+      render 'dashboards/articles/new'
     end
-  end
-
-  def edit
-    authorize @article
   end
 
   def update
