@@ -61,7 +61,7 @@ fr:
         forgot_your_password: J'ai oublié mon mot de passe
         didn_t_receive_confirmation_instructions: Je n'ai pas reçu d'instruction pour confirmer mon compte
         didn_t_receive_unlock_instructions: Je n'ai pas reçu de mail pour retrouver mon mot de passe
-      minimum_password_length: Taille minimum du mot de passe - 8 caractères
+      minimum_password_length: Minimum 8 caractères dont 1 caractère spécial, 1 majuscule, 1 chiffre
     unlocks:
       send_instructions: "Vous allez recevoir les instructions nécessaires au déverrouillage de votre compte dans quelques instants."
       send_paranoid_instructions: "Si votre compte existe, vous allez bientôt recevoir un email contenant les instructions pour le déverrouiller."
