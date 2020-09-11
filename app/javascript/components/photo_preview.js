@@ -19,7 +19,6 @@ const photoPreview = () => {
         newAvatar.src = event.currentTarget.result;
       }
       reader.readAsDataURL(input.files[0])
-      console.log('hello');
       oldAvatar.classList.add('d-none');
       newAvatar.classList.remove('hidden');
       newAvatar.classList.add('avatar-xl');
