@@ -7,7 +7,7 @@ const imcCalculation = () => {
     size_weight.forEach((element) => {
       element.addEventListener("keyup", (event) => {
         const num = weight.value / Math.pow(size.value / 100, 2);
-        imc.value = Math.round(num * 100) / 100;
+        imc.value = Math.round(num * 10) / 10;
       });
     });
   };
