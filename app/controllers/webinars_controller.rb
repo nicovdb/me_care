@@ -12,7 +12,7 @@ class WebinarsController < ApplicationController
     if @webinar.save
       redirect_to webinar_path(@webinar)
     else
-      render :new
+      render 'dashboards/webinars/new'
     end
   end
 
@@ -30,7 +30,7 @@ class WebinarsController < ApplicationController
     if @webinar.update(webinar_params)
       redirect_to webinar_path(@webinar)
     else
-      render :edit
+      render 'dashboards/webinars/edit'
     end
   end
 
