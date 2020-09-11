@@ -21,10 +21,6 @@ class WebinarsController < ApplicationController
     @subscription = current_user.webinar_subscriptions.find_by(webinar: @webinar)
   end
 
-  def edit
-    authorize @webinar
-  end
-
   def update
     authorize @webinar
     if @webinar.update(webinar_params)
