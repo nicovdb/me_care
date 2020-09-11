@@ -28,7 +28,6 @@ const formInformation = () => {
       if (document.getElementById(`information_family_antecedent_true`).checked) {
         document.querySelector(`.information_fam_member_antes`).disabled = false;
       } else {
-        console.log('coucou');
         document.querySelector(`.information_fam_member_antes`).disabled = true;
       };
     } else {
