@@ -1,8 +1,8 @@
 <% if user_signed_in? %>
-  <div class="d-none d-lg-block">
+  <div class="d-none d-xl-block">
     <%= render "shared/navbar-desktop" %>
   </div>
-  <div class="d-block d-lg-none">
+  <div class="d-block d-xl-none">
     <% if action_name == "home" %>
       <%= render "shared/navbar-mobile-white" %>
     <% else %>
