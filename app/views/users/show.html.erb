@@ -46,50 +46,54 @@
       </div>
     </div>
     <div class="row mt-md-4">
-      <div class="col-12 col-md-6 border-col-profile-desktop px-5">
-        <div class="dropdown-divider my-4 mx-5 d-block d-md-none"></div>
-        <div class="text-center">
-          <h3 class="profil-category-title"><strong>Mes abonnements</strong></h3>
-          <p class='text-left'>Vous n’avez pas encore d’abonnement. Rendez-vous sur la page Abonnement pour souscrire à notre offre.</p>
-        </div>
-        <div class="dropdown-divider my-5 mx-5"></div>
-        <div class="text-center">
-          <h3 class="profil-category-title"><strong>Mes discussions</strong></h3>
-          <p class='text-left'>Vous n’avez participé à encore aucune discussion du Forum.</p>
-        </div>
-        <div class="dropdown-divider my-5 mx-5"></div>
-        <div class="text-center">
-          <h3 class="profil-category-title"><strong>Mes rdv easy Live</strong></h3>
-          <p class='text-left'>Vous n’êtes pas encore inscrite à un webinar d’<span class='text-pink'>easy endo</span>.</p>
-        </div>
-      </div>
-      <div class="col-12 col-md-6 px-5">
-        <div class="dropdown-divider my-5 mx-5 d-block d-md-none"></div>
-        <div class="text-center profile-favorite">
-          <h3 class="profil-category-title"><strong>Mes favoris</strong></h3>
-          <% if @user.favorites.any? %>
-            <div>
-              <% @user.favorites.each do |favorite| %>
-                <% if favorite.article %>
-                <div class="d-flex my-3">
-                  <div class="my-auto">
-                    <%= image_tag "heart-full.svg" %>
-                  </div>
-                  <div class='text-left ml-3'>
-                    <p class="text-muted mb-0 text-small">News</p>
-                    <p class="mb-0"><%= link_to favorite.article.title, article_path(favorite.article)  %></p>
-                  </div>
+      <div class="col-12 col-md-10 offset-md-1">
+        <div class="row">
+          <div class="col-12 col-md-6 border-col-profile-desktop px-5">
+            <div class="dropdown-divider my-4 mx-5 d-block d-md-none"></div>
+            <div class="text-center">
+              <h3 class="profil-category-title"><strong>Mes abonnements</strong></h3>
+              <p class='text-left'>Vous n’avez pas encore d’abonnement. Rendez-vous sur la page Abonnement pour souscrire à notre offre.</p>
+            </div>
+            <div class="dropdown-divider my-5 mx-5"></div>
+            <div class="text-center">
+              <h3 class="profil-category-title"><strong>Mes discussions</strong></h3>
+              <p class='text-left'>Vous n’avez participé à encore aucune discussion du Forum.</p>
+            </div>
+            <div class="dropdown-divider my-5 mx-5"></div>
+            <div class="text-center">
+              <h3 class="profil-category-title"><strong>Mes rdv easy Live</strong></h3>
+              <p class='text-left'>Vous n’êtes pas encore inscrite à un webinar d’<span class='text-pink'>easy endo</span>.</p>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 px-5">
+            <div class="dropdown-divider my-5 mx-5 d-block d-md-none"></div>
+            <div class="text-center profile-favorite">
+              <h3 class="profil-category-title"><strong>Mes favoris</strong></h3>
+              <% if @user.favorites.any? %>
+                <div>
+                  <% @user.favorites.each do |favorite| %>
+                    <% if favorite.article %>
+                    <div class="d-flex my-3">
+                      <div class="my-auto">
+                        <%= image_tag "heart-full.svg" %>
+                      </div>
+                      <div class='text-left ml-3'>
+                        <p class="text-muted mb-0 text-small">News</p>
+                        <p class="mb-0"><%= link_to favorite.article.title, article_path(favorite.article)  %></p>
+                      </div>
+                    </div>
+                    <% end %>
+                  <% end %>
                 </div>
-                <% end %>
+              <% else %>
+                <p class='text-left'>Vous n’avez pas encore de favoris. Likez le contenu qui vous intéresse pour le mémoriser dans vos favoris..</p>
               <% end %>
             </div>
-          <% else %>
-            <p class='text-left'>Vous n’avez pas encore de favoris. Likez le contenu qui vous intéresse pour le mémoriser dans vos favoris..</p>
-          <% end %>
+          </div>
         </div>
       </div>
     </div>
-    <div class="row my-5">
+    <div class="row py-5">
       <div class="col">
         <div class="text-center">
           <div>
