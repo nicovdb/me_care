@@ -1,29 +1,29 @@
 <% if user_signed_in? %>
   <div class="d-none d-xl-block">
-    <%= render "shared/navbar-desktop" %>
+    <%= render "shared/navbar/desktop/navbar-desktop" %>
   </div>
   <div class="d-block d-xl-none">
     <% if action_name == "home" %>
-      <%= render "shared/navbar-mobile-white" %>
+      <%= render "shared/navbar/mobile/navbar-mobile-white" %>
     <% else %>
-      <%= render "shared/navbar-mobile-pink" %>
+      <%= render "shared/navbar/mobile/navbar-mobile-pink" %>
     <% end %>
   </div>
 <% else %>
   <div class="d-none d-lg-block">
     <% if (controller_name == "sessions" || controller_name == "registrations") && action_name == "new" %>
-      <%= render "shared/navbar-connexion-desktop" %>
+      <%= render "shared/navbar/desktop/navbar-connexion-desktop" %>
     <% else %>
-      <%= render "shared/navbar-disconnected-desktop" %>
+      <%= render "shared/navbar/desktop/navbar-disconnected-desktop" %>
     <% end %>
   </div>
   <div class="d-block d-lg-none">
     <% if (controller_name == "sessions" || controller_name == "registrations") && action_name == "new" %>
-      <%= render "shared/navbar-connexion-mobile" %>
+      <%= render "shared/navbar/mobile/navbar-connexion-mobile" %>
     <% elsif action_name == "home" %>
-      <%= render "shared/navbar-disconnected-mobile-white" %>
+      <%= render "shared/navbar/mobile/navbar-disconnected-mobile-white" %>
     <% else %>
-      <%= render "shared/navbar-disconnected-mobile-pink" %>
+      <%= render "shared/navbar/mobile/navbar-disconnected-mobile-pink" %>
     <% end %>
   </div>
 <% end %>
