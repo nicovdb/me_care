@@ -6,6 +6,7 @@ class User < ApplicationRecord
   after_create :send_welcome_email, :set_stripe_customer, :set_trial
   after_create :send_to_mailchimp if Rails.env.production?
   has_many :subscriptions, dependent: :destroy
+  has_many :favorites
   has_one :plan, through: :subscription
   has_one :information
   has_many :favorites, dependent: :destroy

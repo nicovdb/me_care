@@ -30,13 +30,15 @@ fr:
     fertility: Fertilité
     sexuality: Sexualité
     sport: Sport
-    administrative: Administratif
     research: Recherche
     article: Articles
     event: Événements
     media: Médias
     radiography: Imagerie
     exam: Examen
+    administrative: Administratif
+    video: Vidéos
+
   information:
     maried: mariée
     relationship: en couple
