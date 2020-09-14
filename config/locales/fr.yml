@@ -28,11 +28,17 @@ fr:
     diagnostic: Diagnostic
     treatment: Traitements
     fertility: Fertilité
+    sexuality: Sexualité
+    sport: Sport
+    research: Recherche
+    article: Articles
+    event: Événements
+    media: Médias
     radiography: Imagerie
     exam: Examen
     administrative: Administratif
-    article: Articles
     video: Vidéos
+
   information:
     maried: mariée
     relationship: en couple
@@ -315,6 +321,7 @@ fr:
       contacts:
         action_name:
           new: Nous contacter
+      infoendos: À savoir
       pages:
         action_name:
           algorythm: Que faire si...
