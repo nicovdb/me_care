@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :webinars, through: :webinar_subscriptions
   has_one_attached :avatar
   validate :password_complexity
-  validates :first_name, :last_name, :email, :password, presence: true
+  validates :first_name, :last_name, presence: true
 
   def profile_picture
     if avatar.attached?
