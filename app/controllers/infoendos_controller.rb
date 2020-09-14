@@ -7,7 +7,7 @@ class InfoendosController < ApplicationController
 
   def show
     authorize @infoendo
-    #@favorite = current_user.favorites.find_by(infoendo: @infoendo)
+    @favorite = current_user.favorites.find_by(infoendo: @infoendo)
   end
 
   def create

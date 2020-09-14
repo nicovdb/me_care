@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_14_124744) do
+ActiveRecord::Schema.define(version: 2020_09_14_142810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,10 +80,12 @@ ActiveRecord::Schema.define(version: 2020_09_14_124744) do
 
   create_table "favorites", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "article_id", null: false
+    t.bigint "article_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "infoendo_id"
     t.index ["article_id"], name: "index_favorites_on_article_id"
+    t.index ["infoendo_id"], name: "index_favorites_on_infoendo_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
@@ -437,24 +439,6 @@ ActiveRecord::Schema.define(version: 2020_09_14_124744) do
     t.index ["user_id", "postable_id"], name: "thredded_user_topic_read_states_user_postable", unique: true
   end
 
-  create_table "user_alternative_therapies", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "alternative_therapy_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["alternative_therapy_id"], name: "index_user_alternative_therapies_on_alternative_therapy_id"
-    t.index ["user_id"], name: "index_user_alternative_therapies_on_user_id"
-  end
-
-  create_table "user_antecedent_diseases", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "disease_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["disease_id"], name: "index_user_antecedent_diseases_on_disease_id"
-    t.index ["user_id"], name: "index_user_antecedent_diseases_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -495,6 +479,7 @@ ActiveRecord::Schema.define(version: 2020_09_14_124744) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "articles", "users"
   add_foreign_key "favorites", "articles"
+  add_foreign_key "favorites", "infoendos"
   add_foreign_key "favorites", "users"
   add_foreign_key "info_alternative_therapies", "alternative_therapies"
   add_foreign_key "info_alternative_therapies", "information"
@@ -511,10 +496,6 @@ ActiveRecord::Schema.define(version: 2020_09_14_124744) do
   add_foreign_key "thredded_messageboard_users", "thredded_user_details", on_delete: :cascade
   add_foreign_key "thredded_user_post_notifications", "thredded_posts", column: "post_id", on_delete: :cascade
   add_foreign_key "thredded_user_post_notifications", "users", on_delete: :cascade
-  add_foreign_key "user_alternative_therapies", "alternative_therapies"
-  add_foreign_key "user_alternative_therapies", "users"
-  add_foreign_key "user_antecedent_diseases", "diseases"
-  add_foreign_key "user_antecedent_diseases", "users"
   add_foreign_key "webinar_subscriptions", "users"
   add_foreign_key "webinar_subscriptions", "webinars"
 end

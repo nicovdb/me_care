@@ -22,6 +22,17 @@ fr:
     article: Articles
     event: Événements
     media: Médias
+  infoendo:
+    food: Alimentation
+    generalities: Généralités
+    diagnostic: Diagnostic
+    treatment: Traitements
+    fertility: Fertilité
+    radiography: Imagerie
+    exam: Examen
+    administrative: Administratif
+    article: Articles
+    video: Vidéos
   information:
     maried: mariée
     relationship: en couple

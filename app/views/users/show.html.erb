@@ -83,6 +83,17 @@
                       </div>
                     </div>
                     <% end %>
+                    <% if favorite.infoendo %>
+                    <div class="d-flex my-3">
+                      <div class="my-auto">
+                        <%= image_tag "heart-full.svg" %>
+                      </div>
+                      <div class='text-left ml-3'>
+                        <p class="text-muted mb-0 text-small">À savoir</p>
+                        <p class="mb-0"><%= link_to favorite.infoendo.title, infoendo_path(favorite.infoendo)  %></p>
+                      </div>
+                    </div>
+                    <% end %>
                   <% end %>
                 </div>
               <% else %>
