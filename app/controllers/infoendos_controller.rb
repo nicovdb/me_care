@@ -3,6 +3,13 @@ class InfoendosController < ApplicationController
 
   def index
     @infoendos = policy_scope(Infoendo).includes([:cover_attachment])
+    if params[:query].present?
+      @videos = @infoendos.where(media_type: "video").search_by_content_and_title(params[:query])
+      @articles = @infoendos.where(media_type: "article").search_by_content_and_title(params[:query])
+    else
+      @videos = @infoendos.where(media_type: "video")
+      @articles = @infoendos.where(media_type: "article")
+    end
   end
 
   def show

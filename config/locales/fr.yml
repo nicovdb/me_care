@@ -22,6 +22,21 @@ fr:
     article: Articles
     event: Événements
     media: Médias
+  infoendo:
+    food: Alimentation
+    generalities: Généralités
+    diagnostic: Diagnostic
+    treatment: Traitements
+    fertility: Fertilité
+    sexuality: Sexualité
+    sport: Sport
+    administrative: Administratif
+    research: Recherche
+    article: Articles
+    event: Événements
+    media: Médias
+    radiography: Imagerie
+    exam: Examen
   information:
     maried: mariée
     relationship: en couple
@@ -304,6 +319,7 @@ fr:
       contacts:
         action_name:
           new: Nous contacter
+      infoendos: À savoir
       pages:
         action_name:
           algorythm: Que faire si...
