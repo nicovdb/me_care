@@ -1,0 +1,36 @@
+<div class="webinar-card">
+  <div class="dropdown-divider my-4"></div>
+  <div class="d-flex justify-content-between">
+    <div class="d-flex align-items-center">
+      <div class="mr-2 mr-md-4">
+        <span class="category-bullet-big <%= webinar.category %>"></span>
+      </div>
+      <div class="my-auto pr-2">
+        <%= link_to webinar_path(webinar) do %>
+          <div class="text-small text-info">
+            <%= t("webinar.#{webinar.category}") %>
+          </div>
+          <h3 class="my-1"><%= webinar.title %></h3>
+          <div class="text-mini text-info">
+            <%= l(webinar.start_at, format:"%d %B %Y - %Hh%M") %>
+          </div>
+          <div class="text-mini text-info">
+            avec <%= webinar.speaker_name %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class='my-auto'>
+        <%= link_to webinar_path(webinar) do %>
+          <% if webinar.speaker_picture.attached? %>
+            <div class="d-none d-md-block">
+              <%= cl_image_tag webinar.speaker_picture.key, class:"avatar-xl" %>
+            </div>
+            <div class="d-block d-md-none">
+              <%= cl_image_tag webinar.speaker_picture.key, class:"avatar-large" %>
+            </div>
+          <% end %>
+        <% end %>
+    </div>
+  </div>
+</div>

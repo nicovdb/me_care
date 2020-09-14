@@ -35,7 +35,7 @@
                           required: true,
                           label: false,
                           placeholder: "Mot de passe",
-                          hint: (t('devise.shared.minimum_password_length', count: @minimum_password_length) if @minimum_password_length),
+                          hint: "N'écrire ici que si vous souhaitez modifier votre mot de passe. <br>- minimum 8 caractères<br>- 1 caractère spécial<br>- 1 majuscule<br>- 1 chiffre".html_safe,
                           input_html: { autocomplete: "new-password" } %>
               <%= f.input :password_confirmation,
                           label: false,
@@ -67,3 +67,5 @@
     </div>
   </div>
 </div>
+
+

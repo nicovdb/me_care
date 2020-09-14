@@ -1,3 +1,109 @@
-<div class="container padding-top-navbar">
-  <h1>coucou c'est moi <%= @user.email %></h1>
+<div class="bg padding-top-navbar">
+  <div class="container text-green">
+    <div class="row">
+      <div class="d-md-flex justify-content-between mb-3 col-12 col-md-10 offset-md-1">
+        <div class="d-none d-md-block">
+          <span class="feature-name">Profil</span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-8 offset-md-2">
+        <div class="d-flex flex-column flex-md-row justify-content-center mt-md-5">
+          <div class="text-center text-md-right">
+            <%= cl_image_tag @user.profile_picture, class: "avatar-xl" %>
+          </div>
+          <div class='ml-0 ml-md-5'>
+            <div class="d-flex justify-content-center justify-content-md-start">
+              <p class='mb-0'><strong> <%= @user.full_name %></strong> </p>
+              <%= link_to edit_user_registration_path, class: "ml-2" do %>
+                <%= image_tag "pencil-xl.svg", class: 'icon-edit' %>
+              <% end %>
+            </div>
+            <div class="text-center text-md-left">
+              <p class='mb-0'><%= @user.email %> </p>
+              <p class='mb-0'>pseudo : <%= @user.pseudo %> </p>
+              <p class='mb-0'>mot de passe: ******** </p>
+            </div>
+            <div class="text-mini mt-2 mt-md-1">Votre profil est complété à 10%</div>
+            <div class="meter mb-1 mt-2">
+              <span style="width: 25%"></span>
+            </div>
+            <div class="d-flex">
+              <p class="text-mini mb-0 mt-1">Compléter mon profil</p>
+              <% if current_user.information %>
+                <%= link_to edit_user_information_path(@user, @user.information), class: "ml-2" do %>
+                  <%= image_tag "pencil-xl.svg", class: 'icon-edit-small' %>
+                <% end %>
+              <% else %>
+              <%= link_to new_user_information_path(@user), class: "ml-2" do %>
+                  <%= image_tag "pencil-xl.svg", class: 'icon-edit-small' %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-md-4">
+      <div class="col-12 col-md-10 offset-md-1">
+        <div class="row">
+          <div class="col-12 col-md-6 border-col-profile-desktop px-5">
+            <div class="dropdown-divider my-4 mx-5 d-block d-md-none"></div>
+            <div class="text-center">
+              <h3 class="profil-category-title"><strong>Mes abonnements</strong></h3>
+              <p class='text-left'>Vous n’avez pas encore d’abonnement. Rendez-vous sur la page Abonnement pour souscrire à notre offre.</p>
+            </div>
+            <div class="dropdown-divider my-5 mx-5"></div>
+            <div class="text-center">
+              <h3 class="profil-category-title"><strong>Mes discussions</strong></h3>
+              <p class='text-left'>Vous n’avez participé à encore aucune discussion du Forum.</p>
+            </div>
+            <div class="dropdown-divider my-5 mx-5"></div>
+            <div class="text-center">
+              <h3 class="profil-category-title"><strong>Mes rdv easy Live</strong></h3>
+              <p class='text-left'>Vous n’êtes pas encore inscrite à un webinar d’<span class='text-pink'>easy endo</span>.</p>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 px-5">
+            <div class="dropdown-divider my-5 mx-5 d-block d-md-none"></div>
+            <div class="text-center profile-favorite">
+              <h3 class="profil-category-title"><strong>Mes favoris</strong></h3>
+              <% if @user.favorites.any? %>
+                <div>
+                  <% @user.favorites.each do |favorite| %>
+                    <% if favorite.article %>
+                    <div class="d-flex my-3">
+                      <div class="my-auto">
+                        <%= image_tag "heart-full.svg" %>
+                      </div>
+                      <div class='text-left ml-3'>
+                        <p class="text-muted mb-0 text-small">News</p>
+                        <p class="mb-0"><%= link_to favorite.article.title, article_path(favorite.article)  %></p>
+                      </div>
+                    </div>
+                    <% end %>
+                  <% end %>
+                </div>
+              <% else %>
+                <p class='text-left'>Vous n’avez pas encore de favoris. Likez le contenu qui vous intéresse pour le mémoriser dans vos favoris..</p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row py-5">
+      <div class="col">
+        <div class="text-center">
+          <div>
+            <%= link_to "JE SUPPRIME MON COMPTE", registration_path(@user), data: { confirm: t(".are_you_sure") }, method: :delete, class: 'btn btn-primary text-mini btn-ee' %>
+          </div>
+          <div>
+            <%= link_to "Supprimer mes données", "#", class: 'text-mini mt-1' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

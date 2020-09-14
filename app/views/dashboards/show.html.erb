@@ -1,20 +1,31 @@
 <div class="container padding-top-navbar pb-5">
   <h1 class="mb-5">DASHBOARD</h1>
-  <span class="feature-name">News</span>
-  <br>
+
+  <div class="mt-5"><span class="feature-name">News</span></div>
   <%= link_to 'Créer une news', new_dashboards_article_path, class:"btn btn-primary btn-ee-square mt-4" %>
 
   <% @articles.each do |article| %>
-    <div class="">
     <div class="dropdown-divider dropdown-divider-short my-3"></div>
-      <p><%= article.title %></p>
-      <% if policy(Article).edit? %>
-        <%= link_to 'Modifier', edit_dashboards_article_path(article), class:"btn btn-outline-primary btn-ee-square" %>
-      <% end %>
-      <% if policy(Article).destroy? %>
-        <%= link_to 'Supprimer', article_path(article), method: :delete, remote: true, data:{confirm: "Êtes vous sûr.e ?"}, class:"btn btn-danger btn-ee-square ml-2" %>
-      <% end %>
-    </div>
+    <p><%= article.title %></p>
+    <% if policy(Article).edit? %>
+      <%= link_to 'Modifier', edit_dashboards_article_path(article), class:"btn btn-outline-primary btn-ee-square" %>
+    <% end %>
+    <% if policy(Article).destroy? %>
+      <%= link_to 'Supprimer', article_path(article), method: :delete, remote: true, data:{confirm: "Êtes vous sûr.e ?"}, class:"btn btn-danger btn-ee-square ml-2" %>
+    <% end %>
   <% end %>
 
+  <div class="mt-5"><span class="feature-name">Easy Live</span></div>
+  <%= link_to 'Créer un live', new_dashboards_webinar_path, class:"btn btn-primary btn-ee-square mt-4" %>
+
+  <% @webinars.each do |webinar| %>
+    <div class="dropdown-divider dropdown-divider-short my-3"></div>
+    <p><%= webinar.title %></p>
+    <% if policy(Webinar).edit? %>
+      <%= link_to 'Modifier', edit_dashboards_webinar_path(webinar), class:"btn btn-outline-primary btn-ee-square" %>
+    <% end %>
+    <% if policy(Webinar).destroy? %>
+      <%= link_to 'Supprimer', webinar_path(webinar), method: :delete, remote: true, data:{confirm: "Êtes vous sûr.e ?"}, class:"btn btn-danger btn-ee-square ml-2" %>
+    <% end %>
+  <% end %>
 </div>

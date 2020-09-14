@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <style>
+      .cls-1, .cls-4 {
+        fill: none;
+      }
+
+      .cls-2 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-3 {
+        fill: #035e70;
+      }
+
+      .cls-3, .cls-4 {
+        stroke: #cfe6d8;
+      }
+
+      .cls-4 {
+        stroke-linecap: round;
+      }
+
+      .cls-5 {
+        stroke: none;
+      }
+    </style>
+    <clipPath id="clip-path">
+      <rect class="cls-1" width="32" height="32"/>
+    </clipPath>
+  </defs>
+  <g id="Grille_de_répétition_2" data-name="Grille de répétition 2" class="cls-2">
+    <g transform="translate(-355 -78)">
+      <g id="Close" transform="translate(355 78)">
+        <g id="Ellipse_4" data-name="Ellipse 4" class="cls-3">
+          <circle class="cls-5" cx="16" cy="16" r="16"/>
+          <circle class="cls-1" cx="16" cy="16" r="15.5"/>
+        </g>
+        <line id="Ligne_10" data-name="Ligne 10" class="cls-4" y1="14.832" x2="14.832" transform="translate(8.584 8.584)"/>
+        <line id="Ligne_11" data-name="Ligne 11" class="cls-4" y1="14.832" x2="14.832" transform="translate(23.416 8.584) rotate(90)"/>
+      </g>
+    </g>
+  </g>
+</svg>

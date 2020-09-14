@@ -1,0 +1,17 @@
+<div class="navbar-bg">
+  <div class="container">
+    <div class="navbar navbar-light navbar-lewagon col-12 col-md-10 offset-md-1">
+      <div class="w-54"></div>
+
+      <%= link_to main_app.root_path, class: "navbar-brand" do %>
+        <%= image_tag "logo-pink.svg" %>
+      <% end %>
+
+      <button id="menu-burger" class="navbar-toggler">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<%= render "shared/navbar/mobile/navbar-disconnected-mobile-menu" %>

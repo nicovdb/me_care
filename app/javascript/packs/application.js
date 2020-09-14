@@ -11,6 +11,7 @@ require("thredded_imports.js");
 require("trix");
 require("@rails/actiontext");
 require('packs/social-share-button.js.erb');
+
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
@@ -26,13 +27,20 @@ require('packs/social-share-button.js.erb');
 
 // External imports
 import "bootstrap";
+import "../plugins/flatpickr";
 
-
-
-// Internal imports, e.g:
+// Internal imports
 // import { initSelect2 } from '../components/init_select2';
+import { navbarMenu } from '../components/navbar_menu';
+import { photoPreview } from '../components/photo_preview';
+import { formInformation } from '../components/form_information';
+import { imcCalculation } from '../components/imc_calculation';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  navbarMenu();
+  formInformation();
+  imcCalculation();
+  photoPreview();
 });

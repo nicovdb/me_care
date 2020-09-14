@@ -1,0 +1,22 @@
+.meter {
+  height: 16px;
+  position: relative;
+  background: $green;
+  border-radius: 25px;
+  padding: 0px;
+}
+
+@media (min-width: 768px)  {
+  .meter {
+    max-width: 300px;
+  }
+}
+
+.meter > span {
+  display: block;
+  height: 16px;
+  border-radius: 20px;
+  background-color: $light-green;
+  position: relative;
+  overflow: hidden;
+}

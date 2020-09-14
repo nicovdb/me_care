@@ -1,0 +1,34 @@
+<div class="navbar-bg-white">
+  <div class="container">
+    <div class="navbar navbar-light navbar-lewagon col-12 col-md-10 offset-md-1">
+      <div class="nav-item dropdown">
+        <%= cl_image_tag current_user.profile_picture, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <% if user_signed_in? && current_user.admin? %>
+            <%= link_to "Dashboard", main_app.dashboard_path, class: "dropdown-item" %>
+          <% end %>
+          <%= link_to "Mon profil", main_app.profil_path(current_user), class: "dropdown-item" %>
+          <%= link_to "Déconnexion", main_app.destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+        </div>
+      </div>
+      <% if action_name == "home" %>
+        <%= link_to main_app.root_path, class: "navbar-brand" do %>
+          <%= image_tag "logo-pink.svg" %>
+        <% end %>
+      <% elsif controller_name == "pages" %>
+        <h1><%= t("views.controller_name.pages.action_name.#{action_name}")%></h1>
+      <% elsif controller_name == "contacts"%>
+        <h1><%= t("views.controller_name.contacts.action_name.#{action_name}")%></h1>
+      <% else %>
+        <h1><%= t("views.controller_name.#{controller_name}")%></h1>
+      <% end %>
+
+      <button id="menu-burger" class="navbar-toggler">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+    </div>
+  </div>
+</div>
+
+<%= render "shared/navbar/mobile/navbar-mobile-menu" %>
