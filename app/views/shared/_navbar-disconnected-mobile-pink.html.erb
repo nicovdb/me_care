@@ -7,19 +7,11 @@
         <%= image_tag "logo-pink.svg" %>
       <% end %>
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button id="menu-burger" class="navbar-toggler">
         <span class="navbar-toggler-icon"></span>
       </button>
     </div>
-    <div class="collapse navbar-collapse pb-3" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <%= link_to "JE M'INSCRIS", new_user_registration_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "JE ME CONNECTE", new_user_session_path, class: "nav-link" %>
-        </li>
-      </ul>
-    </div>
   </div>
 </div>
+
+<%= render "shared/navbar-disconnected-mobile-menu" %>

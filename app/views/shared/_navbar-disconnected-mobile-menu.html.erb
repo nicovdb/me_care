@@ -1,13 +1,12 @@
 <div id="menu" class="close">
   <div class="w-100 min-h-100 bg-darker py-4">
     <div class="container px-4">
-      <div class="text-center">
-        <%= link_to main_app.profil_path(current_user) do %>
-          <%= cl_image_tag current_user.profile_picture, class: "avatar-menu-mobile" %>
-        <% end %>
-        <h1 class="text-success pt-3"><%= current_user.full_name %></h1>
-        <div class="dropdown-divider dropdown-divider-short divider-pink mx-auto my-3"></div>
+      <div class="d-flex flex-column flex-sm-row justify-content-center align-items-center">
+        <%= link_to "JE M'INSCRIS", new_user_registration_path, class: "btn btn-ee btn-pink btn-menu m-2" %>
+        <%= link_to "JE ME CONNECTE", new_user_session_path, class: "btn btn-ee btn-pink btn-menu m-2" %>
       </div>
+
+      <div class="dropdown-divider dropdown-divider-short divider-pink mx-auto my-3"></div>
       <div class="row">
         <div class="col-6 col-md-4 mb-3 mb-md-5">
           <%= link_to "#" do %>
