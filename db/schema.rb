@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_08_151455) do
+ActiveRecord::Schema.define(version: 2020_09_14_124744) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,6 +124,19 @@ ActiveRecord::Schema.define(version: 2020_09_08_151455) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["fam_member_ante_id"], name: "index_info_fam_member_antes_on_fam_member_ante_id"
     t.index ["information_id"], name: "index_info_fam_member_antes_on_information_id"
+  end
+
+  create_table "infoendos", force: :cascade do |t|
+    t.string "title"
+    t.bigint "user_id", null: false
+    t.integer "category"
+    t.string "reading_time"
+    t.text "content"
+    t.integer "media_type"
+    t.string "cover_credit"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_infoendos_on_user_id"
   end
 
   create_table "information", force: :cascade do |t|
@@ -489,6 +502,7 @@ ActiveRecord::Schema.define(version: 2020_09_08_151455) do
   add_foreign_key "info_diseases", "information"
   add_foreign_key "info_fam_member_antes", "fam_member_antes"
   add_foreign_key "info_fam_member_antes", "information"
+  add_foreign_key "infoendos", "users"
   add_foreign_key "information", "users"
   add_foreign_key "prices", "products"
   add_foreign_key "subscriptions", "prices"
