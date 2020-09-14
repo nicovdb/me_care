@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :products, only: :index
     resources :subscriptions, only: [:index, :destroy]
     resources :articles, only: [:index, :show, :create, :update, :destroy]
+    resources :infoendos, only: [:index, :show, :create, :update, :destroy]
     resources :webinars, only: [:index, :show, :create, :update, :destroy] do
       resources :webinar_subscriptions, only: [:create]
     end
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
     namespace :dashboards do
       resources :articles, only: [:new, :edit]
       resources :webinars, only: [:new, :edit]
+      resources :infoendos, only: [:new, :edit]
     end
   end
 end

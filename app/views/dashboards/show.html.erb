@@ -28,4 +28,18 @@
       <%= link_to 'Supprimer', webinar_path(webinar), method: :delete, remote: true, data:{confirm: "Êtes vous sûr.e ?"}, class:"btn btn-danger btn-ee-square ml-2" %>
     <% end %>
   <% end %>
+
+  <div class="mt-5"><span class="feature-name">À savoir</span></div>
+  <%= link_to 'Créer un "À savoir"', new_dashboards_infoendo_path, class:"btn btn-primary btn-ee-square mt-4" %>
+
+  <% @infoendos.each do |infoendo| %>
+    <div class="dropdown-divider dropdown-divider-short my-3"></div>
+    <p><%= infoendo.title %></p>
+    <% if policy(Infoendo).edit? %>
+      <%= link_to 'Modifier', edit_dashboards_infoendo_path(infoendo), class:"btn btn-outline-primary btn-ee-square" %>
+    <% end %>
+    <% if policy(Infoendo).destroy? %>
+      <%= link_to 'Supprimer', infoendo_path(infoendo), method: :delete, remote: true, data:{confirm: "Êtes vous sûr.e ?"}, class:"btn btn-danger btn-ee-square ml-2" %>
+    <% end %>
+  <% end %>
 </div>
