@@ -45,7 +45,14 @@
           <%= f.input :abortion_number, disabled: !@information.abortion, label: false, placeholder: 'nombre' %>
           <%= f.input :pma, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label: 'Antécédents ou en cours de procréation médicalement assistée' %>
           <%= f.input :auto_immune_antecedent, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label: 'Antécédents personnels de maladie auto-immune ou inflammatoire chronique' %>
-          <%= f.association :diseases, as: :check_boxes, collection: Disease.all %>
+          <%= f.association :diseases, as: :check_boxes, collection: @displayed_diseases %>
+
+          <% if action_name == "new"  %>
+            <%= f.simple_fields_for :diseases do |d| %>
+              <%= d.input :name, label: "Autres" %>
+            <% end %>
+          <% end %>
+
           <%= f.input :endo_surgery, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label:'Antécédents de chirurgie de l’endométriose' %>
           <%= f.input :endo_surgery_number, disabled: !@information.endo_surgery, label: false, placeholder: 'nombre' %>
           <%= f.input :pain_center, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label:'Prise en charge par un centre de la douleur' %>
