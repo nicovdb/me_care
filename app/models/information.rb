@@ -4,6 +4,7 @@ class Information < ApplicationRecord
   accepts_nested_attributes_for :diseases
   has_many :info_alternative_therapies, dependent: :destroy
   has_many :alternative_therapies, through: :info_alternative_therapies
+  accepts_nested_attributes_for :alternative_therapies
   has_many :info_fam_member_antes, dependent: :destroy
   has_many :fam_member_antes, through: :info_fam_member_antes
   belongs_to :user

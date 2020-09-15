@@ -6,7 +6,9 @@ class InformationsController < ApplicationController
   def new
     @information = Information.new
     @information.diseases.build
+    @information.alternative_therapies.build
     @displayed_diseases = Disease.where(displayed: true)
+    @displayed_therapies = AlternativeTherapy.where(displayed: true)
     authorize @information
   end
 
@@ -17,7 +19,7 @@ class InformationsController < ApplicationController
       render 'new'
       flash[:alert] = "Vous devez accepter le traitement de vos données."
     else
-      check_for_other_disease
+      check_for_other_disease_and_therapy
       @information = Information.new(information_params)
       authorize @information
       @information.user = @user
@@ -30,14 +32,8 @@ class InformationsController < ApplicationController
   end
 
   def edit
-    @information = Information.includes(:diseases).find(params[:id])
-    @displayed_diseases = Disease.where(displayed: true).to_a
-
-    additional_diseases = @information.diseases.where(displayed: false)
-    unless additional_diseases.empty? || additional_diseases.first.name.empty?
-      @displayed_diseases << additional_diseases.first
-    end
-
+    @information = Information.includes(:diseases, :alternative_therapies).find(params[:id])
+    set_diseases_and_therapies
     authorize @information
   end
 
@@ -87,12 +83,29 @@ class InformationsController < ApplicationController
   end
 
   def information_params
-    params.require(:information).permit(:auto_immune_antecedent, :date_of_birth, :family_situation, :job, :diagnosis_age, :size, :weight, :imc, :family_antecedent, :children, :children_number, :abortion, :abortion_number, :pma, :endo_surgery, :endo_surgery_number, :pain_center, :physiotherapist, :ostheopath, :alternative_therapy, :terms_conditions, :miscarriage, :miscarriage_number, {fam_member_ante_ids: [] }, {alternative_therapy_ids: [] }, {disease_ids: [] }, diseases_attributes: [:name])
+    params.require(:information).permit(:auto_immune_antecedent, :date_of_birth, :family_situation, :job, :diagnosis_age, :size, :weight, :imc, :family_antecedent, :children, :children_number, :abortion, :abortion_number, :pma, :endo_surgery, :endo_surgery_number, :pain_center, :physiotherapist, :ostheopath, :alternative_therapy, :terms_conditions, :miscarriage, :miscarriage_number, {fam_member_ante_ids: [] }, {alternative_therapy_ids: [] }, {disease_ids: [] }, diseases_attributes: [:name], alternative_therapies_attributes: [:name])
   end
 
-  def check_for_other_disease
+  def check_for_other_disease_and_therapy
     if params[:information][:diseases_attributes]["0"]["name"].empty?
       params[:information].delete :diseases_attributes
+    end
+    if params[:information][:alternative_therapies_attributes]["0"]["name"].empty?
+      params[:information].delete :alternative_therapies_attributes
+    end
+  end
+
+  def set_diseases_and_therapies
+    @displayed_diseases = Disease.where(displayed: true).to_a
+    additional_diseases = @information.diseases.where(displayed: false)
+    unless additional_diseases.empty? || additional_diseases.first.name.empty?
+      @displayed_diseases << additional_diseases.first
+    end
+
+    @displayed_therapies = AlternativeTherapy.where(displayed: true).to_a
+    additional_therapies = @information.alternative_therapies.where(displayed: false)
+    unless additional_therapies.empty? || additional_therapies.first.name.empty?
+      @displayed_therapies << additional_therapies.first
     end
   end
 end
