@@ -10,8 +10,7 @@ class InformationsController < ApplicationController
 
   def create
     if information_params[:terms_conditions] == "0"
-      set_user
-      @information = Information.new
+      @information = Information.new(information_params)
       authorize @information
       render 'new'
       flash[:alert] = "Vous devez accepter le traitement de vos données."
@@ -34,8 +33,6 @@ class InformationsController < ApplicationController
   def update
     authorize @information
     if information_params[:terms_conditions] == "0"
-      set_user
-      set_information
       render 'edit'
       flash[:alert] = "Vous devez accepter le traitement de vos données."
     else
