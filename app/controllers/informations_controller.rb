@@ -47,6 +47,14 @@ class InformationsController < ApplicationController
     end
   end
 
+  def destroy
+    set_information
+    @user = @information.user
+    authorize @information
+    @information.destroy
+    redirect_to profil_path(@user)
+  end
+
   private
 
   def delete_info_diseases

@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     post '/profil/:user_id/informations', to: 'informations#create', as: :user_information_create
     get '/profil/:user_id/informations/:id/edit', to: 'informations#edit', as: :edit_user_information
     patch '/profil/:user_id/informations/:id', to: 'informations#update', as: :user_information_update
+    delete '/informations/:id', to: 'informations#destroy', as: :delete_information
     namespace :dashboards do
       resources :articles, only: [:new, :edit]
       resources :webinars, only: [:new, :edit]
