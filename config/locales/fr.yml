@@ -1,14 +1,32 @@
 fr:
-  articles:
-    form:
-      title: Titre
-      cover: Photo de couverture
-      author: Auteur
-      content: Contenu de l'article
-      reading_time: Temps de lecture
-      cover_credit: Crédit photo
-      media_type: Type d'article
-      category: Catégorie
+  dashboards:
+    articles:
+      form:
+        title: Titre
+        cover: Photo de couverture
+        author: Auteur
+        content: Contenu de l'article
+        reading_time: Temps de lecture
+        cover_credit: Crédit photo
+        media_type: Type d'article
+        category: Catégorie
+    webinars:
+      form:
+        title: Titre
+        start_at: Date et heure
+        category: Catégorie
+        speaker_name: Nom de l'intervenant(e)
+        speaker_picture: Photo de l'intervenant(e)
+        description: Description
+    infoendos:
+      form:
+        title: Titre
+        cover: Photo de couverture
+        cover_credit: Crédit photo
+        reading_time: Temps de lecture
+        media_type: Type du contenu
+        category: Catégorie
+        content: Contenu
   article:
     food: Alimentation
     generalities: Généralités
