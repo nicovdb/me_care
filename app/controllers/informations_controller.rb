@@ -17,6 +17,7 @@ class InformationsController < ApplicationController
       render 'new'
       flash[:alert] = "Vous devez accepter le traitement de vos données."
     else
+      check_for_other_disease
       @information = Information.new(information_params)
       authorize @information
       @information.user = @user
@@ -33,7 +34,7 @@ class InformationsController < ApplicationController
     @displayed_diseases = Disease.where(displayed: true).to_a
 
     additional_diseases = @information.diseases.where(displayed: false)
-    unless additional_diseases.empty?
+    unless additional_diseases.empty? || additional_diseases.first.name.empty?
       @displayed_diseases << additional_diseases.first
     end
 
@@ -87,5 +88,11 @@ class InformationsController < ApplicationController
 
   def information_params
     params.require(:information).permit(:auto_immune_antecedent, :date_of_birth, :family_situation, :job, :diagnosis_age, :size, :weight, :imc, :family_antecedent, :children, :children_number, :abortion, :abortion_number, :pma, :endo_surgery, :endo_surgery_number, :pain_center, :physiotherapist, :ostheopath, :alternative_therapy, :terms_conditions, :miscarriage, :miscarriage_number, {fam_member_ante_ids: [] }, {alternative_therapy_ids: [] }, {disease_ids: [] }, diseases_attributes: [:name])
+  end
+
+  def check_for_other_disease
+    if params[:information][:diseases_attributes]["0"]["name"].empty?
+      params[:information].delete :diseases_attributes
+    end
   end
 end
