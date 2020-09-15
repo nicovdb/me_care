@@ -107,7 +107,11 @@ input[type='radio']:checked:after {
   .form-control#information_weight::placeholder,  {
     text-align: right;
   }
+
   input[type= 'text'] {
+    &#information_diseases_attributes_0_name {
+      margin-left: 10px !important;
+    }
     max-width: 180px;
     margin: auto;
   }
@@ -154,6 +158,10 @@ input[type='radio']:checked:after {
   .form-check-input[disabled] ~ .form-check-label, .form-check-input:disabled ~ .form-check-label {
     opacity: 0.2;
     color: $green;
+  }
+  .form-control:disabled {
+    background-color: white;
+    opacity: 0.2;
   }
 }
 
@@ -234,5 +242,52 @@ input[type='radio']:checked:after {
 }
 
 
+.custom-checkbox {
+  position: relative;
+  legend {
+    display:none;
+  }
+  label {
+    position:absolute;
+    left: 20px;
+    top: -40px;
+    font-weight: 400;
+  }
+  input[type=checkbox] {
+    display: none;
+    vertical-align: middle;
+
+    & + label:before {
+      width: 14px;
+      height: 14px;
+      border-radius: 14px;
+      top: 2px;
+      right: 0px;
+      position: relative;
+      background-color: white;
+      content: '';
+      display: inline-block;
+      visibility: visible;
+      border: 1px solid $pink;
+    }
+    &:checked + label:before {
+      width: 14px;
+      height: 14px;
+      border-radius: 14px;
+      top: 2px;
+      right: 0px;
+      position: relative;
+      background-color: $pink;
+      content: '';
+      display: inline-block;
+      visibility: visible;
+    }
+  }
+}
+
+.disabled-opacity {
+  opacity: 0.2;
+  color: $green;
+}
 
 
