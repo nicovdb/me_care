@@ -9,13 +9,21 @@ class InformationsController < ApplicationController
   end
 
   def create
-    @information = Information.new(information_params)
-    authorize @information
-    @information.user = @user
-    if @information.save
-      redirect_to profil_path(@user)
-    else
+    if information_params[:terms_conditions] == "0"
+      set_user
+      @information = Information.new
+      authorize @information
       render 'new'
+      flash[:alert] = "Vous devez accepter le traitement de vos données."
+    else
+      @information = Information.new(information_params)
+      authorize @information
+      @information.user = @user
+      if @information.save
+        redirect_to profil_path(@user)
+      else
+        render 'new'
+      end
     end
   end
 
@@ -25,13 +33,20 @@ class InformationsController < ApplicationController
 
   def update
     authorize @information
-    delete_info_diseases
-    delete_info_alternative_therapies
-    delete_info_fam_member_antes
-    if @information.update(information_params)
-      redirect_to profil_path(@user)
-    else
+    if information_params[:terms_conditions] == "0"
+      set_user
+      set_information
       render 'edit'
+      flash[:alert] = "Vous devez accepter le traitement de vos données."
+    else
+      delete_info_diseases
+      delete_info_alternative_therapies
+      delete_info_fam_member_antes
+      if @information.update(information_params)
+        redirect_to profil_path(@user)
+      else
+        render 'edit'
+      end
     end
   end
 
