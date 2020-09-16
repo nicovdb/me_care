@@ -95,7 +95,7 @@ class InformationsController < ApplicationController
 
   def check_for_other_disease_and_therapy
     params_diseases = params[:information].dig(:diseases_attributes, "0", "name")
-    params_therapies =params[:information].dig(:alternative_therapies_attributes, "0", "name")
+    params_therapies = params[:information].dig(:alternative_therapies_attributes, "0", "name")
     if params_diseases&.empty?
       params[:information].delete :diseases_attributes
     end
