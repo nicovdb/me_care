@@ -33,6 +33,13 @@ class User < ApplicationRecord
     "#{first_name.capitalize} #{last_name.capitalize}"
   end
 
+  def unread_posts_count
+    all_unread = self.thredded_topic_read_states.map do |topic|
+      topic.unread_posts_count
+    end
+    all_unread.sum
+  end
+
   private
 
   def send_to_mailchimp

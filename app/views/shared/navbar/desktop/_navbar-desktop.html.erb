@@ -26,7 +26,9 @@
               <%= link_to "Que faire si...", main_app.algorythm_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
-              <%= link_to "Forum", "#", class: "nav-link" %>
+              <%= link_to "#", class: "nav-link d-flex align-items-center" do %>
+                Forum <span class="pink-bullet ml-1"><%= current_user.unread_posts_count %></span>
+              <% end %>
             </li>
             <li class="nav-item">
               <%= link_to "easy Live", "#", class: "nav-link" %>
