@@ -41,13 +41,6 @@ const formInformation = () => {
       });
     }
 
-    // const check_box_other = document.querySelector('.custom-checkbox label');
-    // const before_check_box_other = window.getComputedStyle(check_box_other, '::before');
-    // let color = before_check_box_other.getPropertyValue('background-color');
-    // console.log(color);
-
-
-
     check_boxes_antecedents.forEach((button) => {
       button.addEventListener("click", (event) => {
         if (document.getElementById('information_family_antecedent_true').checked) {
