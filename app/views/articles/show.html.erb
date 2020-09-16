@@ -25,10 +25,10 @@
             <p class="text-info text-small mb-0"><%= l(@article.created_at, format:"%d %B %Y") %> - <%= @article.author %></p>
             <p class="text-info text-small mb-1">Temps de lecture : <%= @article.reading_time %></p>
           </div>
-          <div>
+          <div class="text-center">
             <% if @article.cover.attached? %>
               <%= cl_image_tag @article.cover.key, class:"my-2" %>
-              <p class="text-info text-mini text-right text-md-center"><%= @article.cover_credit %></p>
+              <p class="text-info text-mini"><%= @article.cover_credit %></p>
             <% end %>
           </div>
         </div>
