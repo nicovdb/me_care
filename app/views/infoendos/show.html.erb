@@ -23,10 +23,10 @@
             <h1><%= @infoendo.title %></h1>
             <p class="text-info text-small mb-1">Temps de lecture : <%= @infoendo.reading_time %></p>
           </div>
-          <div>
+          <div class="text-center">
             <% if @infoendo.cover.attached? %>
               <%= cl_image_tag @infoendo.cover.key, class:"my-2" %>
-              <p class="text-info text-mini text-right text-md-center">©<%= @infoendo.cover_credit %></p>
+              <p class="text-info text-mini">©<%= @infoendo.cover_credit %></p>
             <% end %>
           </div>
         </div>
