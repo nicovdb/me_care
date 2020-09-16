@@ -1,7 +1,7 @@
 class InformationsController < ApplicationController
 
   before_action :set_user, only: [:new, :create, :edit, :update]
-  before_action :set_information, only: [:update]
+  before_action :set_information, only: [:update, :destroy]
 
   def new
     @information = Information.new
@@ -52,6 +52,13 @@ class InformationsController < ApplicationController
         render 'edit'
       end
     end
+  end
+
+  def destroy
+    @user = @information.user
+    authorize @information
+    @information.destroy
+    redirect_to profil_path(@user)
   end
 
   private

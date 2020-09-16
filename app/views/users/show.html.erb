@@ -108,10 +108,12 @@
       <div class="col">
         <div class="text-center">
           <div>
-            <%= link_to "JE SUPPRIME MON COMPTE", registration_path(@user), data: { confirm: t(".are_you_sure") }, method: :delete, class: 'btn btn-primary text-mini btn-ee' %>
+            <%= link_to "JE SUPPRIME MON COMPTE", anonymize_path(@user), data: { confirm: 'Vous allez supprimer définitivement votre compte. Cette action est irréversible. Êtes vous sûre ?' }, method: :patch, class: 'btn btn-primary text-mini btn-ee' %>
           </div>
           <div>
-            <%= link_to "Supprimer mes données", "#", class: 'text-mini mt-1' %>
+            <% if @user.information %>
+              <%= link_to "Supprimer mes données", delete_information_path(@user.information), method: :delete, data: { confirm: 'Vous allez supprimer définitivement toutes les données de votre questionnaire et de votre agenda. Cette action est irréversible. Êtes vous sûre ?' } , class: 'text-mini mt-1' %>
+            <% end %>
           </div>
         </div>
       </div>

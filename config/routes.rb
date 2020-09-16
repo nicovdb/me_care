@@ -20,10 +20,12 @@ Rails.application.routes.draw do
     resources :favorites, only: [:create, :destroy]
     get '/dashboard', to: 'dashboards#show'
     get '/profil/:id', to: 'users#show', as: :profil
+    patch '/users/:id', to: 'users#anonymize', as: :anonymize
     get '/profil/:user_id/informations/new', to: 'informations#new', as: :new_user_information
     post '/profil/:user_id/informations', to: 'informations#create', as: :user_information_create
     get '/profil/:user_id/informations/:id/edit', to: 'informations#edit', as: :edit_user_information
     patch '/profil/:user_id/informations/:id', to: 'informations#update', as: :user_information_update
+    delete '/informations/:id', to: 'informations#destroy', as: :delete_information
     namespace :dashboards do
       resources :articles, only: [:new, :edit]
       resources :webinars, only: [:new, :edit]
