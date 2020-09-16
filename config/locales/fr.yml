@@ -1,4 +1,10 @@
 fr:
+  activerecord:
+    attributes:
+      user:
+        last_name: Nom
+        first_name: Prénom
+        email: Email
   dashboards:
     articles:
       form:
@@ -56,7 +62,6 @@ fr:
     exam: Examen
     administrative: Administratif
     video: Vidéos
-
   information:
     maried: mariée
     relationship: en couple
