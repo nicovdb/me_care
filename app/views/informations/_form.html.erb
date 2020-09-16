@@ -49,7 +49,11 @@
 
           <% if action_name == "new"  %>
             <%= f.simple_fields_for :diseases do |d| %>
-              <%= d.input :name, label: "Autres" %>
+              <div class="custom-checkbox">
+                <input type="checkbox" id="checkbox1"/>
+                <label for="checkbox1">Autres</label>
+                <%= d.input :name, label: false, placeholder: 'À préciser'%>
+              </div>
             <% end %>
           <% end %>
 
