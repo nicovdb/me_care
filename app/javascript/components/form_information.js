@@ -64,17 +64,19 @@ const formInformation = () => {
         document.querySelector('.information_diseases').disabled = true;
         document.querySelector('.information_diseases_name input').disabled = true;
           document.querySelector('.custom-checkbox label').classList.add('disabled-opacity');
+          document.querySelector('.information_diseases_name input').value = null;
       };
     } else {
         document.addEventListener("DOMContentLoaded", (event) => {
           if (document.getElementById('information_auto_immune_antecedent_true').checked) {
             document.querySelector('.information_diseases').disabled = false;
             document.querySelector('.information_diseases_name input').disabled = false;
-            document.querySelector('.custom-checkbox label').classList.remove('disabled-opacity');
+            document.querySelector('#checkbox-diseases label').classList.remove('disabled-opacity');
           } else {
             document.querySelector('.information_diseases').disabled = true;
             document.querySelector('.information_diseases_name input').disabled = true;
-            document.querySelector('.custom-checkbox label').classList.add('disabled-opacity');
+            document.querySelector('#checkbox-diseases label').classList.add('disabled-opacity');
+            document.querySelector('.information_diseases_name input').value = null;
           };
         });
     }
@@ -84,14 +86,15 @@ const formInformation = () => {
         if (document.getElementById('information_auto_immune_antecedent_true').checked) {
           document.querySelector('.information_diseases').disabled = false;
           document.querySelector('.information_diseases_name input').disabled = false;
-          document.querySelector('.custom-checkbox label').classList.remove('disabled-opacity');
+          document.querySelector('#checkbox-diseases label').classList.remove('disabled-opacity');
         } else {
           auto_immune_boxes.forEach((button) => {
             button.checked = false;
           });
           document.querySelector('.information_diseases_name input').disabled = true;
-          document.querySelector('.custom-checkbox label').classList.add('disabled-opacity');
-          document.querySelector('.information_diseases').disabled = true;
+          document.querySelector('.information_diseases_name input').value = null;
+          document.querySelector('#checkbox-diseases label').classList.add('disabled-opacity');
+          document.querySelector('.information_diseases').value = null;
         };
       });
     });
@@ -100,15 +103,25 @@ const formInformation = () => {
       if( document.readyState !== 'loading' ) {
         if (document.getElementById('information_alternative_therapy_true').checked) {
           document.querySelector('.information_alternative_therapies').disabled = false;
+          document.querySelector('.information_alternative_therapies_name input').disabled = false;
+          document.querySelector('#checkbox-alt-therapies label').classList.remove('disabled-opacity');
         } else {
           document.querySelector('.information_alternative_therapies').disabled = true;
+          document.querySelector('.information_alternative_therapies_name input').disabled = true;
+          document.querySelector('.information_alternative_therapies_name input').value = null;
+          document.querySelector('#checkbox-alt-therapies label').classList.add('disabled-opacity');
         };
       } else {
           document.addEventListener("DOMContentLoaded", (event) => {
             if (document.getElementById('information_alternative_therapy_true').checked) {
               document.querySelector('.information_alternative_therapies').disabled = false;
+              document.querySelector('.information_alternative_therapies_name input').disabled = false;
+              document.querySelector('#checkbox-alt-therapies label').classList.remove('disabled-opacity');
             } else {
               document.querySelector('.information_alternative_therapies').disabled = true;
+              document.querySelector('.information_alternative_therapies_name input').disabled = true;
+              document.querySelector('.information_alternative_therapies_name input').value = null;
+              document.querySelector('#checkbox-alt-therapies label').classList.add('disabled-opacity');
             };
           });
       }
@@ -118,11 +131,16 @@ const formInformation = () => {
       button.addEventListener("click", (event) => {
         if (document.getElementById('information_alternative_therapy_true').checked) {
           document.querySelector('.information_alternative_therapies').disabled = false;
+          document.querySelector('.information_alternative_therapies_name input').disabled = false;
+          document.querySelector('#checkbox-alt-therapies label').classList.remove('disabled-opacity');
         } else {
           alternative_therapy_boxes.forEach((button) => {
             button.checked = false;
           });
           document.querySelector('.information_alternative_therapies').disabled = true;
+          document.querySelector('.information_alternative_therapies_name input').disabled = true;
+          document.querySelector('.information_alternative_therapies_name input').value = null;
+          document.querySelector('#checkbox-alt-therapies label').classList.add('disabled-opacity');
         };
       });
     });
