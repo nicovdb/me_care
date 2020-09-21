@@ -91,6 +91,7 @@ const formInformation = () => {
           auto_immune_boxes.forEach((button) => {
             button.checked = false;
           });
+          document.querySelector('.information_diseases').disabled = true;
           document.querySelector('.information_diseases_name input').disabled = true;
           document.querySelector('.information_diseases_name input').value = null;
           document.querySelector('#checkbox-diseases label').classList.add('disabled-opacity');
