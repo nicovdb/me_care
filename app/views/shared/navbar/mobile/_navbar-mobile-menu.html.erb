@@ -45,7 +45,12 @@
           <%= link_to "#" do %>
             <div class="home-service-category d-flex flex-column align-items-center justify-content-center text-center">
               <%= image_tag "services/forum.svg", class:"home-service-logo" %>
-              <p class="home-service my-1 d-flex align-items-center"><span>Forum</span> <span class="pink-bullet ml-1"><%= current_user.unread_posts_count %></span></p>
+              <p class="home-service my-1 d-flex align-items-center">
+                <span>Forum</span>
+                <% if current_user.unread_posts_count != 0 %>
+                  <span class="pink-bullet ml-1"><%= current_user.unread_posts_count %></span>
+                <% end %>
+              </p>
             </div>
           <% end %>
         </div>

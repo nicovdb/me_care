@@ -1,0 +1,13 @@
+<div class="col-12 col-md-8 offset-md-2">
+  <div class="dropdown-divider dropdown-divider-short my-4 mx-auto"></div>
+  <%= render "media-types-desktop" %>
+  <%= render "media-types-mobile" %>
+</div>
+
+<div class="col-12 col-md-8 offset-md-2 mt-4 px-0">
+  <div class="dropdown-divider my-4"></div>
+  <% articles.each do |article| %>
+    <%= render "article", article: article %>
+  <% end %>
+</div>
+
