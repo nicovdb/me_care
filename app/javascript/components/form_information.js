@@ -7,8 +7,7 @@ const formInformation = () => {
   const alternative_therapy_boxes = document.querySelectorAll('.information_alternative_therapies .form-check input');
 
 
-  if (check_boxes_antecedents) {
-
+  if (check_boxes_antecedents.length != 0) {
     const fields = ['children', 'abortion', 'endo_surgery', 'miscarriage'];
 
     fields.forEach((field) => {
@@ -25,7 +24,7 @@ const formInformation = () => {
       });
     })
 
-    if( document.readyState !== 'loading' ) {
+    if (document.readyState !== 'loading') {
       if (document.getElementById('information_family_antecedent_true').checked) {
         document.querySelector('.information_fam_member_antes').disabled = false;
       } else {
@@ -101,7 +100,19 @@ const formInformation = () => {
     });
 
 
-      if( document.readyState !== 'loading' ) {
+    if( document.readyState !== 'loading' ) {
+      if (document.getElementById('information_alternative_therapy_true').checked) {
+        document.querySelector('.information_alternative_therapies').disabled = false;
+        document.querySelector('.information_alternative_therapies_name input').disabled = false;
+        document.querySelector('#checkbox-alt-therapies label').classList.remove('disabled-opacity');
+      } else {
+        document.querySelector('.information_alternative_therapies').disabled = true;
+        document.querySelector('.information_alternative_therapies_name input').disabled = true;
+        document.querySelector('.information_alternative_therapies_name input').value = null;
+        document.querySelector('#checkbox-alt-therapies label').classList.add('disabled-opacity');
+      };
+    } else {
+      document.addEventListener("DOMContentLoaded", (event) => {
         if (document.getElementById('information_alternative_therapy_true').checked) {
           document.querySelector('.information_alternative_therapies').disabled = false;
           document.querySelector('.information_alternative_therapies_name input').disabled = false;
@@ -112,21 +123,8 @@ const formInformation = () => {
           document.querySelector('.information_alternative_therapies_name input').value = null;
           document.querySelector('#checkbox-alt-therapies label').classList.add('disabled-opacity');
         };
-      } else {
-          document.addEventListener("DOMContentLoaded", (event) => {
-            if (document.getElementById('information_alternative_therapy_true').checked) {
-              document.querySelector('.information_alternative_therapies').disabled = false;
-              document.querySelector('.information_alternative_therapies_name input').disabled = false;
-              document.querySelector('#checkbox-alt-therapies label').classList.remove('disabled-opacity');
-            } else {
-              document.querySelector('.information_alternative_therapies').disabled = true;
-              document.querySelector('.information_alternative_therapies_name input').disabled = true;
-              document.querySelector('.information_alternative_therapies_name input').value = null;
-              document.querySelector('#checkbox-alt-therapies label').classList.add('disabled-opacity');
-            };
-          });
-      }
-
+      });
+    }
 
     check_boxes_alternative_therapy.forEach((button) => {
       button.addEventListener("click", (event) => {
