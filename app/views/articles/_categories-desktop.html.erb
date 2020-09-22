@@ -1,18 +1,25 @@
- <div class="col-md-10 offset-md-1 d-none d-md-block">
-    <div class="row">
-      <% Article.categories.keys.each do |category| %>
-        <div class="col-4 px-0">
-          <%= link_to articles_path(category: category) do %>
-            <div class="d-flex align-items-center justify-content-center mb-2 mx-2">
-              <span class="category-bullet <%= category %>"></span>
-              <% if params[:category].present? && params[:category] == category %>
-                <h3 class="ml-2 mb-0 text-underline"><%= t("article.#{category}") %></h3>
-              <% else %>
-                <h3 class="category-link ml-2 mb-0">  <%= t("article.#{category}") %></h3>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
+<div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2 d-none d-md-block">
+  <div class="row">
+    <div class="d-flex justify-content-between w-100">
+      <% Article.categories.keys.first(3).each do |category| %>
+        <%= render "category", category: category %>
       <% end %>
     </div>
   </div>
+
+  <div class="row">
+    <div class="d-flex justify-content-between w-100">
+      <% Article.categories.keys[3..5].each do |category| %>
+        <%= render "category", category: category %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="d-flex justify-content-between w-100">
+      <% Article.categories.keys.last(3).each do |category| %>
+        <%= render "category", category: category %>
+      <% end %>
+    </div>
+  </div>
+</div>
