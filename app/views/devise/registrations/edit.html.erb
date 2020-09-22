@@ -27,15 +27,6 @@
               <p><%= t(".currently_waiting_confirmation_for_email", email: resource.unconfirmed_email) %></p>
             <% end %>
 
-            <%= f.input :password,
-                        hint: "N'écrire ici que si vous souhaitez modifier votre mot de passe. <br>- minimum 8 caractères<br>- 1 caractère spécial<br>- 1 majuscule<br>- 1 chiffre".html_safe,
-                        required: false,
-                        label: "Nouveau mot de passe",
-                        input_html: { autocomplete: "new-password" } %>
-            <%= f.input :password_confirmation,
-                        required: false,
-                        label: "Confirmation du nouveau mot de passe",
-                        input_html: { autocomplete: "new-password" } %>
             <%= f.input :pseudo,
                         hint: "- minimum 5 caractères <br> - pas d'espaces".html_safe,
                         required: false,
@@ -46,6 +37,16 @@
                         required: true,
                         label: "Mot de passe actuel",
                         input_html: { autocomplete: "current-password" } %>
+            <p class="mt-5 text-green">Ne remplissez les deux prochains champs que si vous souhaitez modifier votre mot de passe</p>
+            <%= f.input :password,
+                        hint: "N'écrire ici que si vous souhaitez modifier votre mot de passe. <br>- minimum 8 caractères<br>- 1 caractère spécial<br>- 1 majuscule<br>- 1 chiffre".html_safe,
+                        required: false,
+                        label: "Nouveau mot de passe",
+                        input_html: { autocomplete: "new-password" } %>
+            <%= f.input :password_confirmation,
+                        required: false,
+                        label: "Confirmation du nouveau mot de passe",
+                        input_html: { autocomplete: "new-password" } %>
           </div>
 
           <div class="form-actions">
