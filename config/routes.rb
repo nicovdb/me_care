@@ -12,9 +12,9 @@ Rails.application.routes.draw do
     resources :contacts, only: [:new, :create]
     resources :products, only: :index
     resources :subscriptions, only: [:index, :destroy]
-    resources :articles, only: [:index, :show, :create, :update, :destroy]
-    resources :infoendos, only: [:index, :show, :create, :update, :destroy]
-    resources :webinars, only: [:index, :show, :create, :update, :destroy] do
+    resources :articles, path: 'news', only: [:index, :show, :create, :update, :destroy]
+    resources :infoendos, path: 'a-savoir', only: [:index, :show, :create, :update, :destroy]
+    resources :webinars, path: 'easy-lives', only: [:index, :show, :create, :update, :destroy] do
       resources :webinar_subscriptions, only: [:create]
     end
     resources :favorites, only: [:create, :destroy]
