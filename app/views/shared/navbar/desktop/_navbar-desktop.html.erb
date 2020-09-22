@@ -17,7 +17,7 @@
               <%= link_to "Mon agenda", "#", class: "nav-link" %>
             </li>
             <li class="nav-item">
-              <%= link_to "À savoir", "#", class: "nav-link" %>
+              <%= link_to "À savoir", main_app.infoendos_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
               <%= link_to "News", main_app.articles_path, class: "nav-link" %>
@@ -34,7 +34,7 @@
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "easy Live", "#", class: "nav-link" %>
+              <%= link_to "easy Live", main_app.webinars_path, class: "nav-link" %>
             </li>
           <% else %>
             <li class="nav-item">
