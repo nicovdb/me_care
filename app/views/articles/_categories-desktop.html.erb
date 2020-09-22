@@ -1,19 +1,9 @@
 <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2 d-none d-md-block">
   <div class="row">
-    <div class="col-4 px-0 flex-column">
-      <% Article.categories.keys.first(3).each do |category| %>
+    <% Article.categories.keys.each do |category| %>
+      <div class="col-4 px-0 flex-column">
         <%= render "category", category: category %>
-      <% end %>
-    </div>
-    <div class="col-4 px-0 flex-column">
-      <% Article.categories.keys[3..5].each do |category| %>
-        <%= render "category", category: category %>
-      <% end %>
-    </div>
-    <div class="col-4 px-0 flex-column">
-      <% Article.categories.keys.last(3).each do |category| %>
-        <%= render "category", category: category %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>

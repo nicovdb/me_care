@@ -7,9 +7,8 @@ class User < ApplicationRecord
   after_create :send_to_mailchimp if Rails.env.production?
   after_update :send_welcome_email
   has_many :subscriptions, dependent: :destroy
-  has_many :favorites
   has_one :plan, through: :subscription
-  has_one :information
+  has_one :information, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :webinar_subscriptions, dependent: :destroy
   has_many :webinars, through: :webinar_subscriptions
