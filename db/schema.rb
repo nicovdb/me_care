@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_15_125648) do
+ActiveRecord::Schema.define(version: 2020_09_22_074712) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2020_09_15_125648) do
 
   create_table "favorites", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "article_id"
+    t.bigint "article_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "infoendo_id"
@@ -441,6 +441,24 @@ ActiveRecord::Schema.define(version: 2020_09_15_125648) do
     t.index ["user_id", "postable_id"], name: "thredded_user_topic_read_states_user_postable", unique: true
   end
 
+  create_table "user_alternative_therapies", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "alternative_therapy_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["alternative_therapy_id"], name: "index_user_alternative_therapies_on_alternative_therapy_id"
+    t.index ["user_id"], name: "index_user_alternative_therapies_on_user_id"
+  end
+
+  create_table "user_antecedent_diseases", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "disease_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["disease_id"], name: "index_user_antecedent_diseases_on_disease_id"
+    t.index ["user_id"], name: "index_user_antecedent_diseases_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -454,7 +472,11 @@ ActiveRecord::Schema.define(version: 2020_09_15_125648) do
     t.string "first_name"
     t.string "last_name"
     t.string "pseudo"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
     t.index "lower((email)::text) text_pattern_ops", name: "users_email_lower", unique: true
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -498,6 +520,10 @@ ActiveRecord::Schema.define(version: 2020_09_15_125648) do
   add_foreign_key "thredded_messageboard_users", "thredded_user_details", on_delete: :cascade
   add_foreign_key "thredded_user_post_notifications", "thredded_posts", column: "post_id", on_delete: :cascade
   add_foreign_key "thredded_user_post_notifications", "users", on_delete: :cascade
+  add_foreign_key "user_alternative_therapies", "alternative_therapies"
+  add_foreign_key "user_alternative_therapies", "users"
+  add_foreign_key "user_antecedent_diseases", "diseases"
+  add_foreign_key "user_antecedent_diseases", "users"
   add_foreign_key "webinar_subscriptions", "users"
   add_foreign_key "webinar_subscriptions", "webinars"
 end
