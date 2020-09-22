@@ -2,9 +2,10 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-  after_create :send_welcome_email, :set_stripe_customer, :set_trial
+         :recoverable, :rememberable, :validatable, :confirmable
+  #after_create :set_stripe_customer, :set_trial
   after_create :send_to_mailchimp if Rails.env.production?
+  after_update :send_welcome_email
   has_many :subscriptions, dependent: :destroy
   has_many :favorites
   has_one :plan, through: :subscription
@@ -47,7 +48,9 @@ class User < ApplicationRecord
   end
 
   def send_welcome_email
-    UserMailer.with(user: self).welcome.deliver_now
+    if saved_change_to_attribute?(:confirmed_at)
+      UserMailer.with(user: self).welcome.deliver_now
+    end
   end
 
   def set_stripe_customer
