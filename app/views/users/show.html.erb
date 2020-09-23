@@ -62,7 +62,23 @@
             <div class="dropdown-divider my-5 mx-5"></div>
             <div class="text-center">
               <h3 class="profil-category-title"><strong>Mes rdv easy Live</strong></h3>
-              <p class='text-left'>Vous n’êtes pas encore inscrite à un webinar d’<span class='text-pink'>easy endo</span>.</p>
+                <% if @user.webinar_subscriptions.any? %>
+                  <% @user.webinar_subscriptions.each do |webinar_subscription| %>
+                    <div class="d-flex my-3">
+                      <div class="my-auto green-bullet">
+
+                      </div>
+                      <div class='text-left ml-2'>
+                        <p class="mb-0"><%= link_to webinar_subscription.webinar.title, webinar_path(webinar_subscription.webinar)%></p>
+                        <div class="text-mini text-info">
+                          <%= l(webinar_subscription.webinar.start_at, format:"%d %B %Y - %Hh%M") %>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                <% else %>
+                  <p class='text-left'>Vous n’êtes pas encore inscrite à un webinar d’<span class='text-pink'>easy endo</span>.</p>
+                <% end %>
             </div>
           </div>
           <div class="col-12 col-md-6 px-5">
