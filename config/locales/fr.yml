@@ -46,6 +46,16 @@ fr:
     article: Articles
     event: Événements
     media: Médias
+  webinar:
+    food: Alimentation
+    generalities: Généralités
+    diagnostic: Diagnostic
+    treatment: Traitements
+    fertility: Fertilité
+    sexuality: Sexualité
+    sport: Sport
+    administrative: Administratif
+    research: Recherche
   infoendo:
     food: Alimentation
     generalities: Généralités
