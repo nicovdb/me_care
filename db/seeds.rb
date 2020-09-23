@@ -8,7 +8,7 @@
 # # Users creation
 User.destroy_all
 puts "Create Users"
-nico = User.create(email: "nico@gmail.com", password: "Password1%", stripe_id:"cus_HWWkBAAqicIOn2", admin: true, first_name: "nico", last_name: "vdb" )
+nico = User.create(email: "nicolasvandenbussche0@gmail.com", password: "Password1%", stripe_id:"cus_HWWkBAAqicIOn2", admin: true, first_name: "nico", last_name: "vdb" )
 puts "Users created"
 
 # # Prices creation
