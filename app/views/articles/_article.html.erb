@@ -9,7 +9,7 @@
           <div class="text-small text-info d-none d-md-block">
             <%= t("article.#{article.category}") %>
           </div>
-          <h3 class="my-1"><%= article.title %></h3>
+          <h2 class="my-1"><b><%= article.title %></b></h2>
           <div class="text-mini text-info d-none d-md-block"><%= l(article.created_at, format:"%d %B %Y") %> - Temps de lecture : <%= article.reading_time %>
           </div>
           <div class="text-mini text-info d-block d-md-none"> Temps de lecture : <%= article.reading_time %>
