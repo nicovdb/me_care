@@ -73,7 +73,7 @@ input[type='radio']:checked:after {
     width: 14px;
     height: 14px;
     border-radius: 14px;
-    top: -14px;
+    top: -6px;
     left: 0px;
     position: relative;
     background-color: white;
@@ -108,6 +108,11 @@ input[type='radio']:checked:after {
 .edit_information, .new_information {
   .form-control#information_diagnosis_age::placeholder {
     text-align: right;
+  }
+  .form-control#information_diagnosis_age{
+    padding-bottom: 12px;
+    padding-left: 8px;
+    padding-right: 2px;
   }
   .form-control#information_size::placeholder,  {
     text-align: right;

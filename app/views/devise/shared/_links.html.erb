@@ -18,7 +18,7 @@
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
   <div class="my-2">
-    <%= link_to "JE N'AI PAS REÇU LE LIEN DE CONFIRMATION", new_confirmation_path(resource_name), class: 'text-mini' %>
+    <%= link_to "JE N'AI PAS REÇU LE LIEN DE CONFIRMATION", new_confirmation_path(resource_name), class: 'text-mini text-close' %>
   </div>
 <% end %>
 
