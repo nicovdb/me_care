@@ -15,12 +15,12 @@
           </div>
           <div class='ml-0 ml-md-5'>
             <div class="d-flex justify-content-center justify-content-md-start">
-              <p class='mb-0'><strong> <%= @user.full_name %></strong> </p>
+              <p class='mb-0 text-header'><b> <%= @user.full_name %></b> </p>
               <%= link_to edit_user_registration_path, class: "ml-2" do %>
                 <%= image_tag "pencil-xl.svg", class: 'icon-edit mb-1' %>
               <% end %>
             </div>
-            <div class="text-center text-md-left">
+            <div class="text-center text-md-left text-header">
               <p class='mb-0'><%= @user.email %> </p>
               <p class='mb-0'>pseudo : <%= @user.pseudo %> </p>
               <p class='mb-0'>mot de passe: ******** </p>
@@ -52,12 +52,12 @@
             <div class="dropdown-divider my-4 mx-5 d-block d-md-none"></div>
             <div class="text-center">
               <h3 class="profil-category-title"><strong>Mes abonnements</strong></h3>
-              <p class='text-left'>Vous n’avez pas encore d’abonnement. Rendez-vous sur la page Abonnement pour souscrire à notre offre.</p>
+              <p class='text-left text-header'>Vous n’avez pas encore d’abonnement. Rendez-vous sur la page Abonnement pour souscrire à notre offre.</p>
             </div>
             <div class="dropdown-divider my-5 mx-5"></div>
             <div class="text-center">
               <h3 class="profil-category-title"><strong>Mes discussions</strong></h3>
-              <p class='text-left'>Vous n’avez participé à encore aucune discussion du Forum.</p>
+              <p class='text-left text-header'>Vous n’avez participé à encore aucune discussion du Forum.</p>
             </div>
             <div class="dropdown-divider my-5 mx-5"></div>
             <div class="text-center">
@@ -69,7 +69,7 @@
 
                       </div>
                       <div class='text-left ml-2'>
-                        <p class="mb-0"><%= link_to webinar_subscription.webinar.title, webinar_path(webinar_subscription.webinar)%></p>
+                        <p class="mb-0"><%= link_to webinar_subscription.webinar.title, webinar_path(webinar_subscription.webinar), class: 'text-header'%></p>
                         <div class="text-mini text-info">
                           <%= l(webinar_subscription.webinar.start_at, format:"%d %B %Y - %Hh%M") %>
                         </div>
@@ -94,8 +94,8 @@
                         <%= image_tag "heart-full.svg" %>
                       </div>
                       <div class='text-left ml-3'>
-                        <p class="text-muted mb-0 text-small">News</p>
-                        <p class="mb-0"><%= link_to favorite.article.title, article_path(favorite.article)  %></p>
+                        <p class="text-muted mb-0 text-small text-header">News</p>
+                        <p class="mb-0"><%= link_to favorite.article.title, article_path(favorite.article), class: 'text-header'  %></p>
                       </div>
                     </div>
                     <% end %>
@@ -106,7 +106,7 @@
                       </div>
                       <div class='text-left ml-3'>
                         <p class="text-muted mb-0 text-small">À savoir</p>
-                        <p class="mb-0"><%= link_to favorite.infoendo.title, infoendo_path(favorite.infoendo)  %></p>
+                        <p class="mb-0"><%= link_to favorite.infoendo.title, infoendo_path(favorite.infoendo), class: 'text-header'  %></p>
                       </div>
                     </div>
                     <% end %>

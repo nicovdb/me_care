@@ -106,6 +106,13 @@ input[type='radio']:checked:after {
 }
 
 .edit_information, .new_information {
+  label {
+    font-family: $headers-font;
+  }
+
+  label.form-check-label {
+    font-family: $body-font;
+  }
   .form-control#information_diagnosis_age::placeholder {
     text-align: right;
   }
