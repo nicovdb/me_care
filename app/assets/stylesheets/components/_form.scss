@@ -25,6 +25,14 @@ label {
   margin-top: 0.5rem;
 }
 
+@media (min-width: 1400px)  {
+  .user_remember_me {
+    .form-check-input {
+      margin-top: 0.75rem;
+    }
+  }
+}
+
 .form-control:focus {
     border-color: transparent;
 }
@@ -62,11 +70,11 @@ input[type='radio']:checked:after {
 
 @media (min-width: 1400px)  {
   input[type='radio']:after {
-    width: 14px;
-    height: 14px;
-    border-radius: 14px;
-    top: -14px;
-    left: 0px;
+    width: 18px;
+    height: 18px;
+    border-radius: 18px;
+    top: -7px;
+    left: -2px;
     position: relative;
     background-color: white;
     content: '';
@@ -76,11 +84,11 @@ input[type='radio']:checked:after {
   }
 
   input[type='radio']:checked:after {
-    width: 14px;
-    height: 14px;
-    border-radius: 14px;
-    top: -14px;
-    left: 0px;
+    width: 18px;
+    height: 18px;
+    border-radius: 18px;
+    top: -7px;
+    left: -2px;
     position: relative;
     background-color: $pink;
     content: '';
@@ -107,6 +115,11 @@ input[type='radio']:checked:after {
   }
   .form-control#information_diagnosis_age::placeholder {
     text-align: right;
+  }
+  .form-control#information_diagnosis_age{
+    padding-bottom: 10px;
+    padding-left: 8px;
+    padding-right: 4px;
   }
   .form-control#information_size::placeholder,  {
     text-align: right;

@@ -1,39 +1,41 @@
 <div class="bg pb-5 padding-top-navbar">
-  <div class="container">
-    <div class="d-md-flex justify-content-between mb-3 col-12 col-md-10 offset-md-1">
-      <div class="d-none d-md-block">
-        <span class="feature-name">À savoir</span>
+  <div class="min-100-vh-with-navbar-footer">
+    <div class="container">
+      <div class="d-md-flex justify-content-between mb-3 col-12 col-md-10 offset-md-1">
+        <div class="d-none d-md-block">
+          <span class="feature-name">À savoir</span>
+        </div>
+        <%= render "search-bar" %>
       </div>
-      <%= render "search-bar" %>
-    </div>
-  </div>
-
-  <div class="container">
-    <div class="col-12 col-md-8 offset-md-2 mt-4 px-0">
-      <% unless @videos.empty? %>
-        <div class="d-flex justify-content-center justify-content-md-start align-items-center mt-5">
-          <%= image_tag "video.svg", class:"media-type-icon-smaller" %>
-          <h3 class="ml-3 mb-0">Videos</h3>
-        </div>
-        <div class="dropdown-divider my-4"></div>
-        <% @videos.each do |infoendo| %>
-          <%= render "infoendo", infoendo: infoendo %>
-          <div class="dropdown-divider my-4"></div>
-        <% end %>
-      <% end %>
-
-      <% unless @articles.empty? %>
-        <div class="d-flex justify-content-center justify-content-md-start align-items-center mt-5">
-          <%= image_tag "fiche.svg", class:"media-type-icon" %>
-          <h3 class="ml-3 mb-0">Fiches</h3>
-        </div>
-        <div class="dropdown-divider my-4"></div>
-        <% @articles.each do |infoendo| %>
-          <%= render "infoendo", infoendo: infoendo %>
-          <div class="dropdown-divider my-4"></div>
-        <% end %>
-      <% end %>
     </div>
 
+    <div class="container">
+      <div class="col-12 col-md-8 offset-md-2 mt-4 px-0">
+        <% unless @videos.empty? %>
+          <div class="d-flex justify-content-center justify-content-md-start align-items-center mt-5">
+            <%= image_tag "video.svg", class:"media-type-icon-smaller" %>
+            <h3 class="ml-3 mb-0">Videos</h3>
+          </div>
+          <div class="dropdown-divider my-4"></div>
+          <% @videos.each do |infoendo| %>
+            <%= render "infoendo", infoendo: infoendo %>
+            <div class="dropdown-divider my-4"></div>
+          <% end %>
+        <% end %>
+
+        <% unless @articles.empty? %>
+          <div class="d-flex justify-content-center justify-content-md-start align-items-center mt-5">
+            <%= image_tag "fiche.svg", class:"media-type-icon" %>
+            <h3 class="ml-3 mb-0">Fiches</h3>
+          </div>
+          <div class="dropdown-divider my-4"></div>
+          <% @articles.each do |infoendo| %>
+            <%= render "infoendo", infoendo: infoendo %>
+            <div class="dropdown-divider my-4"></div>
+          <% end %>
+        <% end %>
+      </div>
+
+    </div>
   </div>
 </div>
