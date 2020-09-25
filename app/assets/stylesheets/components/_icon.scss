@@ -5,3 +5,14 @@
 .icon-edit-small {
   height: 12px;
 }
+
+.margin-icon-edit {
+  margin-bottom: 0.25rem;
+}
+
+@media (min-width: 1400px)  {
+  .margin-icon-edit {
+    margin-bottom: 0.75rem;
+  }
+}
+
