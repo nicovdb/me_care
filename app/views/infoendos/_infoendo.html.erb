@@ -9,7 +9,12 @@
           <div class="text-small text-info d-none d-md-block">
             <%= t("infoendo.#{infoendo.category}") %>
           </div>
-          <h2 class="my-1"><b><%= infoendo.title %></b></h2>
+          <div class='d-block d-sm-none'>
+            <h2 class="my-1"><b><%= infoendo.title.truncate(22) %></b></h2>
+          </div>
+          <div class='d-none d-sm-block'>
+            <h2 class="my-1"><b><%= infoendo.title %></b></h2>
+          </div>
           <div class="text-mini text-info d-none d-md-block"><%= l(infoendo.created_at, format:"%d %B %Y") %> - temps de lecture : <%= infoendo.reading_time %>
           </div>
           <div class="text-mini text-info d-block d-md-none"> durée : <%= infoendo.reading_time %>
