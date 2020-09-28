@@ -85,9 +85,9 @@
             <div class="dropdown-divider my-5 mx-5 d-block d-md-none"></div>
             <div class="text-center profile-favorite">
               <h3 class="profil-category-title"><strong>Mes favoris</strong></h3>
-              <% if @user.favorites.any? %>
+              <% if @favorites.any? %>
                 <div>
-                  <% @user.favorites.each do |favorite| %>
+                  <% @favorites.each do |favorite| %>
                     <% if favorite.article %>
                     <div class="d-flex my-3">
                       <div class="my-auto">

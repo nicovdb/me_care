@@ -2,8 +2,8 @@ class UsersController < ApplicationController
   before_action :set_user
 
   def show
-
     authorize @user
+    @favorites = @user.favorites.includes([:infoendo, :article])
   end
 
   def anonymize
