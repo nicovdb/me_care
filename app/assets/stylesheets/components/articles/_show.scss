@@ -47,3 +47,14 @@
     font-weight: 400;
   }
 }
+
+
+.truncated {
+  flex: 1;
+  min-width: 0;
+  h2 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
