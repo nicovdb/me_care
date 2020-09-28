@@ -11,11 +11,24 @@
   }
 }
 
+.article-card, .webinar-card {
+  .text-mini {
+    font-size: 16px;
+  }
+}
+
+
 @media (max-width: 768px)  {
   .article-card{
     img {
       width: 75px;
       max-height: 55px;
+    }
+  }
+
+  .article-card, .webinar-card {
+    .text-mini {
+      font-size: 13px;
     }
   }
 }
