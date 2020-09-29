@@ -1,0 +1,25 @@
+.new_contact {
+  input#contact_first_name, input#contact_last_name, input#contact_email, , textarea {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 16px;
+    border-radius: 8px;
+    border: 1px solid $light-green-gray;
+  }
+
+  input::placeholder, textarea::placeholder {
+    color: $light-green-gray;
+    font-size: 14px;
+  }
+
+  textarea {
+    height: 10em;
+  }
+
+  @media (min-width: 1400px)  {
+    textarea {
+      height: 12em;
+    }
+  }
+
+}
