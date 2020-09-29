@@ -10,8 +10,11 @@
 
 .home-service-category {
   background-color: $light-green;
-  padding: 20px 12px;
+  padding: 20px 14px;
   border-radius: 10px;
   height: 100%;
+  width: 150px;
+  max-width: 100%;
   box-shadow: #0A5E706E 0 0 4px;
+  margin: auto;
 }
