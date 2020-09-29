@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home, :team, :legals, :policy, :conditions ]
+  skip_before_action :authenticate_user!, only: [:home, :team, :legals]
 
   def home
   end
@@ -8,12 +8,6 @@ class PagesController < ApplicationController
   end
 
   def legals
-  end
-
-  def policy
-  end
-
-  def conditions
   end
 
   def algorythm

@@ -5,9 +5,7 @@ Rails.application.routes.draw do
     devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
     root to: 'pages#home'
     get '/equipe', to: 'pages#team', as: :team
-    get '/mentions-legales', to: 'pages#legals', as: :legals
-    get '/politique-de-confidentialité', to: 'pages#policy', as: :policy
-    get '/conditions-generales', to: 'pages#conditions', as: :conditions
+    get '/cadre-reglementaire', to: 'pages#legals', as: :legals
     get '/que-faire-si', to: 'pages#algorythm', as: :algorythm
     resources :contacts, only: [:new, :create]
     resources :products, only: :index
