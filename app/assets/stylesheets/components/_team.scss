@@ -1,0 +1,63 @@
+.team-member, .partners {
+  h3 {
+    font-weight: 700;
+  }
+
+  p {
+    font-weight: 600;
+    font-family: $headers-font;
+    font-size: 16px;
+  }
+
+  @media (min-width: 1400px)  {
+    p {
+      font-size: 18px;
+    }
+    h3 {
+      font-size: 22px;
+    }
+  }
+}
+
+.team-member {
+  text-align: center;
+
+  img {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid $green;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    color: $pink;
+  }
+
+  @media (max-width: 768px)  {
+    img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+}
+
+.partners {
+  p {
+    color: $green;
+  }
+
+  p.contributors {
+    font-weight: 400;
+    font-size: 14px;
+  }
+}
+
+
+p.team-description {
+  font-size: 16px;
+  font-weight: 700;
+  font-family: $headers-font;
+  color: $green;
+}
