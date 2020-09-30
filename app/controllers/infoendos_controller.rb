@@ -4,11 +4,11 @@ class InfoendosController < ApplicationController
   def index
     @infoendos = policy_scope(Infoendo).includes([:cover_attachment])
     if params[:query].present?
-      @videos = @infoendos.where(media_type: "video").search_by_content_and_title(params[:query])
-      @articles = @infoendos.where(media_type: "article").search_by_content_and_title(params[:query])
+      @videos = @infoendos.where(media_type: "video").search_by_content_and_title(params[:query]).order(created_at: :desc)
+      @articles = @infoendos.where(media_type: "article").search_by_content_and_title(params[:query]).order(created_at: :desc)
     else
-      @videos = @infoendos.where(media_type: "video")
-      @articles = @infoendos.where(media_type: "article")
+      @videos = @infoendos.where(media_type: "video").order(created_at: :desc)
+      @articles = @infoendos.where(media_type: "article").order(created_at: :desc)
     end
   end
 

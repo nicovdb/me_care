@@ -25,6 +25,12 @@
                           label: false,
                           placeholder: "Nom",
                           input_html: { autocomplete: "nom" }%>
+              <%= f.input :pseudo,
+                          required: true,
+                          autofocus: true ,
+                          label: false,
+                          placeholder: "Pseudo pour le forum",
+                          input_html: { autocomplete: "nom" }%>
               <%= f.input :email,
                           required: true,
                           autofocus: true ,

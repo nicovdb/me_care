@@ -3,13 +3,13 @@ class ArticlesController < ApplicationController
 
   def index
     if params[:query].present?
-      @articles = policy_scope(Article).includes([:cover_attachment]).search_by_content_and_title_and_author(params[:query]).paginate(page: params[:page], per_page: 8)
+      @articles = policy_scope(Article).includes([:cover_attachment]).search_by_content_and_title_and_author(params[:query]).paginate(page: params[:page], per_page: 8).order(created_at: :desc)
     elsif params[:category].present?
-      @articles = policy_scope(Article).includes([:cover_attachment]).where(category: params[:category]).paginate(page: params[:page], per_page: 8)
+      @articles = policy_scope(Article).includes([:cover_attachment]).where(category: params[:category]).paginate(page: params[:page], per_page: 8).order(created_at: :desc)
     elsif params[:media_type].present?
-      @articles = policy_scope(Article).includes([:cover_attachment]).where(media_type: params[:media_type]).paginate(page: params[:page], per_page: 8)
+      @articles = policy_scope(Article).includes([:cover_attachment]).where(media_type: params[:media_type]).paginate(page: params[:page], per_page: 8).order(created_at: :desc)
     else
-      @articles = policy_scope(Article).includes([:cover_attachment]).paginate(page: params[:page], per_page: 8)
+      @articles = policy_scope(Article).includes([:cover_attachment]).paginate(page: params[:page], per_page: 8).order(created_at: :desc)
     end
   end
 
