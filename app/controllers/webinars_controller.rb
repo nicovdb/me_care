@@ -2,7 +2,7 @@ class WebinarsController < ApplicationController
   before_action :set_webinar, only: [:show, :edit, :update, :destroy]
 
   def index
-    @webinars = policy_scope(Webinar).includes([:speaker_picture_attachment])
+    @webinars = policy_scope(Webinar).includes([:speaker_picture_attachment]).order(start_at: :desc)
   end
 
   def create
