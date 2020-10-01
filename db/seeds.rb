@@ -1,22 +1,24 @@
 # # Products creation
-# Product.destroy_all
-# puts "Create Plans"
-# basic = Product.create!(name: "Basic", actuality: true, info_endo: true, algorythm: true, forum:true, stripe_id: "prod_HWWjYJUAk80nUh")
-# trial = Product.create!(name: "Trial", actuality: true, info_endo: true, algorythm: true, forum:true, agenda:true, webinar: true)
-# puts "Plans created"
+Product.destroy_all
+puts "Create Plans"
+six_months = Product.create!(name: "6 mois", stripe_id: "prod_I7dS8GEPry5nsh")
+three_months = Product.create!(name: "3 mois", stripe_id: "prod_I7dNM5AhD0yKcR")
+trial = Product.create!(name: "Trial")
+puts "Plans created"
+
+# # Prices creation
+Price.destroy_all
+puts "Create Prices"
+Price.create!(product: six_months, stripe_id: "price_1HXOC3BCt2fCpZSzWnwwb2tF", unit_amount: 2500, nickname: "6 mois")
+Price.create!(product: three_months, stripe_id: "price_1HXO6gBCt2fCpZSzrOskt8KL", unit_amount: 1500, nickname: "3 mois")
+Price.create!(product: trial, unit_amount: 0, nickname: "Trial")
+puts "Price created"
 
 # # Users creation
 User.destroy_all
 puts "Create Users"
-nico = User.create(email: "nicolasvandenbussche0@gmail.com", password: "Password1%", stripe_id:"cus_HWWkBAAqicIOn2", admin: true, first_name: "nico", last_name: "vdb" )
+nico = User.create(email: "nicolasvandenbussche0@gmail.com", password: "Password1%", admin: true, first_name: "Nicolas", last_name: "Vandenbussche", pseudo: "nicovdb" )
 puts "Users created"
-
-# # Prices creation
-# Price.destroy_all
-# puts "Create Prices"
-# Price.create!(product: basic, stripe_id: "price_1GxTgDBCt2fCpZSz78oYC7GC", unit_amount: 300)
-# Price.create!(product: trial, unit_amount: 0)
-# puts "Price created"
 
 FamMemberAnte.destroy_all
 FamMemberAnte.create!(title: 'mère')

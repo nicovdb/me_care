@@ -18,8 +18,8 @@ class ApplicationController < ActionController::Base
   end
 
   def user_not_authorized
-    flash[:alert] = "Vous n'êtes pas autorisée à faire cette action."
-    redirect_to(root_path)
+    flash[:alert] = "Vous n'êtes pas abonnée à cette fonctionnalité."
+    redirect_to(products_path)
   end
 
   def default_url_options
@@ -27,15 +27,13 @@ class ApplicationController < ActionController::Base
       host: ENV["DOMAIN"] || "localhost:3000" }
   end
 
-
   private
 
   def skip_pundit?
-    devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/ || controller_name == 'moderation'|| controller_name == 'preferences' || controller_name == 'messageboard_groups'
+    devise_controller? || (params[:controller] =~ /(^(rails_)?admin)|(^pages$)/ && action_name != "algorythm") || controller_name == 'moderation'|| controller_name == 'preferences' || controller_name == 'messageboard_groups'
   end
 
   def set_locale
     I18n.locale = params.fetch(:locale, I18n.default_locale).to_sym
   end
-
 end

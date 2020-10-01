@@ -1,12 +1,16 @@
 class InfoendoPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      if user.admin? || user.has_valid_subscription?
+        scope.all
+      else
+        raise Pundit::NotAuthorizedError
+      end
     end
   end
 
   def show?
-    true
+    has_valid_subscription? || is_admin?
   end
 
   def create?
@@ -23,7 +27,11 @@ class InfoendoPolicy < ApplicationPolicy
 
   private
 
+  def has_valid_subscription?
+    user.has_valid_subscription?
+  end
+
   def is_admin?
-    user.admin
+    user.admin?
   end
 end
