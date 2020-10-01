@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_22_074712) do
+ActiveRecord::Schema.define(version: 2020_10_01_133655) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -186,12 +186,6 @@ ActiveRecord::Schema.define(version: 2020_09_22_074712) do
 
   create_table "products", force: :cascade do |t|
     t.string "name"
-    t.boolean "actuality", default: false
-    t.boolean "algorythm", default: false
-    t.boolean "forum", default: false
-    t.boolean "info_endo", default: false
-    t.boolean "webinar", default: false
-    t.boolean "agenda", default: false
     t.string "stripe_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

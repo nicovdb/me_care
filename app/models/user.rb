@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
-  #after_create :set_stripe_customer, :set_trial
+  after_create :set_stripe_customer, :set_trial
   after_create :send_to_mailchimp if Rails.env.production?
   after_update :send_welcome_email
   has_many :subscriptions, dependent: :destroy
@@ -40,6 +40,17 @@ class User < ApplicationRecord
     all_unread.sum
   end
 
+  def has_valid_subscription?
+    if self.subscriptions.any?
+      subscription_dates = self.subscriptions.map do |subscription|
+        subscription.end_date
+      end
+      subscription_dates.max >= Date.today
+    else
+      false
+    end
+  end
+
   private
 
   def send_to_mailchimp
@@ -53,7 +64,7 @@ class User < ApplicationRecord
   end
 
   def set_stripe_customer
-    customer = Stripe::Customer.create
+    customer = Stripe::Customer.create(email: self.email)
     self.update_attributes(stripe_id: customer.id)
   end
 
