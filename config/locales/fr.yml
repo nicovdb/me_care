@@ -359,9 +359,7 @@ fr:
         action_name:
           algorythm: Que faire si...
           team: Équipe
-          legals: RGPD
-          policy: Politique de confidentialité
-          conditions: Conditions générales
+          legals: Cadre légal
       webinars: easy Live
   will_paginate:
     previous_label: <i class="fas fa-chevron-left"></i>

@@ -11,3 +11,10 @@
   display: inline-block;
   visibility: visible;
 }
+
+.pink-bullet {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: $light-pink;
+}
