@@ -11,7 +11,7 @@ class ContactsController < ApplicationController
       flash.now[:alert] = "Votre message a bien été envoyé"
       redirect_to new_contact_path
     else
-      flash.now[:error] = "Votre message n'a pas pu être envoyé, veuillez réessayer ou écrire à contact@easyendo.fr"
+      flash.now[:error] = "Votre message n'a pas pu être envoyé, veuillez réessayer ou écrire à bonjour@easyendo.fr"
       render :new
     end
   end
