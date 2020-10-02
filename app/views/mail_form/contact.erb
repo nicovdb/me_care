@@ -1,0 +1,12 @@
+<h4><%= message.subject %></h4>
+
+<% @resource.mail_form_attributes.each do |attribute, value|
+  next if value.blank? %>
+  <% if attribute == 'first_name' || attribute == 'last_name' %>
+    <b><%= value %></b>
+  <% elsif attribute == 'email' %>
+    <p><b><%= value %></b></p>
+  <% else %>
+    <p><%= value %></p>
+  <% end %>
+<% end %>
