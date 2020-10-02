@@ -28,6 +28,9 @@ Rails.application.routes.draw do
       resources :articles, only: [:new, :edit]
       resources :webinars, only: [:new, :edit]
       resources :infoendos, only: [:new, :edit]
+      resources :coupons, only: [:new]
     end
+    resources :coupons, only: [:create]
+    post '/coupon', to: 'coupons#use', as: :use_coupon
   end
 end

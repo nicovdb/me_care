@@ -1,4 +1,13 @@
 <div class="container padding-top-navbar">
+  <h1>Utiliser un coupon</h1>
+  <%= simple_form_for :coupon, url: use_coupon_path do |f| %>
+    <%= f.input :code, as: :string %>
+    <% if @errors %>
+      <p class="text-mini text-red"> <%= @errors %></p>
+    <% end %>
+    <%= f.submit "Chercher le coupon", class: 'btn btn-primary btn-ee mb-4' %>
+  <% end %>
+
   <% @products_and_sessions.each do |ps| %>
     <%= ps[:product].name %>
     <button class="btn btn-primary mb-5 mt-2 checkout-button" role="link" data-session-id="<%= ps[:checkout_id] %>">
