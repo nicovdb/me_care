@@ -132,20 +132,20 @@ Thredded.email_from = 'forum@easyendo.com'
 # By default Thredded just renders a flash alert on errors such as Topic not found, or Login required.
 # Below is an example of overriding the default behavior on LoginRequired:
 #
-# Rails.application.config.to_prepare do
-#   Thredded::ApplicationController.module_eval do
-#     # Render sign in page:
-#     rescue_from Thredded::Errors::LoginRequired do |exception|
-#       flash.now[:notice] = exception.message
-#       controller = Users::SessionsController.new
-#       controller.request = request
-#       controller.request.env['devise.mapping'] = Devise.mappings[:user]
-#       controller.response = response
-#       controller.response_options = { status: :forbidden }
-#       controller.process(:new)
-#     end
-#   end
-# end
+Rails.application.config.to_prepare do
+  Thredded::ApplicationController.module_eval do
+    rescue_from Pundit::NotAuthorizedError do |exception|
+      redirect_to main_app.products_path
+      flash[:alert] = "Vous n'êtes pas abonnée à cette fonctionnalité."
+      # controller = Users::SessionsController.new
+      # controller.request = request
+      # controller.request.env['devise.mapping'] = Devise.mappings[:user]
+      # controller.response = response
+      # controller.response_options = { status: :forbidden }
+      # controller.process(:new)
+    end
+  end
+end
 
 # ==> View hooks
 #
