@@ -41,10 +41,7 @@ class User < ApplicationRecord
   end
 
   def has_valid_subscription?
-    if self.subscription && self.subscription.end_date >= Date.today
-    else
-      false
-    end
+    self.subscription && self.subscription.end_date >= Date.today
   end
 
   private
