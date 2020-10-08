@@ -7,8 +7,8 @@ Rails.application.routes.draw do
     get '/equipe', to: 'pages#team', as: :team
     get '/cadre-reglementaire', to: 'pages#legals', as: :legals
     get '/que-faire-si', to: 'pages#algorythm', as: :algorythm
+    get '/abonnements', to: 'pages#products', as: :products
     resources :contacts, only: [:new, :create]
-    resources :products, only: :index
     resources :subscriptions, only: [:index, :destroy]
     resources :articles, path: 'news', only: [:index, :show, :create, :update, :destroy]
     resources :infoendos, path: 'a-savoir', only: [:index, :show, :create, :update, :destroy]

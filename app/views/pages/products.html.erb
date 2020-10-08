@@ -8,12 +8,12 @@
     <%= f.submit "Chercher le coupon", class: 'btn btn-primary btn-ee mb-4' %>
   <% end %>
 
-  <% @products_and_sessions.each do |ps| %>
-    <%= ps[:product].name %>
-    <button class="btn btn-primary mb-5 mt-2 checkout-button" role="link" data-session-id="<%= ps[:checkout_id] %>">
+  <%# @products_and_sessions.each do |ps| %>
+    <%#= ps[:product].name %>
+    <!-- <button class="btn btn-primary mb-5 mt-2 checkout-button" role="link" data-session-id="<%#= ps[:checkout_id] %>">
         Continuer vers la page de paiement
     </button>
-  <% end %>
+  <%# end %> -->
 </div>
 
 

@@ -1,19 +1,3 @@
-# # Products creation
-Product.destroy_all
-puts "Create Plans"
-six_months = Product.create!(name: "6 mois", stripe_id: "prod_I7dS8GEPry5nsh")
-three_months = Product.create!(name: "3 mois", stripe_id: "prod_I7dNM5AhD0yKcR")
-trial = Product.create!(name: "Trial")
-puts "Plans created"
-
-# # Prices creation
-Price.destroy_all
-puts "Create Prices"
-Price.create!(product: six_months, stripe_id: "price_1HXOC3BCt2fCpZSzWnwwb2tF", unit_amount: 2500, nickname: "6 mois")
-Price.create!(product: three_months, stripe_id: "price_1HXO6gBCt2fCpZSzrOskt8KL", unit_amount: 1500, nickname: "3 mois")
-Price.create!(product: trial, unit_amount: 0, nickname: "Trial")
-puts "Price created"
-
 # # Users creation
 User.destroy_all
 puts "Create Users"

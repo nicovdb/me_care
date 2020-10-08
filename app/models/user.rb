@@ -6,7 +6,7 @@ class User < ApplicationRecord
   after_create :set_stripe_customer, :set_trial
   after_create :send_to_mailchimp if Rails.env.production?
   after_update :send_welcome_email
-  has_many :subscriptions, dependent: :destroy
+  has_one :subscription, dependent: :destroy
   has_one :plan, through: :subscription
   has_one :information, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -41,14 +41,7 @@ class User < ApplicationRecord
   end
 
   def has_valid_subscription?
-    if self.subscriptions.any?
-      subscription_dates = self.subscriptions.map do |subscription|
-        subscription.end_date
-      end
-      subscription_dates.max >= Date.today
-    else
-      false
-    end
+    self.subscription && self.subscription.end_date >= Date.today
   end
 
   private
@@ -69,8 +62,8 @@ class User < ApplicationRecord
   end
 
   def set_trial
-    price = Price.find_by(unit_amount: 0)
-    subscription = Subscription.new(user: self, price: price, start_date: Date.today, end_date: Date.today + 15, status: "active")
-    subscription.save
+    stripe_subscription = Stripe::Subscription.create(customer: self.stripe_id, "items[0][price]": "price_1HZXvsBCt2fCpZSzIzJbz8xI", trial_period_days: 15)
+
+    subscription = Subscription.create(user: self, start_date: Date.today, end_date: Date.today + 15, status: "active", stripe_id: stripe_subscription.id )
   end
 end

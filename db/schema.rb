@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_02_093249) do
+ActiveRecord::Schema.define(version: 2020_10_07_101455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,16 +65,6 @@ ActiveRecord::Schema.define(version: 2020_10_02_093249) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "author"
     t.index ["user_id"], name: "index_articles_on_user_id"
-  end
-
-  create_table "coupons", force: :cascade do |t|
-    t.integer "free_days"
-    t.string "code"
-    t.boolean "used"
-    t.bigint "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_coupons_on_user_id"
   end
 
   create_table "diseases", force: :cascade do |t|
@@ -184,33 +174,14 @@ ActiveRecord::Schema.define(version: 2020_10_02_093249) do
     t.index ["user_id"], name: "index_information_on_user_id"
   end
 
-  create_table "prices", force: :cascade do |t|
-    t.bigint "product_id", null: false
-    t.string "nickname"
-    t.string "stripe_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "unit_amount"
-    t.index ["product_id"], name: "index_prices_on_product_id"
-  end
-
-  create_table "products", force: :cascade do |t|
-    t.string "name"
-    t.string "stripe_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "subscriptions", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "price_id", null: false
     t.date "start_date"
     t.string "stripe_id"
     t.string "status", default: "pending"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.date "end_date"
-    t.index ["price_id"], name: "index_subscriptions_on_price_id"
     t.index ["user_id"], name: "index_subscriptions_on_user_id"
   end
 
@@ -488,7 +459,6 @@ ActiveRecord::Schema.define(version: 2020_10_02_093249) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "articles", "users"
-  add_foreign_key "coupons", "users"
   add_foreign_key "favorites", "articles"
   add_foreign_key "favorites", "infoendos"
   add_foreign_key "favorites", "users"
@@ -500,8 +470,6 @@ ActiveRecord::Schema.define(version: 2020_10_02_093249) do
   add_foreign_key "info_fam_member_antes", "information"
   add_foreign_key "infoendos", "users"
   add_foreign_key "information", "users"
-  add_foreign_key "prices", "products"
-  add_foreign_key "subscriptions", "prices"
   add_foreign_key "subscriptions", "users"
   add_foreign_key "thredded_messageboard_users", "thredded_messageboards", on_delete: :cascade
   add_foreign_key "thredded_messageboard_users", "thredded_user_details", on_delete: :cascade
