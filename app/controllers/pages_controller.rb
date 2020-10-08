@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  include ProductsAndSessions
   skip_before_action :authenticate_user!, only: [:home, :team, :legals]
 
   def home
@@ -12,5 +13,9 @@ class PagesController < ApplicationController
 
   def algorythm
     authorize(:page, :algorythm?)
+  end
+
+  def products
+    define_products_and_sessions
   end
 end

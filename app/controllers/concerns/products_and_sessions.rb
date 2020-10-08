@@ -6,25 +6,25 @@ module ProductsAndSessions
   end
 
   def define_products_and_sessions
-    @products = policy_scope(Product).includes([:price])
+    #@products = policy_scope(Product).includes([:price])
 
-    @products_and_sessions = @products.map do |product|
-      session = Stripe::Checkout::Session.create({
-        payment_method_types: ['card'],
-        line_items: [{
-          price: "#{product.price.stripe_id}",
-          quantity: 1,
-        }],
-        mode: 'subscription',
-        success_url: root_url,
-        cancel_url: products_url,
-        client_reference_id: current_user.id,
-        customer: find_or_create_stripe_customer_id
-      })
-      checkout_id = session.id
+    # @products_and_sessions = @products.map do |product|
+    #   session = Stripe::Checkout::Session.create({
+    #     payment_method_types: ['card'],
+    #     line_items: [{
+    #       price: "#{product.price.stripe_id}",
+    #       quantity: 1,
+    #     }],
+    #     mode: 'subscription',
+    #     success_url: root_url,
+    #     cancel_url: products_url,
+    #     client_reference_id: current_user.id,
+    #     customer: find_or_create_stripe_customer_id
+    #   })
+    #   checkout_id = session.id
 
-      {product: product, checkout_id: checkout_id}
-    end
+    #   {product: product, checkout_id: checkout_id}
+    # end
   end
 
   private

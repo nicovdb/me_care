@@ -1,8 +1,0 @@
-<div class="container padding-top-navbar">
-  <h1 class='text-center'>Créer un coupon</h1>
-  <%= simple_form_for @coupon do |f| %>
-    <%= f.input :free_days, label: "Nombre de jours offerts" %>
-    <%= f.input :code, label: "Code à rentrer" %>
-    <%= f.submit "Créer le coupon", class: 'btn btn-primary btn-ee mb-4' %>
-  <% end %>
-</div>
