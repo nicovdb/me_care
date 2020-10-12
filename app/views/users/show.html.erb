@@ -1,12 +1,15 @@
 <div class="bg padding-top-navbar">
   <div class="container text-green">
-    <div class="row">
-      <div class="d-md-flex justify-content-between mb-3 col-12 col-md-10 offset-md-1">
-        <div class="d-none d-md-block">
-          <span class="feature-name">Profil</span>
-        </div>
+    <div class="d-md-flex justify-content-between mb-3 col-12 col-md-10 offset-md-1">
+      <div class="d-none d-md-block">
+        <span class="feature-name">Profil</span>
       </div>
     </div>
+    <form action="/customer_portal_sessions" method="POST">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <button>Manage Billing</button>
+    </form>
+
     <div class="row">
       <div class="col-12 col-md-8 offset-md-2">
         <div class="d-flex flex-column flex-md-row justify-content-center mt-md-5">

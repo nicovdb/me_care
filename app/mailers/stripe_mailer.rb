@@ -1,7 +1,6 @@
 class StripeMailer < ApplicationMailer
-  def trial_will_end
+  def trial_ended_without_card
     @user = params[:user]
-    @trial_end = params[:trial_end]
-    mail(to: @user.email, subject: "Votre période d'essai à easy Endo est bientôt terminée")
+    mail(to: @user.email, subject: "Votre période d'essai à easy Endo est terminée")
   end
 end
