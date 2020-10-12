@@ -62,7 +62,7 @@ class User < ApplicationRecord
   end
 
   def set_trial
-    stripe_subscription = Stripe::Subscription.create(customer: self.stripe_id, "items[0][price]": "price_1HaHgsBCt2fCpZSzwn5xhsaC", trial_period_days: 15)
+    stripe_subscription = Stripe::Subscription.create(customer: self.stripe_id, "items[0][price]": ENV["STRIPE_TRIAL_PRICE_ID"], trial_period_days: 15)
     Subscription.create(user: self, start_date: Date.today, end_date: Date.today + 15, status: "active", stripe_id: stripe_subscription.id)
   end
 end

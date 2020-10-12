@@ -25,16 +25,4 @@ class Users::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-
-  #private
-
-  # def check_trial_end_date
-  #   if current_user.subscription
-  #     product = current_user.subscription.product
-  #     if product.name == "Trial" && current_user.subscription.end_date < Date.today
-  #       current_user.subscription.destroy
-  #       flash[:alert] = "Attention votre essai gratuit est terminé"
-  #     end
-  #   end
-  # end
 end
