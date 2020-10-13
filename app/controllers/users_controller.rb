@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_user
+  before_action :set_user, only: :anonymize
 
   def show
+    @user = current_user
     authorize @user
     @favorites = @user.favorites.includes([:infoendo, :article])
   end

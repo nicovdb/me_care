@@ -24,7 +24,7 @@ class InformationsController < ApplicationController
       authorize @information
       @information.user = @user
       if @information.save
-        redirect_to profil_path(@user)
+        redirect_to profil_path
       else
         render 'new'
       end
@@ -47,7 +47,7 @@ class InformationsController < ApplicationController
       delete_info_alternative_therapies
       delete_info_fam_member_antes
       if @information.update(information_params)
-        redirect_to profil_path(@user)
+        redirect_to profil_path
       else
         render 'edit'
       end
@@ -58,7 +58,7 @@ class InformationsController < ApplicationController
     @user = @information.user
     authorize @information
     @information.destroy
-    redirect_to profil_path(@user)
+    redirect_to profil_path
   end
 
   private
