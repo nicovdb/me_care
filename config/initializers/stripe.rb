@@ -9,4 +9,6 @@ StripeEvent.signing_secret = Rails.configuration.stripe[:signing_secret]
 
 StripeEvent.configure do |events|
   events.subscribe 'customer.subscription.updated', Stripe::CustomerSubscriptionUpdatedService.new
+  events.subscribe 'customer.subscription.deleted', Stripe::CustomerSubscriptionDeletedService.new
+
 end

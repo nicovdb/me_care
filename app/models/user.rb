@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :webinars, through: :webinar_subscriptions
   has_one_attached :avatar
   validate :password_complexity
+  validates :pseudo, uniqueness: true
   validates :first_name, :last_name, :pseudo, presence: true
 
   def profile_picture

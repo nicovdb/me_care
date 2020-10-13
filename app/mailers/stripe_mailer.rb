@@ -3,4 +3,9 @@ class StripeMailer < ApplicationMailer
     @user = params[:user]
     mail(to: @user.email, subject: "Votre période d'essai à easy Endo est terminée")
   end
+
+  def subscription_canceled
+    @user = params[:user]
+    mail(to: @user.email, subject: "Votre abonnement easy Endo est terminé")
+  end
 end

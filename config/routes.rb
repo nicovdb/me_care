@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     end
     resources :favorites, only: [:create, :destroy]
     get '/dashboard', to: 'dashboards#show'
-    get '/profil/:id', to: 'users#show', as: :profil
+    get '/profil', to: 'users#show', as: :profil
     patch '/users/:id', to: 'users#anonymize', as: :anonymize
     get '/profil/:user_id/informations/new', to: 'informations#new', as: :new_user_information
     post '/profil/:user_id/informations', to: 'informations#create', as: :user_information_create
