@@ -9,9 +9,6 @@ module Stripe
         end_date: Time.at(@stripe_subscription.current_period_end).to_date
       )
 
-      @customer = Stripe::Customer.retrieve(@stripe_subscription.customer)
-      @subscription = Stripe::Subscription.retrieve(@stripe_subscription.id)
-
       check_change_price
     end
 
