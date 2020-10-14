@@ -24,15 +24,15 @@
           <%= f.input :family_situation, as: :radio_buttons, label: "Situation", collection: Information.family_situations.keys.map { |m| [t("information.#{m.downcase}"), m] }, wrapper: :horizontal_collection_inline %>
           <%= f.input :job, label: "Profession" %>
           <%= f.input :diagnosis_age, label: "Âge au diagnostic de votre endométriose", placeholder: 'ans' %>
-          <div class="row">
+          <div class="row" data-controller="imc">
             <div class="col-6 col-md-4">
-              <%= f.input :size, placeholder: 'cm', label:'Taille' %>
+              <%= f.input :size, placeholder: 'cm', label:'Taille', input_html: { data: { action: "keyup->imc#compute", target: "imc.size" } } %>
             </div>
             <div class="col-6 col-md-4">
-              <%= f.input :weight, placeholder: 'kg', label:'Poids' %>
+              <%= f.input :weight, placeholder: 'kg', label:'Poids', input_html: { data: { action: "keyup->imc#compute", target: "imc.weight" } } %>
             </div>
             <div class="col-6 offset-3 col-md-4 offset-md-0">
-              <%= f.input :imc, label:'IMC' %>
+              <%= f.input :imc, label:'IMC', readonly: true, input_html: { data: { target: "imc.output" } } %>
             </div>
           </div>
           <%= f.input :family_antecedent, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label:'Antécédents familiaux d’endométriose' %>
