@@ -30,15 +30,17 @@ module Stripe
     end
 
     def check_change_price
-      status = @stripe_subscription.status
-      price_id = @stripe_subscription&.items&.data[0]&.price&.id
-      previous_price_id = @event.data&.previous_attributes&.items&.data[0]&.price&.id
+      if @event.data&.previous_attributes.keys.include?(:items)
+        status = @stripe_subscription.status
+        price_id = @stripe_subscription&.items&.data[0]&.price&.id
+        previous_price_id = @event.data&.previous_attributes&.items&.data[0]&.price&.id
 
-      if previous_price_id && (previous_price_id != price_id) && status == "active"
-        @subscription_duration = @stripe_subscription.items.data[0].plan.interval_count
-        @interval = @stripe_subscription.items.data[0].plan.interval
-        @interval == "month" ? @interval = "mois" : @interval = "an"
-        StripeMailer.with(user: @user, duration: @subscription_duration, interval: @interval).customer_changed_plan.deliver_now
+        if previous_price_id && (previous_price_id != price_id) && status == "active"
+          @subscription_duration = @stripe_subscription.items.data[0].plan.interval_count
+          @interval = @stripe_subscription.items.data[0].plan.interval
+          @interval == "month" ? @interval = "mois" : @interval = "an"
+          StripeMailer.with(user: @user, duration: @subscription_duration, interval: @interval).customer_changed_plan.deliver_now
+        end
       end
     end
   end

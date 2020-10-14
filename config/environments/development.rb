@@ -1,5 +1,5 @@
 Rails.application.configure do
-  config.hosts << "1bb300c88074.ngrok.io"
+  config.hosts << "dbb88a34fa2b.ngrok.io"
   config.action_mailer.default_url_options = { host: "http://localhost:3000" }
   config.action_mailer.delivery_method = :letter_opener
   # Settings specified here will take precedence over those in config/application.rb.
