@@ -14,12 +14,10 @@ import "../plugins/flatpickr";
 // Internal imports
 import "controllers"
 import { navbarMenu } from '../components/navbar_menu';
-import { photoPreview } from '../components/photo_preview';
 import { formInformation } from '../components/form_information';
 
 document.addEventListener('turbolinks:load', () => {
   navbarMenu();
   formInformation();
-  photoPreview();
 });
 
