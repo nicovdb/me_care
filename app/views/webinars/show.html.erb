@@ -2,13 +2,7 @@
   <div class="container">
     <div class="d-md-flex justify-content-between d-none d-md-block mb-md-5 col-12 col-md-10 offset-md-1">
       <span class="feature-name my-auto">easy Live</span>
-      <% if @webinar_subscription.present? && @webinar_subscription.paid? %>
-        <div class="d-flex align-items-center"><%= image_tag "confirmation.svg", class:"confirmation-image" %> <div class="d-flex flex-column text-mini text-green text-header"><span>Inscription</span><span>confirmée</span></div></div>
-      <% elsif @webinar_subscription.present? %>
-        <div class="d-flex flex-column text-mini text-green text-header"><span>Inscription</span><span>en attente</span></div>
-      <% else %>
-        <%= button_to "Je m'inscris", webinar_webinar_subscriptions_path(@webinar), remote: true, class:"btn btn-primary btn-ee" %>
-      <% end %>
+      <%= render "subscription-status", webinar: @webinar, webinar_subscription: @webinar_subscription, checkout_session_id: @checkout_session_id %>
     </div>
 
     <div class="text-center col-md-8 offset-md-2 col-lg-6 offset-lg-3">
@@ -20,13 +14,7 @@
       <p class="text-info text-small"><%= l(@webinar.start_at, format:"%d %B %Y - %Hh%M") %></p>
 
       <div class="d-block d-md-none">
-        <% if @webinar_subscription.present? && @webinar_subscription.paid? %>
-          <div class="d-flex align-items-center justify-content-center"><%= image_tag "confirmation.svg", class:"confirmation-image" %> <div class="d-flex flex-column text-mini text-green text-header"><span>Inscription</span><span>confirmée</span></div></div>
-        <% elsif @webinar_subscription.present? %>
-          <div class="d-flex flex-column text-mini text-green text-header"><span>Inscription</span><span>en attente</span></div>
-        <% else %>
-          <%= button_to "Je m'inscris", webinar_webinar_subscriptions_path(@webinar), method: :post, remote: true, class:"btn btn-primary btn-ee" %>
-        <% end %>
+        <%= render "subscription-status", webinar: @webinar, webinar_subscription: @webinar_subscription, checkout_session_id: @checkout_session_id %>
       </div>
 
      <div class="dropdown-divider dropdown-divider-short my-5 mx-auto"></div>
@@ -37,3 +25,16 @@
     </div>
   </div>
 </div>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+  const paymentButton = document.getElementById('pay');
+  if (paymentButton) {
+    paymentButton.addEventListener('click', () => {
+      const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+      stripe.redirectToCheckout({
+        sessionId: '<%= @checkout_session_id %>'
+      });
+    });
+  }
+</script>

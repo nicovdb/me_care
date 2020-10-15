@@ -19,6 +19,22 @@ class WebinarsController < ApplicationController
   def show
     authorize @webinar
     @webinar_subscription = current_user.webinar_subscriptions.find_by(webinar: @webinar)
+
+    unless @webinar_subscription || current_user.has_valid_subscription?
+      session = Stripe::Checkout::Session.create(
+        customer: current_user.stripe_id,
+        payment_method_types: ['card'],
+        line_items: [{
+          name: @webinar.title,
+          amount: @webinar.price_cents,
+          currency: 'eur',
+          quantity: 1
+        }],
+        success_url: webinar_url(@webinar),
+        cancel_url: webinar_url(@webinar)
+      )
+      @checkout_session_id = session.id
+    end
   end
 
   def update

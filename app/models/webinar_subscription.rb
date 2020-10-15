@@ -6,9 +6,14 @@ class WebinarSubscription < ApplicationRecord
   validates :webinar_id, uniqueness: { scope: :user_id,
     message: "Vous êtes déjà inscrite à ce webinar" }
 
+  after_create :send_confirmation_email
+  after_create :send_to_mailchimp if Rails.env.production?
+
   def paid?
     state == "paid"
   end
+
+  private
 
   def send_to_mailchimp
     Zapier::WebinarSubscription.new(self).post_to_zapier

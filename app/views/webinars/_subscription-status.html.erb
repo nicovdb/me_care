@@ -1,0 +1,10 @@
+<% if webinar_subscription && webinar_subscription.paid? %>
+  <div class="d-flex align-items-center justify-content-center justify-content-md-start"><%= image_tag "confirmation.svg", class:"confirmation-image" %> <div class="d-flex flex-column text-mini text-green text-header"><span>Inscription</span><span>confirmée</span></div></div>
+<% elsif @checkout_session_id %>
+  <button id="pay" class="btn btn-primary btn-ee">Je m'inscris</button>
+<% elsif webinar_subscription %>
+  <div class="d-flex flex-column text-mini text-green text-header"><span>Inscription</span><span>en attente</span></div>
+<% else %>
+  <%= button_to "Je m'inscris", webinar_webinar_subscriptions_path(webinar), remote: true, class:"btn btn-primary btn-ee" %>
+<% end %>
+

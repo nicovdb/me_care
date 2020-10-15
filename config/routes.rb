@@ -15,9 +15,6 @@ Rails.application.routes.draw do
     resources :webinars, path: 'easy-lives', only: [:index, :show, :create, :update, :destroy] do
       resources :webinar_subscriptions, only: [:create]
     end
-    resources :webinar_subscriptions, only: [:show] do
-      resources :payments, only: :new
-    end
     resources :favorites, only: [:create, :destroy]
     get '/dashboard', to: 'dashboards#show'
     get '/profil', to: 'users#show', as: :profil
