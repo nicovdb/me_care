@@ -18,7 +18,7 @@ class WebinarsController < ApplicationController
 
   def show
     authorize @webinar
-    @subscription = current_user.webinar_subscriptions.find_by(webinar: @webinar)
+    @webinar_subscription = current_user.webinar_subscriptions.find_by(webinar: @webinar)
   end
 
   def update

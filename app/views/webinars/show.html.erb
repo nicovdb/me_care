@@ -2,11 +2,12 @@
   <div class="container">
     <div class="d-md-flex justify-content-between d-none d-md-block mb-md-5 col-12 col-md-10 offset-md-1">
       <span class="feature-name my-auto">easy Live</span>
-
-      <% if @subscription.present? %>
+      <% if @webinar_subscription.present? && @webinar_subscription.paid? %>
         <div class="d-flex align-items-center"><%= image_tag "confirmation.svg", class:"confirmation-image" %> <div class="d-flex flex-column text-mini text-green text-header"><span>Inscription</span><span>confirmée</span></div></div>
+      <% elsif @webinar_subscription.present? %>
+        <div class="d-flex flex-column text-mini text-green text-header"><span>Inscription</span><span>en attente</span></div>
       <% else %>
-        <%= link_to "Je m'inscris", webinar_webinar_subscriptions_path(@webinar), method: :post, remote: true, class:"btn btn-primary btn-ee" %>
+        <%= button_to "Je m'inscris", webinar_webinar_subscriptions_path(@webinar), remote: true, class:"btn btn-primary btn-ee" %>
       <% end %>
     </div>
 
@@ -19,10 +20,12 @@
       <p class="text-info text-small"><%= l(@webinar.start_at, format:"%d %B %Y - %Hh%M") %></p>
 
       <div class="d-block d-md-none">
-        <% if @subscription.present? %>
+        <% if @webinar_subscription.present? && @webinar_subscription.paid? %>
           <div class="d-flex align-items-center justify-content-center"><%= image_tag "confirmation.svg", class:"confirmation-image" %> <div class="d-flex flex-column text-mini text-green text-header"><span>Inscription</span><span>confirmée</span></div></div>
+        <% elsif @webinar_subscription.present? %>
+          <div class="d-flex flex-column text-mini text-green text-header"><span>Inscription</span><span>en attente</span></div>
         <% else %>
-          <%= link_to "Je m'inscris", webinar_webinar_subscriptions_path(@webinar), method: :post, remote: true, class:"btn btn-primary btn-ee" %>
+          <%= button_to "Je m'inscris", webinar_webinar_subscriptions_path(@webinar), method: :post, remote: true, class:"btn btn-primary btn-ee" %>
         <% end %>
       </div>
 
