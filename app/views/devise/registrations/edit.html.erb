@@ -14,7 +14,7 @@
           <div class="form-inputs mt-0 mt-md-4" data-controller="photo-preview">
             <div class="text-center">
               <%= image_tag "", width: 300, class: "hidden", data: { target: "photo-preview.photoPreview" } %>
-              <%= cl_image_tag resource.profile_picture, class: "avatar-xl", data: { target: "photo-preview.currentAvatar" } %>
+              <%= cl_image_tag resource.profile_picture, width: 120, height: 120, crop: :fill, quality: :auto, fetch_format: :auto, class: "avatar-xl", data: { target: "photo-preview.currentAvatar" } %>
             </div>
             <div class="text-center">
               <%= f.input :avatar, as: :file, input_html: { class: 'd-none', data: { action: "change->photo-preview#display" } }, label: 'Modifier mon image' %>
