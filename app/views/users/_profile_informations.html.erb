@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-12 col-md-8 offset-md-2">
+    <div class="d-flex flex-column flex-md-row justify-content-center mt-md-5">
+      <div class="text-center text-md-right">
+        <%= cl_image_tag user.profile_picture, width: 120, height: 120, crop: :fill, quality: :auto, fetch_format: :auto, class: "avatar-xl" %>
+      </div>
+      <div class='ml-0 ml-md-5 mt-3 mt-md-0'>
+        <div class="d-flex justify-content-center justify-content-md-start">
+          <p class='mb-0 text-header'><b> <%= user.full_name %></b> </p>
+          <%= link_to edit_user_path(user), class: "ml-2" do %>
+            <%= image_tag "pencil-xl.svg", class: 'icon-edit margin-icon-edit' %>
+          <% end %>
+        </div>
+        <div class="text-center text-md-left text-header">
+          <p class='mb-0'><%= user.email %> </p>
+          <p class='mb-0'>pseudo : <%= user.pseudo %> </p>
+          <p class='mb-0'>mot de passe: ******** </p>
+        </div>
+        <div class="text-small text-header mt-3 mt-md-0">Votre profil est complété à 10%</div>
+        <div class="meter mb-1 mt-2">
+          <span style="width: 25%"></span>
+        </div>
+        <div class="d-flex">
+          <% if current_user.information %>
+            <%= link_to edit_user_information_path(user, user.information) do %>
+              <span class="text-mini text-header text-semibold mb-0 mt-1">Compléter mon profil</span>
+              <%= image_tag "pencil-xl.svg", class: 'icon-edit-small ml-2' %>
+            <% end %>
+          <% else %>
+          <%= link_to new_user_information_path(user) do %>
+              <span class="text-mini text-header text-semibold mb-0 mt-1">Compléter mon profil</span>
+              <%= image_tag "pencil-xl.svg", class: 'icon-edit-small ml-2' %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

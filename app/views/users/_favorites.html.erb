@@ -1,0 +1,37 @@
+<div class="text-center profile-favorite">
+  <h3 class="profil-category-title mb-3"><strong>Mes favoris</strong></h3>
+  <% if favorites.any? %>
+    <div>
+      <% favorites.each do |favorite| %>
+        <% if favorite.article %>
+          <div class="d-flex mb-3">
+            <div class="my-auto">
+              <%= link_to favorite_path(favorite), method: :delete, remote: true do %>
+                <%= image_tag "heart-full.svg" %>
+              <% end %>
+            </div>
+            <div class='text-left ml-3 one-line'>
+              <p class="text-muted mb-0 text-small text-header">News</p>
+              <p class="mb-0"><%= link_to favorite.article.title, article_path(favorite.article), class: 'text-header'  %></p>
+            </div>
+          </div>
+        <% end %>
+        <% if favorite.infoendo %>
+          <div class="d-flex mb-3">
+            <div class="my-auto">
+              <%= link_to favorite_path(favorite), method: :delete, remote: true do %>
+                <%= image_tag "heart-full.svg" %>
+              <% end %>
+            </div>
+            <div class='text-left ml-3 one-line'>
+              <p class="text-muted mb-0 text-small">À savoir</p>
+              <p class="mb-0"><%= link_to favorite.infoendo.title, infoendo_path(favorite.infoendo), class: 'text-header'  %></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% else %>
+    <p class='text-left text-header text-semibold'>Vous n’avez pas encore de favoris. Likez le contenu qui vous intéresse pour le mémoriser dans vos favoris.</p>
+  <% end %>
+</div>

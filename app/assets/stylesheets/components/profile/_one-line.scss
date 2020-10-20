@@ -1,0 +1,9 @@
+.one-line {
+  flex: 1;
+  min-width: 0;
+  p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

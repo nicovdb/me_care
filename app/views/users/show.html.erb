@@ -5,137 +5,33 @@
         <span class="feature-name">Profil</span>
       </div>
     </div>
-    <form action="/customer_portal_sessions" method="POST">
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <button>Manage Billing</button>
-    </form>
 
-    <div class="row">
-      <div class="col-12 col-md-8 offset-md-2">
-        <div class="d-flex flex-column flex-md-row justify-content-center mt-md-5">
-          <div class="text-center text-md-right">
-            <%= cl_image_tag @user.profile_picture, width: 120, height: 120, crop: :fill, quality: :auto, fetch_format: :auto, class: "avatar-xl" %>
-          </div>
-          <div class='ml-0 ml-md-5'>
-            <div class="d-flex justify-content-center justify-content-md-start">
-              <p class='mb-0 text-header'><b> <%= @user.full_name %></b> </p>
-              <%= link_to edit_user_path(@user), class: "ml-2" do %>
-                <%= image_tag "pencil-xl.svg", class: 'icon-edit margin-icon-edit' %>
-              <% end %>
-            </div>
-            <div class="text-center text-md-left text-header">
-              <p class='mb-0'><%= @user.email %> </p>
-              <p class='mb-0'>pseudo : <%= @user.pseudo %> </p>
-              <p class='mb-0'>mot de passe: ******** </p>
-            </div>
-            <div class="text-mini mt-2 mt-md-1">Votre profil est complété à 10%</div>
-            <div class="meter mb-1 mt-2">
-              <span style="width: 25%"></span>
-            </div>
-            <div class="d-flex">
-              <p class="text-mini mb-0 mt-1">Compléter mon profil</p>
-              <% if current_user.information %>
-                <%= link_to edit_user_information_path(@user, @user.information), class: "ml-2" do %>
-                  <%= image_tag "pencil-xl.svg", class: 'icon-edit-small margin-icon-edit' %>
-                <% end %>
-              <% else %>
-              <%= link_to new_user_information_path(@user), class: "ml-2" do %>
-                  <%= image_tag "pencil-xl.svg", class: 'icon-edit-small margin-icon-edit' %>
-                <% end %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <%= render "profile_informations", user: @user %>
+
     <div class="row mt-3 mt-md-5">
       <div class="col-12 col-lg-10 offset-lg-1">
         <div class="row">
-          <div class="col-12 col-md-6 border-col-profile-desktop px-5">
+          <div class="col-12 col-md-6 border-col-profile-desktop px-4 px-md-5">
             <div class="dropdown-divider my-4 mx-5 d-block d-md-none"></div>
-            <div class="text-center">
-              <h3 class="profil-category-title"><strong>Mon abonnement</strong></h3>
-              <p class='text-left text-header text-semibold'>Vous n’avez pas encore d’abonnement. Rendez-vous sur la page Abonnement pour souscrire à notre offre.</p>
-            </div>
-            <div class="dropdown-divider my-5 mx-5"></div>
-            <div class="text-center">
-              <h3 class="profil-category-title"><strong>Mes discussions</strong></h3>
-              <p class='text-left text-header text-semibold'>Vous n’avez participé à encore aucune discussion du Forum.</p>
-            </div>
-            <div class="dropdown-divider my-5 mx-5"></div>
-            <div class="text-center">
-              <h3 class="profil-category-title"><strong>Mes rdv easy Live</strong></h3>
-                <% if @user.webinar_subscriptions.any? %>
-                  <% @user.webinar_subscriptions.each do |webinar_subscription| %>
-                    <div class="d-flex my-3">
-                      <div class="my-auto green-bullet">
+            <%= render "abonnement" %>
 
-                      </div>
-                      <div class='text-left ml-2'>
-                        <p class="mb-0"><%= link_to webinar_subscription.webinar.title, webinar_path(webinar_subscription.webinar), class: 'text-header'%></p>
-                        <div class="text-mini text-info">
-                          <%= l(webinar_subscription.webinar.start_at, format:"%d %B %Y - %Hh%M") %>
-                        </div>
-                      </div>
-                    </div>
-                  <% end %>
-                <% else %>
-                  <p class='text-left text-header text-semibold'>Vous n’êtes pas encore inscrite à un webinar d’<span class='text-pink'>easy endo</span>.</p>
-                <% end %>
+            <div class="d-block d-md-none">
+              <div class="dropdown-divider my-5 mx-5"></div>
+              <%= render "favorites", favorites: @favorites %>
             </div>
+
+            <div class="dropdown-divider my-5 mx-5"></div>
+            <%= render "discussions" %>
+            <div class="dropdown-divider my-5 mx-5"></div>
+            <%= render "easy_lives", user: @user %>
+            <div class="dropdown-divider my-5 mx-5"></div>
           </div>
-          <div class="col-12 col-md-6 px-5">
-            <div class="dropdown-divider my-5 mx-5 d-block d-md-none"></div>
-            <div class="text-center profile-favorite">
-              <h3 class="profil-category-title"><strong>Mes favoris</strong></h3>
-              <% if @favorites.any? %>
-                <div>
-                  <% @favorites.each do |favorite| %>
-                    <% if favorite.article %>
-                    <div class="d-flex my-3">
-                      <div class="my-auto">
-                        <%= image_tag "heart-full.svg" %>
-                      </div>
-                      <div class='text-left ml-3'>
-                        <p class="text-muted mb-0 text-small text-header">News</p>
-                        <p class="mb-0"><%= link_to favorite.article.title, article_path(favorite.article), class: 'text-header'  %></p>
-                      </div>
-                    </div>
-                    <% end %>
-                    <% if favorite.infoendo %>
-                    <div class="d-flex my-3">
-                      <div class="my-auto">
-                        <%= image_tag "heart-full.svg" %>
-                      </div>
-                      <div class='text-left ml-3'>
-                        <p class="text-muted mb-0 text-small">À savoir</p>
-                        <p class="mb-0"><%= link_to favorite.infoendo.title, infoendo_path(favorite.infoendo), class: 'text-header'  %></p>
-                      </div>
-                    </div>
-                    <% end %>
-                  <% end %>
-                </div>
-              <% else %>
-                <p class='text-left text-header text-semibold'>Vous n’avez pas encore de favoris. Likez le contenu qui vous intéresse pour le mémoriser dans vos favoris.</p>
-              <% end %>
-            </div>
+          <div class="col-12 col-md-6 px-4 px-md-5 d-none d-md-block">
+            <%= render "favorites", favorites: @favorites %>
           </div>
         </div>
       </div>
     </div>
-    <div class="row py-5">
-      <div class="col">
-        <div class="text-center">
-          <div>
-            <%= link_to "JE SUPPRIME MON COMPTE", anonymize_path(@user), data: { confirm: 'Vous allez supprimer définitivement votre compte. Cette action est irréversible. Êtes vous sûre ?' }, method: :patch, class: 'btn btn-primary text-mini btn-ee' %>
-          </div>
-          <div>
-            <% if @user.information %>
-              <%= link_to "Supprimer mes données", delete_information_path(@user.information), method: :delete, data: { confirm: 'Vous allez supprimer définitivement toutes les données de votre questionnaire et de votre agenda. Cette action est irréversible. Êtes vous sûre ?' } , class: 'text-mini mt-1' %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
+    <%= render "delete_account", user: @user %>
   </div>
 </div>
