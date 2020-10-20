@@ -19,7 +19,7 @@
           <div class='ml-0 ml-md-5'>
             <div class="d-flex justify-content-center justify-content-md-start">
               <p class='mb-0 text-header'><b> <%= @user.full_name %></b> </p>
-              <%= link_to edit_user_registration_path, class: "ml-2" do %>
+              <%= link_to edit_user_path(@user), class: "ml-2" do %>
                 <%= image_tag "pencil-xl.svg", class: 'icon-edit margin-icon-edit' %>
               <% end %>
             </div>
