@@ -1,12 +1,17 @@
 class WebinarSubscription < ApplicationRecord
   belongs_to :webinar
   belongs_to :user
+  monetize :amount_cents
 
   validates :webinar_id, uniqueness: { scope: :user_id,
     message: "Vous êtes déjà inscrite à ce webinar" }
 
   after_create :send_confirmation_email
   after_create :send_to_mailchimp if Rails.env.production?
+
+  def paid?
+    state == "paid"
+  end
 
   private
 

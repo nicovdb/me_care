@@ -42,7 +42,7 @@ class User < ApplicationRecord
   end
 
   def has_valid_subscription?
-    self.subscription && self.subscription.end_date >= Date.today
+    subscription && subscription.end_date >= Date.today && (subscription.status == "active" || subscription.status == "trialing")
   end
 
   private
