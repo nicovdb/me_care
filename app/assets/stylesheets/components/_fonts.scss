@@ -1,26 +1,24 @@
-h1,h2,h3 {
-  color: $primary;
-}
+//////////////////// Font sizes & weight //////////////////////////
 
 h1 {
-  font-size: 32px;
+  // font-size: 32px;
   font-weight: 700;
 }
 
 h2 {
-  font-size: 28px;
+  // font-size: 28px;
   font-weight: 600;
 }
 
 h3 {
-  font-size: 24px;
+  // font-size: 24px;
   font-weight: 600;
 }
 
 a {
   color: $primary;
   font-weight: 700;
-  font-size: 24px;
+  // font-size: 24px;
   &:hover {
     color: $primary;
   }
@@ -43,16 +41,13 @@ label {
   font-size:20px;
 }
 
-.text-green {
-  color: $green;
-}
 
-.form-text.text-muted {
-  font-size: 16px;
-}
+// .form-text.text-muted {
+//   font-size: 16px;
+// }
 
 
-@media (max-width: 1400px)  {
+// @media (max-width: 1400px)  {
   body,p,text,a, label {
     font-size: 18px;
   }
@@ -78,15 +73,15 @@ label {
   }
 
   .form-text.text-muted {
-  font-size: 14px;
-}
+    font-size: 14px;
+  }
 
-}
+// }
 
-.text-ee {
-  color: $pink;
-  font-weight: 600;
-  font-family: $headers-font;
+//////////////////// Font colors //////////////////////////
+
+.text-green {
+  color: $green;
 }
 
 .text-pink {
@@ -97,10 +92,26 @@ label {
   color: #F72305;
 }
 
+//////////////////// Font families //////////////////////////
+
 .text-header {
   font-family: $headers-font;
 }
 
 .text-body-font {
   font-family: $body-font;
+}
+
+//////////////////// Font weights //////////////////////////
+
+.text-semibold {
+  font-weight: 600;
+}
+
+//////////////////// Special fonts //////////////////////////
+
+.text-ee {
+  color: $pink;
+  font-weight: 600;
+  font-family: $headers-font;
 }

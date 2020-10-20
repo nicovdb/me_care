@@ -6,14 +6,14 @@
 
     <div class="truncated pr-3">
       <%= link_to webinar_path(webinar) do %>
-        <div class="text-small text-info">
+        <div class="text-info">
           <%= t("webinar.#{webinar.category}") %>
         </div>
-        <h2 class="my-1"><b><%= webinar.title %></b></h2>
+        <h2 class="my-0"><b><%= webinar.title %></b></h2>
         <div class="text-mini text-info">
           <%= l(webinar.start_at, format:"%d %B %Y - %Hh%M") %>
         </div>
-        <div class="text-mini text-info">
+        <div class="text-mini text-info mt-1">
           avec <%= webinar.speaker_name %>
         </div>
       <% end %>
