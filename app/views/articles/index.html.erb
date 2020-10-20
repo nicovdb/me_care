@@ -3,7 +3,9 @@
 
     <div class="d-md-flex justify-content-between mb-3 col-12 col-md-10 offset-md-1">
       <div class="d-none d-md-block">
-        <span class="feature-name">News</span>
+        <%= link_to articles_path do  %>
+          <span class="feature-name">News</span>
+        <% end %>
       </div>
       <%= render "search-bar" %>
     </div>
