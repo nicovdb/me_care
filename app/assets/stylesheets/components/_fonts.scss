@@ -80,6 +80,10 @@ label {
 
 //////////////////// Font colors //////////////////////////
 
+h1, h2, h3 {
+  color: $primary;
+}
+
 .text-green {
   color: $green;
 }
