@@ -7,6 +7,7 @@ class WebinarsController < ApplicationController
 
   def create
     @webinar = Webinar.new(webinar_params)
+    @webinar.price = 5
     authorize @webinar
 
     if @webinar.save
