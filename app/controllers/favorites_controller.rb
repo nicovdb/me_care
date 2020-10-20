@@ -20,12 +20,6 @@ class FavoritesController < ApplicationController
     @favorite = Favorite.find(params[:id])
     authorize @favorite
     @favorite.destroy
-
-    if !@favorite.article.nil?
-      redirect_to article_path(@favorite.article)
-    end
-    if !@favorite.infoendo.nil?
-      redirect_to infoendo_path(@favorite.infoendo)
-    end
+    redirect_back fallback_location: root_path
   end
 end

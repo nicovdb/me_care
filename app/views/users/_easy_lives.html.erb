@@ -1,0 +1,18 @@
+<div class="text-center">
+  <h3 class="profil-category-title mb-3"><strong>Mes rdv easy Live</strong></h3>
+  <% if user.webinar_subscriptions.any? %>
+    <% user.webinar_subscriptions.each do |webinar_subscription| %>
+      <div class="d-flex mb-3">
+        <div class="my-auto green-bullet"></div>
+        <div class='text-left ml-2 one-line'>
+          <p class="mb-1"><%= link_to webinar_subscription.webinar.title, webinar_path(webinar_subscription.webinar), class: 'text-header text-semibold'%></p>
+          <div class="text-mini text-info">
+            <%= l(webinar_subscription.webinar.start_at, format:"%d %B %Y - %Hh%M") %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p class='text-left text-header text-semibold'>Vous n’êtes pas encore inscrite à un webinar d’<span class='text-pink'>easy endo</span>.</p>
+  <% end %>
+</div>
