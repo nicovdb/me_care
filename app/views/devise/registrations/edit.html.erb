@@ -19,9 +19,9 @@
             <div class="text-center">
               <%= f.input :avatar, as: :file, input_html: { class: 'd-none', data: { action: "change->photo-preview#display" } }, label: 'Modifier mon image' %>
             </div>
-            <%= f.input :first_name, required: true, autofocus: true, label: "Prénom" %>
-            <%= f.input :last_name, required: true, autofocus: true, label: "Nom" %>
-            <%= f.input :email, required: true, autofocus: true, label: "Email" %>
+            <%= f.input :first_name, required: false, autofocus: true, label: "Prénom" %>
+            <%= f.input :last_name, required: false, autofocus: true, label: "Nom" %>
+            <%= f.input :email, required: false, autofocus: true, label: "Email" %>
 
             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
               <p><%= t(".currently_waiting_confirmation_for_email", email: resource.unconfirmed_email) %></p>
@@ -32,18 +32,18 @@
                         required: false,
                         label: "Pseudo",
                         input_html: { autocomplete: "new-password" } %>
-            <%= f.input :current_password,
+            <%#= f.input :current_password,
                         hint: "Nous avons besoin de votre mot de passe actuel pour valider ces modifications",
-                        required: true,
+                        required: false,
                         label: "Mot de passe actuel",
                         input_html: { autocomplete: "current-password" } %>
-            <p class="mt-5 text-green">Ne remplissez les deux prochains champs que si vous souhaitez modifier votre mot de passe</p>
-            <%= f.input :password,
+            <!-- <p class="mt-5 text-green">Ne remplissez les deux prochains champs que si vous souhaitez modifier votre mot de passe</p> -->
+            <%#= f.input :password,
                         hint: "N'écrire ici que si vous souhaitez modifier votre mot de passe. <br>- minimum 8 caractères<br>- 1 caractère spécial<br>- 1 majuscule<br>- 1 chiffre".html_safe,
                         required: false,
                         label: "Nouveau mot de passe",
                         input_html: { autocomplete: "new-password" } %>
-            <%= f.input :password_confirmation,
+            <%#= f.input :password_confirmation,
                         required: false,
                         label: "Confirmation du nouveau mot de passe",
                         input_html: { autocomplete: "new-password" } %>

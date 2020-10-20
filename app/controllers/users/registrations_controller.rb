@@ -20,9 +20,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    @user = resource
+    authorize @user
+
+    if @user.update(user_params)
+      redirect_to profil_path
+    else
+      render 'edit'
+    end
+  end
 
   # DELETE /resource
   # def destroy
@@ -59,4 +66,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:avatar, :first_name, :last_name, :email, :pseudo)
+  end
 end
