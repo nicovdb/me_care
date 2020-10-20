@@ -13,6 +13,15 @@
   display: inline-block;
 }
 
+@media (min-width: 768px) {
+  .webinar-card, .article-card {
+    .category-bullet {
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
+
 .category-bullet-big  {
   border-radius: 50%;
   width: 18px;

@@ -1,15 +1,15 @@
 <div class="webinar-card">
   <div class="d-flex align-items-center">
-    <div class="mr-3 mr-md-4">
-      <span class="category-bullet-big <%= webinar.category %>"></span>
+    <div class="mr-2 mr-md-4">
+      <span class="category-bullet <%= webinar.category %>"></span>
     </div>
 
-    <div class="truncated pr-3">
+    <div class="truncated pr-2">
       <%= link_to webinar_path(webinar) do %>
         <div class="text-info">
           <%= t("webinar.#{webinar.category}") %>
         </div>
-        <h2 class="my-0"><b><%= webinar.title %></b></h2>
+        <h2 class="my-1 pr-0"><b><%= webinar.title %></b></h2>
         <div class="text-mini text-info">
           <%= l(webinar.start_at, format:"%d %B %Y - %Hh%M") %>
         </div>
