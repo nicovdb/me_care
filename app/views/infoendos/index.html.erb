@@ -3,7 +3,9 @@
     <div class="container">
       <div class="d-md-flex justify-content-between mb-3 col-12 col-md-10 offset-md-1">
         <div class="d-none d-md-block">
-          <span class="feature-name">À savoir</span>
+          <%= link_to infoendos_path do  %>
+            <span class="feature-name">À SAVOIR</span>
+          <% end %>
         </div>
         <%= render "search-bar" %>
       </div>
@@ -14,7 +16,7 @@
         <% unless @videos.empty? %>
           <div class="d-flex justify-content-center justify-content-md-start align-items-center mt-5">
             <%= image_tag "video.svg", class:"media-type-icon-smaller" %>
-            <h3 class="ml-3 mb-0">Videos</h3>
+            <h3 class="ml-3 mb-0"><b>Videos</b></h3>
           </div>
           <div class="dropdown-divider my-4"></div>
           <% @videos.each do |infoendo| %>
@@ -26,7 +28,7 @@
         <% unless @articles.empty? %>
           <div class="d-flex justify-content-center justify-content-md-start align-items-center mt-5">
             <%= image_tag "fiche.svg", class:"media-type-icon" %>
-            <h3 class="ml-3 mb-0">Fiches</h3>
+            <h3 class="ml-3 mb-0"><b>Fiches</b></h3>
           </div>
           <div class="dropdown-divider my-4"></div>
           <% @articles.each do |infoendo| %>

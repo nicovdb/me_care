@@ -4,9 +4,9 @@
       <div class="d-flex align-items-center justify-content-center my-3 my-md-0 mx-4">
         <%= image_tag "#{media}.svg", class: 'media-type-icon' %>
         <% if params[:media_type].present? && params[:media_type] == media %>
-          <h3 class="ml-2 mb-0 text-underline"><%= t("article.#{media}")%></h3>
+          <h3 class="ml-2 mb-0 text-underline"><b><%= t("article.#{media}")%></b></h3>
         <% else %>
-            <h3 class="ml-2 mb-0 category-link"><%= t("article.#{media}")%></h3>
+            <h3 class="ml-2 mb-0 category-link"><b><%= t("article.#{media}")%></b></h3>
         <% end %>
       </div>
     <% end %>
