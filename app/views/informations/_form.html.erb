@@ -1,15 +1,13 @@
 <div class="bg padding-top-navbar">
   <div class="container text-green">
-    <div class="row">
-      <div class="d-md-flex justify-content-between mb-3 col-12 col-md-10 offset-md-1">
-        <div class="d-none d-md-block">
-          <span class="feature-name">QUESTIONNAIRE</span>
-        </div>
+    <div class="row d-none d-md-block">
+      <div class="mb-3 col-12 col-md-10 offset-md-1">
+        <span class="feature-name">QUESTIONNAIRE</span>
       </div>
     </div>
     <div class="row">
-      <div class="col-12 col-md-8 offset-md-2 mt-4">
-        <p class="text-header">Ce questionnaire a pour but de mieux vous connaître, afin de pouvoir vous traiter de façon adaptée. Il permettra également de mieux comprendre la maladie, et de faire progresser la science. Vous êtes libre d’y répondre. Vous pouvez à tout moment le corriger.</p>
+      <div class="col-12 col-md-8 offset-md-2 mt-md-4 px-md-0">
+        <p class="text-header text-semibold">Ce questionnaire a pour but de mieux vous connaître, afin de pouvoir vous traiter de façon adaptée. Il permettra également de mieux comprendre la maladie, et de faire progresser la science. Vous êtes libre d’y répondre. Vous pouvez à tout moment le corriger.</p>
       </div>
     </div>
     <div class="text-center">
@@ -20,7 +18,7 @@
         <%= simple_form_for [@user, @information], url: url, method: method,
               wrapper_mappings: {
               } do |f| %>
-          <%= f.input :date_of_birth, as: :string, required: false, input_html: {class: "datepicker"}, label: "Date de naissance" %>
+          <%= f.input :date_of_birth, as: :string, required: false, input_html: {class: "datepicker", value: "#{@information.date_of_birth.strftime('%d/%m/%Y') if @information.date_of_birth }"}, label: "Date de naissance", placeholder: "JJ/MM/ANNEE" %>
           <%= f.input :family_situation, as: :radio_buttons, label: "Situation", collection: Information.family_situations.keys.map { |m| [t("information.#{m.downcase}"), m] }, wrapper: :horizontal_collection_inline %>
           <%= f.input :job, label: "Profession" %>
           <%= f.input :diagnosis_age, label: "Âge au diagnostic de votre endométriose", placeholder: 'ans' %>
