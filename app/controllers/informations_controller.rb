@@ -16,14 +16,16 @@ class InformationsController < ApplicationController
     if information_params[:terms_conditions] == "0"
       @information = Information.new(information_params)
       authorize @information
-      render 'new'
       flash[:alert] = "Vous devez accepter le traitement de vos données."
+      @anchor = "terms"
+      render 'new'
     else
       check_for_other_disease_and_therapy
       @information = Information.new(information_params)
       authorize @information
       @information.user = @user
       if @information.save
+        flash[:alert] = nil
         redirect_to profil_path
       else
         render 'new'
@@ -40,13 +42,15 @@ class InformationsController < ApplicationController
   def update
     authorize @information
     if information_params[:terms_conditions] == "0"
-      render 'edit'
       flash[:alert] = "Vous devez accepter le traitement de vos données."
+      @anchor = "terms"
+      render 'edit'
     else
       delete_info_diseases
       delete_info_alternative_therapies
       delete_info_fam_member_antes
       if @information.update(information_params)
+        flash[:alert] = nil
         redirect_to profil_path
       else
         render 'edit'
