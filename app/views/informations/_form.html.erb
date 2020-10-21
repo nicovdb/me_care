@@ -18,7 +18,7 @@
         <%= simple_form_for [@user, @information], url: url, method: method,
               wrapper_mappings: {
               } do |f| %>
-          <%= f.input :date_of_birth, as: :string, required: false, input_html: {class: "datepicker", value: "#{@information.date_of_birth.strftime('%d/%m/%Y') if @information.date_of_birth }"}, label: "Date de naissance", placeholder: "JJ/MM/ANNEE" %>
+          <%= f.input :date_of_birth, as: :string, required: false, input_html: {class: "datepicker", value: "#{@information.date_of_birth.strftime('%d-%m-%Y') if @information.date_of_birth }"}, label: "Date de naissance", placeholder: "JJ-MM-ANNEE" %>
           <%= f.input :family_situation, as: :radio_buttons, label: "Situation", collection: Information.family_situations.keys.map { |m| [t("information.#{m.downcase}"), m] }, wrapper: :horizontal_collection_inline %>
           <%= f.input :job, label: "Profession" %>
           <%= f.input :diagnosis_age, label: "Âge au diagnostic de votre endométriose", placeholder: 'ans' %>
