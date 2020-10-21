@@ -1,3 +1,15 @@
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
+textarea, input { outline: none; }
+
 .form-control {
   border-color: $light-green-gray;
   border-radius: 8px;
@@ -41,12 +53,28 @@ input.new_information {
   width: 200px;
 }
 
+input[type='radio'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+}
+
+input[type='radio']:checked {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+}
+
 input[type='radio']:after {
     width: 14px;
     height: 14px;
-    border-radius: 14px;
-    top: -7px;
-    left: 0px;
+    border-radius: 50%;
+    top: -10px;
+    left: -4px;
     position: relative;
     background-color: white;
     content: '';
@@ -58,9 +86,9 @@ input[type='radio']:after {
 input[type='radio']:checked:after {
     width: 14px;
     height: 14px;
-    border-radius: 14px;
-    top: -7px;
-    left: 0px;
+    border-radius: 50%;
+    top: -10px;
+    left: -4px;
     position: relative;
     background-color: $pink;
     content: '';
@@ -72,9 +100,9 @@ input[type='radio']:checked:after {
   input[type='radio']:after {
     width: 18px;
     height: 18px;
-    border-radius: 18px;
-    top: -7px;
-    left: -2px;
+    border-radius: 50%;
+    top: -5px;
+    left: -6px;
     position: relative;
     background-color: white;
     content: '';
@@ -86,9 +114,9 @@ input[type='radio']:checked:after {
   input[type='radio']:checked:after {
     width: 18px;
     height: 18px;
-    border-radius: 18px;
-    top: -7px;
-    left: -2px;
+    border-radius: 50%;
+    top: -5px;
+    left: -6px;
     position: relative;
     background-color: $pink;
     content: '';
@@ -116,21 +144,20 @@ input[type='radio']:checked:after {
   .form-control#information_diagnosis_age::placeholder {
     text-align: right;
   }
-  .form-control#information_diagnosis_age{
+  .form-control#information_diagnosis_age {
     padding-bottom: 10px;
     padding-left: 8px;
     padding-right: 4px;
   }
-  .form-control#information_size::placeholder,  {
+  .form-control#information_size::placeholder, .form-control#information_weight::placeholder {
     text-align: right;
-  }
-  .form-control#information_weight::placeholder,  {
-    text-align: right;
+    -moz-appearance: none;
   }
 
   input[type= 'text'] {
     &#information_diseases_attributes_0_name {
       margin-left: 10px !important;
+
     }
     &#information_alternative_therapies_attributes_0_name {
       margin-left: 10px !important;
@@ -154,7 +181,7 @@ input[type='radio']:checked:after {
   label:before {
     width: 10px;
     height: 10px;
-    border-radius: 10px;
+    border-radius: 50%;
     top: -1px;
     left: -10px;
     position: relative;
@@ -198,6 +225,7 @@ input[type='radio']:checked:after {
 }
 
 .information_imc, .information_size, .information_weight {
+  -moz-appearance: none;
   text-align:center;
   input {
     font-size: 12px;
@@ -223,7 +251,7 @@ input[type='radio']:checked:after {
     border-color: transparent;
 }
 
-.information_fam_member_antes, .information_diseases, .information_alternative_therapies {
+.information_diseases, .information_alternative_therapies {
   legend {
     display:none;
   }
@@ -234,7 +262,7 @@ input[type='radio']:checked:after {
     & + label:before {
       width: 14px;
       height: 14px;
-      border-radius: 14px;
+      border-radius: 50%;
       top: 2px;
       right: 0px;
       position: relative;
@@ -248,7 +276,7 @@ input[type='radio']:checked:after {
     &:checked + label:before {
       width: 14px;
       height: 14px;
-      border-radius: 14px;
+      border-radius: 50%;
       top: 2px;
       right: 0px;
       position: relative;
@@ -283,7 +311,7 @@ input[type='radio']:checked:after {
     & + label:before {
       width: 14px;
       height: 14px;
-      border-radius: 14px;
+      border-radius: 50%;
       top: 2px;
       right: 0px;
       position: relative;
@@ -296,7 +324,7 @@ input[type='radio']:checked:after {
     &:checked + label:before {
       width: 14px;
       height: 14px;
-      border-radius: 14px;
+      border-radius: 50%;
       top: 2px;
       right: 0px;
       position: relative;
@@ -314,3 +342,84 @@ input[type='radio']:checked:after {
 }
 
 
+.information_fam_member_antes {
+  legend {
+    display:none;
+  }
+  input[type=checkbox] {
+    display: none;
+
+    & + label:before {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      top: 2px;
+      right: 0px;
+      position: relative;
+      background-color: white;
+      content: '';
+      display: inline-block;
+      visibility: visible;
+      border: 1px solid $pink;
+    }
+
+    &:checked + label:before {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      top: 2px;
+      right: 0px;
+      position: relative;
+      background-color: $pink;
+      content: '';
+      display: inline-block;
+      visibility: visible;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .information_fam_member_antes {
+    display: flex;
+    justify-content: space-between;
+    .collection_check_boxes {
+      margin-top: 15px;
+      display: flex;
+      flex-direction: column-reverse;
+    }
+  }
+
+  .information_fam_member_antes {
+    legend {
+      display:none;
+    }
+    input[type=checkbox] {
+      display: none;
+
+      & + label:before {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        top: 2px;
+        background-color: white;
+        content: '';
+        left: 35%;
+        position: relative;
+        visibility: visible;
+        border: 1px solid $pink;
+      }
+
+      &:checked + label:before {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        top: 2px;
+        left: 35%;
+        position: relative;
+        background-color: $pink;
+        content: '';
+        visibility: visible;
+      }
+    }
+  }
+}
