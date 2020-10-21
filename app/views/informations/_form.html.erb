@@ -61,7 +61,7 @@
           <%= f.input :endo_surgery_number, disabled: !@information.endo_surgery, label: false, placeholder: 'nombre' %>
           <%= f.input :pain_center, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label:'Prise en charge par un centre de la douleur' %>
           <%= f.input :physiotherapist, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label: 'Recours à la kinésithérapie' %>
-          <%= f.input :ostheopath, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label: 'Recours à l’osthéopathie' %>
+          <%= f.input :ostheopath, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label: 'Recours à l’ostéopathie' %>
           <%= f.input :alternative_therapy, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label: 'Recours à des thérapies complémentaires' %>
           <%= f.association :alternative_therapies, as: :check_boxes, collection: @displayed_therapies, label: false %>
           <% if action_name == "new"  %>
