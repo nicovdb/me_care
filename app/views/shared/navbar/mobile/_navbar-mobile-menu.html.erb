@@ -1,7 +1,10 @@
 <div id="menu" class="close">
   <div class="w-100 min-h-100 bg-darker py-4">
     <div class="container px-4">
-      <div class="text-center">
+      <div class="text-center position-relative">
+        <button id="menu-close" class="navbar-toggler position-absolute" style="left:0; top:0">
+          <%= image_tag "close-button.svg" %>
+        </button>
         <%= link_to main_app.profil_path do %>
           <%= cl_image_tag current_user.profile_picture, width: 120, height: 120, crop: :fill, quality: :auto, fetch_format: :auto, class: "avatar-menu-mobile" %>
         <% end %>
@@ -78,12 +81,6 @@
             </div>
           <% end %>
         </div>
-      </div>
-
-      <div class="text-center">
-        <button id="menu-close" class="navbar-toggler">
-          <%= image_tag "close-button.svg" %>
-        </button>
       </div>
     </div>
   </div>
