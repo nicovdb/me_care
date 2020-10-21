@@ -2,7 +2,9 @@
   <div class="col-12 col-md-8 offset-md-2">
     <div class="d-flex flex-column flex-md-row justify-content-center mt-md-5">
       <div class="text-center text-md-right">
-        <%= cl_image_tag user.profile_picture, width: 120, height: 120, crop: :fill, quality: :auto, fetch_format: :auto, class: "avatar-xl" %>
+        <%= link_to edit_user_path(user) do %>
+          <%= cl_image_tag user.profile_picture, width: 120, height: 120, crop: :fill, quality: :auto, fetch_format: :auto, class: "avatar-xl" %>
+        <% end %>
       </div>
       <div class='ml-0 ml-md-5 mt-3 mt-md-0'>
         <div class="d-flex justify-content-center justify-content-md-start">

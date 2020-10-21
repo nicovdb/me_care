@@ -1,7 +1,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "photoPreview", "currentAvatar" ]
+  static targets = [ "photoPreview", "currentAvatar", "avatarInput" ]
 
   display(event) {
     const input = event.target
@@ -17,5 +17,10 @@ export default class extends Controller {
       newAvatar.classList.remove('hidden');
       newAvatar.classList.add('avatar-xl');
     };
+  }
+
+  clickInput() {
+    const avatarInput = this.avatarInputTarget
+    avatarInput.click()
   }
 }

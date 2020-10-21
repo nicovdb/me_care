@@ -1,7 +1,9 @@
 <div class="bg pb-5 padding-top-navbar">
   <div class="container">
     <div class="d-md-flex justify-content-between d-none d-md-block mb-md-5 col-12 col-md-10 offset-md-1">
-      <span class="feature-name my-auto">easy Live</span>
+      <%= link_to webinars_path do %>
+          <span class="feature-name">easy Live</span>
+        <% end %>
       <%= render "subscription-status", webinar: @webinar, webinar_subscription: @webinar_subscription, checkout_session_id: @checkout_session_id %>
     </div>
 

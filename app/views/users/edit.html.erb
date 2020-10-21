@@ -3,7 +3,9 @@
     <div class="row">
       <div class="d-md-flex justify-content-between mb-3 col-12 col-md-10 offset-md-1">
         <div class="d-none d-md-block">
-          <span class="feature-name">Profil</span>
+          <%= link_to profil_path do %>
+            <span class="feature-name">Profil</span>
+          <% end %>
         </div>
       </div>
       <div class="col-12 col-md-6 offset-md-3 col-xl-4 offset-xl-4">
@@ -13,11 +15,11 @@
 
           <div class="form-inputs mt-0 mt-md-4" data-controller="photo-preview">
             <div class="text-center">
-              <%= image_tag "", width: 300, class: "hidden", data: { target: "photo-preview.photoPreview" } %>
-              <%= cl_image_tag @user.profile_picture, width: 120, height: 120, crop: :fill, quality: :auto, fetch_format: :auto, class: "avatar-xl", data: { target: "photo-preview.currentAvatar" } %>
+              <%= image_tag "", width: 300, class: "hidden cursor-pointer", data: { target: "photo-preview.photoPreview", action: "click->photo-preview#clickInput" } %>
+              <%= cl_image_tag @user.profile_picture, width: 120, height: 120, crop: :fill, quality: :auto, fetch_format: :auto, class: "avatar-xl cursor-pointer", data: { target: "photo-preview.currentAvatar", action: "click->photo-preview#clickInput" } %>
             </div>
             <div class="text-center">
-              <%= f.input :avatar, as: :file, input_html: { class: 'd-none', data: { action: "change->photo-preview#display" } }, label: 'Modifier mon image' %>
+              <%= f.input :avatar, as: :file, input_html: { class: 'd-none', data: { action: "change->photo-preview#display", target:"photo-preview.avatarInput" } }, label: 'Modifier mon image' %>
             </div>
             <%= f.input :first_name, required: false, autofocus: true, label: "Prénom" %>
             <%= f.input :last_name, required: false, autofocus: true, label: "Nom" %>
