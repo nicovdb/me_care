@@ -36,21 +36,21 @@
 
 
           <!-- FAMILY ANTECEDENT -->
-          <%= f.input :family_antecedent, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label:'Antécédents familiaux d’endométriose', input_html: { data: { action: "click->form-information#ableOrDisableCheckbox", name: "familyAntecedent"} } %>
+          <%= f.input :family_antecedent, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label:'Antécédents familiaux d’endométriose', input_html: { data: { action: "click->form-information#enableOrDisable", name: "familyAntecedent"} } %>
 
           <%= f.association :fam_member_antes, as: :check_boxes, collection: FamMemberAnte.all, wrapper_html: { data: { target: "form-information.familyAntecedent"}} %>
 
 
           <!-- CHILDREN -->
-          <%= f.input :children, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label: 'Enfants', input_html: { data: { action: "click->form-information#ableOrDisableInput", name: "children"} } %>
+          <%= f.input :children, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label: 'Enfants', input_html: { data: { action: "click->form-information#enableOrDisable", name: "children"} } %>
           <%= f.input :children_number, label: false, placeholder: 'nombre', input_html: { data: { target: "form-information.children"}} %>
 
           <!-- MISCARRIAGE -->
-          <%= f.input :miscarriage, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label:'Antécédents de fausse couche', input_html: { data: { action: "click->form-information#ableOrDisableInput", name: "miscarriage"} } %>
+          <%= f.input :miscarriage, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label:'Antécédents de fausse couche', input_html: { data: { action: "click->form-information#enableOrDisable", name: "miscarriage"} } %>
           <%= f.input :miscarriage_number, label: false, placeholder: 'nombre', input_html: { data: { target: "form-information.miscarriage"}} %>
 
           <!-- ABORTION -->
-          <%= f.input :abortion, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label:'Antécédents d’interruption volontaire de grossesse' , input_html: { data: { action: "click->form-information#ableOrDisableInput", name: "abortion"} } %>
+          <%= f.input :abortion, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label:'Antécédents d’interruption volontaire de grossesse' , input_html: { data: { action: "click->form-information#enableOrDisable", name: "abortion"} } %>
           <%= f.input :abortion_number, label: false, placeholder: 'nombre', input_html: { data: { target: "form-information.abortion"}} %>
 
 
@@ -58,22 +58,23 @@
 
 
           <!-- AUTOIMMUNE ANTECEDENT -->
-          <%= f.input :auto_immune_antecedent, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label: 'Antécédents personnels de maladie auto-immune ou inflammatoire chronique', input_html: { data: { action: "click->form-information#ableOrDisableCheckbox", name: "autoImmuneAntecedent"} } %>
-          <%= f.association :diseases, as: :check_boxes, collection: @displayed_diseases, wrapper_html: { data: { target: "form-information.autoImmuneAntecedent"}} %>
+          <%= f.input :auto_immune_antecedent, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label: 'Antécédents personnels de maladie auto-immune ou inflammatoire chronique', input_html: { data: { action: "click->form-information#enableOrDisable", name: "autoImmuneAntecedent"} } %>
+          <%= f.association :diseases, as: :check_boxes, collection: @displayed_diseases, wrapper_html: { data: { target: "form-information.autoImmuneAntecedent"}, class:"mb-2" } %>
+          <%= f.input :other_disease, label: false, placeholder: "Autres à préciser", input_html: { data: { target: "form-information.autoImmuneAntecedent"}, class: "ml-1" } %>
 
-          <% if action_name == "new"  %>
-            <%= f.simple_fields_for :diseases do |d| %>
-              <div class="custom-checkbox" id='checkbox-diseases'>
+          <%# if action_name == "new"  %>
+            <%#= f.simple_fields_for :diseases do |d| %>
+             <!--  <div class="custom-checkbox" id='checkbox-diseases'>
                 <input type="checkbox" id="checkbox1"/>
-                <label for="checkbox1">Autres</label>
-                <%= d.input :name, label: false, placeholder: 'À préciser'%>
-              </div>
-            <% end %>
-          <% end %>
+                <label for="checkbox1">Autres</label> -->
+                <%#= d.input :name, label: false, placeholder: 'À préciser', input_html: { data: { target: "form-information.autoImmuneAntecedent"}}%>
+              <!-- </div> -->
+            <%# end %>
+          <%# end %>
 
 
           <!-- ENDO SURGERY -->
-          <%= f.input :endo_surgery, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label:'Antécédents de chirurgie de l’endométriose', input_html: { data: { action: "click->form-information#ableOrDisableInput", name: "endoSurgery"} } %>
+          <%= f.input :endo_surgery, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label:'Antécédents de chirurgie de l’endométriose', input_html: { data: { action: "click->form-information#enableOrDisable", name: "endoSurgery"} } %>
           <%= f.input :endo_surgery_number, label: false, placeholder: 'nombre', input_html: { data: { target: "form-information.endoSurgery"}} %>
 
 
@@ -83,21 +84,21 @@
 
 
           <!-- ALTERNATIVE THERAPY -->
-          <%= f.input :alternative_therapy, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label: 'Recours à des thérapies complémentaires', input_html: { data: { action: "click->form-information#ableOrDisableCheckbox", name: "alternativeTherapy"} } %>
+          <%= f.input :alternative_therapy, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label: 'Recours à des thérapies complémentaires', input_html: { data: { action: "click->form-information#enableOrDisable", name: "alternativeTherapy"} } %>
           <div id='terms'></div>
-          <%= f.association :alternative_therapies, as: :check_boxes, collection: @displayed_therapies, label: false, wrapper_html: { data: { target: "form-information.alternativeTherapy" } } %>
+          <%= f.association :alternative_therapies, as: :check_boxes, collection: @displayed_therapies, label: false, wrapper_html: { data: { target: "form-information.alternativeTherapy" }, class:"mb-2" } %>
+          <%= f.input :other_alternative_therapy, label: false, placeholder: "Autres à préciser", input_html: { data: { target: "form-information.alternativeTherapy"}, class: "ml-1" } %>
 
-
-          <!-- Voir comment faire pour le autre -->
-          <% if action_name == "new"  %>
-            <%= f.simple_fields_for :alternative_therapies do |d| %>
-              <div class="custom-checkbox" id='checkbox-alt-therapies'>
+          <%# if action_name == "new"  %>
+            <%#= f.simple_fields_for :alternative_therapy do |d| %>
+              <!-- <div class="custom-checkbox" id='checkbox-alt-therapies'>
                 <input type="checkbox" id="checkbox2"/>
-                <label for="checkbox2">Autres</label>
-                <%= d.input :name, label: false, placeholder: 'À préciser'%>
-              </div>
-            <% end %>
-          <% end %>
+                <label for="checkbox2">Autres</label> -->
+                <%#= d.input :name, label: false, placeholder: 'Autre à préciser', value: nil, input_html: { data: { target: "form-information.alternativeTherapy"}}%>
+              <!-- </div> -->
+            <%# end %>
+          <%# end %>
+
           <% if @anchor %>
             <script type="text/javascript">
               window.location.hash = "<%= @anchor %>";

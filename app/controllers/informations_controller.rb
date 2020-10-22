@@ -20,7 +20,7 @@ class InformationsController < ApplicationController
       @anchor = "terms"
       render 'new'
     else
-      check_for_other_disease_and_therapy
+      #check_for_other_disease_and_therapy
       @information = Information.new(information_params)
       authorize @information
       @information.user = @user
@@ -74,12 +74,14 @@ class InformationsController < ApplicationController
   def delete_info_diseases
     if params[:information][:auto_immune_antecedent] == 'false'
       @information.info_diseases.destroy_all
+      @information.other_disease = nil
     end
   end
 
   def delete_info_alternative_therapies
     if params[:information][:alternative_therapy] == 'false'
       @information.info_alternative_therapies.destroy_all
+      @information.other_alternative_therapy = nil
     end
   end
 
@@ -122,31 +124,31 @@ class InformationsController < ApplicationController
   end
 
   def information_params
-    params.require(:information).permit(:auto_immune_antecedent, :date_of_birth, :family_situation, :job, :diagnosis_age, :size, :weight, :imc, :family_antecedent, :children, :children_number, :abortion, :abortion_number, :pma, :endo_surgery, :endo_surgery_number, :pain_center, :physiotherapist, :ostheopath, :alternative_therapy, :terms_conditions, :miscarriage, :miscarriage_number, {fam_member_ante_ids: [] }, {alternative_therapy_ids: [] }, {disease_ids: [] }, diseases_attributes: [:name], alternative_therapies_attributes: [:name])
+    params.require(:information).permit(:auto_immune_antecedent, :date_of_birth, :family_situation, :job, :diagnosis_age, :size, :weight, :imc, :family_antecedent, :children, :children_number, :abortion, :abortion_number, :pma, :endo_surgery, :endo_surgery_number, :pain_center, :physiotherapist, :ostheopath, :alternative_therapy, :terms_conditions, :miscarriage, :miscarriage_number, :other_alternative_therapy, :other_disease, {fam_member_ante_ids: [] }, {alternative_therapy_ids: [] }, {disease_ids: [] }, diseases_attributes: [:name], alternative_therapies_attributes: [:name])
   end
 
-  def check_for_other_disease_and_therapy
-    params_diseases = params[:information].dig(:diseases_attributes, "0", "name")
-    params_therapies = params[:information].dig(:alternative_therapies_attributes, "0", "name")
-    if params_diseases&.empty?
-      params[:information].delete :diseases_attributes
-    end
-    if params_therapies&.empty?
-      params[:information].delete :alternative_therapies_attributes
-    end
-  end
+  # def check_for_other_disease_and_therapy
+  #   params_diseases = params[:information].dig(:diseases_attributes, "0", "name")
+  #   params_therapies = params[:information].dig(:alternative_therapies_attributes, "0", "name")
+  #   if params_diseases&.empty?
+  #     params[:information].delete :diseases_attributes
+  #   end
+  #   if params_therapies&.empty?
+  #     params[:information].delete :alternative_therapies_attributes
+  #   end
+  # end
 
   def set_diseases_and_therapies
-    @displayed_diseases = Disease.where(displayed: true).to_a
-    additional_diseases = @information.diseases.where(displayed: false)
-    unless additional_diseases.empty? || additional_diseases.first.name.empty?
-      @displayed_diseases << additional_diseases.first
-    end
+    @displayed_diseases = Disease.where(displayed: true)#.to_a
+    # additional_diseases = @information.diseases.where(displayed: false)
+    # unless additional_diseases.empty? || additional_diseases.first.name.empty?
+    #   @displayed_diseases << additional_diseases.first
+    # end
 
-    @displayed_therapies = AlternativeTherapy.where(displayed: true).to_a
-    additional_therapies = @information.alternative_therapies.where(displayed: false)
-    unless additional_therapies.empty? || additional_therapies.first.name.empty?
-      @displayed_therapies << additional_therapies.first
-    end
+    @displayed_therapies = AlternativeTherapy.where(displayed: true)#.to_a
+    # additional_therapies = @information.alternative_therapies.where(displayed: false)
+    # unless additional_therapies.empty? || additional_therapies.first.name.empty?
+    #   @displayed_therapies << additional_therapies.first
+    # end
   end
 end
