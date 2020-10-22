@@ -37,7 +37,7 @@ export default class extends Controller {
       target.disabled = false
     } else {
       target.disabled = true
-      this.uncheckChildrenCheckbox(targetName)
+      this.uncheckChildrenCheckbox(target)
     }
   }
 
@@ -53,9 +53,9 @@ export default class extends Controller {
     }
   }
 
-  uncheckChildrenCheckbox(targetName) {
-    document.querySelector(`[data-target="form-information.${targetName}"]`).querySelectorAll(".form-check-input").forEach((check) => {
-      check.checked = false
+  uncheckChildrenCheckbox(target) {
+    target.querySelectorAll(".form-check-input").forEach((checkbox) => {
+      checkbox.checked = false
     })
   }
 }
