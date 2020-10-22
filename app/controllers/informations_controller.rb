@@ -49,6 +49,10 @@ class InformationsController < ApplicationController
       delete_info_diseases
       delete_info_alternative_therapies
       delete_info_fam_member_antes
+      delete_children_number
+      delete_miscarriage_number
+      delete_endo_surgery_number
+      delete_abortion_number
       if @information.update(information_params)
         flash[:alert] = nil
         redirect_to profil_path
@@ -82,6 +86,30 @@ class InformationsController < ApplicationController
   def delete_info_fam_member_antes
     if params[:information][:family_antecedent] == 'false'
       @information.info_fam_member_antes.destroy_all
+    end
+  end
+
+  def delete_children_number
+    if params[:information][:children] == 'false'
+      @information.children_number = nil
+    end
+  end
+
+  def delete_miscarriage_number
+    if params[:information][:miscarriage] == 'false'
+      @information.miscarriage_number = nil
+    end
+  end
+
+  def delete_endo_surgery_number
+    if params[:information][:endo_surgery] == 'false'
+      @information.endo_surgery_number = nil
+    end
+  end
+
+  def delete_abortion_number
+    if params[:information][:abortion] == 'false'
+      @information.abortion_number = nil
     end
   end
 
