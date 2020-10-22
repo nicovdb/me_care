@@ -62,17 +62,6 @@
           <%= f.association :diseases, as: :check_boxes, collection: @displayed_diseases, wrapper_html: { data: { target: "form-information.autoImmuneAntecedent"}, class:"mb-2" } %>
           <%= f.input :other_disease, label: false, placeholder: "Autres à préciser", input_html: { data: { target: "form-information.autoImmuneAntecedent"}, class: "ml-1" } %>
 
-          <%# if action_name == "new"  %>
-            <%#= f.simple_fields_for :diseases do |d| %>
-             <!--  <div class="custom-checkbox" id='checkbox-diseases'>
-                <input type="checkbox" id="checkbox1"/>
-                <label for="checkbox1">Autres</label> -->
-                <%#= d.input :name, label: false, placeholder: 'À préciser', input_html: { data: { target: "form-information.autoImmuneAntecedent"}}%>
-              <!-- </div> -->
-            <%# end %>
-          <%# end %>
-
-
           <!-- ENDO SURGERY -->
           <%= f.input :endo_surgery, as: :radio_buttons,  wrapper: :horizontal_collection_inline, collection: [['oui', true],['non', false]], label:'Antécédents de chirurgie de l’endométriose', input_html: { data: { action: "click->form-information#enableOrDisable", name: "endoSurgery"} } %>
           <%= f.input :endo_surgery_number, label: false, placeholder: 'nombre', input_html: { data: { target: "form-information.endoSurgery"}} %>
@@ -88,16 +77,6 @@
           <div id='terms'></div>
           <%= f.association :alternative_therapies, as: :check_boxes, collection: @displayed_therapies, label: false, wrapper_html: { data: { target: "form-information.alternativeTherapy" }, class:"mb-2" } %>
           <%= f.input :other_alternative_therapy, label: false, placeholder: "Autres à préciser", input_html: { data: { target: "form-information.alternativeTherapy"}, class: "ml-1" } %>
-
-          <%# if action_name == "new"  %>
-            <%#= f.simple_fields_for :alternative_therapy do |d| %>
-              <!-- <div class="custom-checkbox" id='checkbox-alt-therapies'>
-                <input type="checkbox" id="checkbox2"/>
-                <label for="checkbox2">Autres</label> -->
-                <%#= d.input :name, label: false, placeholder: 'Autre à préciser', value: nil, input_html: { data: { target: "form-information.alternativeTherapy"}}%>
-              <!-- </div> -->
-            <%# end %>
-          <%# end %>
 
           <% if @anchor %>
             <script type="text/javascript">
