@@ -16,7 +16,7 @@
         <div class="text-center text-md-left text-header">
           <p class='mb-0'><%= user.email %> </p>
           <p class='mb-0'>pseudo : <%= user.pseudo %> </p>
-          <div class="d-flex">
+          <div class="d-flex justify-content-center justify-content-md-start align-items-center">
             <p class='mb-0'>mot de passe : ******** </p>
             <%= link_to edit_user_registration_path do %>
               <%= image_tag "pencil-xl.svg", class: 'icon-edit-small ml-2' %>
