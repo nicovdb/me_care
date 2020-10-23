@@ -2,11 +2,11 @@
   <div class="w-100 min-h-100 bg-darker py-4">
     <div class="container px-4">
       <div class="text-center position-relative">
-        <button id="menu-close" class="navbar-toggler position-absolute" style="left:0; top:0">
+        <button id="menu-close" class="navbar-toggler position-absolute" style="right:0; top:0">
           <%= image_tag "close-button.svg" %>
         </button>
         <%= link_to main_app.profil_path do %>
-          <%= cl_image_tag current_user.profile_picture, width: 120, height: 120, crop: :fill, quality: :auto, fetch_format: :auto, class: "avatar-menu-mobile" %>
+          <%= cl_image_tag current_user.profile_picture_green, width: 120, height: 120, crop: :fill, quality: :auto, fetch_format: :auto, class: "avatar-menu-mobile" %>
         <% end %>
         <h1 class="text-success pt-3"><%= current_user.full_name %></h1>
         <div class="dropdown-divider divider-pink my-3"></div>
