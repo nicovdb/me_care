@@ -1,45 +1,43 @@
-<div class="bg pb-5 padding-top-navbar">
-  <div class="min-100-vh-with-navbar-footer">
-    <div class="container">
-      <div class="d-md-flex justify-content-between mb-3 col-12 col-md-10 offset-md-1">
-        <div class="d-none d-md-block">
-          <span class="feature-name">CONTACTEZ-NOUS !</span>
-        </div>
+<div class="bg pb-5 padding-top-navbar min-100-vh-with-footer">
+  <div class="container">
+    <div class="d-md-flex justify-content-between mb-3 col-12 col-md-10 offset-md-1">
+      <div class="d-none d-md-block">
+        <span class="feature-name">CONTACTEZ-NOUS !</span>
       </div>
-      <div class="row">
-        <div class="col-10 offset-1 col-sm-4 offset-sm-4 px-1 px-lg-5">
-          <h3 class="text-center mb-4">Une question, un avis à donner, écrivez-nous !</h3>
-          <%= form_for @contact, remote: true do |f| %>
-            <div class="row">
-              <%= f.text_field :first_name, required: true, placeholder: 'Prénom', class:'w-100 my-3' %>
+    </div>
+    <div class="row">
+      <div class="col-10 offset-1 col-sm-4 offset-sm-4 px-1 px-lg-5">
+        <h3 class="text-center mb-4">Une question, un avis à donner, écrivez-nous !</h3>
+        <%= form_for @contact, remote: true do |f| %>
+          <div class="row">
+            <%= f.text_field :first_name, required: true, placeholder: 'Prénom', class:'w-100 my-3' %>
+          </div>
+          <div class="row">
+            <%= f.text_field :last_name, required: true, placeholder: 'Nom',class:'w-100 my-3' %>
+          </div>
+          <div class="row">
+            <%= f.email_field :email, required: true, placeholder: 'Email', class:'w-100 my-3' %>
+          </div>
+          <div class="row">
+            <%= f.text_area :message, as: :text, placeholder: 'Votre message', class:"w-100 px-3 my-3" %>
+          </div>
+          <div class="hidden d-none">
+            <%= f.label :nickname %>
+            <%= f.text_field :nickname, hint: "Leave this field blank" %>
+          </div>
+          <div class="row">
+            <div class="col text-center">
+              <%= f.submit "J'ENVOIE", class: " text-mini btn btn-primary btn-ee mt-4 mb-4 mb-md-5" %>
             </div>
-            <div class="row">
-              <%= f.text_field :last_name, required: true, placeholder: 'Nom',class:'w-100 my-3' %>
-            </div>
-            <div class="row">
-              <%= f.email_field :email, required: true, placeholder: 'Email', class:'w-100 my-3' %>
-            </div>
-            <div class="row">
-              <%= f.text_area :message, as: :text, placeholder: 'Votre message', class:"w-100 px-3 my-3" %>
-            </div>
-            <div class="hidden d-none">
-              <%= f.label :nickname %>
-              <%= f.text_field :nickname, hint: "Leave this field blank" %>
-            </div>
-            <div class="row">
-              <div class="col text-center">
-                <%= f.submit "J'ENVOIE", class: " text-mini btn btn-primary btn-ee mt-4 mb-4 mb-md-5" %>
-              </div>
-            </div>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       </div>
-      <div class="row">
-        <div class="col">
-          <h2 class="text-center">Vous pouvez aussi nous contacter à l’adresse suivante :</h2>
-          <h2 class="text-center text-pink">bonjour@easyendo.fr</h2>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h2 class="text-center">Vous pouvez aussi nous contacter à l’adresse suivante :</h2>
+        <h2 class="text-center text-pink">bonjour@easyendo.fr</h2>
 
-        </div>
       </div>
     </div>
   </div>
