@@ -96,35 +96,6 @@ input[type='radio']:checked:after {
     visibility: visible;
 }
 
-@media (min-width: 1400px)  {
-  input[type='radio']:after {
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    top: -5px;
-    left: -6px;
-    position: relative;
-    background-color: white;
-    content: '';
-    display: inline-block;
-    visibility: visible;
-    border: 1px solid $pink;
-  }
-
-  input[type='radio']:checked:after {
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    top: -5px;
-    left: -6px;
-    position: relative;
-    background-color: $pink;
-    content: '';
-    display: inline-block;
-    visibility: visible;
-  }
-}
-
 .was-validated .form-check-input:valid ~ .form-check-label, .form-check-input.is-valid ~ .form-check-label {
     color: $green;
 }
@@ -238,8 +209,17 @@ input[type='radio']:checked:after {
   padding-left: 45px;
 }
 
+.center-radio.fam-situation {
+  justify-content: space-between;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
 @media (min-width: 992px) {
   .center-radio {
+    justify-content: space-evenly;
+  }
+  .center-radio.fam-situation {
     justify-content: space-evenly;
   }
 }
@@ -427,46 +407,6 @@ input[type='radio']:checked:after {
         background-color: $pink;
         content: '';
         visibility: visible;
-      }
-    }
-  }
-}
-
-@media (min-width: 1400px) {
-
-  .information_fam_member_antes {
-    input[type=checkbox] {
-      & + label:before {
-        width: 18px;
-        height: 18px;
-        top: 2px;
-        left: 35%;
-      }
-
-      &:checked + label:before {
-        width: 18px;
-        height: 18px;
-        border-radius: 50%;
-        top: 2px;
-        left: 35%;
-      }
-    }
-  }
-  .information_diseases, .information_alternative_therapies {
-    input[type=checkbox] {
-
-      & + label:before {
-        width: 18px;
-        height: 18px;
-        top: 2px;
-        right: 0px;
-      }
-
-      &:checked + label:before {
-        width: 18px;
-        height: 18px;
-        top: 2px;
-        right: 0px;
       }
     }
   }
