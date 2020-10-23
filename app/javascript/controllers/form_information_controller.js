@@ -11,8 +11,12 @@ export default class extends Controller {
 
   disableAll() {
     this.familyAntecedentTarget.disabled = true
-    this.autoImmuneAntecedentTarget.disabled = true
-    this.alternativeTherapyTarget.disabled = true
+    this.autoImmuneAntecedentTargets.forEach((target) => {
+      target.disabled = true
+    })
+    this.alternativeTherapyTargets.forEach((target) => {
+      target.disabled = true
+    })
     this.childrenTarget.disabled = true
     this.miscarriageTarget.disabled = true
     this.abortionTarget.disabled = true
@@ -23,33 +27,33 @@ export default class extends Controller {
     const radioButtons = document.querySelectorAll("[data-name]")
     radioButtons.forEach((radioButton) => {
       if (radioButton.value == "true" && radioButton.checked == true) {
-        const name = radioButton.getAttribute("data-name")
-        document.querySelector(`[data-target="form-information.${name}"]`).disabled = false
+        const targetName = radioButton.getAttribute("data-name")
+        const targets = document.querySelectorAll(`[data-target="form-information.${targetName}"]`)
+        targets.forEach((target) => {
+          target.disabled = false
+        })
       }
     })
   }
 
-  ableOrDisableCheckbox(e) {
-    const targetName = e.target.getAttribute("data-name")
-    const target = document.querySelector(`[data-target="form-information.${targetName}"]`)
+  enableOrDisable(event) {
+    const targetName = event.target.getAttribute("data-name")
+    const targets = document.querySelectorAll(`[data-target="form-information.${targetName}"]`)
 
-    if (e.target.value == "true") {
-      target.disabled = false
+    if (event.target.value == "true") {
+      targets.forEach((target) => {
+        target.disabled = false
+      })
     } else {
-      target.disabled = true
-      this.uncheckChildrenCheckbox(target)
-    }
-  }
+      targets.forEach((target) => {
+        target.disabled = true
 
-  ableOrDisableInput(e) {
-    const targetName = e.target.getAttribute("data-name")
-    const target = document.querySelector(`[data-target="form-information.${targetName}"]`)
-
-    if (e.target.value == "true") {
-      target.disabled = false
-    } else {
-      target.disabled = true
-      target.value = null
+        if (target.type == "fieldset") {
+          this.uncheckChildrenCheckbox(target)
+        } else {
+          target.value = null
+        }
+      })
     }
   }
 
