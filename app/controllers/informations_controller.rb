@@ -6,8 +6,7 @@ class InformationsController < ApplicationController
     @information = Information.new
     @information.diseases.build
     @information.alternative_therapies.build
-    @displayed_diseases = Disease.where(displayed: true)
-    @displayed_therapies = AlternativeTherapy.where(displayed: true)
+    display_diseases_and_therapies
     authorize @information
   end
 
@@ -17,6 +16,7 @@ class InformationsController < ApplicationController
     if information_params[:terms_conditions] == "0"
       flash[:alert] = "Vous devez accepter le traitement de vos données."
       @anchor = "terms"
+      display_diseases_and_therapies
       render 'new'
     else
       @information.user = @user
@@ -24,6 +24,7 @@ class InformationsController < ApplicationController
         flash[:alert] = nil
         redirect_to profil_path
       else
+        display_diseases_and_therapies
         render 'new'
       end
     end
@@ -31,8 +32,7 @@ class InformationsController < ApplicationController
 
   def edit
     @information = Information.includes(:diseases, :alternative_therapies).find(params[:id])
-    @displayed_diseases = Disease.where(displayed: true)
-    @displayed_therapies = AlternativeTherapy.where(displayed: true)
+    display_diseases_and_therapies
     authorize @information
   end
 
@@ -41,6 +41,7 @@ class InformationsController < ApplicationController
     if information_params[:terms_conditions] == "0"
       flash[:alert] = "Vous devez accepter le traitement de vos données."
       @anchor = "terms"
+      display_diseases_and_therapies
       render 'edit'
     else
       delete_infos
@@ -49,6 +50,7 @@ class InformationsController < ApplicationController
         flash[:alert] = nil
         redirect_to profil_path
       else
+        display_diseases_and_therapies
         render 'edit'
       end
     end
@@ -62,6 +64,11 @@ class InformationsController < ApplicationController
   end
 
   private
+
+  def display_diseases_and_therapies
+    @displayed_diseases = Disease.where(displayed: true)
+    @displayed_therapies = AlternativeTherapy.where(displayed: true)
+  end
 
   def delete_infos
     if params[:information][:auto_immune_antecedent] == 'false'
