@@ -445,21 +445,21 @@ input[type='radio']:checked:after {
     }
   }
   .information_diseases, .information_alternative_therapies {
-  input[type=checkbox] {
+    input[type=checkbox] {
 
-    & + label:before {
-      width: 18px;
-      height: 18px;
-      top: 2px;
-      right: 0px;
-    }
+      & + label:before {
+        width: 18px;
+        height: 18px;
+        top: 2px;
+        right: 0px;
+      }
 
-    &:checked + label:before {
-      width: 18px;
-      height: 18px;
-      top: 2px;
-      right: 0px;
+      &:checked + label:before {
+        width: 18px;
+        height: 18px;
+        top: 2px;
+        right: 0px;
+      }
     }
   }
-}
 }
