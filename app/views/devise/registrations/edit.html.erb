@@ -1,20 +1,24 @@
 <div class="bg padding-top-navbar">
   <div class="container min-100-vh-with-navbar-footer">
-    <h1>Changer mon mot de passe</h1>
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-      <%= f.error_notification %>
-      <%= f.input :password,
-                  label: "Nouveau mot de passe",
-                  required: false,
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :password_confirmation,
-                  label: "Confirmation du nouveau mot de passe",
-                  required: false,
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :current_password,
-                  label: "Ancien mot de passe",
-                  input_html: { autocomplete: "current-password" } %>
-      <%= f.button :submit, "Modifier mon mot de passe", class: "btn btn-primary btn-ee" %>
-    <% end %>
+    <div class="row">
+      <div class="col-12 col-md-6 offset-md-3">
+        <h1>Changer mon mot de passe</h1>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= f.error_notification %>
+          <%= f.input :password,
+                      label: "Nouveau mot de passe",
+                      required: false,
+                      input_html: { autocomplete: "new-password" } %>
+          <%= f.input :password_confirmation,
+                      label: "Confirmation du nouveau mot de passe",
+                      required: false,
+                      input_html: { autocomplete: "new-password" } %>
+          <%= f.input :current_password,
+                      label: "Ancien mot de passe",
+                      input_html: { autocomplete: "current-password" } %>
+          <%= f.button :submit, "Modifier mon mot de passe", class: "btn btn-primary btn-ee mb-5" %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
