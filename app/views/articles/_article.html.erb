@@ -20,7 +20,7 @@
     <div class="my-auto">
       <%= link_to article_path(article) do %>
         <% if article.cover.attached? %>
-          <%= cl_image_tag article.cover.key, quality: :auto, fetch_format: :auto, width: 200, height: 150, crop: :limit %>
+          <%= cl_image_tag article.cover.key, quality: :auto, fetch_format: :auto, width: 400, height: 400, crop: :limit %>
         <% end %>
       <% end %>
     </div>
