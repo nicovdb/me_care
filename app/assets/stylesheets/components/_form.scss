@@ -219,6 +219,9 @@ input[type='radio']:checked:after {
   .center-radio {
     justify-content: space-evenly;
   }
+  .center-radio.fam-situation {
+    justify-content: space-evenly;
+  }
 }
 
 .information_children_number, .information_miscarriage_number, .information_abortion_number, .information_endo_surgery_number {
