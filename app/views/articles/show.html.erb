@@ -1,8 +1,8 @@
 <% content_for :meta_description, @article.title %>
 <% content_for :meta_image, cl_image_path(@article.cover.key) %>
 
-<div class="bg padding-top-navbar pb-5">
-  <div class="container article-show min-100-vh-with-navbar-footer">
+<div class="bg padding-top-navbar pb-5 min-100-vh-with-footer">
+  <div class="container article-show">
     <div class="col-12 col-md-10 offset-md-1 d-none d-md-block">
       <%= link_to articles_path do  %>
         <span class="feature-name">News</span>
