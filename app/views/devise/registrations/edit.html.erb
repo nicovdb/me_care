@@ -1,8 +1,15 @@
 <div class="bg padding-top-navbar pb-5 min-100-vh-with-footer">
   <div class="container">
+    <div class="d-md-flex justify-content-between col-12 col-md-10 offset-md-1">
+      <div class="d-none d-md-block">
+        <%= link_to profil_path do %>
+          <span class="feature-name">Profil</span>
+        <% end %>
+      </div>
+    </div>
     <div class="row">
       <div class="col-12 col-md-6 offset-md-3">
-        <h1>Changer mon mot de passe</h1>
+        <h1 class='text-center my-4'>Changer mon mot de passe</h1>
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <%= f.error_notification %>
           <%= f.input :password,
@@ -16,7 +23,9 @@
           <%= f.input :current_password,
                       label: "Ancien mot de passe",
                       input_html: { autocomplete: "current-password" } %>
-          <%= f.button :submit, "Modifier mon mot de passe", class: "btn btn-primary btn-ee" %>
+          <div class="text-center">
+            <%= f.button :submit, "Modifier mon mot de passe", class: "btn btn-primary btn-ee-large my-4" %>
+          </div>
         <% end %>
       </div>
     </div>

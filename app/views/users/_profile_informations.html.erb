@@ -23,9 +23,9 @@
             <% end %>
           </div>
         </div>
-        <div class="text-small text-header mt-3 mt-md-0">Votre profil est complété à 10%</div>
+        <div class="text-small text-header mt-3 mt-md-0">Votre profil est complété à <%= @profil_completion_round %>%</div>
         <div class="meter mb-1 mt-2">
-          <span style="width: 25%"></span>
+          <span style="width: <%= @profil_completion_round %>%"></span>
         </div>
         <div class="d-flex">
           <% if current_user.information %>
