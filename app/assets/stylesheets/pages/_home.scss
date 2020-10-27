@@ -6,7 +6,7 @@
 
 .home-service-logo {
   width: 50px;
-  width: -moz-max-content;
+  flex-shrink: 0;
 }
 
 .home-service-category {
