@@ -5,7 +5,7 @@
         <% if controller_name == "users" || (controller_name == "registrations") && action_name == "edit" %>
           <%= image_tag "logo-pink-no-text.svg", class: "dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
         <% else %>
-          <%= cl_image_tag current_user.profile_picture, width: 120, height: 120, crop: :fill, quality: :auto, fetch_format: :auto, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <%= cl_image_tag current_user.profile_picture, width: 120, height: 120, crop: :fill, quality: :auto, fetch_format: :auto, class: "avatar avatar-small dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <% end %>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <% if user_signed_in? && current_user.admin? %>

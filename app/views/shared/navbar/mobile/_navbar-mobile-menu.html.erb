@@ -6,7 +6,7 @@
           <%= image_tag "close-button.svg" %>
         </button>
         <%= link_to main_app.profil_path do %>
-          <%= cl_image_tag current_user.profile_picture_green, width: 120, height: 120, crop: :fill, quality: :auto, fetch_format: :auto, class: "avatar-menu-mobile" %>
+          <%= cl_image_tag current_user.profile_picture_green, width: 120, height: 120, crop: :fill, quality: :auto, fetch_format: :auto, class: "avatar avatar-menu-mobile" %>
         <% end %>
         <h1 class="text-success pt-3"><%= current_user.full_name %></h1>
         <div class="dropdown-divider divider-pink my-3"></div>

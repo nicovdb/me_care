@@ -9,12 +9,12 @@
     font-size: 16px;
   }
 
-  @media (min-width: 1400px)  {
+  @media (max-width: 768px)  {
     p {
-      font-size: 18px;
+      font-size: 14px;
     }
     h3 {
-      font-size: 22px;
+      font-size: 16px;
     }
   }
 }
@@ -28,12 +28,17 @@
     border-radius: 50%;
     object-fit: cover;
     object-position: top;
-    border: 1px solid $green;
+    border: 2px solid $green;
     margin-bottom: 0.5rem;
   }
 
   p {
     color: $pink;
+    margin-bottom: 0.5rem;
+  }
+
+  p.address {
+    color: $green;
   }
 
   @media (max-width: 768px)  {
@@ -61,10 +66,4 @@ p.team-description {
   font-weight: 700;
   font-family: $headers-font;
   color: $green;
-}
-
-@media (min-width: 1400px)  {
-  p.team-description {
-    font-size: 18px;
-  }
 }

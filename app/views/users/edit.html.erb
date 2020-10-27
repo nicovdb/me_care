@@ -16,7 +16,7 @@
           <div class="form-inputs mt-0 mt-md-4" data-controller="photo-preview">
             <div class="text-center">
               <%= image_tag "", width: 300, class: "hidden cursor-pointer", data: { target: "photo-preview.photoPreview", action: "click->photo-preview#clickInput" } %>
-              <%= cl_image_tag @user.profile_picture, width: 120, height: 120, crop: :fill, quality: :auto, fetch_format: :auto, class: "avatar-xl cursor-pointer", data: { target: "photo-preview.currentAvatar", action: "click->photo-preview#clickInput" } %>
+              <%= cl_image_tag @user.profile_picture, width: 120, height: 120, crop: :fill, quality: :auto, fetch_format: :auto, class: "avatar avatar-xl cursor-pointer", data: { target: "photo-preview.currentAvatar", action: "click->photo-preview#clickInput" } %>
             </div>
             <div class="text-center">
               <%= f.input :avatar, as: :file, input_html: { class: 'd-none', data: { action: "change->photo-preview#display", target:"photo-preview.avatarInput" } }, label: 'Modifier mon image' %>
