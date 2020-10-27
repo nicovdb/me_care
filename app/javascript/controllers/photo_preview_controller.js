@@ -14,8 +14,7 @@ export default class extends Controller {
       }
       reader.readAsDataURL(input.files[0])
       oldAvatar.classList.add('d-none');
-      newAvatar.classList.remove('hidden');
-      newAvatar.classList.add('avatar', 'avatar-xl');
+      newAvatar.classList.remove('d-none');
     };
   }
 

@@ -15,7 +15,7 @@
 
           <div class="form-inputs mt-0 mt-md-4" data-controller="photo-preview">
             <div class="text-center">
-              <%= image_tag "", width: 300, class: "hidden cursor-pointer", data: { target: "photo-preview.photoPreview", action: "click->photo-preview#clickInput" } %>
+              <%= image_tag "", width: 300, class: "d-none avatar avatar-xl cursor-pointer", data: { target: "photo-preview.photoPreview", action: "click->photo-preview#clickInput" } %>
               <%= cl_image_tag @user.profile_picture, width: 120, height: 120, crop: :fill, quality: :auto, fetch_format: :auto, class: "avatar avatar-xl cursor-pointer", data: { target: "photo-preview.currentAvatar", action: "click->photo-preview#clickInput" } %>
             </div>
             <div class="text-center">
