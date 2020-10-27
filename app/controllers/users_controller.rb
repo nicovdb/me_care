@@ -46,7 +46,7 @@ class UsersController < ApplicationController
       if !@user.information.family_situation.nil?
         profil_completion += 5.5
       end
-      if !@user.information.job.nil?
+      if @user.information.job != "" && @user.information.job != nil
         profil_completion += 5.5
       end
       if !@user.information.diagnosis_age.nil?
