@@ -112,9 +112,7 @@ input[type='radio']:checked:after {
   label.form-check-label {
     font-family: $body-font;
   }
-  input#information_diagnosis_age {
-    height: 34px;
-  }
+
   .form-control#information_diagnosis_age::placeholder {
     text-align: right;
   }
@@ -202,9 +200,6 @@ input[type='radio']:checked:after {
 .information_imc, .information_size, .information_weight {
   -moz-appearance: none;
   text-align:center;
-  input {
-    font-size: 12px;
-  }
 }
 
 .center-radio {
