@@ -18,6 +18,11 @@
         <%= simple_form_for [@user, @information], url: url, method: method,
               wrapper_mappings: {
               } do |f| %>
+
+          <!-- Prevent implicit submission of the form -->
+          <button type="submit" disabled style="display: none" aria-hidden="true"></button>
+          <!--  -->
+
           <%= f.input :date_of_birth, as: :string, required: false, input_html: {class: "datepicker", value: "#{@information.date_of_birth.strftime('%d-%m-%Y') if @information.date_of_birth }"}, label: "Date de naissance", placeholder: "JJ-MM-ANNEE" %>
           <%= f.input :family_situation, as: :radio_buttons, label: "Situation", collection: Information.family_situations.keys.map { |m| [t("information.#{m.downcase}"), m] }, wrapper: :horizontal_collection_inline_fam_situation %>
           <%= f.input :job, label: "Profession" %>
@@ -83,7 +88,7 @@
               window.location.hash = "<%= @anchor %>";
             </script>
           <% end %>
-          <%= f.input :terms_conditions, as: :boolean, required: true, label:'En cochant cette case, j’accepte expressément que mes données personnelles de santé soient traitées par easy endo aux fins d’amélioration de mon expérience d’utilisation de l’application. Je suis également informée que, sauf opposition expresse de ma part, mes données, préalablement pseudonymisées conformément à la réglementation applicable à la protection des données personnelles, pourront être transmises par easy endo à des laboratoires publics ou privés de recherche aux fins de mener des études et projets de recherche clinique sur l’endométriose et/ou les maladies et syndromes apparentés. Enfin, je suis informée que mes données de santé, à l’exclusion de toute donnée personnelle me concernant, pourront être réutilisées par easy endo aux fins de réaliser des enquêtes épidémiologiques, scientifiques et/ou statistiques pour faire avancer tant la prise en charge médicale que la couverture sociale des patientes. <br><br> Pour en savoir plus sur les traitements de vos données opérés par easy endo et les droits que vous détenez sur celles-ci, nous vous invitons à lire attentivement notre <strong>politique de confidentialité.</strong>'.html_safe %>
+          <%= f.input :terms_conditions, as: :boolean, required: true, label:'En cochant cette case, j’accepte expressément que mes données personnelles de santé soient traitées par easy endo aux fins d’amélioration de mon expérience d’utilisation de l’application. Je suis également informée que, sauf opposition expresse de ma part, mes données, préalablement pseudonymisées conformément à la réglementation applicable à la protection des données personnelles, pourront être transmises par easy endo à des laboratoires publics ou privés de recherche aux fins de mener des études et projets de recherche clinique sur l’endométriose et/ou les maladies et syndromes apparentés. Enfin, je suis informée que mes données de santé, à l’exclusion de toute donnée personnelle me concernant, pourront être réutilisées par easy endo aux fins de réaliser des enquêtes épidémiologiques, scientifiques et/ou statistiques pour faire avancer tant la prise en charge médicale que la couverture sociale des patientes. <br><br> Pour en savoir plus sur les traitements de vos données opérés par easy endo et les droits que vous détenez sur celles-ci, nous vous invitons à lire attentivement notre <strong>politique de confidentialité.*</strong>'.html_safe %>
           <div class="text-center">
             <%= f.button :submit, "JE VALIDE", class: 'btn btn-primary btn-ee my-4 text-mini' %>
           </div>

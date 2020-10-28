@@ -38,15 +38,16 @@ class InformationsController < ApplicationController
 
   def update
     authorize @information
+    delete_infos
+    delete_form_numbers
+    @information.assign_attributes(information_params)
     if information_params[:terms_conditions] == "0"
       flash[:alert] = "Vous devez accepter le traitement de vos données."
       @anchor = "terms"
       display_diseases_and_therapies
       render 'edit'
     else
-      delete_infos
-      delete_form_numbers
-      if @information.update(information_params)
+      if @information.save
         flash[:alert] = nil
         redirect_to profil_path
       else
