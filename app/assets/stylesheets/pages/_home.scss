@@ -16,3 +16,13 @@
   height: 100%;
   box-shadow: #0A5E706E 0 0 4px;
 }
+
+.home-partner-logo {
+  height: 30px;
+}
+
+@media (min-width: 768px) {
+  .home-partner-logo {
+    height: 50px;
+  }
+}
