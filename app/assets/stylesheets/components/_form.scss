@@ -25,6 +25,10 @@ textarea, input { outline: none; }
   font-size: 14px;
 }
 
+#information_endo_surgery_number::placeholder, #information_children_number::placeholder, #information_miscarriage_number::placeholder, #information_abortion_number::placeholder {
+  text-align:center;
+}
+
 .form-text.text-muted {
   color: $light-green-gray !important;
 }
@@ -139,8 +143,9 @@ input[type='radio']:checked:after {
     margin: auto;
   }
   input[type= 'number'] {
-    max-width: 80px;
+    max-width: 90px;
     margin: auto;
+    padding-bottom: 8px;
   }
   .form-group {
     margin-bottom: 40px;
