@@ -10,6 +10,10 @@ input[type=number] {
 
 textarea, input { outline: none; }
 
+.textarea-max-width {
+  max-width: 300px;
+}
+
 .form-control {
   border-color: $light-green-gray;
   border-radius: 8px;
