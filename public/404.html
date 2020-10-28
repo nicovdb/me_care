@@ -1,67 +1,113 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>The page you were looking for doesn't exist (404)</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>La page n'existe pas (404)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
   <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
+
+  html, body, .container {
+    height: 100%;
   }
 
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
+  .bg {
+    background-image: url("bg-desktop.svg");
+    background-position: 0% 150px;
+    background-repeat: no-repeat;
+    background-size: 90% auto;
   }
 
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+  @media (max-width: 768px)  {
+    .bg {
+      background-image: url("bg-mobile.svg");
+      background-size: 100% auto;
+    }
   }
 
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
+  img {
+    width: 90%;
+    margin-top: 20px;
+    height:250px;
   }
 
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+  @media (min-width: 768px) {
+    img {
+      width: 60%;
+      height:400px;
+    }
   }
+
+  h2 {
+    font-family:"Quicksand", "Helvetica", "sans-serif";
+    color: #EC6787;
+    font-size: 38px;
+  }
+
+  @media (min-width: 768px) {
+    h2 {
+      font-size: 46px;
+    }
+  }
+
+  h3 {
+    font-family:"Quicksand", "Helvetica", "sans-serif";
+    color: #035E70;
+    font-size: 22px;
+  }
+
+  p {
+    font-family: "Lato", "Helvetica", "sans-serif";
+    color: #656565;
+    font-size: 14px;
+    margin-bottom: 20px;
+    margin-top: 5px;
+  }
+
+  a {
+    color: #EC6787;
+    font-family:"Quicksand", "Helvetica", "sans-serif";
+    text-decoration:none;
+    font-size: 22px;
+    margin: 5px 20px;
+    font-weight: bold;
+  }
+  a:hover {
+    color: #EC6787;
+    text-decoration:none;
+  }
+
+  @media (min-width: 768px)  {
+      a {
+      color: #EC6787;
+      font-family:"Quicksand", "Helvetica", "sans-serif";
+      text-decoration:none;
+      font-size: 22px;
+      margin: 20px 40px;
+      font-weight: bold;
+    }
+  }
+
   </style>
 </head>
-
-<body class="rails-default-error-page">
-  <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
+<body class="bg">
+  <div class="container text-center mt-md-4">
+    <div class="row h-100">
+      <div class="col my-auto">
+        <h2><strong>404</strong></h2>
+        <h3><strong>Zut, nous ne trouvons pas la page que vous recherchez !</strong></h3>
+        <img src="404.jpeg" alt="erreur 404">
+        <p class='text-center'>© easy endo</p>
+        <h3><strong>Vous pouvez prendre un moment pour admirer ce coucher de soleil (à peine retouché), ou vous pouvez sortir d’ici en cliquant sur un des liens ci-dessous :</strong></h3>
+        <div class="d-flex justify-content-center">
+          <a href="https://me-care-staging.herokuapp.com/">Mes services</a>
+          <a href="https://me-care-staging.herokuapp.com/profil">Mon Profil</a>
+        </div>
+      </div>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
   </div>
 </body>
 </html>
