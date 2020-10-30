@@ -1,12 +1,24 @@
-<div class="container">
-  <%= simple_form_for infoendo do |f| %>
-    <%= f.input :title, label: t('.title') %>
-    <%= f.input :cover, as: :file, label: t('.cover') %>
-    <%= f.input :cover_credit, label: t('.cover_credit') %>
-    <%= f.input :reading_time, label: t('.reading_time') %>
-    <%= f.input :media_type, collection: Infoendo.media_types.keys.map { |m| [t("infoendo.#{m.downcase}"), m] }, label: t('.media_type') %>
-    <%= f.input :category, collection: Infoendo.categories.keys.collect { |m| [t("infoendo.#{m.downcase}"), m] }, label: t('.category') %>
-    <%= f.input :content, as: :rich_text_area, label: t('.content'), placeholder: "Contenu", class: 'form-control' %>
-    <%= f.submit "Confirmer et publier", class: 'btn btn-primary btn-ee w-100 mb-4' %>
-  <% end %>
-</div>
+<%= simple_form_for infoendo do |f| %>
+  <div data-controller="photo-preview">
+    <div class="mt-4">
+      <%= f.input :cover, as: :file, wrapper_html: { class: "mb-0"}, input_html: { class: 'd-none', data: { action: "change->photo-preview#display", target:"photo-preview.avatarInput" } }, label: "Photo de couverture*" %>
+    </div>
+    <div class="mb-3">
+      <%= image_tag "", width: 200, class: "d-none cursor-pointer", data: { target: "photo-preview.photoPreview", action: "click->photo-preview#clickInput" } %>
+
+      <% if infoendo.cover.attached? %>
+        <%= cl_image_tag infoendo.cover.key, width: 200, height: 200, crop: :limit, quality: :auto, fetch_format: :auto, class: "cursor-pointer mr-3", data: { target: "photo-preview.currentAvatar", action: "click->photo-preview#clickInput" } %>
+      <% else %>
+        <%= cl_image_tag "default/thumbnail", width: 200, height: 200, crop: :limit, quality: :auto, fetch_format: :auto, class: "cursor-pointer", data: { target: "photo-preview.currentAvatar", action: "click->photo-preview#clickInput" } %>
+      <% end %>
+    </div>
+  </div>
+  <%= f.input :cover_credit, label: t('.cover_credit') %>
+
+  <%= f.input :title, label: t('.title') %>
+  <%= f.input :reading_time, label: t('.reading_time') %>
+  <%= f.input :media_type, collection: Infoendo.media_types.keys.map { |m| [t("infoendo.#{m.downcase}"), m] }, label: t('.media_type') %>
+  <%= f.input :category, collection: Infoendo.categories.keys.collect { |m| [t("infoendo.#{m.downcase}"), m] }, label: t('.category') %>
+  <%= f.input :content, as: :rich_text_area, label: t('.content'), placeholder: "Contenu", class: 'form-control' %>
+  <%= f.submit "Confirmer et publier", class: 'btn btn-primary btn-ee w-100 mb-4' %>
+<% end %>

@@ -23,7 +23,7 @@ class InfoendosController < ApplicationController
 
     @infoendo.user = current_user
     if @infoendo.save
-      redirect_to infoendo_path(@infoendo)
+      redirect_to dashboard_path
     else
       render 'dashboards/infoendos/new'
     end

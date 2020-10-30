@@ -24,7 +24,7 @@ class ArticlesController < ApplicationController
 
     @article.user = current_user
     if @article.save
-      redirect_to article_path(@article)
+      redirect_to dashboard_path
     else
       render 'dashboards/articles/new'
     end
