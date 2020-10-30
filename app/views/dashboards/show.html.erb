@@ -1,45 +1,87 @@
-<div class="container padding-top-navbar pb-5">
-  <h1 class="mb-5">DASHBOARD</h1>
+<div class="bg padding-top-navbar pb-5 min-100-vh-with-footer">
+  <div class="container text-green">
+    <div class="col-12 col-md-10 offset-md-1">
+      <div class="d-none d-md-block">
+        <%= link_to dashboard_path do %>
+          <span class="feature-name">Dashboard</span>
+        <% end %>
+      </div>
 
-  <div class="mt-5"><span class="feature-name">News</span></div>
-  <%= link_to 'Créer une news', new_dashboards_article_path, class:"btn btn-primary btn-ee-square mt-4" %>
+      <div class="my-5">
+        <div class="mb-3 d-flex align-items-center">
+          <h2 class="text-underline mb-0">News</h2>
+          <%= link_to '+ créer une news', new_dashboards_article_path, class:"ml-5 mb-0" %>
+        </div>
 
-  <% @articles.each do |article| %>
-    <div class="dropdown-divider dropdown-divider-short my-3"></div>
-    <p><%= article.title %></p>
-    <% if policy(Article).edit? %>
-      <%= link_to 'Modifier', edit_dashboards_article_path(article), class:"btn btn-outline-primary btn-ee-square" %>
-    <% end %>
-    <% if policy(Article).destroy? %>
-      <%= link_to 'Supprimer', article_path(article), method: :delete, remote: true, data:{confirm: "Êtes vous sûr.e ?"}, class:"btn btn-danger btn-ee-square ml-2" %>
-    <% end %>
-  <% end %>
+        <% @articles.each do |article| %>
+          <div class="d-flex align-items-center mt-2">
+            <%= link_to article_path(article) do %>
+              <h3 class="mb-0"><%= article.title %></h3>
+            <% end %>
+            <% if policy(Article).edit? %>
+              <%= link_to edit_dashboards_article_path(article), class:"ml-4" do %>
+                <i class="far fa-edit"></i>
+              <% end %>
+            <% end %>
+            <% if policy(Article).destroy? %>
+              <%= link_to article_path(article), method: :delete, remote: true, data:{confirm: "Êtes vous sûr.e ?"}, class:"ml-2" do %>
+                <i class="far fa-trash-alt"></i>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
 
-  <div class="mt-5"><span class="feature-name">Easy Live</span></div>
-  <%= link_to 'Créer un live', new_dashboards_webinar_path, class:"btn btn-primary btn-ee-square mt-4" %>
+      <div class="mb-5">
+        <div class="mb-3 d-flex align-items-center">
+          <h2 class="text-underline mb-0">Easy Live</h2>
+          <%= link_to '+ créer un webinar', new_dashboards_webinar_path, class:"ml-5 mb-0" %>
+        </div>
 
-  <% @webinars.each do |webinar| %>
-    <div class="dropdown-divider dropdown-divider-short my-3"></div>
-    <p><%= webinar.title %></p>
-    <% if policy(Webinar).edit? %>
-      <%= link_to 'Modifier', edit_dashboards_webinar_path(webinar), class:"btn btn-outline-primary btn-ee-square" %>
-    <% end %>
-    <% if policy(Webinar).destroy? %>
-      <%= link_to 'Supprimer', webinar_path(webinar), method: :delete, remote: true, data:{confirm: "Êtes vous sûr.e ?"}, class:"btn btn-danger btn-ee-square ml-2" %>
-    <% end %>
-  <% end %>
+        <% @webinars.each do |webinar| %>
+          <div class="d-flex align-items-center mt-2">
+            <%= link_to webinar_path(webinar) do %>
+              <h3 class="mb-0"><%= webinar.title %></h3>
+            <% end %>
+            <% if policy(Webinar).edit? %>
+              <%= link_to edit_dashboards_webinar_path(webinar), class:"ml-4" do %>
+                <i class="far fa-edit"></i>
+              <% end %>
+            <% end %>
+            <% if policy(Webinar).destroy? %>
+              <%= link_to webinar_path(webinar), method: :delete, remote: true, data:{confirm: "Êtes vous sûr.e ?"}, class:"ml-2" do %>
+                <i class="far fa-trash-alt"></i>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
 
-  <div class="mt-5"><span class="feature-name">À savoir</span></div>
-  <%= link_to 'Créer un "À savoir"', new_dashboards_infoendo_path, class:"btn btn-primary btn-ee-square mt-4" %>
+      <div class="mb-5">
+        <div class="mb-3 d-flex align-items-center">
+          <h2 class="text-underline mb-0">À savoir</h2>
+          <%= link_to '+ créer un à savoir', new_dashboards_infoendo_path, class:"ml-5 mb-0" %>
+        </div>
 
-  <% @infoendos.each do |infoendo| %>
-    <div class="dropdown-divider dropdown-divider-short my-3"></div>
-    <p><%= infoendo.title %></p>
-    <% if policy(Infoendo).edit? %>
-      <%= link_to 'Modifier', edit_dashboards_infoendo_path(infoendo), class:"btn btn-outline-primary btn-ee-square" %>
-    <% end %>
-    <% if policy(Infoendo).destroy? %>
-      <%= link_to 'Supprimer', infoendo_path(infoendo), method: :delete, remote: true, data:{confirm: "Êtes vous sûr.e ?"}, class:"btn btn-danger btn-ee-square ml-2" %>
-    <% end %>
-  <% end %>
+        <% @infoendos.each do |infoendo| %>
+          <div class="d-flex align-items-center mt-2">
+            <%= link_to infoendo_path(infoendo) do %>
+              <h3 class="mb-0"><%= infoendo.title %></h3>
+            <% end %>
+            <% if policy(Infoendo).edit? %>
+              <%= link_to edit_dashboards_infoendo_path(infoendo), class:"ml-4" do %>
+                <i class="far fa-edit"></i>
+              <% end %>
+            <% end %>
+            <% if policy(Infoendo).destroy? %>
+              <%= link_to infoendo_path(infoendo), method: :delete, remote: true, data:{confirm: "Êtes vous sûr.e ?"}, class:"ml-2" do %>
+                <i class="far fa-trash-alt"></i>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
+
