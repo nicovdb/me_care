@@ -10,7 +10,7 @@ class WebinarsController < ApplicationController
     authorize @webinar
 
     if @webinar.save
-      redirect_to webinar_path(@webinar)
+      redirect_to dashboard_path
     else
       render 'dashboards/webinars/new'
     end
