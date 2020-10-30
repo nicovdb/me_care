@@ -1,4 +1,13 @@
-<div class="container padding-top-navbar">
-  <h1 class='text-center'>Modifier un live</h1>
-  <%= render 'dashboards/webinars/form', webinar: @webinar %>
+<div class="bg pb-5 padding-top-navbar min-100-vh-with-footer">
+  <div class="container">
+    <div class="col-12 col-md-10 offset-md-1">
+      <div class="d-none d-md-block mb-md-4">
+        <%= link_to dashboard_path do %>
+          <span class="feature-name">Dashboard</span>
+        <% end %>
+      </div>
+      <h1 class='text-center'>Modifier un webinar</h1>
+      <%= render 'dashboards/webinars/form', webinar: @webinar %>
+    </div>
+  </div>
 </div>
