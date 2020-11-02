@@ -5,8 +5,10 @@ module Stripe
       @stripe_subscription = @event.data.object
       @user = User.find_by(stripe_id: @stripe_subscription.customer)
       @user.subscription.update(
+        stripe_id: @stripe_subscription.id,
         status: @stripe_subscription.status,
-        end_date: Time.at(@stripe_subscription.current_period_end).to_date
+        end_date: Time.at(@stripe_subscription.current_period_end).to_date,
+        nickname: @stripe_subscription&.items&.data[0]&.price&.nickname
       )
 
       check_change_price

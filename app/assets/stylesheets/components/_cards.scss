@@ -1,0 +1,12 @@
+.checkout-card {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 12px;
+  margin: 0 12px;
+  border: 1px solid $green;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}

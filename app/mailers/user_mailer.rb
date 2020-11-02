@@ -15,4 +15,9 @@ class UserMailer < ApplicationMailer
     @webinar = params[:webinar]
     mail(to: @user.email, subject: "Inscription au live '#{@webinar.title}' confirmée !")
   end
+
+  def trial_end_soon
+    @user = params[:user]
+    mail(to: @user.email, subject: "Votre période d'essai est bientôt terminée")
+  end
 end
