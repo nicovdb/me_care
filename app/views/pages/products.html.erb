@@ -1,5 +1,19 @@
 <div class="container padding-top-navbar">
-  <h1>Utiliser un coupon</h1>
+  <h1>Abonnements</h1>
+  <div class="d-flex justify-content-center mt-4">
+    <% @prices_and_sessions.each do |ps| %>
+      <div class="checkout-card">
+        <h3><%= ps[:name] %></h3>
+        <h1><%= ps[:price] %></h1>
+        <button class="btn btn-primary btn-ee mt-2 checkout-button" role="link" data-session-id="<%= ps[:checkout_id] %>">
+            Je m'abonne
+        </button>
+      </div>
+    <% end %>
+  </div>
+
+
+  <h1 class="mt-5 mb-4">Utiliser un coupon</h1>
   <%= simple_form_for :coupon, url: use_coupon_path do |f| %>
     <%= f.input :code, as: :string %>
     <% if @errors %>
@@ -8,12 +22,6 @@
     <%= f.submit "Chercher le coupon", class: 'btn btn-primary btn-ee mb-4' %>
   <% end %>
 
-  <%# @products_and_sessions.each do |ps| %>
-    <%#= ps[:product].name %>
-    <!-- <button class="btn btn-primary mb-5 mt-2 checkout-button" role="link" data-session-id="<%#= ps[:checkout_id] %>">
-        Continuer vers la page de paiement
-    </button>
-  <%# end %> -->
 </div>
 
 
