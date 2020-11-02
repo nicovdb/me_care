@@ -11,7 +11,37 @@ RSpec.describe PagesController, type: :controller do
 
       describe 'Visitor' do
         it 'displays the home page sucessfully' do
-          expect(subject).to have_http_status(200)
+          expect(response).to have_http_status(:success)
+        end
+      end
+    end
+
+    describe '#team' do
+      subject { get :team }
+
+      describe 'Visitor' do
+        it 'displays the team page sucessfully' do
+          expect(response).to have_http_status(:success)
+        end
+      end
+    end
+
+    describe '#legals' do
+      subject { get :legals }
+
+      describe 'Visitor' do
+        it 'displays the legals page sucessfully' do
+          expect(response).to have_http_status(:success)
+        end
+      end
+    end
+
+    describe '#algorythm' do
+      subject { get :algorythm }
+
+      describe 'Visitor' do
+        it 'displays the algorythm page sucessfully' do
+          expect(response).to have_http_status(:success)
         end
       end
     end
