@@ -19,6 +19,7 @@
   <%= f.input :reading_time, label: t('.reading_time') %>
   <%= f.input :media_type, collection: Infoendo.media_types.keys.map { |m| [t("infoendo.#{m.downcase}"), m] }, label: t('.media_type') %>
   <%= f.input :category, collection: Infoendo.categories.keys.collect { |m| [t("infoendo.#{m.downcase}"), m] }, label: t('.category') %>
+  <%= f.input :publication_date, label: t('.publication_date') %>
   <%= f.input :content, as: :rich_text_area, label: t('.content'), placeholder: "Contenu", class: 'form-control' %>
   <%= f.submit "Confirmer et publier", class: 'btn btn-primary btn-ee w-100 mb-4' %>
 <% end %>

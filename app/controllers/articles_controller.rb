@@ -3,13 +3,13 @@ class ArticlesController < ApplicationController
 
   def index
     if params[:query].present?
-      @articles = policy_scope(Article).includes([:cover_attachment]).search_by_content_and_title_and_author(params[:query]).paginate(page: params[:page], per_page: 8).order(created_at: :desc)
+      @articles = policy_scope(Article).includes([:cover_attachment]).search_by_content_and_title_and_author(params[:query]).paginate(page: params[:page], per_page: 8).order(publication_date: :desc)
     elsif params[:category].present?
-      @articles = policy_scope(Article).includes([:cover_attachment]).where(category: params[:category]).paginate(page: params[:page], per_page: 8).order(created_at: :desc)
+      @articles = policy_scope(Article).includes([:cover_attachment]).where(category: params[:category]).paginate(page: params[:page], per_page: 8).order(publication_date: :desc)
     elsif params[:media_type].present?
-      @articles = policy_scope(Article).includes([:cover_attachment]).where(media_type: params[:media_type]).paginate(page: params[:page], per_page: 8).order(created_at: :desc)
+      @articles = policy_scope(Article).includes([:cover_attachment]).where(media_type: params[:media_type]).paginate(page: params[:page], per_page: 8).order(publication_date: :desc)
     else
-      @articles = policy_scope(Article).includes([:cover_attachment]).paginate(page: params[:page], per_page: 8).order(created_at: :desc)
+      @articles = policy_scope(Article).includes([:cover_attachment]).paginate(page: params[:page], per_page: 8).order(publication_date: :desc)
     end
   end
 
@@ -52,6 +52,6 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :cover, :content, :author, :media_type, :category, :reading_time, :cover_credit)
+    params.require(:article).permit(:title, :cover, :content, :publication_date, :author, :media_type, :category, :reading_time, :cover_credit)
   end
 end
