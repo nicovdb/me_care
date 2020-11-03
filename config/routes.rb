@@ -17,6 +17,10 @@ Rails.application.routes.draw do
     end
     resources :favorites, only: [:create, :destroy]
     get '/dashboard', to: 'dashboards#show'
+    patch '/publish-article/:id', to: 'dashboards#publish_article', as: :publish_article
+    patch '/unpublish-article/:id', to: 'dashboards#unpublish_article', as: :unpublish_article
+    patch '/publish-infoendo/:id', to: 'dashboards#publish_infoendo', as: :publish_infoendo
+    patch '/unpublish-infoendo/:id', to: 'dashboards#unpublish_infoendo', as: :unpublish_infoendo
     get '/profil', to: 'users#show', as: :profil
     patch '/users/:id/anonymize', to: 'users#anonymize', as: :anonymize
     resources :users, only: [:edit, :update]

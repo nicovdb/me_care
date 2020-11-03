@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_02_131507) do
+ActiveRecord::Schema.define(version: 2020_11_03_165116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2020_11_02_131507) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "author"
+    t.boolean "published", default: false
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
@@ -140,6 +141,7 @@ ActiveRecord::Schema.define(version: 2020_11_02_131507) do
     t.string "cover_credit"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "published", default: false
     t.index ["user_id"], name: "index_infoendos_on_user_id"
   end
 
