@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     @subscription = @user.subscription
     authorize @user
     calculate_profile_completion
-    @favorites = @user.favorites.includes([:infoendo, :article])
+    @favorites = @user.favorites.includes([:infoendo, :article]).order(created_at: :desc)
   end
 
   def edit

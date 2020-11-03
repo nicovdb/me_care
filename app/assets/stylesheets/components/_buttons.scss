@@ -17,3 +17,21 @@
   background-color: $light-pink;
   color: $green;
 }
+
+.arrow {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: inline-block;
+}
+
+.arrow-top {
+  background-image: image-url("arrow-top.svg");
+}
+
+.arrow-bottom {
+  background-image: image-url("arrow-bottom.svg");
+}
