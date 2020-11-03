@@ -5,11 +5,13 @@
     <p class='text-left text-header text-semibold'>
       Vous avez annulé votre abonnement. Vous pouvez vous réabonner en cliquant <%= link_to "ici", products_path, class:"text-underline" %>.
     </p>
+  <% elsif  @subscription.trialing? %>
+    <p class='text-left text-header text-semibold'>
+      Vous êtes actuellement en période d'essai. Celle-ci se terminera le <%= l(@subscription.end_date, format: :short) %>. Vous pouvez vous abonner pour la suite <%= link_to "ici", products_path, class:"text-underline" %>.
+    </p>
   <% else %>
     <p class='text-left text-header text-semibold'>
-      <% if @subscription.trialing? %>
-        Vous êtes actuellement en période d'essai. Celle-ci finira le <%= localize(@subscription.end_date) %>.
-      <% elsif @subscription.active? %>
+      <% if @subscription.active? %>
         Vous êtes abonnée au plan <%= @subscription.nickname %>.
       <% elsif @subscription.past_due? || @subscription.unpaid? %>
         Votre abonnement est bloqué car le dernier paiement n'est pas passé. Cliquez sur le bouton ci-dessous pour mettre à jour vos informations de paiement.
