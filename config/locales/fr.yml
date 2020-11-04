@@ -117,7 +117,7 @@ fr:
         cover_credit: Crédit photo
         media_type: Type d'article
         category: Catégorie
-        publication_date: Date de publication
+        publication_date: Date affichée
     webinars:
       form:
         title: Titre
@@ -135,7 +135,7 @@ fr:
         media_type: Type du contenu
         category: Catégorie
         content: Contenu
-        publication_date: Date de publication
+        publication_date: Date affichée
   article:
     food: Alimentation
     generalities: Généralités
