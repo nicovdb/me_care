@@ -27,7 +27,7 @@
         <div class="d-flex flex-column-reverse flex-md-column">
           <div class="mb-1">
             <h1><%= @article.title %></h1>
-            <p class="text-info text-small mb-0"><%= l(@article.created_at, format:"%d %B %Y") %> - <%= @article.author %></p>
+            <p class="text-info text-small mb-0"><%= l(@article.publication_date, format:"%d %B %Y") %> - <%= @article.author %></p>
             <p class="text-info text-small mb-1">Temps de lecture : <%= @article.reading_time %></p>
           </div>
           <div class="text-center">
