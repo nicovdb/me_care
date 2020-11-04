@@ -10,7 +10,7 @@ class WebinarsController < ApplicationController
     authorize @webinar
 
     if @webinar.save
-      redirect_to dashboard_path
+      redirect_to dashboard_path(active: 'webinar')
     else
       render 'dashboards/webinars/new'
     end
@@ -48,8 +48,12 @@ class WebinarsController < ApplicationController
 
   def destroy
     authorize @webinar
-    @webinar.destroy
-    redirect_to dashboard_path
+    if @webinar.webinar_subscriptions.any?
+      flash[:alert] = "Il y a des inscriptions à ce webinar, vous ne pouvez pas le supprimer."
+    else
+      @webinar.destroy
+    end
+    redirect_to dashboard_path(active: 'webinar')
   end
 
   private

@@ -1,33 +1,26 @@
-<div class="mb-5">
-  <div class="mb-3 d-flex align-items-center">
-    <h2 class="text-underline mb-0">À savoir</h2>
-    <%= link_to '+ créer un à savoir', new_dashboards_infoendo_path, class:"ml-5 mb-0" %>
+<% @infoendos.each do |infoendo| %>
+  <div class="d-flex align-items-center mt-2">
+    <% if infoendo.published %>
+      <%= link_to unpublish_infoendo_path(infoendo), method: :patch, remote: true, data: {confirm: "Êtes vous sûr.e du dépublier cette fiche à savoir ?"}, class: 'd-flex align-items-center' do  %>
+        <span class='published'>publié</span>
+      <% end %>
+    <% else %>
+      <%= link_to publish_infoendo_path(infoendo), method: :patch, remote: true, data: {confirm: "Êtes vous sûr.e du publier cette fiche à savoir ?"}, class: 'd-flex align-items-center' do  %>
+        <span class='unpublished'>non publié</span>
+      <% end %>
+    <% end %>
+    <%= link_to infoendo_path(infoendo) do %>
+      <h3 class="mb-0 ml-3"><%= infoendo.title %></h3>
+    <% end %>
+    <% if policy(Infoendo).edit? %>
+      <%= link_to edit_dashboards_infoendo_path(infoendo), class:"ml-4" do %>
+        <i class="far fa-edit"></i>
+      <% end %>
+    <% end %>
+    <% if policy(Infoendo).destroy? %>
+      <%= link_to infoendo_path(infoendo), method: :delete, remote: true, data:{confirm: "Êtes vous sûr.e ?"}, class:"ml-2" do %>
+        <i class="far fa-trash-alt"></i>
+      <% end %>
+    <% end %>
   </div>
-
-  <% @infoendos.each do |infoendo| %>
-    <div class="d-flex align-items-center mt-2">
-      <% if infoendo.published %>
-        <%= link_to unpublish_infoendo_path(infoendo), method: :patch, remote: true, data: {confirm: "Êtes vous sûr.e du dépublier cette fiche à savoir ?"} do  %>
-          <span class='published'>publié</span>
-        <% end %>
-      <% else %>
-        <%= link_to publish_infoendo_path(infoendo), method: :patch, remote: true, data: {confirm: "Êtes vous sûr.e du publier cette fiche à savoir ?"} do  %>
-          <span class='unpublished'>non publié</span>
-        <% end %>
-      <% end %>
-      <%= link_to infoendo_path(infoendo) do %>
-        <h3 class="mb-0 ml-2"><%= infoendo.title %></h3>
-      <% end %>
-      <% if policy(Infoendo).edit? %>
-        <%= link_to edit_dashboards_infoendo_path(infoendo), class:"ml-4" do %>
-          <i class="far fa-edit"></i>
-        <% end %>
-      <% end %>
-      <% if policy(Infoendo).destroy? %>
-        <%= link_to infoendo_path(infoendo), method: :delete, remote: true, data:{confirm: "Êtes vous sûr.e ?"}, class:"ml-2" do %>
-          <i class="far fa-trash-alt"></i>
-        <% end %>
-      <% end %>
-    </div>
-  <% end %>
-</div>
+<% end %>

@@ -27,7 +27,7 @@ class DashboardsController < ApplicationController
     authorize(:infoendo, :edit?)
     @infoendo.published = true
     @infoendo.save
-    redirect_to dashboard_path
+    redirect_to dashboard_path(active: 'infoendo')
   end
 
   def unpublish_infoendo
@@ -35,6 +35,6 @@ class DashboardsController < ApplicationController
     authorize(:infoendo, :edit?)
     @infoendo.published = false
     @infoendo.save
-    redirect_to dashboard_path
+    redirect_to dashboard_path(active: 'infoendo')
   end
 end
