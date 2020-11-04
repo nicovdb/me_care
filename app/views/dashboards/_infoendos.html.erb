@@ -12,6 +12,7 @@
     <%= link_to infoendo_path(infoendo) do %>
       <h3 class="mb-0 ml-3"><%= infoendo.title %></h3>
     <% end %>
+    <span class='text-mini mb-0 ml-3'><%= l(infoendo.publication_date, format:"%d %b %Y") %> </span>
     <% if policy(Infoendo).edit? %>
       <%= link_to edit_dashboards_infoendo_path(infoendo), class:"ml-4" do %>
         <i class="far fa-edit"></i>

@@ -12,6 +12,7 @@
     <%= link_to article_path(article) do %>
       <h3 class="mb-0 ml-3"><%= article.title %></h3>
     <% end %>
+    <span class='text-mini mb-0 ml-3'><%= l(article.publication_date, format:"%d %b %Y") %> </span>
     <% if policy(Article).edit? %>
       <%= link_to edit_dashboards_article_path(article), class:"ml-4" do %>
         <i class="far fa-edit"></i>
