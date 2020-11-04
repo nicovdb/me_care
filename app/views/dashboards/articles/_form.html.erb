@@ -3,7 +3,7 @@
     <div class="mt-4">
       <%= f.input :cover, as: :file, wrapper_html: { class: "mb-0"}, input_html: { class: 'd-none', data: { action: "change->photo-preview#display", target:"photo-preview.avatarInput" } }, label: "Photo de couverture*" %>
     </div>
-    <div class="mb-3">
+    <div class="mb-2">
       <%= image_tag "", width: 200, class: "d-none cursor-pointer", data: { target: "photo-preview.photoPreview", action: "click->photo-preview#clickInput" } %>
 
       <% if article.cover.attached? %>
@@ -13,15 +13,15 @@
       <% end %>
     </div>
   </div>
+  <small class="form-text text-muted mb-3">Pour de meilleures performances, pensez à utiliser une photo légère. Vous pouvez les optimiser avec  https://squoosh.app/ par exemple.</small>
 
-
-  <%= f.input :cover_credit, label: t('.cover_credit') %>
-  <%= f.input :title, label: t('.title') %>
-  <%= f.input :author, label: t('.author') %>
-  <%= f.input :reading_time, label: t('.reading_time') %>
+  <%= f.input :cover_credit, label: t('.cover_credit'), placeholder: "Robert Doisneau" %>
+  <%= f.input :title, label: t('.title'), placeholder: "Alimentation et endométriose" %>
+  <%= f.input :author, label: t('.author'), placeholder: "L'équipe easy endo" %>
+  <%= f.input :reading_time, label: t('.reading_time'), placeholder: "5 minutes" %>
   <%= f.input :media_type, collection: Article.media_types.keys.map { |m| [t("article.#{m.downcase}"), m] }, label: t('.media_type') %>
   <%= f.input :category, collection: Article.categories.keys.collect { |m| [t("article.#{m.downcase}"), m] }, label: t('.category') %>
   <%= f.input :publication_date, label: t('.publication_date') %>
-  <%= f.input :content, as: :rich_text_area, label: t('.content'), placeholder: "Contenu de l'article", class: 'form-control' %>
+  <%= f.input :content, as: :rich_text_area, label: t('.content'), placeholder: "Écrivez votre article ici... ", hint: "Max. 30 000 caractères", class: 'form-control' %>
   <%= f.submit "Confirmer et publier l'article", class: 'btn btn-primary btn-ee w-100 mb-4' %>
 <% end %>
