@@ -2,8 +2,7 @@
   <h3 class="profil-category-title mb-3"><strong>Mes favoris</strong></h3>
   <% if favorites.any? %>
     <%= render "favorites", favorites: first_favorites %>
-
-    <% if last_favorites.any? %>
+    <% if last_favorites&.any? %>
       <div class="arrow arrow-bottom" data-action="click->show-hidden-content#showOrHideContent" data-target="show-hidden-content.button"></div>
       <div class="d-none" data-target="show-hidden-content.hiddenContent">
         <%= render "favorites", favorites: last_favorites %>
