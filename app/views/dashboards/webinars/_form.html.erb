@@ -13,16 +13,16 @@
       <% end %>
     </div>
   </div>
+  <small class="form-text text-muted mb-3">Pour de meilleures performances, pensez à utiliser une photo légère. Vous pouvez les optimiser avec  https://squoosh.app/ par exemple.</small>
 
-
-  <%= f.input :speaker_name, label: t('.speaker_name') %>
-  <%= f.input :title, label: t('.title') %>
+  <%= f.input :speaker_name, label: t('.speaker_name'), placeholder: "Vanessa Gouyot" %>
+  <%= f.input :title, label: t('.title'), placeholder: "Micronutrition et Endométriose" %>
   <%= f.input :start_at, label: t('.start_at') %>
   <%= f.input :category, collection: Webinar.categories.keys.collect { |m| [t("webinar.#{m.downcase}"), m] }, label: t('.category') %>
 
 
 
-  <%= f.input :description, as: :rich_text_area, label: t('.description'), placeholder: "Description", class: 'form-control' %>
+  <%= f.input :description, as: :rich_text_area, label: t('.description'), placeholder: "Décrivez votre webinar ici...", class: 'form-control' %>
   <%= f.submit "Confirmer et publier le live", class: 'btn btn-primary btn-ee w-100 mb-4' %>
 <% end %>
 
