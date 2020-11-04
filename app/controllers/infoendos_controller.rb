@@ -23,7 +23,7 @@ class InfoendosController < ApplicationController
 
     @infoendo.user = current_user
     if @infoendo.save
-      redirect_to dashboard_path
+      redirect_to dashboard_path(active: 'infoendo')
     else
       render 'dashboards/infoendos/new'
     end
@@ -41,7 +41,7 @@ class InfoendosController < ApplicationController
   def destroy
     authorize @infoendo
     @infoendo.destroy
-    redirect_to dashboard_path
+    redirect_to dashboard_path(active: 'infoendo')
   end
 
   private

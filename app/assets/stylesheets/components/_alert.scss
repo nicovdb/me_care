@@ -11,8 +11,7 @@
   background-color: #F1F8F4;
 }
 
-.alert-danger {
-  color: $pink;
-  border-color: $pink;
+.alert-danger, .alert-warning {
+  color: $green;
   background-color: $light-pink;
 }

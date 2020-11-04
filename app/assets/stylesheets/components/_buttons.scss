@@ -39,15 +39,15 @@
 .published {
   border-radius: 36px;
   padding: 4px 8px;
-  background-color: $green-success;
-  color: white;
+  background-color: $light-green;
+  color: $green;
   font-size: 10px;
 }
 
 .unpublished {
   border-radius: 36px;
   padding: 4px 8px;
-  background-color: $orange-warning;
-  color: white;
+  border: 1px solid $green;
+  color: $green;
   font-size: 10px;
 }
