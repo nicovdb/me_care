@@ -11,7 +11,7 @@
           <span class='published'>publié</span>
         <% end %>
       <% else %>
-        <%= link_to publish_infoendo_path(infoendo), method: :patch, data: {confirm: "Êtes vous sûr.e du publier cette fiche à savoir ?"} do  %>
+        <%= link_to publish_infoendo_path(infoendo), method: :patch, remote: true, data: {confirm: "Êtes vous sûr.e du publier cette fiche à savoir ?"} do  %>
           <span class='unpublished'>non publié</span>
         <% end %>
       <% end %>

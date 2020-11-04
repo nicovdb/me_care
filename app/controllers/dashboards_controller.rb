@@ -1,9 +1,9 @@
 class DashboardsController < ApplicationController
   def show
     authorize :dashboard
-    @articles = Article.all
+    @articles = Article.all.order(publication_date: :desc)
     @webinars = policy_scope(Webinar)
-    @infoendos = Infoendo.all
+    @infoendos = Infoendo.all.order(publication_date: :desc)
   end
 
   def publish_article
@@ -11,7 +11,7 @@ class DashboardsController < ApplicationController
     authorize(:article, :edit?)
     @article.published = true
     @article.save
-    redirect_to article_path(@article)
+    redirect_to dashboard_path
   end
 
   def unpublish_article
@@ -27,7 +27,7 @@ class DashboardsController < ApplicationController
     authorize(:infoendo, :edit?)
     @infoendo.published = true
     @infoendo.save
-    redirect_to infoendo_path(@infoendo)
+    redirect_to dashboard_path
   end
 
   def unpublish_infoendo

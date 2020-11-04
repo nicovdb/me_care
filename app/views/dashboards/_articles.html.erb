@@ -11,7 +11,7 @@
           <span class='published'>publié</span>
         <% end %>
       <% else %>
-        <%= link_to publish_article_path(article), method: :patch, data: {confirm: "Êtes vous sûr.e du publier cet article?"} do  %>
+        <%= link_to publish_article_path(article), method: :patch, remote: true, data: {confirm: "Êtes vous sûr.e du publier cet article?"} do  %>
           <span class='unpublished'>non publié</span>
         <% end %>
       <% end %>
