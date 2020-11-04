@@ -27,23 +27,7 @@
               <%= link_to '+ créer une news', new_dashboards_article_path, class:"mb-3" %>
             </div>
 
-            <% @articles.each do |article| %>
-              <div class="d-flex align-items-center mt-2">
-                <%= link_to article_path(article) do %>
-                  <h3 class="mb-0"><%= article.title %></h3>
-                <% end %>
-                <% if policy(Article).edit? %>
-                  <%= link_to edit_dashboards_article_path(article), class:"ml-4" do %>
-                    <i class="far fa-edit"></i>
-                  <% end %>
-                <% end %>
-                <% if policy(Article).destroy? %>
-                  <%= link_to article_path(article), method: :delete, remote: true, data:{confirm: "Êtes vous sûr.e ?"}, class:"ml-2" do %>
-                    <i class="far fa-trash-alt"></i>
-                  <% end %>
-                <% end %>
-              </div>
-            <% end %>
+            <%= render 'articles' %>
           </div>
 
         </div>
@@ -84,23 +68,7 @@
               <%= link_to '+ créer un à savoir', new_dashboards_infoendo_path, class:"mb-3" %>
             </div>
 
-            <% @infoendos.each do |infoendo| %>
-              <div class="d-flex align-items-center mt-2">
-                <%= link_to infoendo_path(infoendo) do %>
-                  <h3 class="mb-0"><%= infoendo.title %></h3>
-                <% end %>
-                <% if policy(Infoendo).edit? %>
-                  <%= link_to edit_dashboards_infoendo_path(infoendo), class:"ml-4" do %>
-                    <i class="far fa-edit"></i>
-                  <% end %>
-                <% end %>
-                <% if policy(Infoendo).destroy? %>
-                  <%= link_to infoendo_path(infoendo), method: :delete, remote: true, data:{confirm: "Êtes vous sûr.e ?"}, class:"ml-2" do %>
-                    <i class="far fa-trash-alt"></i>
-                  <% end %>
-                <% end %>
-              </div>
-            <% end %>
+            <%= render 'infoendos' %>
           </div>
 
         </div>
