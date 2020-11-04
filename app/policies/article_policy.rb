@@ -1,12 +1,12 @@
 class ArticlePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.where(published: true)
     end
   end
 
   def show?
-    true
+    record_is_published? || is_admin?
   end
 
   def create?
@@ -25,5 +25,9 @@ class ArticlePolicy < ApplicationPolicy
 
   def is_admin?
     user.admin
+  end
+
+  def record_is_published?
+    record.published
   end
 end

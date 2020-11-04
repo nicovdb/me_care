@@ -35,3 +35,19 @@
 .arrow-bottom {
   background-image: image-url("arrow-bottom.svg");
 }
+
+.published {
+  border-radius: 36px;
+  padding: 2px 4px 4px 4px;
+  background-color: $green-success;
+  color: white;
+  font-size: 10px;
+}
+
+.unpublished {
+  border-radius: 36px;
+  padding: 2px 4px 4px 4px;
+  background-color: $orange-warning;
+  color: white;
+  font-size: 10px;
+}
