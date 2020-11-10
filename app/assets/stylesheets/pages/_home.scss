@@ -19,10 +19,13 @@
 
 .home-partner-logo {
   height: 30px;
+  max-width: 80px;
+  object-fit: contain;
 }
 
 @media (min-width: 768px) {
   .home-partner-logo {
     height: 50px;
+    max-width: 120px;
   }
 }
