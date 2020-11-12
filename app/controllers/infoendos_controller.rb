@@ -23,7 +23,7 @@ class InfoendosController < ApplicationController
 
     @infoendo.user = current_user
     if @infoendo.save
-      redirect_to dashboard_path(active: 'infoendo')
+      redirect_after_create_or_update
     else
       render 'dashboards/infoendos/new'
     end
@@ -32,7 +32,7 @@ class InfoendosController < ApplicationController
   def update
     authorize @infoendo
     if @infoendo.update(infoendo_params)
-      redirect_to infoendo_path(@infoendo)
+      redirect_after_create_or_update
     else
       render 'dashboards/infoendos/edit'
     end
@@ -52,5 +52,14 @@ class InfoendosController < ApplicationController
 
   def infoendo_params
     params.require(:infoendo).permit(:title, :publication_date, :cover, :content, :media_type, :category, :reading_time, :cover_credit)
+  end
+
+  def redirect_after_create_or_update
+    if params[:commit] == "Enregistrer"
+      redirect_to edit_dashboards_infoendo_path(@infoendo)
+    else
+      @infoendo.update(published: true)
+      redirect_to dashboard_path(active: 'infoendo')
+    end
   end
 end

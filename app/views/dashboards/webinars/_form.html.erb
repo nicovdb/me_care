@@ -13,7 +13,7 @@
       <% end %>
     </div>
   </div>
-  <small class="form-text text-muted mb-3">Pour de meilleures performances, pensez à utiliser une photo légère. Vous pouvez les optimiser avec  https://squoosh.app/ par exemple.</small>
+  <small class="form-text text-muted mb-3">Pour de meilleures performances, pensez à utiliser une photo légère (moins de 200 Ko) et de taille adaptée à son usage (120px de large et de haut avec le visage centré dans l'idéal). Vous pouvez les optimiser avec  https://squoosh.app/ par exemple.</small>
 
   <%= f.input :speaker_name, label: t('.speaker_name'), placeholder: "Vanessa Gouyot" %>
   <%= f.input :title, label: t('.title'), placeholder: "Micronutrition et Endométriose" %>
@@ -23,6 +23,6 @@
 
 
   <%= f.input :description, as: :rich_text_area, label: t('.description'), placeholder: "Décrivez votre webinar ici...", class: 'form-control' %>
-  <%= f.submit "Confirmer et publier le live", class: 'btn btn-primary btn-ee w-100 mb-4' %>
+  <%= f.submit "Enregistrer et publier", class: 'btn btn-primary btn-ee mb-4' %>
 <% end %>
 
