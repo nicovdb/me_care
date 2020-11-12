@@ -2,7 +2,7 @@ class DashboardsController < ApplicationController
   def show
     authorize :dashboard
     @articles = Article.all.order(publication_date: :desc)
-    @webinars = policy_scope(Webinar)
+    @webinars = policy_scope(Webinar).order(start_at: :desc)
     @infoendos = Infoendo.all.order(publication_date: :desc)
   end
 

@@ -13,7 +13,7 @@
       <% end %>
     </div>
   </div>
-  <small class="form-text text-muted mb-3">Pour de meilleures performances, pensez à utiliser une photo légère. Vous pouvez les optimiser avec  https://squoosh.app/ par exemple.</small>
+  <small class="form-text text-muted mb-3">Pour de meilleures performances, pensez à utiliser une photo légère (moins de 500 Ko) et de taille adaptée à son usage (environ 500 px de large en format paysage). Vous pouvez les optimiser avec  https://squoosh.app/ par exemple.</small>
 
   <%= f.input :cover_credit, label: t('.cover_credit'), placeholder: "Robert Doisneau" %>
   <%= f.input :title, label: t('.title'), placeholder: "Alimentation et endométriose" %>
@@ -21,7 +21,8 @@
   <%= f.input :reading_time, label: t('.reading_time'), placeholder: "5 minutes" %>
   <%= f.input :media_type, collection: Article.media_types.keys.map { |m| [t("article.#{m.downcase}"), m] }, label: t('.media_type') %>
   <%= f.input :category, collection: Article.categories.keys.collect { |m| [t("article.#{m.downcase}"), m] }, label: t('.category') %>
-  <%= f.input :publication_date, label: t('.publication_date') %>
+  <%= f.input :publication_date, label: t('.publication_date'), hint: "La date sera affichée dans l'article. Vous pouvez jouer sur la date et l'heure pour déterminer dans quel ordre les articles apparaitront (du plus récent au plus ancien)." %>
   <%= f.input :content, as: :rich_text_area, label: t('.content'), placeholder: "Écrivez votre article ici... ", hint: "Max. 30 000 caractères", class: 'form-control' %>
-  <%= f.submit "Confirmer et publier l'article", class: 'btn btn-primary btn-ee w-100 mb-4' %>
+  <%= f.submit "Enregistrer et publier", class: 'btn btn-primary btn-ee mb-4 mr-3' %>
+  <%= f.submit "Enregistrer", class: 'btn btn-outline-primary btn-ee mb-4' %>
 <% end %>

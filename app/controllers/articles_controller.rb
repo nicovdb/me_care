@@ -21,10 +21,9 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     authorize @article
-
     @article.user = current_user
     if @article.save
-      redirect_to dashboard_path
+      redirect_after_create_or_update
     else
       render 'dashboards/articles/new'
     end
@@ -33,7 +32,7 @@ class ArticlesController < ApplicationController
   def update
     authorize @article
     if @article.update(article_params)
-      redirect_to article_path(@article)
+      redirect_after_create_or_update
     else
       render 'dashboards/articles/edit'
     end
@@ -53,5 +52,14 @@ class ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(:title, :cover, :content, :publication_date, :author, :media_type, :category, :reading_time, :cover_credit)
+  end
+
+  def redirect_after_create_or_update
+    if params[:commit] == "Enregistrer"
+      redirect_to edit_dashboards_article_path(@article)
+    else
+      @article.update(published: true)
+      redirect_to dashboard_path
+    end
   end
 end

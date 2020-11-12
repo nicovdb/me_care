@@ -40,7 +40,7 @@ class WebinarsController < ApplicationController
   def update
     authorize @webinar
     if @webinar.update(webinar_params)
-      redirect_to webinar_path(@webinar)
+      redirect_to dashboard_path(active: 'webinar')
     else
       render 'dashboards/webinars/edit'
     end
