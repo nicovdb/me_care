@@ -7,7 +7,7 @@
         <% end %>
       </div>
 
-      <ul class="nav nav-tabs mt-4 mb-3" id="pills-tab" role="tablist">
+      <ul class="nav nav-tabs mt-md-4 mb-3" id="pills-tab" role="tablist">
         <li class="nav-item" role="presentation">
           <a class="nav-link active" id="pills-news-tab" data-toggle="pill" href="#pills-news" role="tab" aria-controls="pills-news" aria-selected="true" data-target="active-tab.linkNews" data-action="click->active-tab#openTab">News</a>
         </li>
@@ -23,10 +23,8 @@
 
           <div class="my-4">
             <div class="mb-3 d-flex align-items-center">
-              <!-- <h2 class="text-underline mb-0">News</h2> -->
               <%= link_to '+ créer une news', new_dashboards_article_path, class:"mb-3" %>
             </div>
-
             <%= render 'articles' %>
           </div>
 
@@ -36,25 +34,27 @@
 
           <div class="my-4">
             <div class="mb-3 d-flex align-items-center">
-              <!-- <h2 class="text-underline mb-0">easy Live</h2> -->
               <%= link_to '+ créer un webinar', new_dashboards_webinar_path, class:"mb-3" %>
             </div>
 
             <% @webinars.each do |webinar| %>
-              <div class="d-flex align-items-center mt-2">
+              <div class="d-flex-column mb-4">
                 <%= link_to webinar_path(webinar) do %>
                   <h3 class="mb-0"><%= webinar.title %></h3>
                 <% end %>
-                <% if policy(Webinar).edit? %>
-                  <%= link_to edit_dashboards_webinar_path(webinar), class:"ml-4" do %>
-                    <i class="far fa-edit"></i>
+                <div class="d-flex align-items-center">
+                  <span class='text-mini mb-0'><%= l(webinar.start_at, format:"%d %b %Y") %> </span>
+                  <% if policy(Webinar).edit? %>
+                    <%= link_to edit_dashboards_webinar_path(webinar), class:"ml-4" do %>
+                      <i class="far fa-edit"></i>
+                    <% end %>
                   <% end %>
-                <% end %>
-                <% if policy(Webinar).destroy? %>
-                  <%= link_to webinar_path(webinar), method: :delete, remote: true, data:{confirm: "Êtes vous sûr.e ?"}, class:"ml-2" do %>
-                    <i class="far fa-trash-alt"></i>
+                  <% if policy(Webinar).destroy? %>
+                    <%= link_to webinar_path(webinar), method: :delete, remote: true, data:{confirm: "Êtes vous sûr.e ?"}, class:"ml-2" do %>
+                      <i class="far fa-trash-alt"></i>
+                    <% end %>
                   <% end %>
-                <% end %>
+                </div>
               </div>
             <% end %>
           </div>
@@ -64,7 +64,6 @@
 
           <div class="my-4">
             <div class="mb-3 d-flex align-items-center">
-              <!-- <h2 class="text-underline mb-0">À savoir</h2> -->
               <%= link_to '+ créer un à savoir', new_dashboards_infoendo_path, class:"mb-3" %>
             </div>
             <%= render 'infoendos' %>
