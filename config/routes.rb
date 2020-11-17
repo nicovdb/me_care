@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     patch '/unpublish-article/:id', to: 'dashboards#unpublish_article', as: :unpublish_article
     patch '/publish-infoendo/:id', to: 'dashboards#publish_infoendo', as: :publish_infoendo
     patch '/unpublish-infoendo/:id', to: 'dashboards#unpublish_infoendo', as: :unpublish_infoendo
+    patch '/publish-webinar/:id', to: 'dashboards#publish_webinar', as: :publish_webinar
+    patch '/unpublish-webinar/:id', to: 'dashboards#unpublish_webinar', as: :unpublish_webinar
     get '/profil', to: 'users#show', as: :profil
     patch '/users/:id/anonymize', to: 'users#anonymize', as: :anonymize
     resources :users, only: [:edit, :update]
