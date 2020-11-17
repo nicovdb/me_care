@@ -5,11 +5,11 @@
     <% end %>
     <div class="d-flex align-items-center">
       <% if article.published %>
-        <%= link_to unpublish_article_path(article), method: :patch, remote: true, data: {confirm: "Êtes vous sûr.e du dépublier cet article?"}, class: 'd-flex align-items-center' do  %>
+        <%= link_to unpublish_article_path(article), method: :patch, remote: true, data: {confirm: "Êtes vous sûr.e de vouloir dépublier cet article?"}, class: 'd-flex align-items-center' do  %>
           <span class='published'>publié</span>
         <% end %>
       <% else %>
-        <%= link_to publish_article_path(article), method: :patch, remote: true, data: {confirm: "Êtes vous sûr.e du publier cet article?"}, class: 'd-flex align-items-center' do  %>
+        <%= link_to publish_article_path(article), method: :patch, remote: true, data: {confirm: "Êtes vous sûr.e de vouloir publier cet article?"}, class: 'd-flex align-items-center' do  %>
           <span class='unpublished'>non publié</span>
         <% end %>
       <% end %>
