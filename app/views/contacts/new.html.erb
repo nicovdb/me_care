@@ -5,9 +5,11 @@
         <span class="feature-name">CONTACTEZ-NOUS !</span>
       </div>
     </div>
-    <div class="row">
-      <div class="col-10 offset-1 col-sm-4 offset-sm-4 px-1 px-lg-5">
-        <h2 class="text-center mb-4">Une question, un avis à donner, écrivez-nous !</h2>
+    <div class="row mt-0 mt-md-5">
+      <div class="col-10 offset-1 col-md-6 offset-md-3 px-1 px-xl-5">
+        <h3 class="text-center mb-3">Une question, un avis à donner, écrivez-nous !</h3>
+      </div>
+      <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4 px-1 px-xl-5">
         <%= form_for @contact, remote: true do |f| %>
           <div class="row">
             <%= f.text_field :first_name, required: true, placeholder: 'Prénom', class:'w-100 my-3' %>
@@ -34,9 +36,10 @@
       </div>
     </div>
     <div class="row">
-      <div class="col">
-        <h2 class="text-center">Vous pouvez aussi nous contacter à l’adresse suivante :</h2>
-        <h2 class="text-center text-pink">bonjour@easyendo.fr</h2>
+      <div class="col-10 offset-1 col-md-6 offset-md-3 px-1 px-xl-5">
+        <h3 class="text-center">Vous pouvez aussi nous contacter à l’adresse suivante :</h3>
+        <h3 class="text-center text-pink">
+          <%= mail_to "bonjour@easyendo.fr", "bonjour@easyendo.fr", class:"pink-mail-to" %></h3>
 
       </div>
     </div>

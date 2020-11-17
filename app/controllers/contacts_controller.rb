@@ -8,12 +8,14 @@ class ContactsController < ApplicationController
     @contact = Contact.new(params[:contact])
     @contact.request = request
     if @contact.deliver
-      flash.now[:alert] = "Votre message a bien été envoyé"
-      redirect_to new_contact_path
+      redirect_to message_sent_path
     else
       flash.now[:error] = "Votre message n'a pas pu être envoyé, veuillez réessayer ou écrire à bonjour@easyendo.fr"
       render :new
     end
+  end
+
+  def message_sent
   end
 
   private

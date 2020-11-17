@@ -10,7 +10,7 @@ class WebinarsController < ApplicationController
     authorize @webinar
 
     if @webinar.save
-      redirect_to dashboard_path(active: 'webinar')
+      redirect_after_create_or_update
     else
       render 'dashboards/webinars/new'
     end
@@ -40,7 +40,7 @@ class WebinarsController < ApplicationController
   def update
     authorize @webinar
     if @webinar.update(webinar_params)
-      redirect_to dashboard_path(active: 'webinar')
+      redirect_after_create_or_update
     else
       render 'dashboards/webinars/edit'
     end
@@ -64,5 +64,14 @@ class WebinarsController < ApplicationController
 
   def webinar_params
     params.require(:webinar).permit(:title, :speaker_picture, :description, :speaker_name, :category, :start_at)
+  end
+
+  def redirect_after_create_or_update
+    if params[:commit] == "Enregistrer"
+      redirect_to edit_dashboards_webinar_path(@webinar)
+    else
+      @webinar.update(published: true)
+      redirect_to dashboard_path(active: 'webinar')
+    end
   end
 end

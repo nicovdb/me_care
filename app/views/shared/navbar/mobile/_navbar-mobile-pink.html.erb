@@ -25,10 +25,6 @@
         <h1>Profil</h1>
       <% elsif controller_name == "contacts"%>
         <h1><%= t("views.controller_name.contacts.action_name.#{action_name}")%></h1>
-      <% elsif controller_name == "informations"%>
-        <h1>Questionnaire</h1>
-      <% elsif controller_name == "dashboards"%>
-        <h1>Dashboard</h1>
       <% else %>
         <h1><%= t("views.controller_name.#{controller_name}")%></h1>
       <% end %>

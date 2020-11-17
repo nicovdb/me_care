@@ -37,4 +37,20 @@ class DashboardsController < ApplicationController
     @infoendo.save
     redirect_to dashboard_path(active: 'infoendo')
   end
+
+  def publish_webinar
+    @webinar = Webinar.find(params[:id])
+    authorize(:webinar, :edit?)
+    @webinar.published = true
+    @webinar.save
+    redirect_to dashboard_path(active: 'webinar')
+  end
+
+  def unpublish_webinar
+    @webinar = Webinar.find(params[:id])
+    authorize(:webinar, :edit?)
+    @webinar.published = false
+    @webinar.save
+    redirect_to dashboard_path(active: 'webinar')
+  end
 end

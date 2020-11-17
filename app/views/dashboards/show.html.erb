@@ -12,10 +12,10 @@
           <a class="nav-link active" id="pills-news-tab" data-toggle="pill" href="#pills-news" role="tab" aria-controls="pills-news" aria-selected="true" data-target="active-tab.linkNews" data-action="click->active-tab#openTab">News</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="pills-webinar-tab" data-toggle="pill" href="#pills-webinar" role="tab" aria-controls="pills-webinar" aria-selected="false" data-target="active-tab.linkEasylives"  data-action="click->active-tab#openTab">easy Live</a>
+          <a class="nav-link" id="pills-infoendo-tab" data-toggle="pill" href="#pills-infoendo" role="tab" aria-controls="pills-infoendo" aria-selected="false" data-target="active-tab.linkInfoendos"  data-action="click->active-tab#openTab">À savoir</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="pills-infoendo-tab" data-toggle="pill" href="#pills-infoendo" role="tab" aria-controls="pills-infoendo" aria-selected="false" data-target="active-tab.linkInfoendos"  data-action="click->active-tab#openTab">À savoir</a>
+          <a class="nav-link" id="pills-webinar-tab" data-toggle="pill" href="#pills-webinar" role="tab" aria-controls="pills-webinar" aria-selected="false" data-target="active-tab.linkEasylives"  data-action="click->active-tab#openTab">easy Live</a>
         </li>
       </ul>
       <div class="tab-content" id="pills-tabContent">
@@ -27,7 +27,6 @@
             </div>
             <%= render 'articles' %>
           </div>
-
         </div>
 
         <div class="tab-pane fade" id="pills-webinar" role="tabpanel" aria-labelledby="pills-webinar-tab"  data-target="active-tab.contentEasylives">
@@ -36,29 +35,8 @@
             <div class="mb-3 d-flex align-items-center">
               <%= link_to '+ créer un webinar', new_dashboards_webinar_path, class:"mb-3" %>
             </div>
-
-            <% @webinars.each do |webinar| %>
-              <div class="d-flex-column mb-4">
-                <%= link_to webinar_path(webinar) do %>
-                  <h3 class="mb-0"><%= webinar.title %></h3>
-                <% end %>
-                <div class="d-flex align-items-center">
-                  <span class='text-mini mb-0'><%= l(webinar.start_at, format:"%d %b %Y") %> </span>
-                  <% if policy(Webinar).edit? %>
-                    <%= link_to edit_dashboards_webinar_path(webinar), class:"ml-4" do %>
-                      <i class="far fa-edit"></i>
-                    <% end %>
-                  <% end %>
-                  <% if policy(Webinar).destroy? %>
-                    <%= link_to webinar_path(webinar), method: :delete, remote: true, data:{confirm: "Êtes vous sûr.e ?"}, class:"ml-2" do %>
-                      <i class="far fa-trash-alt"></i>
-                    <% end %>
-                  <% end %>
-                </div>
-              </div>
-            <% end %>
+            <%= render 'webinars' %>
           </div>
-
         </div>
         <div class="tab-pane fade" id="pills-infoendo" role="tabpanel" aria-labelledby="pills-infoendo-tab"  data-target="active-tab.contentInfoendos">
 
@@ -68,7 +46,6 @@
             </div>
             <%= render 'infoendos' %>
           </div>
-
         </div>
       </div>
     </div>

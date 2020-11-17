@@ -51,3 +51,11 @@
   color: $green;
   font-size: 10px;
 }
+
+.pink-mail-to {
+  color: $pink;
+  font-weight: 600;
+  &:hover {
+    color: $pink;
+  }
+}
