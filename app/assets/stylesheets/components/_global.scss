@@ -56,6 +56,10 @@ a:hover {
   cursor: pointer;
 }
 
-.input-blue input {
+.input-blue input, .input-blue textarea {
   color: $green;
+}
+
+.input-blue .btn-ee {
+  color: white;
 }
