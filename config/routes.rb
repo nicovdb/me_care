@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get '/que-faire-si', to: 'pages#algorythm', as: :algorythm
     get '/abonnements', to: 'pages#products', as: :products
     resources :contacts, only: [:new, :create]
+    get '/confirmation-envoi', to: 'contacts#message_sent', as: :message_sent
     resources :subscriptions, only: [:index, :destroy]
     resources :articles, path: 'news', only: [:index, :show, :create, :update, :destroy]
     resources :infoendos, path: 'a-savoir', only: [:index, :show, :create, :update, :destroy]

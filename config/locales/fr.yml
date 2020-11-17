@@ -457,7 +457,10 @@ fr:
       contacts:
         action_name:
           new: Contactez-nous !
+          message_sent: Contactez-nous !
+      dashboards: Dashboard
       infoendos: À savoir
+      informations: Questionnaire
       pages:
         action_name:
           algorythm: Que faire si...
