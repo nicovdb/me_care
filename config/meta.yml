@@ -1,5 +1,5 @@
 meta_product_name: "easy Endo"
 meta_title: "easy Endo - Mieux vivre son endométriose"
 meta_description: "easy Endo - Mieux vivre son endométriose"
-meta_image: "favicon.png" # should exist in `app/assets/images/`
+meta_image: "favicon.svg" # should exist in `app/assets/images/`
 twitter_account: "@compte_easy_endo"   # required for Twitter Cards
