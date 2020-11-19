@@ -34,6 +34,15 @@
         </div>
       </div>
     </div>
+
+    <div class="mt-4 d-flex justify-content-center align-items-center">
+      <% if current_user.admin? %>
+        <%= link_to "DASHBOARD", main_app.dashboard_path, class: "btn btn-primary text-mini btn-ee mb-4 mx-2" %>
+      <% end %>
+
+      <%= link_to "DÉCONNEXION", main_app.destroy_user_session_path, method: :delete, class: "btn btn-primary btn-ee text-mini mb-4 mx-2" %>
+    </div>
+
     <%= render "delete_account", user: @user %>
   </div>
 </div>
