@@ -3,30 +3,5 @@
   <p class='text-left text-header text-semibold'>
     Vous n’avez pas encore d’abonnement. Rendez-vous sur la page Abonnement pour souscrire à notre offre.
   </p>
-  <!-- <%# if @subscription.canceled? %>
-    <p class='text-left text-header text-semibold'>
-      Vous avez annulé votre abonnement. Vous pouvez vous réabonner en cliquant <%#= link_to "ici", products_path, class:"text-underline" %>.
-    </p>
-  <%# elsif  @subscription.trialing? %>
-    <p class='text-left text-header text-semibold'>
-      Vous êtes actuellement en période d'essai. Celle-ci se terminera le <%#= l(@subscription.end_date, format: :short) %>. Vous pouvez vous abonner pour la suite <%#= link_to "ici", products_path, class:"text-underline" %>.
-    </p>
-  <%# else %>
-    <p class='text-left text-header text-semibold'>
-      <%# if @subscription.active? %>
-        Vous êtes abonnée au plan <%#= @subscription.nickname %>.
-      <%# elsif @subscription.past_due? || @subscription.unpaid? %>
-        Votre abonnement est bloqué car le dernier paiement n'est pas passé. Cliquez sur le bouton ci-dessous pour mettre à jour vos informations de paiement.
-      <%# elsif @subscription.pending? %>
-        Vous n’avez pas encore d’abonnement. Rendez-vous sur la page Abonnement pour souscrire à notre offre.
-      <%# elsif @subscription.incomplete? || @subscription.incomplete_expired? %>
-        Il y a un problème avec votre abonnement, veuillez cliquer sur le bouton ci-dessous.
-      <%# end %>
-    </p> -->
-    <!-- <form action="/customer_portal_sessions" method="POST">
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <button class="btn btn-primary btn-ee">Gérer mon abonnement</button>
-    </form> -->
-
-  <%# end %>
+  <%#= render "abonnement_hidden" %>
 </div>
