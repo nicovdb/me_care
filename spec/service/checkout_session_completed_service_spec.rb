@@ -2,15 +2,11 @@ require 'rails_helper'
 require 'stripe_mock'
 
 
-RSpec.describe CheckoutSessionCompletedService, type: :service do
-  let(:stripe_helper) { StripeMock.create_test_helper }
-
+RSpec.describe Stripe::CheckoutSessionCompletedService, type: :model do
     before(:all) do
       StripeMock.start
       StripeMock.start
       @user = FactoryBot.create(:user)
-      #user_data = create_user({generate: 'random'})
-      #@user = User.handle_creation(user_data[:name], user_data[:email])
     end
 
     after(:all) do
@@ -18,7 +14,7 @@ RSpec.describe CheckoutSessionCompletedService, type: :service do
     end
 
     it "detects when the checkout session is completed" do
-      request = StripeMock.mock_webhook_event('checkout.session.completed', metadata: {user_id: @user.id})
+      request = StripeMock.mock_webhook_event('checkout.session.completed')
       event_response = StripeHelper::IncomingWebhook.event_handler(request)
       # request = StripeMock.mock_webhook_event('customer.source.created', metadata: {user_id: @user.id})
       # event_response = StripeHelper::IncomingWebhook.event_handler(request)
