@@ -1,7 +1,7 @@
 module Thredded
   class MessageboardsController < Thredded::ApplicationController
     def index
-      if current_user.has_valid_subscription?
+      if current_user.has_valid_subscription? || current_user.admin?
         @groups = Thredded::MessageboardGroupView.grouped(
         policy_scope(Thredded::Messageboard.all),
         user: thredded_current_user
@@ -12,7 +12,7 @@ module Thredded
     end
 
     def new
-      if current_user.has_valid_subscription?
+      if current_user.has_valid_subscription? || current_user.admin?
         @new_messageboard = Thredded::Messageboard.new
         authorize_creating @new_messageboard
       else
@@ -21,7 +21,7 @@ module Thredded
     end
 
     def create
-      if current_user.has_valid_subscription?
+      if current_user.has_valid_subscription? || current_user.admin?
         @new_messageboard = Thredded::Messageboard.new(messageboard_params)
         authorize_creating @new_messageboard
         if Thredded::CreateMessageboard.new(@new_messageboard, thredded_current_user).run
@@ -35,7 +35,7 @@ module Thredded
     end
 
     def edit
-      if current_user.has_valid_subscription?
+      if current_user.has_valid_subscription? || current_user.admin?
         @messageboard = Thredded::Messageboard.friendly_find!(params[:id])
         authorize @messageboard, :update?
       else
@@ -44,7 +44,7 @@ module Thredded
     end
 
     def update
-      if current_user.has_valid_subscription?
+      if current_user.has_valid_subscription? || current_user.admin?
         @messageboard = Thredded::Messageboard.friendly_find!(params[:id])
         authorize @messageboard, :update?
         if @messageboard.update(messageboard_params)
@@ -58,7 +58,7 @@ module Thredded
     end
 
     def destroy
-      if current_user.has_valid_subscription?
+      if current_user.has_valid_subscription? || current_user.admin?
         @messageboard = Thredded::Messageboard.friendly_find!(params[:id])
         authorize @messageboard, :destroy?
         @messageboard.destroy!

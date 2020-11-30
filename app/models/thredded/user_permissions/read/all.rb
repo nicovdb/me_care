@@ -7,7 +7,7 @@ module Thredded
 
         # @return [ActiveRecord::Relation<Thredded::Messageboard>] messageboards that the user can read
         def thredded_can_read_messageboards
-          if self.has_valid_subscription?
+          if self.has_valid_subscription? || self.admin?
             Thredded::Messageboard.all
           else
             raise Pundit::NotAuthorizedError
