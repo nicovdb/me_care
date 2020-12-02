@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'stripe_mock'
 
 
-RSpec.describe Stripe::CustomerSubscriptionDeletedService, type: :model do
+RSpec.describe Stripe::CustomerSubscriptionUpdatedService, type: :model do
     before(:all) do
       StripeMock.start
       StripeMock.start
@@ -14,8 +14,8 @@ RSpec.describe Stripe::CustomerSubscriptionDeletedService, type: :model do
       StripeMock.stop
     end
 
-    it "detects when the subscription is deleted" do
-      request = StripeMock.mock_webhook_event('customer.subscription.deleted', customer: @user.stripe_id)
+    it "detects when the subscription is updated" do
+      request = StripeMock.mock_webhook_event('customer.subscription.updated', customer: @user.stripe_id)
       expect(request.data.object.customer).to eql @user.stripe_id
       #expect(request.data.object.status).to eql @user.subscription.status
       # probleme : quand je test la uuser.sub reste en trialing donc pas poss de la supp
