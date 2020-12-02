@@ -2,15 +2,17 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
-  context 'validations' do
+  before(:each) do
+    StripeMock.start
+    @user = FactoryBot.create(:user)
   end
 
-  # describe "Validations" do
-  #   it { should validate_presence_of(:bidder) }
-  # end
+  after(:each) do
+    StripeMock.stop
+  end
 
-  context 'associations' do
-    it { should have_one(:plan) }
-    it { should have_one(:subscription) }
+  it "is initialized with a stripe id" do
+    user = FactoryBot.create(:user)
+    expect(user.stripe_id).not_to eql nil
   end
 end
