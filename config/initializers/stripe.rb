@@ -5,21 +5,20 @@ if Rails.env == 'production'
     :signing_secret =>  ENV['DEV_STRIPE_WEBHOOK_SECRET_KEY']
   }
   Stripe.api_key = Rails.configuration.stripe[:secret_key]
-else
-  if Rails.env == 'development'
-    Rails.configuration.stripe = {
-      :publishable_key => ENV['DEV_STRIPE_PUBLISHABLE_KEY'],
-      :secret_key      => ENV['DEV_STRIPE_SECRET_KEY'],
-      :signing_secret =>  ENV['DEV_STRIPE_WEBHOOK_SECRET_KEY']
-    }
-    Stripe.api_key = Rails.configuration.stripe[:secret_key]
-  else
-    Rails.configuration.stripe = {
-      :publishable_key => ENV['TEST_STRIPE_PUBLISHABLE_KEY'],
-      :secret_key      => ENV['TEST_STRIPE_SECRET_KEY']
-    }
-    Stripe.api_key = Rails.configuration.stripe[:secret_key]
-  end
+elsif Rails.env == 'development'
+  Rails.configuration.stripe = {
+    :publishable_key => ENV['DEV_STRIPE_PUBLISHABLE_KEY'],
+    :secret_key      => ENV['DEV_STRIPE_SECRET_KEY'],
+    :signing_secret =>  ENV['DEV_STRIPE_WEBHOOK_SECRET_KEY']
+  }
+  Stripe.api_key = Rails.configuration.stripe[:secret_key]
+elsif
+  Rails.configuration.stripe = {
+    :publishable_key => ENV['TEST_STRIPE_PUBLISHABLE_KEY'],
+    :secret_key      => ENV['TEST_STRIPE_SECRET_KEY'],
+    :signing_secret => ENV['TEST_STRIPE_WEBHOOK_SECRET_KEY']
+  }
+  Stripe.api_key = Rails.configuration.stripe[:secret_key]
 end
 
 
