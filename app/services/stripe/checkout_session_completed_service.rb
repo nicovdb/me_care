@@ -9,7 +9,7 @@ module Stripe
         @webinar_subscription.save
       end
     rescue StandardError => e
-      channel = Rails.env.development? || Rails.env.production? ? 'DEVELOPMENT' : 'PRODUCTION'
+      channel = Rails.env.development? ? 'DEVELOPMENT' : 'PRODUCTION'
       Zapier::StripeError.new({ event: event, error: e, channel: channel, service: "StripeCheckoutSessionCompleted" }).post_to_zapier
     end
   end
