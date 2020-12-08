@@ -10,7 +10,7 @@ module Stripe
       end
     rescue StandardError => e
       channel = Rails.env.development? ? 'DEVELOPMENT' : 'PRODUCTION'
-      Zapier::StripeError.new({ event: event, error: e, channel: channel, service: "StripeCheckoutSessionCompleted" }).post_to_zapier
+      Zapier::StripeError.new({ event: event, error: e.message, channel: channel, service: "StripeCheckoutSessionCompleted" }).post_to_zapier
     end
   end
 end

@@ -7,7 +7,7 @@ module Stripe
       StripeMailer.with(user: user).invoice_payment_failed.deliver_now
     rescue StandardError => e
       channel = Rails.env.development? ? 'DEVELOPMENT' : 'PRODUCTION'
-      Zapier::StripeError.new({ event: event, error: e, channel: channel, service: "InvoicePaymentFailed" }).post_to_zapier
+      Zapier::StripeError.new({ event: event, error: e.message, channel: channel, service: "InvoicePaymentFailed" }).post_to_zapier
     end
   end
 end

@@ -17,7 +17,7 @@ module Stripe
       check_change_price
     rescue StandardError => e
       channel = Rails.env.development? ? 'DEVELOPMENT' : 'PRODUCTION'
-      Zapier::StripeError.new({ event: event, error: e, channel: channel, service: "CustomerSubscriptionUpdated" }).post_to_zapier
+      Zapier::StripeError.new({ event: event, error: e.message, channel: channel, service: "CustomerSubscriptionUpdated" }).post_to_zapier
     end
 
     private
