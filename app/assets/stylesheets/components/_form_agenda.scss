@@ -1,0 +1,45 @@
+.daily_symptom_sport, .daily_symptom_emergency, .daily_symptom_analgesic {
+  .form-check-label {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  legend {
+    display:none;
+  }
+  input[type=checkbox] {
+    display: none;
+
+    & + label:before {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      top: 2px;
+      left: 5px;
+      position: relative;
+      content: '';
+      display: inline-block;
+      visibility: visible;
+      border: 1px solid $pink;
+    }
+
+    &:checked + label:before {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      top: 2px;
+      left: 5px;
+      position: relative;
+      background-color: $pink;
+      content: '';
+      display: inline-block;
+      visibility: visible;
+    }
+  }
+}
+
+textarea#daily_symptom_notes {
+  box-shadow: 0px 0px 6px $light-green;
+  border: 1px solid $light-green;
+  border-radius: 18px;
+  height: 200px;
+}
