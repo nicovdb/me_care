@@ -2,21 +2,28 @@ module Stripe
   class CustomerSubscriptionUpdatedService
     def call(event)
       @event = event
-      @stripe_subscription = @event.data.object
+      @stripe_subscription = event.data.object
       @user = User.find_by(stripe_id: @stripe_subscription.customer)
       @user.subscription.update(
         stripe_id: @stripe_subscription.id,
         status: @stripe_subscription.status,
-        end_date: Time.at(@stripe_subscription.current_period_end).to_date,
-        nickname: @stripe_subscription&.items&.data[0]&.price&.nickname
-      )
-
+        end_date: Time.at(@stripe_subscription.current_period_end).to_date
+        )
+      # if @stripe_subscription&.items&.data[0]&.price
+      #   @user.subscription.update(
+      #     nickname: @stripe_subscription&.items&.data[0]&.price&.nickname
+      #     )
+      # end
       check_change_price
+    rescue StandardError => e
+      channel = Rails.env.development? ? 'DEVELOPMENT' : 'PRODUCTION'
+      Zapier::StripeError.new({ event: event, error: e.message, channel: channel, service: "CustomerSubscriptionUpdated" }).post_to_zapier
     end
 
     private
 
     def check_change_price
+      #persister le prix chez nous pour retrouver plus facilement ou voir avec le nickname
       if @event.data&.previous_attributes.keys.include?(:items)
         status = @stripe_subscription.status
         price_id = @stripe_subscription&.items&.data[0]&.price&.id

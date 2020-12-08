@@ -5,7 +5,7 @@
     </div>
 
     <div class="truncated pr-2">
-      <%= link_to webinar_path(webinar) do %>
+      <%= link_to webinar_path(webinar), data: {turbolinks: false} do %>
         <div class="text-info">
           <%= t("webinar.#{webinar.category}") %>
         </div>
@@ -20,7 +20,7 @@
     </div>
 
     <div class='my-auto'>
-      <%= link_to webinar_path(webinar) do %>
+      <%= link_to webinar_path(webinar), data: {turbolinks: false} do %>
         <% if webinar.speaker_picture.attached? %>
           <div class="d-none d-md-block">
             <%= cl_image_tag webinar.speaker_picture.key, width: 120, height: 120, crop: :fill, quality: :auto, fetch_format: :auto, class:"avatar avatar-xl" %>

@@ -1,0 +1,61 @@
+{
+  "id": "evt_00000000000000",
+  "object": "event",
+  "api_version": "2020-03-02",
+  "created": 1607417383,
+  "data": {
+    "object": {
+      "id": "cs_00000000000000",
+      "object": "checkout.session",
+      "allow_promotion_codes": null,
+      "amount_subtotal": 500,
+      "amount_total": 500,
+      "billing_address_collection": null,
+      "cancel_url": "http://localhost:3000/easy-lives/5",
+      "client_reference_id": null,
+      "currency": "eur",
+      // "customer": "cus_IUs3EsiRNnbNRP",
+      "customer_email": null,
+      "display_items": [
+        {
+          "amount": 500,
+          "currency": "eur",
+          "custom": {
+            "description": null,
+            "images": null,
+            "name": "Micronutrition et endométriose"
+          },
+          "quantity": 1,
+          "type": "custom"
+        }
+      ],
+      "livemode": false,
+      "locale": null,
+      "metadata": {
+      },
+      "mode": "payment",
+      // "payment_intent": "pi_1Hw1stBCt2fCpZSz3t9x5n3F",
+      "payment_method_types": [
+        "card"
+      ],
+      "payment_status": "paid",
+      "setup_intent": null,
+      "shipping": null,
+      "shipping_address_collection": null,
+      "submit_type": null,
+      "subscription": null,
+      "success_url": "http://localhost:3000/easy-lives/5",
+      "total_details": {
+        "amount_discount": 0,
+        "amount_tax": 0
+      }
+    }
+  },
+  "livemode": false,
+  "pending_webhooks": 1,
+  "request": {
+    "id": null,
+    "idempotency_key": null
+  },
+  "type": "checkout.session.completed"
+}

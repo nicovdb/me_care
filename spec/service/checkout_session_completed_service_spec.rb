@@ -1,25 +1,27 @@
 require 'rails_helper'
 require 'stripe_mock'
+require 'database_cleaner/active_record'
 
 
 RSpec.describe Stripe::CheckoutSessionCompletedService, type: :model do
+    DatabaseCleaner.strategy = :truncation
     before(:all) do
+      DatabaseCleaner.start
       StripeMock.start
-      StripeMock.start
-      @user = FactoryBot.create(:user)
     end
 
     after(:all) do
       StripeMock.stop
+      DatabaseCleaner.clean
     end
 
+    let(:user) { FactoryBot.create(:user, :confirmed) }
+    let(:webinar) { FactoryBot.create(:webinar) }
+
     it "detects when the checkout session is completed" do
-      #request = StripeMock.mock_webhook_event('checkout.session.completed')
-      #event_response = StripeHelper::IncomingWebhook.event_handler(request)
-      # request = StripeMock.mock_webhook_event('customer.source.created', metadata: {user_id: @user.id})
-      # event_response = StripeHelper::IncomingWebhook.event_handler(request)
-      # expect(event_response[:type]).to eql request.type
-      # expect(event_response[:stripe_customer_id]).to eql request.data.object.id
-      # expect(event_response[:user_id]).to eql request.data.object.metadata.user_id
+      web_sub_counter = WebinarSubscription.count
+      request = StripeMock.mock_webhook_event('checkout.session.completed', customer: user.stripe_id, name: webinar.title)
+      described_class.new.call(request)
+      expect(WebinarSubscription.count).not_to eq(web_sub_counter)
     end
 end
