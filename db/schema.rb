@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_17_093905) do
+ActiveRecord::Schema.define(version: 2020_12_08_084316) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,23 @@ ActiveRecord::Schema.define(version: 2020_11_17_093905) do
     t.boolean "published", default: false
     t.datetime "publication_date"
     t.index ["user_id"], name: "index_articles_on_user_id"
+  end
+
+  create_table "daily_symptoms", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.date "day"
+    t.integer "pain_level"
+    t.integer "blood_level"
+    t.integer "digestive_trouble_level"
+    t.integer "stress_level"
+    t.integer "insomnia_level"
+    t.boolean "sport"
+    t.boolean "emergency"
+    t.boolean "analgesic"
+    t.text "notes"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_daily_symptoms_on_user_id"
   end
 
   create_table "diseases", force: :cascade do |t|
@@ -471,6 +488,7 @@ ActiveRecord::Schema.define(version: 2020_11_17_093905) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "articles", "users"
+  add_foreign_key "daily_symptoms", "users"
   add_foreign_key "favorites", "articles"
   add_foreign_key "favorites", "infoendos"
   add_foreign_key "favorites", "users"
