@@ -40,5 +40,6 @@ Rails.application.routes.draw do
     resources :coupons, only: [:create]
     post '/coupon', to: 'coupons#use', as: :use_coupon
     resources :customer_portal_sessions, only: [:create]
+    resources :daily_symptoms, path: 'agenda', only: [:index, :new, :create, :edit, :update]
   end
 end
