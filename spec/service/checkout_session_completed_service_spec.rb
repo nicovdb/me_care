@@ -15,16 +15,16 @@ RSpec.describe Stripe::CheckoutSessionCompletedService, type: :model do
       DatabaseCleaner.clean
     end
 
-    it "detects when the checkout session is completed" do
-      request = StripeMock.mock_webhook_event('checkout.session.completed')
-      #byebug
-      #écrire test et rappeler service manuellement
+    let(:user) { FactoryBot.create(:user, :confirmed) }
+    let(:webinar) { FactoryBot.create(:webinar) }
 
-      #event_response = StripeHelper::IncomingWebhook.event_handler(request)
-      # request = StripeMock.mock_webhook_event('customer.source.created', metadata: {user_id: @user.id})
-      # event_response = StripeHelper::IncomingWebhook.event_handler(request)
-      # expect(event_response[:type]).to eql request.type
-      # expect(event_response[:stripe_customer_id]).to eql request.data.object.id
-      # expect(event_response[:user_id]).to eql request.data.object.metadata.user_id
+    it "detects when the checkout session is completed" do
+      web_sub_counter = WebinarSubscription.count
+      request = StripeMock.mock_webhook_event('checkout.session.completed', customer: user.stripe_id, name: webinar.title)
+      described_class.new.call(request)
+      test_user = User.find_by(stripe_id: request.data.object.customer)
+      test_amount = request.data.object.amount_total.to_i
+      test_webinar = Webinar.find_by(title: request.data.object.display_items[0].custom.name)
+      expect(WebinarSubscription.count).not_to eq(web_sub_counter)
     end
 end
