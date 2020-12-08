@@ -6,40 +6,42 @@
         <div class="d-none d-md-block mb-3">
           <span class="feature-name">MON AGENDA</span>
         </div>
-        <div class="border w-100 vh-100">
+        <div class="border w-100">
           Bloc symptoms
         </div>
       </div>
-      <div class="col-12 col-md-8">
-        <div class="border w-100 vh-100">
+      <div class="col-12 col-md-8 rounded shadow">
+        <div class="">
           <div class="d-flex align-items-center justify-content-center">
             <%= link_to "<", daily_symptoms_path(month: @first_day_of_month.prev_month) %>
             <h3 class="px-3"><%= l(@first_day_of_month, format:"%B %Y").capitalize %></h3>
             <%= link_to ">", daily_symptoms_path(month: @first_day_of_month.next_month) %>
           </div>
-          <div class="row">
-            <div class="day">Lundi</div>
-            <div class="day">Mardi</div>
-            <div class="day">Mercredi</div>
-            <div class="day">Jeudi</div>
-            <div class="day">Vendredi</div>
-            <div class="day">Samedi</div>
-            <div class="day">Dimanche</div>
-          </div>
-          <div class="row">
-            <% @start_empty_cells.times do %>
-              <div class="day"></div>
-            <% end %>
-            <% @number_of_days_in_month.times do  %>
-              <div class="day">
+        </div>
+        <div class="row">
+          <div class="day">Lundi</div>
+          <div class="day">Mardi</div>
+          <div class="day">Mercredi</div>
+          <div class="day">Jeudi</div>
+          <div class="day">Vendredi</div>
+          <div class="day">Samedi</div>
+          <div class="day">Dimanche</div>
+        </div>
+        <div class="row">
+          <% @start_empty_cells.times do %>
+            <div class="day"></div>
+          <% end %>
+          <% @number_of_days_in_month.times do  %>
+            <div class="day">
+              <%= link_to new_daily_symptom_path(day: @first_day_of_month) do %>
                 <%= @first_day_of_month.day %>
-              </div>
-              <% @first_day_of_month += 1 %>
-            <% end %>
-            <% @end_empty_cells.times do %>
-              <div class="day"></div>
-            <% end %>
-          </div>
+              <% end %>
+            </div>
+            <% @first_day_of_month += 1 %>
+          <% end %>
+          <% @end_empty_cells.times do %>
+            <div class="day"></div>
+          <% end %>
         </div>
       </div>
     </div>
