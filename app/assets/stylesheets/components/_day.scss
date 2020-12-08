@@ -1,6 +1,49 @@
 .day {
-  background-color: green;
-  border: 1px solid black;
   width: 14.28%;
-  height: 150px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.day .inactive {
+  font-size: 18px;
+  font-family: $headers-font;
+  color: #035E7080;
+}
+
+.day-header {
+  width: 14.28%;
+  text-align: center;
+}
+
+.day-arrows {
+  width: 15px;
+  height: 15px;
+}
+
+.current-day {
+  background-color: $pink;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  color: white;
+  text-align: center;
+}
+
+.current-day-text-mini {
+  font-size: 10px;
+  font-weight: bold;
+  line-height: 12px;
+}
+
+@media(min-width: 800px) {
+  .current-day-text-mini {
+    font-size: 12px;
+    line-height: 14px;
+  }
+}
+
+.agenda-box {
+  box-shadow: 0px 0px 6px $light-green;
+  border-radius: 18px;
 }

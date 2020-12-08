@@ -1,7 +1,7 @@
 <% content_for :meta_title, "Agenda | easy endo" %>
-<div class="bg pb-5 padding-top-navbar min-100-vh-with-footer">
+<div class="pb-5 padding-top-navbar min-100-vh-with-footer">
   <div class="container">
-    <div class="d-flex flex-column-reverse flex-md-row mb-3 col-12 col-md-10 offset-md-1">
+    <div class="d-flex px-0 flex-column-reverse flex-md-row mb-3 col-12 col-md-10 offset-md-1">
       <div class="col-12 col-md-4">
         <div class="d-none d-md-block mb-3">
           <span class="feature-name">MON AGENDA</span>
@@ -10,35 +10,68 @@
           Bloc symptoms
         </div>
       </div>
-      <div class="col-12 col-md-8 rounded shadow">
-        <div class="">
-          <div class="d-flex align-items-center justify-content-center">
-            <%= link_to "<", daily_symptoms_path(month: @first_day_of_month.prev_month) %>
-            <h3 class="px-3"><%= l(@first_day_of_month, format:"%B %Y").capitalize %></h3>
-            <%= link_to ">", daily_symptoms_path(month: @first_day_of_month.next_month) %>
-          </div>
+      <div class="col-12 col-md-8 agenda-box">
+        <div class="d-flex align-items-center justify-content-center my-4">
+          <%= link_to daily_symptoms_path(month: @first_day_of_month.prev_month) do %>
+            <%= image_tag "arrow-left", class:"day-arrows" %>
+          <% end %>
+          <h3 class="px-3 mb-0"><%= l(@first_day_of_month, format:"%B %Y").capitalize %></h3>
+          <%= link_to daily_symptoms_path(month: @first_day_of_month.next_month) do %>
+            <%= image_tag "arrow-right", class:"day-arrows" %>
+          <% end %>
         </div>
-        <div class="row">
-          <div class="day">Lundi</div>
-          <div class="day">Mardi</div>
-          <div class="day">Mercredi</div>
-          <div class="day">Jeudi</div>
-          <div class="day">Vendredi</div>
-          <div class="day">Samedi</div>
-          <div class="day">Dimanche</div>
+        <div class="row mb-2">
+          <h3 class="day-header">Lu</h3>
+          <h3 class="day-header">Ma</h3>
+          <h3 class="day-header">Me</h3>
+          <h3 class="day-header">Je</h3>
+          <h3 class="day-header">Ve</h3>
+          <h3 class="day-header">Sa</h3>
+          <h3 class="day-header">Di</h3>
         </div>
         <div class="row">
           <% @start_empty_cells.times do %>
             <div class="day"></div>
           <% end %>
+
           <% @number_of_days_in_month.times do  %>
-            <div class="day">
-              <%= link_to new_daily_symptom_path(day: @first_day_of_month) do %>
-                <%= @first_day_of_month.day %>
-              <% end %>
-            </div>
+            <% @day = @first_day_of_month %>
+            <% @day_symptoms = @daily_symptoms.find_by(day: @day) %>
+
+            <% if @day > Date.today %>
+              <div class="day">
+                <p class="inactive"><%= @day.day %></p>
+              </div>
+
+            <% elsif @day == Date.today %>
+              <div class="day">
+                <%= link_to new_daily_symptom_path(day: @day) do %>
+                  <div class="d-flex flex-column justify-content-center align-items-center">
+                    <p class="current-day mb-1"><%= @day.day %></p>
+                    <% if @day_symptoms %>
+                      <p>Symptomes à afficher</p>
+                    <% else %>
+                      <p class="current-day-text-mini text-center">Notez les symptômes du jour</p>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+
+            <% else %>
+              <div class="day">
+                <%= link_to new_daily_symptom_path(day: @day) do %>
+                  <p><%= @day.day %></p>
+                  <% if @day_symptoms %>
+                    <%= @day_symptoms.id %>
+                  <% end %>
+                <% end %>
+              </div>
+            <% end %>
+
             <% @first_day_of_month += 1 %>
+
           <% end %>
+
           <% @end_empty_cells.times do %>
             <div class="day"></div>
           <% end %>
