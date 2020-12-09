@@ -3,12 +3,71 @@
   <div class="container">
     <div class="d-flex px-0 flex-column-reverse flex-md-row mb-3 col-12 col-md-10 offset-md-1">
       <div class="col-12 col-md-4">
-        <div class="d-none d-md-block mb-3">
+        <div class="d-none d-md-block mb-4">
           <span class="feature-name">MON AGENDA</span>
         </div>
-        <div class="border w-100">
-          Bloc symptoms
+        <div class="row mt-4">
+          <div class="col-4 col-md-6">
+            <div class="icon-agenda d-flex flex-column justify-content-center align-items-center">
+              <%= image_tag "icon-agenda-test.svg", data: { action: "click->agenda#toggle", symptom: "pain" } %>
+              <h3 data-action="click->agenda#toggle" data-symptom="pain">Douleurs</h3>
+            </div>
+          </div>
+          <div class="col-4 col-md-6">
+            <div class="icon-agenda d-flex flex-column justify-content-center align-items-center">
+              <%= image_tag "icon-agenda-test.svg", data: { action: "click->agenda#toggle", symptom: "blood" } %>
+              <h3 data-action="click->agenda#toggle" data-symptom="blood">Saignements</h3>
+            </div>
+          </div>
+          <div class="col-4 col-md-6">
+            <div class="icon-agenda d-flex flex-column justify-content-center align-items-center">
+              <%= image_tag "icon-agenda-test.svg", data: { action: "click->agenda#toggle", symptom: "digestiveTrouble" } %>
+              <h3 data-action="click->agenda#toggle" data-symptom="digestiveTrouble">Troubles digestifs</h3>
+            </div>
+          </div>
+          <div class="col-4 col-md-6">
+            <div class="icon-agenda d-flex flex-column justify-content-center align-items-center">
+              <%= image_tag "icon-agenda-test.svg", data: { action: "click->agenda#toggle", symptom: "stress" } %>
+              <h3 data-action="click->agenda#toggle" data-symptom="stress">Stress</h3>
+            </div>
+          </div>
+          <div class="col-4 col-md-6">
+            <div class="icon-agenda d-flex flex-column justify-content-center align-items-center">
+              <%= image_tag "icon-agenda-test.svg", data: { action: "click->agenda#toggle", symptom: "insomnia" } %>
+              <h3 data-action="click->agenda#toggle" data-symptom="insomnia">Insomnie</h3>
+            </div>
+          </div>
+          <div class="col-4 col-md-6">
+            <div class="icon-agenda d-flex flex-column justify-content-center align-items-center">
+              <%= image_tag "icon-agenda-test.svg", data: { action: "click->agenda#toggle", symptom: "sport" } %>
+              <h3 data-action="click->agenda#toggle" data-symptom="sport">Sport</h3>
+            </div>
+          </div>
+          <div class="col-4 col-md-6">
+            <div class="icon-agenda d-flex flex-column justify-content-center align-items-center">
+              <%= image_tag "icon-agenda-test.svg", data: { action: "click->agenda#toggle", symptom: "analgesic" } %>
+              <h3 data-action="click->agenda#toggle" data-symptom="analgesic">Antalgiques</h3>
+            </div>
+          </div>
+          <div class="col-4 col-md-6">
+            <div class="icon-agenda d-flex flex-column justify-content-center align-items-center">
+              <%= image_tag "icon-agenda-test.svg", data: { action: "click->agenda#toggle", symptom: "emergency" } %>
+              <h3 data-action="click->agenda#toggle" data-symptom="emergency">Consultations Urgences</h3>
+            </div>
+          </div>
+          <div class="col-4 col-md-6">
+            <div class="icon-agenda d-flex flex-column justify-content-center align-items-center">
+              <%= image_tag "icon-agenda-test.svg", data: { action: "click->agenda#toggle", symptom: "notes" } %>
+              <h3 data-action="click->agenda#toggle" data-symptom="notes">Notes</h3>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="d-flex justify-content-center align-items-center h-100">
+              <p class="reset-filters text-center" data-action="click->agenda#resetFilters">Effacer les filtres</p>
+            </div>
+          </div>
         </div>
+
       </div>
 
       <%# Bloc Agenda %>
@@ -86,7 +145,7 @@
                   <%= link_to new_daily_symptom_path(day: day) do %>
                     <div class="d-flex flex-column justify-content-center align-items-center">
                       <p class="current-day mb-1"><%= day[:day].day %></p>
-                      <p class="current-day-text-mini text-center">Notez les symptômes du jour</p>
+                      <%# <p class="current-day-text-mini text-center">Notez les symptômes du jour</p> %>
                     </div>
                   <% end %>
                 </div>

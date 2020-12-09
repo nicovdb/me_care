@@ -10,7 +10,7 @@ class DailySymptom < ApplicationRecord
       symptoms << {name: "blood", color: "#DB9497"}
     end
     if digestive_trouble_level != nil && digestive_trouble_level != 0
-      symptoms << {name: "digestive_trouble", color: "#8C97CF"}
+      symptoms << {name: "digestiveTrouble", color: "#8C97CF"}
     end
     if stress_level != nil && stress_level != 0
       symptoms << {name: "stress", color: "#B9B9B9"}
