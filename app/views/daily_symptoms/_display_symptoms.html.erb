@@ -1,0 +1,11 @@
+<div class="symptoms-block">
+  <% day[:symptoms].first(7).each do |symptom| %>
+    <span class="symptom-bullet" style="background-color:<%=symptom[:color]%>" data-agenda-target="<%=symptom[:name]%>"></span>
+  <% end %>
+  <% if day[:symptoms][7..8] %>
+    <%= image_tag "cross-agenda", class:"symptom-bullet" %>
+    <% day[:symptoms][7..8].each do |symptom| %>
+      <span class="symptom-bullet d-none" style="background-color:<%=symptom[:color]%>"></span>
+    <% end %>
+  <% end %>
+</div>

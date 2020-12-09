@@ -1,5 +1,5 @@
 <% content_for :meta_title, "Agenda | easy endo" %>
-<div class="pb-5 padding-top-navbar min-100-vh-with-footer">
+<div class="pb-5 padding-top-navbar min-100-vh-with-footer" data-controller="agenda">
   <div class="container">
     <div class="d-flex px-0 flex-column-reverse flex-md-row mb-3 col-12 col-md-10 offset-md-1">
       <div class="col-12 col-md-4">
@@ -10,7 +10,11 @@
           Bloc symptoms
         </div>
       </div>
+
+      <%# Bloc Agenda %>
       <div class="col-12 col-md-8 agenda-box">
+
+        <%# Navigation entre les mois %>
         <div class="d-flex align-items-center justify-content-center my-4">
           <%= link_to daily_symptoms_path(month: @first_day_of_month.prev_month) do %>
             <%= image_tag "arrow-left", class:"day-arrows" %>
@@ -20,6 +24,8 @@
             <%= image_tag "arrow-right", class:"day-arrows" %>
           <% end %>
         </div>
+
+        <%# Header jours %>
         <div class="row mb-2">
           <h3 class="day-header">Lu</h3>
           <h3 class="day-header">Ma</h3>
@@ -30,48 +36,71 @@
           <h3 class="day-header">Di</h3>
         </div>
         <div class="row">
+
+          <%# cellules vides avant le 1er %>
           <% @start_empty_cells.times do %>
             <div class="day"></div>
           <% end %>
 
-          <% @number_of_days_in_month.times do  %>
-            <% @day = @first_day_of_month %>
-            <% @day_symptoms = @daily_symptoms.find_by(day: @day) %>
+          <%# Using fetched data from controller %>
+          <% @data.each do |day| %>
+            <% if day[:day] < Date.today %>
 
-            <% if @day > Date.today %>
-              <div class="day">
-                <p class="inactive"><%= @day.day %></p>
-              </div>
+              <%# jours précédents avec un daily_symptom %>
+              <% if day[:daily_symptom] %>
+                <div class="day">
+                  <%= link_to edit_daily_symptom_path(day[:daily_symptom]) do %>
+                    <div class="d-flex flex-column justify-content-center align-items-center">
+                      <p class="mb-1"><%= day[:day].day %></p>
+                      <%= render "display_symptoms", day: day %>
+                    </div>
+                  <% end %>
+                </div>
 
-            <% elsif @day == Date.today %>
-              <div class="day">
-                <%= link_to new_daily_symptom_path(day: @day) do %>
-                  <div class="d-flex flex-column justify-content-center align-items-center">
-                    <p class="current-day mb-1"><%= @day.day %></p>
-                    <% if @day_symptoms %>
-                      <p>Symptomes à afficher</p>
-                    <% else %>
+              <%# jours précédents sans daily_symptom %>
+              <% else %>
+                <div class="day">
+                  <%= link_to new_daily_symptom_path(day: day) do %>
+                    <div class="d-flex flex-column justify-content-center align-items-center">
+                      <p><%= day[:day].day %></p>
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
+            <% elsif day[:day] == Date.today %>
+
+              <%# jours en cours avec un daily_symptom %>
+              <% if day[:daily_symptom] %>
+                <div class="day">
+                  <%= link_to edit_daily_symptom_path(day[:daily_symptom]) do %>
+                    <div class="d-flex flex-column justify-content-center align-items-center">
+                      <p class="current-day mb-1"><%= day[:day].day %></p>
+                      <%= render "display_symptoms", day: day %>
+                    </div>
+                  <% end %>
+                </div>
+
+              <%# jours en cours sans daily_symptom %>
+              <% else %>
+                <div class="day">
+                  <%= link_to new_daily_symptom_path(day: day) do %>
+                    <div class="d-flex flex-column justify-content-center align-items-center">
+                      <p class="current-day mb-1"><%= day[:day].day %></p>
                       <p class="current-day-text-mini text-center">Notez les symptômes du jour</p>
-                    <% end %>
-                  </div>
-                <% end %>
-              </div>
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
 
+            <%# Jours à venir %>
             <% else %>
               <div class="day">
-                <%= link_to new_daily_symptom_path(day: @day) do %>
-                  <p><%= @day.day %></p>
-                  <% if @day_symptoms %>
-                    <%= @day_symptoms.id %>
-                  <% end %>
-                <% end %>
+                <p class="inactive"><%= day[:day].day %></p>
               </div>
             <% end %>
-
-            <% @first_day_of_month += 1 %>
-
           <% end %>
 
+          <%# cellules vides après le dernier jour %>
           <% @end_empty_cells.times do %>
             <div class="day"></div>
           <% end %>
