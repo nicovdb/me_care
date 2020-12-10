@@ -1,8 +1,7 @@
 class DailySymptomsController < ApplicationController
   def index
-    # Récupérer uniquement ceux du mois en cours ?
-    @daily_symptoms = policy_scope(DailySymptom)
     define_table
+    @daily_symptoms = policy_scope(DailySymptom).where('day >= ?', @first_day_of_month).where('day <= ?', @last_day_of_month)
     define_data
   end
 
@@ -16,8 +15,8 @@ class DailySymptomsController < ApplicationController
   private
 
   def define_table
-    if params[:month].present?
-      base_day = params[:month].to_date
+    if params[:base_day].present?
+      base_day = params[:base_day].to_date
     else
       base_day = Date.today
     end
