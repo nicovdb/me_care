@@ -31,7 +31,13 @@ class DailySymptomsController < ApplicationController
   end
 
   def update
-    raise
+    @daily_symptom = DailySymptom.find(params[:id])
+    authorize @daily_symptom
+    if @daily_symptom.update(daily_symptom_params)
+      redirect_to daily_symptoms_path
+    else
+      render :edit
+    end
   end
 
   def show

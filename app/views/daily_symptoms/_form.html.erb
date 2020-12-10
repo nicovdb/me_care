@@ -1,4 +1,4 @@
-<div class="bg pb-5 padding-top-navbar min-100-vh-with-footer">
+<div class="pb-5 padding-top-navbar min-100-vh-with-footer">
   <div class="container">
     <div class="d-md-flex justify-content-between mb-3 col-12 col-md-10 offset-md-1">
       <div class="d-none d-md-block">
@@ -8,15 +8,23 @@
       </div>
       <div class="d-flex align-items-center justify-content-center">
         <% if !@edit_prev_day %>
-          <%= link_to "<", new_daily_symptom_path(day: @day.prev_day) %>
+          <%= link_to new_daily_symptom_path(day: @day.prev_day) do %>
+            <%= image_tag "arrow-left", class:"day-arrows" %>
+          <% end %>
         <% elsif !@previous_daily_symptom.nil? %>
-          <%= link_to "<", edit_daily_symptom_path(@previous_daily_symptom, day: @day.prev_day) %>
+          <%= link_to edit_daily_symptom_path(@previous_daily_symptom, day: @day.prev_day) do %>
+            <%= image_tag "arrow-left", class:"day-arrows" %>
+          <% end %>
         <% end %>
-        <h3 class="px-3"><%= l(@day, format:"%d %B %Y").capitalize %></h3>
+        <h3 class="px-3 mb-0"><%= l(@day, format:"%d %B %Y").capitalize %></h3>
         <% if !@edit_next_day %>
-          <%= link_to ">", new_daily_symptom_path(day: @day.next_day) %>
+          <%= link_to new_daily_symptom_path(day: @day.next_day) do %>
+            <%= image_tag "arrow-right", class:"day-arrows" %>
+          <% end %>
         <% elsif !@next_daily_symptom.nil? %>
-          <%= link_to ">", edit_daily_symptom_path(@next_daily_symptom, day: @day.next_day) %>
+          <%= link_to edit_daily_symptom_path(@next_daily_symptom, day: @day.next_day) do %>
+            <%= image_tag "arrow-right", class:"day-arrows" %>
+          <% end %>
         <% end %>
       </div>
       <div>
@@ -73,7 +81,7 @@
                 <%= image_tag "agenda/sport.svg", class: 'symptom-icon'%>
                 <h3 class='mb-0 ml-2'>Sport</h3>
               </div>
-              <%= f.input :sport, as: :check_boxes, collection: [['oui', true]], wrapper_html: {class:' d-flex flex-column-reverse'} %>
+              <%= f.input :sport, as: :boolean, checked_value: true, unchecked_value: false, label: 'oui' %>
             </div>
             <div class="dropdown-divider my-3"></div>
               <div class="d-flex justify-content-between align-items-center">
@@ -81,7 +89,7 @@
                   <%= image_tag "agenda/emergency.svg", class: 'symptom-icon'%>
                   <h3 class='mb-0 ml-2'>Consultations/Urgences</h3>
                 </div>
-                <%= f.input :emergency, as: :check_boxes, collection: [['oui', true]] %>
+                <%= f.input :emergency, as: :boolean, checked_value: true, unchecked_value: false, label: 'oui' %>
               </div>
             <div class="dropdown-divider my-3"></div>
               <div class="d-flex justify-content-between align-items-center">
@@ -89,7 +97,7 @@
                   <%= image_tag "agenda/analgesic.svg", class: 'symptom-icon'%>
                   <h3 class='mb-0 ml-2'>Antalgiques</h3>
                 </div>
-                <%= f.input :analgesic, as: :check_boxes, collection: [['oui', true]] %>
+                <%= f.input :analgesic, as: :boolean, checked_value: true, unchecked_value: false, label: 'oui' %>
               </div>
             <div class="dropdown-divider my-3"></div>
             <div class="d-flex align-items-center mb-3">
