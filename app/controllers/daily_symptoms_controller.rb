@@ -1,7 +1,8 @@
 class DailySymptomsController < ApplicationController
   def index
-    @daily_symptoms = policy_scope(DailySymptom)
     define_table
+    @daily_symptoms = policy_scope(DailySymptom).where('day >= ?', @first_day_of_month).where('day <= ?', @last_day_of_month)
+    define_data
   end
 
   def new
@@ -14,8 +15,8 @@ class DailySymptomsController < ApplicationController
   private
 
   def define_table
-    if params[:month].present?
-      base_day = params[:month].to_date
+    if params[:base_day].present?
+      base_day = params[:base_day].to_date
     else
       base_day = Date.today
     end
@@ -32,5 +33,21 @@ class DailySymptomsController < ApplicationController
     @end_empty_cells = 7 - @last_day_number
 
     @number_of_days_in_month = @last_day_of_month.day
+  end
+
+  def define_data
+    day = @first_day_of_month
+    @data = []
+
+    @number_of_days_in_month.times do
+      daily_symptom = @daily_symptoms.find_by(day: day)
+      if daily_symptom
+        @data << { day: day, daily_symptom: daily_symptom.id, symptoms: daily_symptom.symptoms_name_and_color
+        }
+      else
+        @data << { day: day, daily_symptom: nil, symptoms: nil }
+      end
+      day += 1
+    end
   end
 end
