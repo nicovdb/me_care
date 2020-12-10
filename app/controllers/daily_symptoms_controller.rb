@@ -19,6 +19,7 @@ class DailySymptomsController < ApplicationController
     if @daily_symptom.save
       redirect_to daily_symptoms_path
     else
+      @day = @daily_symptom.day
       render :new
     end
   end
@@ -36,6 +37,7 @@ class DailySymptomsController < ApplicationController
     if @daily_symptom.update(daily_symptom_params)
       redirect_to daily_symptoms_path
     else
+      @day = @daily_symptom.day
       render :edit
     end
   end
