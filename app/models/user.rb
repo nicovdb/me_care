@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :webinar_subscriptions, dependent: :destroy
   has_many :webinars, through: :webinar_subscriptions
+  has_many :daily_symptoms
   has_one_attached :avatar
   validate :password_complexity
   validates :pseudo, uniqueness: true

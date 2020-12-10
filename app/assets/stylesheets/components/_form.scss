@@ -394,10 +394,10 @@ input[type='radio']:checked:after {
         height: 14px;
         border-radius: 50%;
         top: 2px;
-        background-color: white;
-        content: '';
         left: 35%;
         position: relative;
+        background-color: white;
+        content: '';
         visibility: visible;
         border: 1px solid $pink;
       }
