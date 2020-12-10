@@ -12,7 +12,7 @@
             <%= image_tag "arrow-left", class:"day-arrows" %>
           <% end %>
         <% elsif @edit_prev_day %>
-          <%= link_to edit_daily_symptom_path(@previous_daily_symptom, day: @day.prev_day) do %>
+          <%= link_to edit_daily_symptom_path(@previous_daily_symptom) do %>
             <%= image_tag "arrow-left", class:"day-arrows" %>
           <% end %>
         <% end %>
@@ -22,7 +22,7 @@
             <%= image_tag "arrow-right", class:"day-arrows" %>
           <% end %>
         <% elsif @edit_next_day %>
-          <%= link_to edit_daily_symptom_path(@next_daily_symptom, day: @day.next_day) do %>
+          <%= link_to edit_daily_symptom_path(@next_daily_symptom) do %>
             <%= image_tag "arrow-right", class:"day-arrows" %>
           <% end %>
         <% end %>

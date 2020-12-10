@@ -25,7 +25,7 @@ class DailySymptomsController < ApplicationController
 
   def edit
     @daily_symptom = DailySymptom.find(params[:id])
-    @day = params[:day].to_date
+    @day = @daily_symptom.day
     authorize @daily_symptom
     manage_edit_new_next_prev_day
   end
