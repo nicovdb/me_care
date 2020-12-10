@@ -108,7 +108,7 @@
               <%# jours précédents avec un daily_symptom %>
               <% if day[:daily_symptom] %>
                 <div class="day">
-                  <%= link_to edit_daily_symptom_path(day[:daily_symptom], day: day[:day]) do %>
+                  <%= link_to edit_daily_symptom_path(day[:daily_symptom]) do %>
                     <div class="d-flex flex-column justify-content-center align-items-center">
                       <p class="mb-1"><%= day[:day].day %></p>
                       <%= render "display_symptoms", day: day %>
