@@ -1,0 +1,70 @@
+<div class="pb-5 padding-top-navbar min-100-vh-with-footer" data-controller="charts">
+  <div class="container">
+    <div class="col-12 col-md-10 offset-md-1">
+      <div class="row">
+
+        <div class="col-12 col-lg-4 pr-lg-5">
+          <div class="d-none d-lg-block mb-4">
+            <span class="feature-name">MON AGENDA</span>
+          </div>
+
+          <div class="row mt-4">
+            <div class="col-4 col-lg-6">
+              <div class="icon-agenda d-flex flex-column justify-content-center align-items-center">
+                <%= image_tag "agenda/pain.svg", class: "symptom-icon", data: { action: "click->agenda#toggle", symptom: "pain" } %>
+                <h3 data-action="click->agenda#toggle" data-symptom="pain">Douleurs</h3>
+              </div>
+            </div>
+            <div class="col-4 col-lg-6">
+              <div class="icon-agenda d-flex flex-column justify-content-center align-items-center">
+                <%= image_tag "agenda/blood.svg", class: "symptom-icon", data: { action: "click->agenda#toggle", symptom: "blood" } %>
+                <h3 data-action="click->agenda#toggle" data-symptom="blood">Saignements</h3>
+              </div>
+            </div>
+            <div class="col-4 col-lg-6">
+              <div class="icon-agenda d-flex flex-column justify-content-center align-items-center">
+                <%= image_tag "agenda/digestive_trouble.svg", class: "symptom-icon", data: { action: "click->agenda#toggle", symptom: "digestiveTrouble" } %>
+                <h3 data-action="click->agenda#toggle" data-symptom="digestiveTrouble">Troubles digestifs</h3>
+              </div>
+            </div>
+            <div class="col-4 col-lg-6">
+              <div class="icon-agenda d-flex flex-column justify-content-center align-items-center">
+                <%= image_tag "agenda/stress.svg", class: "symptom-icon", data: { action: "click->agenda#toggle", symptom: "stress" } %>
+                <h3 data-action="click->agenda#toggle" data-symptom="stress">Stress</h3>
+              </div>
+            </div>
+            <div class="col-4 col-lg-6">
+              <div class="icon-agenda d-flex flex-column justify-content-center align-items-center">
+                <%= image_tag "agenda/insomnia.svg", class: "symptom-icon", data: { action: "click->agenda#toggle", symptom: "insomnia" } %>
+                <h3 data-action="click->agenda#toggle" data-symptom="insomnia">Insomnie</h3>
+              </div>
+            </div>
+            <div class="col-4 col-lg-6">
+              <div class="icon-agenda d-flex flex-column justify-content-center align-items-center">
+                <%= image_tag "agenda/sport.svg", class: "symptom-icon", data: { action: "click->agenda#toggle", symptom: "sport" } %>
+                <h3 data-action="click->agenda#toggle" data-symptom="sport">Sport</h3>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="d-flex justify-content-center align-items-center h-100">
+                <p class="reset-filters text-center" data-action="click->agenda#resetFilters">Effacer les filtres</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <%# Graphiques %>
+        <div class="col-12 col-lg-8 graphs-container" data-target="charts.graphs" data-value="<%= @graphs.to_json %>">
+          <% @graphs.each do |graph| %>
+            <h3 class="pl-4 pl-lg-5 mb-0 mt-2"><%= graph[:label] %></h3>
+            <div class="chart-container">
+              <canvas id="<%= graph[:id] %>"></canvas>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
