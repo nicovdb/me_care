@@ -8,6 +8,7 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.2.2",
     "bootstrap": "^4.5.0",
+    "chart.js": "^2.9.4",
     "coffee-loader": "^1.0.0",
     "coffeescript": "1.12.7",
     "flatpickr": "^4.6.6",
