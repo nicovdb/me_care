@@ -86,8 +86,7 @@ class DailySymptomsController < ApplicationController
     @number_of_days_in_month.times do
       daily_symptom = @daily_symptoms.find_by(day: day)
       if daily_symptom
-        @data << { day: day, daily_symptom: daily_symptom.id, symptoms: daily_symptom.symptoms_name_and_color
-        }
+        @data << { day: day, daily_symptom: daily_symptom.id, symptoms: daily_symptom.symptoms_name_and_color }
       else
         @data << { day: day, daily_symptom: nil, symptoms: nil }
       end
