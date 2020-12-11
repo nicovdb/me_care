@@ -43,7 +43,8 @@
       <%= simple_form_for @daily_symptom do |f| %>
         <%= f.hidden_field :day, value: @day %>
         <div class="row">
-          <div class="col-12 col-lg-6">
+          <div class="col-12 col-lg-6 pr-lg-5">
+            <div class="d-block d-lg-none dropdown-divider mb-4"></div>
             <%= render 'slider_pain', daily_symptom: @daily_symptom, f: f %>
             <div class="dropdown-divider my-4"></div>
             <%= render 'slider_blood', daily_symptom: @daily_symptom, f: f %>
@@ -55,7 +56,7 @@
             <%= render 'slider_insomnia', daily_symptom: @daily_symptom, f: f %>
             <div class="dropdown-divider my-4 d-block d-lg-none"></div>
           </div>
-          <div class="col-12 col-lg-6 d-flex flex-column">
+          <div class="col-12 col-lg-6 pl-lg-5 d-flex flex-column column-border-left">
             <div class="d-flex justify-content-between align-items-center">
               <div class="d-flex align-items-center">
                 <%= image_tag "agenda/sport.svg", class: 'symptom-icon'%>
