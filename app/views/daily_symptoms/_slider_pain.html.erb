@@ -15,15 +15,11 @@
     <p class="text-mini mb-0 slider-scale">10</p>
   </div>
   <input type="range"
-   name="customRange"
-   class="range-slider-pain__range mb-3"
    data-target="range-slider-pain.range"
    data-action="input->range-slider-pain#updateValue"
    value="<%= daily_symptom.pain_level ? daily_symptom.pain_level : 0 %>"
    min="0"
    max="10"
-   step="1"
-   list="tickmarks"
-   oninput="<%= daily_symptom.pain_level ? daily_symptom.pain_level : nil %>">
+   step="1">
   <%= f.input :pain_level, as: :hidden, input_html: { data: { target: "range-slider-pain.hidden" } }, collection: 0..10, label: false %>
 </div>

@@ -17,7 +17,7 @@
   <input type="range"
    data-target="range-slider-blood.range"
    data-action="input->range-slider-blood#updateValue"
-   value="<%#= daily_symptom.blood_level ? daily_symptom.blood_level : 0 %>"
+   value="<%= daily_symptom.blood_level ? daily_symptom.blood_level : 0 %>"
    min="0"
    max="5"
    step="1">
