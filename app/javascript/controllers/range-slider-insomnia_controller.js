@@ -19,7 +19,7 @@ export default class extends Controller {
       this.valueTarget.innerHTML = "<img class='insomnia-icon mb-1' src='/assets/agenda/insomnia1.svg'>";
     }
     if (element == 1) {
-      this.valueTarget.innerHTML = "<img class='insomnia-icon mb-1' src='/assets/agenda/insomnia2.png'>";
+      this.valueTarget.innerHTML = "<img class='insomnia-icon mb-1' src='/assets/agenda/insomnia2.svg'>";
     }
     if (element == 2) {
       this.valueTarget.innerHTML = "<img class='insomnia-icon mb-1' src='/assets/agenda/insomnia3.svg'>";
