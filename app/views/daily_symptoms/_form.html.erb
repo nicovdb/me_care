@@ -1,6 +1,6 @@
 <div class="pb-5 padding-top-navbar min-100-vh-with-footer">
   <div class="container">
-    <div class="d-flex justify-content-between mb-3 col-12 col-lg-10 offset-lg-1">
+    <div class="d-flex justify-content-between mb-3 col-12 col-md-10 offset-md-1">
       <div class="d-block d-lg-none">
       </div>
       <div class="d-none d-lg-block">
@@ -39,7 +39,7 @@
         <% end %>
       </div>
     </div>
-    <div class="col-12 col-lg-10 offset-lg-1 mt-4">
+    <div class="col-12 col-md-10 offset-md-1 mt-4">
       <%= simple_form_for @daily_symptom do |f| %>
         <%= f.hidden_field :day, value: @day %>
         <div class="row">
