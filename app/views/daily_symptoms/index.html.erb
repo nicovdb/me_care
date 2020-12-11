@@ -142,7 +142,7 @@
               <%# jours en cours sans daily_symptom %>
               <% else %>
                 <div class="day">
-                  <%= link_to new_daily_symptom_path(day: day) do %>
+                  <%= link_to new_daily_symptom_path(day: day[:day]) do %>
                     <div class="d-flex flex-column justify-content-center align-items-center">
                       <p class="current-day mb-2"><%= day[:day].day %></p>
                       <%= image_tag "pencil-xl", class:"icon-edit-small" %>
