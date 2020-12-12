@@ -13,8 +13,8 @@ export default class extends Controller {
       this.filteredValue = true
     }
 
-    const symptom = e.target.dataset.symptom
     e.target.parentElement.classList.toggle("underline")
+    const symptom = e.target.dataset.symptom
     this.toggleSymptom(symptom)
   }
 

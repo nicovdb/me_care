@@ -12,44 +12,44 @@
 
           <div class="row mt-4">
             <div class="col-4 col-lg-6">
-              <div class="icon-agenda d-flex flex-column justify-content-center align-items-center">
-                <%= image_tag "agenda/pain.svg", class: "symptom-icon", data: { action: "click->agenda#toggle", symptom: "pain" } %>
-                <h3 data-action="click->agenda#toggle" data-symptom="pain">Douleurs</h3>
+              <div class="icon-agenda d-flex flex-column justify-content-center align-items-center underline">
+                <%= image_tag "agenda/pain.svg", class: "symptom-icon", data: { action: "click->charts#toggle", symptom: "painChart" } %>
+                <h3 data-action="click->charts#toggle" data-symptom="painChart">Douleurs</h3>
+              </div>
+            </div>
+            <div class="col-4 col-lg-6">
+              <div class="icon-agenda d-flex flex-column justify-content-center align-items-center underline">
+                <%= image_tag "agenda/blood.svg", class: "symptom-icon", data: { action: "click->charts#toggle", symptom: "bloodChart" } %>
+                <h3 data-action="click->charts#toggle" data-symptom="bloodChart">Saignements</h3>
+              </div>
+            </div>
+            <div class="col-4 col-lg-6">
+              <div class="icon-agenda d-flex flex-column justify-content-center align-items-center underline">
+                <%= image_tag "agenda/digestive_trouble.svg", class: "symptom-icon", data: { action: "click->charts#toggle", symptom: "digestiveTroubleChart" } %>
+                <h3 data-action="click->charts#toggle" data-symptom="digestiveTroubleChart">Troubles digestifs</h3>
               </div>
             </div>
             <div class="col-4 col-lg-6">
               <div class="icon-agenda d-flex flex-column justify-content-center align-items-center">
-                <%= image_tag "agenda/blood.svg", class: "symptom-icon", data: { action: "click->agenda#toggle", symptom: "blood" } %>
-                <h3 data-action="click->agenda#toggle" data-symptom="blood">Saignements</h3>
+                <%= image_tag "agenda/stress.svg", class: "symptom-icon", data: { action: "click->charts#toggle", symptom: "stressChart" } %>
+                <h3 data-action="click->charts#toggle" data-symptom="stressChart">Stress</h3>
               </div>
             </div>
             <div class="col-4 col-lg-6">
               <div class="icon-agenda d-flex flex-column justify-content-center align-items-center">
-                <%= image_tag "agenda/digestive_trouble.svg", class: "symptom-icon", data: { action: "click->agenda#toggle", symptom: "digestiveTrouble" } %>
-                <h3 data-action="click->agenda#toggle" data-symptom="digestiveTrouble">Troubles digestifs</h3>
+                <%= image_tag "agenda/insomnia.svg", class: "symptom-icon", data: { action: "click->charts#toggle", symptom: "insomniaChart" } %>
+                <h3 data-action="click->charts#toggle" data-symptom="insomniaChart">Insomnie</h3>
               </div>
             </div>
             <div class="col-4 col-lg-6">
               <div class="icon-agenda d-flex flex-column justify-content-center align-items-center">
-                <%= image_tag "agenda/stress.svg", class: "symptom-icon", data: { action: "click->agenda#toggle", symptom: "stress" } %>
-                <h3 data-action="click->agenda#toggle" data-symptom="stress">Stress</h3>
-              </div>
-            </div>
-            <div class="col-4 col-lg-6">
-              <div class="icon-agenda d-flex flex-column justify-content-center align-items-center">
-                <%= image_tag "agenda/insomnia.svg", class: "symptom-icon", data: { action: "click->agenda#toggle", symptom: "insomnia" } %>
-                <h3 data-action="click->agenda#toggle" data-symptom="insomnia">Insomnie</h3>
-              </div>
-            </div>
-            <div class="col-4 col-lg-6">
-              <div class="icon-agenda d-flex flex-column justify-content-center align-items-center">
-                <%= image_tag "agenda/sport.svg", class: "symptom-icon", data: { action: "click->agenda#toggle", symptom: "sport" } %>
-                <h3 data-action="click->agenda#toggle" data-symptom="sport">Sport</h3>
+                <%= image_tag "agenda/sport.svg", class: "symptom-icon", data: { action: "click->charts#toggle", symptom: "sportChart" } %>
+                <h3 data-action="click->charts#toggle" data-symptom="sportChart">Sport</h3>
               </div>
             </div>
             <div class="col-12">
               <div class="d-flex justify-content-center align-items-center h-100">
-                <p class="reset-filters text-center" data-action="click->agenda#resetFilters">Effacer les filtres</p>
+                <p class="reset-filters text-center" data-action="click->charts#resetFilters">Effacer les filtres</p>
               </div>
             </div>
           </div>
@@ -69,10 +69,20 @@
           </div>
 
           <div class="graphs-container" data-target="charts.graphs" data-value="<%= @graphs.to_json %>">
-            <% @graphs.each do |graph| %>
-              <h3 class="mb-0 mt-2"><%= graph[:label] %></h3>
-              <div class="chart-container">
-                <canvas id="<%= graph[:id] %>"></canvas>
+            <% @graphs.first(3).each do |graph| %>
+              <div data-symptom-target="<%= graph[:id] %>">
+                <h3 class="mb-0 mt-2"><%= graph[:label] %></h3>
+                <div class="chart-container">
+                  <canvas id="<%= graph[:id] %>"></canvas>
+                </div>
+              </div>
+            <% end %>
+            <% @graphs[3..4].each do |graph| %>
+              <div class="d-none" data-symptom-target="<%= graph[:id] %>">
+                <h3 class="mb-0 mt-2"><%= graph[:label] %></h3>
+                <div class="chart-container">
+                  <canvas id="<%= graph[:id] %>"></canvas>
+                </div>
               </div>
             <% end %>
           </div>

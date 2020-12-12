@@ -12,6 +12,27 @@ export default class extends Controller {
     })
   }
 
+  toggle(e) {
+    e.target.parentElement.classList.toggle("underline")
+    const symptom = e.target.dataset.symptom
+    const symptomChart = document.querySelector(`[data-symptom-target=${symptom}]`)
+    symptomChart.classList.toggle("d-none")
+  }
+
+  resetFilters() {
+    document.querySelectorAll("[data-symptom-target").forEach((target) => {
+      if (target.classList.contains("d-none")) {
+        target.classList.remove("d-none")
+      }
+    })
+    const filterTitles = document.querySelectorAll("h3[data-symptom]")
+    filterTitles.forEach((filter) => {
+      if (!(filter.classList.contains("underline"))) {
+        filter.parentElement.classList.add("underline")
+      }
+    })
+  }
+
   displayChart(graph) {
     var ctx = document.getElementById(`${graph["id"]}`).getContext('2d');
     var chart = new Chart(ctx, {
