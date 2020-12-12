@@ -27,7 +27,7 @@ export default class extends Controller {
     })
     const filterTitles = document.querySelectorAll("h3[data-symptom]")
     filterTitles.forEach((filter) => {
-      if (!(filter.classList.contains("underline"))) {
+      if (!filter.classList.contains("underline")) {
         filter.parentElement.classList.add("underline")
       }
     })
