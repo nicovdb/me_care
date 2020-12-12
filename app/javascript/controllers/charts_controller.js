@@ -20,7 +20,7 @@ export default class extends Controller {
 
       // The data for our dataset
       data: {
-        labels: ['', '', '', '', ''],
+        labels: ['', '', '', '', '', '', ''],
         datasets: [{
           label: `${graph["label"]}`,
           backgroundColor: 'transparent',

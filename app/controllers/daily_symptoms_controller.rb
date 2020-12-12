@@ -171,12 +171,12 @@ class DailySymptomsController < ApplicationController
 
   def weekly_graph_data
     if params[:base_day].present?
-      monday = params[:base_day].to_date
+      @monday = params[:base_day].to_date
     else
-      monday = Date.today - (Date.today.cwday - 1)
+      @monday = Date.today - (Date.today.cwday - 1)
     end
 
-    day = monday
+    day = @monday
     7.times do
       daily_symptom = @daily_symptoms.find_by(day: day)
       if daily_symptom
