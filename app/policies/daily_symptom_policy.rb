@@ -13,6 +13,10 @@ class DailySymptomPolicy < ApplicationPolicy
     has_valid_subscription? || is_admin?
   end
 
+  def graph?
+    has_valid_subscription? || is_admin?
+  end
+
   private
 
   def has_valid_subscription?

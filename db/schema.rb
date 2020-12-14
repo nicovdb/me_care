@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_08_084316) do
+ActiveRecord::Schema.define(version: 2020_12_11_162851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,14 +72,14 @@ ActiveRecord::Schema.define(version: 2020_12_08_084316) do
   create_table "daily_symptoms", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.date "day"
-    t.integer "pain_level"
-    t.integer "blood_level"
-    t.integer "digestive_trouble_level"
-    t.integer "stress_level"
-    t.integer "insomnia_level"
-    t.boolean "sport"
-    t.boolean "emergency"
-    t.boolean "analgesic"
+    t.integer "pain_level", default: 0
+    t.integer "blood_level", default: 0
+    t.integer "digestive_trouble_level", default: 0
+    t.integer "stress_level", default: 0
+    t.integer "insomnia_level", default: 0
+    t.boolean "sport", default: false
+    t.boolean "emergency", default: false
+    t.boolean "analgesic", default: false
     t.text "notes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
