@@ -18,19 +18,19 @@ export default class extends Controller {
     if (element == 0) {
       this.valueTarget.innerHTML = 0;
     }
-    if (element == 1) {
+    else if (element == 1) {
       this.valueTarget.innerHTML = "1 fois";
     }
-    if (element == 2) {
+    else if (element == 2) {
       this.valueTarget.innerHTML = "2 à 3 fois";
     }
-    if (element == 3) {
+    else if (element == 3) {
       this.valueTarget.innerHTML = "4 à 5 fois";
     }
-    if (element == 4) {
+    else if (element == 4) {
       this.valueTarget.innerHTML = "> 5";
     }
-    if (element == 5) {
+    else if (element == 5) {
       this.valueTarget.innerHTML = "Invalidant";
     }
   }
