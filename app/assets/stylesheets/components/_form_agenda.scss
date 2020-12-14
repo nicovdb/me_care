@@ -45,8 +45,25 @@ textarea#daily_symptom_notes {
   border: 1px solid $light-green;
   border-radius: 18px;
   height: 200px;
+  color: $green;
+  padding: 5px 10px;
+}
+
+.form-group.daily_symptom_notes {
+  margin-bottom: 0px;
 }
 
 .symptom-icon {
   height: 45px;
+}
+
+.insomnia-icon {
+  height: 21px;
+  width:21px;
+}
+
+@include media-breakpoint-up(lg) {
+  .column-border-left {
+    border-left: 1px solid #e9ecef;
+  }
 }

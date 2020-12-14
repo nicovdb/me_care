@@ -1,12 +1,14 @@
 <div class="pb-5 padding-top-navbar min-100-vh-with-footer">
   <div class="container">
-    <div class="d-md-flex justify-content-between mb-3 col-12 col-md-10 offset-md-1">
-      <div class="d-none d-md-block">
+    <div class="d-flex justify-content-between mb-3 col-12 col-md-10 offset-md-1">
+      <div class="d-block d-lg-none">
+      </div>
+      <div class="d-none d-lg-block">
         <%= link_to daily_symptoms_path do  %>
           <span class="feature-name">MON AGENDA</span>
         <% end %>
       </div>
-      <div class="d-flex align-items-center justify-content-center">
+      <div class="d-inline-flex align-items-center justify-content-center">
         <% if @previous_daily_symptom.nil? %>
           <%= link_to new_daily_symptom_path(day: @day.prev_day) do %>
             <%= image_tag "arrow-left", class:"day-arrows" %>
@@ -29,55 +31,32 @@
           <% end %>
         <% end %>
       </div>
-      <div>
+      <div class="d-none d-lg-block">
+      </div>
+      <div class="d-inline-block d-lg-none">
+        <%= link_to daily_symptoms_path do  %>
+          <%= image_tag "close-button-green.svg" %>
+        <% end %>
       </div>
     </div>
-    <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 mt-4">
+    <div class="col-12 col-md-10 offset-md-1 mt-4">
       <%= simple_form_for @daily_symptom do |f| %>
         <%= f.hidden_field :day, value: @day %>
         <div class="row">
-          <div class="col-12 col-lg-6">
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="d-flex align-items-center mb-3">
-                <%= image_tag "agenda/pain.svg", class: 'symptom-icon'%>
-                <h3 class='mb-0 ml-2'>Douleurs</h3>
-              </div>
-            </div>
-            <%= f.input :pain_level, collection: 0..10, label: false %>
-            <div class="dropdown-divider my-3"></div>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="d-flex align-items-center mb-3">
-                <%= image_tag "agenda/blood.svg", class: 'symptom-icon'%>
-                <h3 class='mb-0 ml-2'>Saignements</h3>
-              </div>
-            </div>
-            <%= f.input :blood_level, collection: 0..5, label: false %>
-            <div class="dropdown-divider my-3"></div>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="d-flex align-items-center mb-3">
-                <%= image_tag "agenda/digestive_trouble.svg", class: 'symptom-icon'%>
-                <h3 class='mb-0 ml-2'>Troubles digestifs</h3>
-              </div>
-            </div>
-            <%= f.input :digestive_trouble_level, collection: 0..5, label: false %>
-            <div class="dropdown-divider my-3"></div>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="d-flex align-items-center mb-3">
-                <%= image_tag "agenda/stress.svg", class: 'symptom-icon'%>
-                <h3 class='mb-0 ml-2'>Stress</h3>
-              </div>
-            </div>
-            <%= f.input :stress_level, collection: 0..5, label: false %>
-            <div class="dropdown-divider my-3"></div>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="d-flex align-items-center mb-3">
-                <%= image_tag "agenda/insomnia.svg", class: 'symptom-icon'%>
-                <h3 class='mb-0 ml-2'>Insomnie</h3>
-              </div>
-            </div>
-            <%= f.input :insomnia_level, collection: 0..5, label: false %>
+          <div class="col-12 col-lg-6 pr-lg-5">
+            <div class="d-block d-lg-none dropdown-divider mb-4"></div>
+            <%= render 'slider_pain', daily_symptom: @daily_symptom, f: f %>
+            <div class="dropdown-divider my-4"></div>
+            <%= render 'slider_blood', daily_symptom: @daily_symptom, f: f %>
+            <div class="dropdown-divider my-4"></div>
+            <%= render 'slider_digestive', daily_symptom: @daily_symptom, f: f %>
+            <div class="dropdown-divider my-4"></div>
+            <%= render 'slider_stress', daily_symptom: @daily_symptom, f: f %>
+            <div class="dropdown-divider my-4"></div>
+            <%= render 'slider_insomnia', daily_symptom: @daily_symptom, f: f %>
+            <div class="dropdown-divider my-4 d-block d-lg-none"></div>
           </div>
-          <div class="col-12 col-lg-6">
+          <div class="col-12 col-lg-6 pl-lg-5 d-flex flex-column column-border-left">
             <div class="d-flex justify-content-between align-items-center">
               <div class="d-flex align-items-center">
                 <%= image_tag "agenda/sport.svg", class: 'symptom-icon'%>
@@ -85,7 +64,7 @@
               </div>
               <%= f.input :sport, as: :boolean, checked_value: true, unchecked_value: false, label: 'oui' %>
             </div>
-            <div class="dropdown-divider my-3"></div>
+            <div class="dropdown-divider my-4"></div>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="d-flex align-items-center">
                   <%= image_tag "agenda/emergency.svg", class: 'symptom-icon'%>
@@ -93,7 +72,7 @@
                 </div>
                 <%= f.input :emergency, as: :boolean, checked_value: true, unchecked_value: false, label: 'oui' %>
               </div>
-            <div class="dropdown-divider my-3"></div>
+            <div class="dropdown-divider my-4"></div>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="d-flex align-items-center">
                   <%= image_tag "agenda/analgesic.svg", class: 'symptom-icon'%>
@@ -101,15 +80,15 @@
                 </div>
                 <%= f.input :analgesic, as: :boolean, checked_value: true, unchecked_value: false, label: 'oui' %>
               </div>
-            <div class="dropdown-divider my-3"></div>
+            <div class="dropdown-divider my-4"></div>
             <div class="d-flex align-items-center mb-3">
               <%= image_tag "agenda/notes.svg", class: 'symptom-icon'%>
               <h3 class='mb-0 ml-2'>Notes</h3>
             </div>
-            <%= f.input :notes, label: false %>
+            <%= f.input :notes, label: false, input_html: {class: 'h-100', style:'min-height: 200px;'}, wrapper_html: {style: 'flex: 1;'} %>
           </div>
           <div class="text-center w-100">
-            <%= f.submit "Je valide", class: 'btn btn-primary btn-ee my-4' %>
+            <%= f.submit "Je valide", class: 'btn btn-primary btn-ee mb-4 mt-5' %>
           </div>
         </div>
       <% end %>
