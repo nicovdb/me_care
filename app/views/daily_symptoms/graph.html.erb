@@ -41,50 +41,102 @@
                 <h3 data-action="click->charts#toggle" data-symptom="insomniaChart">Insomnie</h3>
               </div>
             </div>
-            <div class="col-4 col-lg-6">
-              <div class="icon-agenda d-flex flex-column justify-content-center align-items-center">
-                <%= image_tag "agenda/sport.svg", class: "symptom-icon", data: { action: "click->charts#toggle", symptom: "sportChart" } %>
-                <h3 data-action="click->charts#toggle" data-symptom="sportChart">Sport</h3>
+
+            <% if params[:base_period] == "trimester" || params[:base_period] == "year"  %>
+              <div class="col-4 col-lg-6">
+                <div class="d-flex justify-content-center align-items-center h-100">
+                  <p class="reset-filters text-center" data-action="click->charts#resetFilters">Effacer les filtres</p>
+                </div>
               </div>
-            </div>
-            <div class="col-12">
-              <div class="d-flex justify-content-center align-items-center h-100">
-                <p class="reset-filters text-center" data-action="click->charts#resetFilters">Effacer les filtres</p>
+            <% else %>
+              <div class="col-4 col-lg-6">
+                <div class="icon-agenda d-flex flex-column justify-content-center align-items-center">
+                  <%= image_tag "agenda/sport.svg", class: "symptom-icon", data: { action: "click->charts#toggle", symptom: "sportChart" } %>
+                  <h3 data-action="click->charts#toggle" data-symptom="sportChart">Sport</h3>
+                </div>
               </div>
-            </div>
+              <div class="col-12">
+                <div class="d-flex justify-content-center align-items-center h-100">
+                  <p class="reset-filters text-center" data-action="click->charts#resetFilters">Effacer les filtres</p>
+                </div>
+              </div>
+            <% end %>
+
           </div>
         </div>
 
         <%# Graphiques %>
         <div class="col-12 col-lg-8">
-
-          <div class="d-flex align-items-center justify-content-center mb-4">
-            <%= link_to graph_path(base_period: "week", base_day: (@monday - 7)) do %>
-              <%= image_tag "arrow-left", class:"day-arrows" %>
-            <% end %>
-            <h3 class="px-3 mb-0">Semaine du <%= l(@monday, format:"%d %B") %> au <%= l((@monday + 6), format:"%d %B") %></h3>
-            <%= link_to graph_path(base_period: "week", base_day: (@monday + 7)) do %>
-              <%= image_tag "arrow-right", class:"day-arrows" %>
-            <% end %>
-          </div>
+          <% if params[:base_period] == "week" %>
+            <div class="d-flex align-items-center justify-content-center mb-4">
+              <%= link_to graph_path(base_period: "week", base_day: (@monday - 7)) do %>
+                <%= image_tag "arrow-left", class:"day-arrows" %>
+              <% end %>
+              <h3 class="px-3 mb-0">Semaine du <%= l(@monday, format:"%d %B") %> au <%= l((@monday + 6), format:"%d %B %Y") %></h3>
+              <%= link_to graph_path(base_period: "week", base_day: (@monday + 7)) do %>
+                <%= image_tag "arrow-right", class:"day-arrows" %>
+              <% end %>
+            </div>
+          <% elsif params[:base_period] == "trimester" %>
+            <div class="d-flex align-items-center justify-content-center mb-4">
+              <%= link_to graph_path(base_period: "trimester", base_day: (@base_day - 3.month)) do %>
+                <%= image_tag "arrow-left", class:"day-arrows" %>
+              <% end %>
+              <h3 class="px-3 mb-0"><%= l(@base_day, format:"%B").capitalize %> à <%= l((@base_day + 2.month), format:"%B %Y") %></h3>
+              <%= link_to graph_path(base_period: "trimester", base_day: (@base_day + 3.month)) do %>
+                <%= image_tag "arrow-right", class:"day-arrows" %>
+              <% end %>
+            </div>
+          <% else #elsif params[:base_period] == "year" %>
+            <div class="d-flex align-items-center justify-content-center mb-4">
+              <%= link_to graph_path(base_period: "year", base_day: (@base_day - 1.year)) do %>
+                <%= image_tag "arrow-left", class:"day-arrows" %>
+              <% end %>
+              <h3 class="px-3 mb-0"><%= l(@base_day, format:"%Y") %></h3>
+              <%= link_to graph_path(base_period: "year", base_day: (@base_day + 1.year)) do %>
+                <%= image_tag "arrow-right", class:"day-arrows" %>
+              <% end %>
+            </div>
+          <% end %>
 
           <div class="graphs-container" data-target="charts.graphs" data-value="<%= @graphs.to_json %>">
             <% @graphs.first(3).each do |graph| %>
               <div data-symptom-target="<%= graph[:id] %>">
-                <h3 class="mb-0 mt-2"><%= graph[:label] %></h3>
-                <div class="chart-container">
-                  <canvas id="<%= graph[:id] %>"></canvas>
+                <div class="d-flex align-items-center">
+                  <%= image_tag "agenda/#{graph[:img]}" %>
+                  <div class="flex-grow-1">
+                    <h3 class="mb-0 mt-2"><%= graph[:name] %></h3>
+                    <div class="chart-container">
+                      <canvas id="<%= graph[:id] %>"></canvas>
+                    </div>
+                  </div>
                 </div>
               </div>
             <% end %>
             <% @graphs[3..4].each do |graph| %>
               <div class="d-none" data-symptom-target="<%= graph[:id] %>">
-                <h3 class="mb-0 mt-2"><%= graph[:label] %></h3>
-                <div class="chart-container">
-                  <canvas id="<%= graph[:id] %>"></canvas>
+                <div class="d-flex align-items-center">
+                  <%= image_tag "agenda/#{graph[:img]}" %>
+                  <div class="flex-grow-1">
+                    <h3 class="mb-0 mt-2"><%= graph[:name] %></h3>
+                    <div class="chart-container">
+                      <canvas id="<%= graph[:id] %>"></canvas>
+                    </div>
+                  </div>
                 </div>
               </div>
             <% end %>
+
+
+            <%# <div class="day-wrapper">
+              <div class="monday mb-0 text-mini text-center">Lu</div>
+              <div class="tuesday mb-0 text-mini text-center">Ma</div>
+              <div class="wednesday mb-0 text-mini text-center">Me</div>
+              <div class="thursday mb-0 text-mini text-center">Je</div>
+              <div class="friday mb-0 text-mini text-center">Ve</div>
+              <div class="saturday mb-0 text-mini text-center">Sa</div>
+              <div class="sunday mb-0 text-mini text-center">Di</div>
+            </div> %>
           </div>
         </div>
       </div>

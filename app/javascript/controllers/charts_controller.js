@@ -7,7 +7,6 @@ export default class extends Controller {
   connect() {
     // id"name", label"name", borderColor"#hex", data[array of values], suggestedMax 5 ou 10, stepSize 1 ou 2
     JSON.parse(this.graphsTarget.dataset.value).forEach((graph) => {
-      console.dir(`${graph["data"]}`)
       this.displayChart(graph)
     })
   }
@@ -41,13 +40,13 @@ export default class extends Controller {
 
       // The data for our dataset
       data: {
-        labels: ['', '', '', '', '', '', ''],
+        labels: Array.from(graph['labels']),
         datasets: [{
-          label: `${graph["label"]}`,
+          label: `${graph['name']}`,
           backgroundColor: 'transparent',
-          borderColor: `${graph["border_color"]}`,
+          borderColor: `${graph['border_color']}`,
           borderWidth: 4,
-          data: Array.from(graph["data"]),
+          data: Array.from(graph['data']),
           pointRadius: 7,
           pointHoverRadius: 7,
           pointBackgroundColor: '#EB7099',
@@ -71,6 +70,13 @@ export default class extends Controller {
             },
             gridLines: {
                 borderDash: [5, 5]
+            }
+          }],
+          xAxes: [{
+            display: true,
+            ticks: {
+                fontColor: '#B9B9B9',
+                padding: 5
             }
           }]
         },
