@@ -122,13 +122,15 @@ class DailySymptomsController < ApplicationController
         monthly_graph_data
       end
     else
-      weekly_graph_data
+      year_graph_data
     end
 
     @graphs = [
       {
         id: "painChart",
-        label: "Douleurs",
+        labels: @labels,
+        name: "Douleurs",
+        img: "pain.svg",
         border_color: "#FDA55E",
         data: @pain_data,
         suggested_max: "10",
@@ -136,7 +138,9 @@ class DailySymptomsController < ApplicationController
       },
       {
         id: "bloodChart",
-        label: "Saignements",
+        labels: @labels,
+        name: "Saignements",
+        img: "blood.svg",
         border_color: "#DB9497",
         data: @blood_data,
         suggested_max: "5",
@@ -144,7 +148,9 @@ class DailySymptomsController < ApplicationController
       },
       {
         id: "digestiveTroubleChart",
-        label: "Troubles digestifs",
+        labels: @labels,
+        name: "Troubles digestifs",
+        img: "digestive_trouble.svg",
         border_color: "#8C97CF",
         data: @digestive_trouble_data,
         suggested_max: "5",
@@ -152,7 +158,9 @@ class DailySymptomsController < ApplicationController
       },
       {
         id: "stressChart",
-        label: "Stress",
+        labels: @labels,
+        name: "Stress",
+        img: "stress.svg",
         border_color: "#B9B9B9",
         data: @stress_data,
         suggested_max: "5",
@@ -160,7 +168,9 @@ class DailySymptomsController < ApplicationController
       },
       {
         id: "insomniaChart",
-        label: "Insomnie",
+        labels: @labels,
+        name: "Insomnie",
+        img: "insomnia.svg",
         border_color: "#FFF185",
         data: @insomnia_data,
         suggested_max: "5",
@@ -170,6 +180,8 @@ class DailySymptomsController < ApplicationController
   end
 
   def weekly_graph_data
+    @labels = ['Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa', 'Di']
+
     if params[:base_day].present?
       @monday = params[:base_day].to_date
     else
@@ -195,6 +207,75 @@ class DailySymptomsController < ApplicationController
         @sport_data << false
       end
       day += 1
+    end
+  end
+
+  def trimester_graph_data
+    if params[:base_day].present?
+      base_day = params[:base_day].to_date
+    else
+      base_day = Date.today
+    end
+
+    @base_day = base_day.beginning_of_quarter
+    month_first_day = @base_day
+    @labels = []
+
+    3.times do
+      month_last_day = Date.new(month_first_day.year, month_first_day.month, -1)
+      number_of_days_in_month = month_last_day.day.to_f
+
+      month_daily_symptoms = @daily_symptoms.where('day >= ?', month_first_day).where('day <= ?', month_last_day)
+
+      pain_total = month_daily_symptoms.map(&:pain_level)
+      blood_total = month_daily_symptoms.map(&:blood_level)
+      digestive_trouble_total = month_daily_symptoms.map(&:digestive_trouble_level)
+      stress_total = month_daily_symptoms.map(&:stress_level)
+      insomnia_total = month_daily_symptoms.map(&:blood_level)
+
+      @pain_data << (pain_total.sum / number_of_days_in_month)
+      @blood_data << (blood_total.sum / number_of_days_in_month)
+      @digestive_trouble_data << (digestive_trouble_total.sum / number_of_days_in_month)
+      @stress_data << (stress_total.sum / number_of_days_in_month)
+      @insomnia_data << (insomnia_total.sum / number_of_days_in_month)
+
+      @labels << l(month_first_day, format:"%B").capitalize
+      month_first_day += 1.month
+    end
+  end
+
+  def year_graph_data
+    if params[:base_day].present?
+      @base_day = params[:base_day].to_date
+    else
+      @base_day = Date.today
+    end
+
+    quarter_first_day = @base_day.beginning_of_year
+    trimester = 1
+    @labels = []
+
+    4.times do
+      quarter_last_day = Date.new(quarter_first_day.year, (quarter_first_day.month + 2), -1)
+      number_of_days_in_quarter = (quarter_last_day - quarter_first_day).to_f
+
+      quarter_daily_symptoms = @daily_symptoms.where('day >= ?', quarter_first_day).where('day <= ?', quarter_last_day)
+
+      pain_total = quarter_daily_symptoms.map(&:pain_level)
+      blood_total = quarter_daily_symptoms.map(&:blood_level)
+      digestive_trouble_total = quarter_daily_symptoms.map(&:digestive_trouble_level)
+      stress_total = quarter_daily_symptoms.map(&:stress_level)
+      insomnia_total = quarter_daily_symptoms.map(&:blood_level)
+
+      @pain_data << (pain_total.sum / number_of_days_in_quarter)
+      @blood_data << (blood_total.sum / number_of_days_in_quarter)
+      @digestive_trouble_data << (digestive_trouble_total.sum / number_of_days_in_quarter)
+      @stress_data << (stress_total.sum / number_of_days_in_quarter)
+      @insomnia_data << (insomnia_total.sum / number_of_days_in_quarter)
+
+      @labels << "Trimestre #{trimester}"
+      trimester += 1
+      quarter_first_day += 3.month
     end
   end
 end
