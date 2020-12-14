@@ -4,16 +4,20 @@
   </p>
 <% elsif  @subscription.trialing? %>
   <p class='text-left text-header text-semibold'>
-    Vous êtes actuellement en période d'essai. Celle-ci se terminera le <%= l(@subscription.end_date, format: :short) %>. Vous pouvez vous abonner pour la suite <%= link_to "ici", products_path, class:"text-underline" %>.
+    Vous êtes actuellement en période d'essai. Celle-ci se terminera le <%= l(@subscription.end_date, format: :short) %>. Vous pouvez vous abonner pour la suite <%= link_to "ici", products_path, class:"text-underline" %>. Si votre période d'essai n'est pas terminée mais que vous vous êtes déjà abonnée vous pouvez gérer votre abonnement ci dessous.
   </p>
+  <form action="/customer_portal_sessions" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <button class="btn btn-primary btn-ee">Gérer mon abonnement</button>
+  </form>
 <% else %>
   <p class='text-left text-header text-semibold'>
     <% if @subscription.active? %>
-      Vous êtes abonnée au plan <%= @subscription.nickname %>.
+      Vous êtes abonnée <%= @subscription.nickname %> jusqu'au <%= l(@subscription.end_date) %>.
     <% elsif @subscription.past_due? || @subscription.unpaid? %>
       Votre abonnement est bloqué car le dernier paiement n'est pas passé. Cliquez sur le bouton ci-dessous pour mettre à jour vos informations de paiement.
     <% elsif @subscription.pending? %>
-      Vous n’avez pas encore d’abonnement. Rendez-vous sur la page Abonnement pour souscrire à notre offre.
+      Vous n’avez pas encore d’abonnement. Rendez-vous sur la page <%= link_to "Abonnement", products_path, class:"text-underline" %> pour souscrire à notre offre.
     <% elsif @subscription.incomplete? || @subscription.incomplete_expired? %>
       Il y a un problème avec votre abonnement, veuillez cliquer sur le bouton ci-dessous.
     <% end %>
