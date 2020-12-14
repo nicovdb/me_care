@@ -20,25 +20,26 @@ class CouponsController < ApplicationController
         render 'pages/products'
       else
         if current_user.subscription.stripe_id
-          subscription_id = current_user.subscription.stripe_id
-          promotion_code_id = promotion_code_data.first['id']
-          stripe_subscription = Stripe::Subscription.retrieve(subscription_id)
-          stripe_subscription.promotion_code = promotion_code_id
-          stripe_subscription.save
+          define_prices_and_sessions
+          @errors = "Vous avez déjà un abonnement valide en cours"
+          render 'pages/products'
+          # subscription_id = current_user.subscription.stripe_id
+          # promotion_code_id = promotion_code_data.first['id']
+          # stripe_subscription = Stripe::Subscription.retrieve(subscription_id)
+          # stripe_subscription.promotion_code = promotion_code_id
+          # stripe_subscription.save
         else
           coupon_id = promotion_code_data.first['coupon']['id']
           stripe_subscription = Stripe::Subscription.create(customer: current_user.stripe_id, plan:"price_1HaHgsBCt2fCpZSzwn5xhsaC", coupon: coupon_id)
           promotion_code_id = promotion_code_data.first['id']
           stripe_subscription.promotion_code = promotion_code_id
           stripe_subscription.save
-          # promotion_code_data.first["active"] = false
-          # promotion_code_data.first.save
+          free_months = promotion_code_data.first['coupon']['duration_in_months']
+          old_end_date = current_user.subscription.end_date
+          subscription = current_user.subscription.update(end_date: old_end_date + free_months.month, status: "active")
+          flash[:notice] = "Vous avez été créditée de #{free_months} mois gratuits"
+          redirect_to root_path
         end
-        free_months = promotion_code_data.first['coupon']['duration_in_months']
-        old_end_date = current_user.subscription.end_date
-        subscription = current_user.subscription.update(end_date: old_end_date + free_months.month, status: "active")
-        flash[:notice] = "Vous avez été créditée de #{free_months} mois gratuits"
-        redirect_to root_path
       end
     end
   end
