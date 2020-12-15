@@ -66,7 +66,7 @@
     <%= link_to graph_path(base_period: "month") do %>
       <div class="d-flex justify-content-center align-items-center flex-column select-period mb-lg-3">
         <h3 class="mb-1">Mois</h3>
-        <div class="checkbox <%= 'checked' if params[:base_period] == 'month' %>"></div>
+        <div class="checkbox <%= 'checked' if (params[:base_period].nil? || params[:base_period] == 'month') %>"></div>
       </div>
     <% end %>
   </div>
@@ -82,7 +82,7 @@
     <%= link_to graph_path(base_period: "year") do %>
       <div class="d-flex justify-content-center align-items-center flex-column select-period mb-lg-3">
         <h3 class="mb-1">Année</h3>
-        <div class="checkbox <%= 'checked' if (params[:base_period].nil? || params[:base_period] == 'year') %>"></div>
+        <div class="checkbox <%= 'checked' if params[:base_period] == 'year' %>"></div>
       </div>
     <% end %>
   </div>
