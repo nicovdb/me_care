@@ -57,11 +57,47 @@
               </div>
               <div class="col-12">
                 <div class="d-flex justify-content-center align-items-center h-100">
-                  <p class="reset-filters text-center" data-action="click->charts#resetFilters">Effacer les filtres</p>
+                  <p class="mb-0 reset-filters text-center" data-action="click->charts#resetFilters">Effacer les filtres</p>
                 </div>
               </div>
             <% end %>
+          </div>
 
+          <div class="dropdown-divider dropdown-divider-short mx-auto my-4"></div>
+
+          <div class="row">
+            <div class="col-6">
+              <%= link_to graph_path(base_period: "week") do %>
+                <div class="d-flex justify-content-center align-items-center flex-column select-period mb-3">
+                  <h3 class="mb-1">Semaine</h3>
+                  <div class="checkbox <%= 'checked' if params[:base_period] == 'week' %>"></div>
+                </div>
+              <% end %>
+            </div>
+            <div class="col-6">
+              <%= link_to graph_path(base_period: "month") do %>
+                <div class="d-flex justify-content-center align-items-center flex-column select-period mb-3">
+                  <h3 class="mb-1">Mois</h3>
+                  <div class="checkbox <%= 'checked' if params[:base_period] == 'month' %>"></div>
+                </div>
+              <% end %>
+            </div>
+            <div class="col-6">
+              <%= link_to graph_path(base_period: "trimester") do %>
+                <div class="d-flex justify-content-center align-items-center flex-column select-period mb-3">
+                  <h3 class="mb-1">Trimestre</h3>
+                  <div class="checkbox <%= 'checked' if params[:base_period] == 'trimester' %>"></div>
+                </div>
+              <% end %>
+            </div>
+            <div class="col-6">
+              <%= link_to graph_path(base_period: "year") do %>
+                <div class="d-flex justify-content-center align-items-center flex-column select-period mb-3">
+                  <h3 class="mb-1">Année</h3>
+                  <div class="checkbox <%= 'checked' if (params[:base_period].nil? || params[:base_period] == 'year') %>"></div>
+                </div>
+              <% end %>
+            </div>
           </div>
         </div>
 
@@ -87,13 +123,23 @@
                 <%= image_tag "arrow-right", class:"day-arrows" %>
               <% end %>
             </div>
-          <% else #elsif params[:base_period] == "year" %>
+          <% elsif params[:base_period] == "year" %>
             <div class="d-flex align-items-center justify-content-center mb-4">
               <%= link_to graph_path(base_period: "year", base_day: (@base_day - 1.year)) do %>
                 <%= image_tag "arrow-left", class:"day-arrows" %>
               <% end %>
               <h3 class="px-3 mb-0"><%= l(@base_day, format:"%Y") %></h3>
               <%= link_to graph_path(base_period: "year", base_day: (@base_day + 1.year)) do %>
+                <%= image_tag "arrow-right", class:"day-arrows" %>
+              <% end %>
+            </div>
+          <% else %>
+            <div class="d-flex align-items-center justify-content-center mb-4">
+              <%= link_to graph_path(base_period: "month", base_day: (@base_day - 1.month)) do %>
+                <%= image_tag "arrow-left", class:"day-arrows" %>
+              <% end %>
+              <h3 class="px-3 mb-0"><%= l(@base_day, format:"%B %Y").capitalize %></h3>
+              <%= link_to graph_path(base_period: "month", base_day: (@base_day + 1.month)) do %>
                 <%= image_tag "arrow-right", class:"day-arrows" %>
               <% end %>
             </div>

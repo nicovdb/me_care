@@ -17,3 +17,20 @@
     margin-right: 10px;
   }
 }
+
+.select-period {
+  h3 {
+    font-size: 16px;
+  }
+
+  .checkbox {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1.5px solid $pink;
+  }
+
+  .checkbox.checked {
+    background-color: $light-pink;
+  }
+}
