@@ -260,7 +260,6 @@ class DailySymptomsController < ApplicationController
       @sport_data << pain_data_week.count(true)
 
       @labels << "Semaine #{week}"
-      day += 7
       week += 1
     end
   end
