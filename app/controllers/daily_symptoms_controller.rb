@@ -253,11 +253,11 @@ class DailySymptomsController < ApplicationController
       end
 
       @pain_data << pain_data_week.sum.to_f / 7
-      @blood_data << pain_data_week.sum.to_f / 7
-      @digestive_trouble_data << pain_data_week.sum.to_f / 7
-      @stress_data << pain_data_week.sum.to_f / 7
-      @insomnia_data << pain_data_week.sum.to_f / 7
-      @sport_data << pain_data_week.count(true)
+      @blood_data << blood_data_week.sum.to_f / 7
+      @digestive_trouble_data << digestive_trouble_data_week.sum.to_f / 7
+      @stress_data << stress_data_week.sum.to_f / 7
+      @insomnia_data << insomnia_data_week.sum.to_f / 7
+      @sport_data << sport_data_week.count(true)
 
       @labels << "Semaine #{week}"
       week += 1
