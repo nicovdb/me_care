@@ -14,7 +14,7 @@
         <ul class="navbar-nav mr-auto">
           <% if user_signed_in? %>
             <li class="nav-item">
-              <%= link_to "Mon agenda", "#", class: "nav-link" %>
+              <%= link_to "Mon agenda", main_app.daily_symptoms_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
               <%= link_to "À savoir", main_app.infoendos_path, class: "nav-link" %>
