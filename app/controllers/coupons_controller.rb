@@ -23,11 +23,12 @@ class CouponsController < ApplicationController
           define_prices_and_sessions
           @errors = "Vous avez déjà un abonnement valide en cours"
           render 'pages/products'
-          # subscription_id = current_user.subscription.stripe_id
-          # promotion_code_id = promotion_code_data.first['id']
-          # stripe_subscription = Stripe::Subscription.retrieve(subscription_id)
-          # stripe_subscription.promotion_code = promotion_code_id
-          # stripe_subscription.save
+          # apply coupon on existing strip subscription
+            # current_user.subscription.stripe_id
+            # promotion_code_id = promotion_code_data.first['id']
+            # stripe_subscription = Stripe::Subscription.retrieve(subscription_id)
+            # stripe_subscription.promotion_code = promotion_code_id
+            # stripe_subscription.save
         else
           coupon_id = promotion_code_data.first['coupon']['id']
           stripe_subscription = Stripe::Subscription.create(customer: current_user.stripe_id, plan:"price_1HaHgsBCt2fCpZSzwn5xhsaC", coupon: coupon_id)
