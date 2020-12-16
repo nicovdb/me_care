@@ -60,7 +60,8 @@
                 <%= image_tag "agenda/sport.svg", class: 'symptom-icon'%>
                 <h3 class='mb-0 ml-2'>Sport</h3>
               </div>
-              <%= f.input :sport, as: :boolean, checked_value: true, unchecked_value: false, label: 'oui' %>
+              <input name="daily_symptom[sport]" type="hidden" value="#{@daily_symptom.sport}">
+              <%= f.input :sport, as: :boolean, checked_value: "true", unchecked_value: "false", label: 'oui' %>
             </div>
             <div class="dropdown-divider my-4"></div>
               <div class="d-flex justify-content-between align-items-center">
@@ -68,7 +69,8 @@
                   <%= image_tag "agenda/emergency.svg", class: 'symptom-icon'%>
                   <h3 class='mb-0 ml-2'>Consultations/Urgences</h3>
                 </div>
-                <%= f.input :emergency, as: :boolean, checked_value: true, unchecked_value: false, label: 'oui' %>
+                <input name="daily_symptom[emergency]" type="hidden" value="#{@daily_symptom.emergency}">
+                <%= f.input :emergency, as: :boolean, checked_value: "true", unchecked_value: "false", label: 'oui' %>
               </div>
             <div class="dropdown-divider my-4"></div>
               <div class="d-flex justify-content-between align-items-center">
@@ -76,7 +78,8 @@
                   <%= image_tag "agenda/analgesic.svg", class: 'symptom-icon'%>
                   <h3 class='mb-0 ml-2'>Antalgiques</h3>
                 </div>
-                <%= f.input :analgesic, as: :boolean, checked_value: true, unchecked_value: false, label: 'oui' %>
+                <input name="daily_symptom[analgesic]" type="hidden" value="#{@daily_symptom.analgesic}">
+                <%= f.input :analgesic, as: :boolean, checked_value: "true", unchecked_value: "false", label: 'oui' %>
               </div>
             <div class="dropdown-divider my-4"></div>
             <div class="d-flex align-items-center mb-3">
