@@ -43,7 +43,11 @@
             <% end %>
           <% elsif params[:base_period].nil? || params[:base_period] == "month" %>
             <% @sport_data.each do |number| %>
-              <div><%= number %></div>
+              <div class="sport-week">
+                <% number.times do %>
+                  <div class="sport-true"></div>
+                <% end %>
+              </div>
             <% end %>
           <% end %>
         </div>
@@ -57,8 +61,10 @@
               <div class="sport-week">Sa</div>
               <div class="sport-week">Di</div>
           <% elsif params[:base_period].nil? || params[:base_period] == "month" %>
+            <% week = 1 %>
             <% @sport_data.each do |number| %>
-              <div><%= number %></div>
+              <div class="sport-week">Semaine <%= week %></div>
+              <% week += 1 %>
             <% end %>
           <% end %>
         </div>
