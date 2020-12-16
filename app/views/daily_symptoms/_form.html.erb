@@ -4,9 +4,7 @@
       <div class="d-block d-lg-none">
       </div>
       <div class="d-none d-lg-block">
-        <%= link_to daily_symptoms_path do  %>
-          <span class="feature-name">MON AGENDA</span>
-        <% end %>
+        <span class="feature-name">MESURES</span>
       </div>
       <div class="d-inline-flex align-items-center justify-content-center">
         <% if @previous_daily_symptom.nil? %>
@@ -45,15 +43,15 @@
         <div class="row">
           <div class="col-12 col-lg-6 pr-lg-5">
             <div class="d-block d-lg-none dropdown-divider mb-4"></div>
-            <%= render 'slider_pain', daily_symptom: @daily_symptom, f: f %>
+            <%= render 'daily_symptoms/sliders/pain', daily_symptom: @daily_symptom, f: f %>
             <div class="dropdown-divider my-4"></div>
-            <%= render 'slider_blood', daily_symptom: @daily_symptom, f: f %>
+            <%= render 'daily_symptoms/sliders/blood', daily_symptom: @daily_symptom, f: f %>
             <div class="dropdown-divider my-4"></div>
-            <%= render 'slider_digestive', daily_symptom: @daily_symptom, f: f %>
+            <%= render 'daily_symptoms/sliders/digestive', daily_symptom: @daily_symptom, f: f %>
             <div class="dropdown-divider my-4"></div>
-            <%= render 'slider_stress', daily_symptom: @daily_symptom, f: f %>
+            <%= render 'daily_symptoms/sliders/stress', daily_symptom: @daily_symptom, f: f %>
             <div class="dropdown-divider my-4"></div>
-            <%= render 'slider_insomnia', daily_symptom: @daily_symptom, f: f %>
+            <%= render 'daily_symptoms/sliders/insomnia', daily_symptom: @daily_symptom, f: f %>
             <div class="dropdown-divider my-4 d-block d-lg-none"></div>
           </div>
           <div class="col-12 col-lg-6 pl-lg-5 d-flex flex-column column-border-left">
