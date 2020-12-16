@@ -6,7 +6,7 @@ class CouponsController < ApplicationController
     authorize(:coupon, :use?)
     if user_promotion_code == ""
       define_prices_and_sessions
-      @errors = "Ce coupon n'existe pas"
+      @errors = "Veuillez rentrer un code"
       render 'pages/products'
     else
       promotion_code_data = Stripe::PromotionCode::list(code: user_promotion_code).data
