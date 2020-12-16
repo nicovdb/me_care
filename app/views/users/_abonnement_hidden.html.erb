@@ -12,8 +12,6 @@
       Vous êtes abonnée <%= @subscription.nickname %> jusqu'au <%= l(@subscription.end_date) %>.
     <% elsif @subscription.past_due? || @subscription.unpaid? %>
       Votre abonnement est bloqué car le dernier paiement n'est pas passé. Cliquez sur le bouton ci-dessous pour mettre à jour vos informations de paiement.
-    <% elsif @subscription.pending? %>
-      Vous n’avez pas encore d’abonnement. Rendez-vous sur la page <%= link_to "Abonnement", products_path, class:"text-underline" %> pour souscrire à notre offre.
     <% elsif @subscription.incomplete? || @subscription.incomplete_expired? %>
       Il y a un problème avec votre abonnement, veuillez cliquer sur le bouton ci-dessous.
     <% end %>
