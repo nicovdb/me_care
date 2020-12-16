@@ -33,6 +33,7 @@ export default class extends Controller {
 
   displayChart(graph) {
     var ctx = document.getElementById(`${graph["id"]}`).getContext('2d');
+    Chart.defaults.global.defaultFontFamily = 'Lato';
     var chart = new Chart(ctx, {
       // The type of chart we want to create
       type: 'line',
