@@ -259,7 +259,7 @@ class DailySymptomsController < ApplicationController
       @insomnia_data << insomnia_data_week.sum.to_f / 7
       @sport_data << sport_data_week.count(true)
 
-      @labels << "Semaine #{week}"
+      @labels << "Sem. #{week}"
       week += 1
     end
   end
