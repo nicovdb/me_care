@@ -1,9 +1,11 @@
 <div class="pb-5 padding-top-navbar min-100-vh-with-footer" data-controller="charts">
   <div class="container">
     <div class="col-12 col-md-10 offset-md-1">
-      <div class="row">
+      <div class="row flex-column-reverse flex-lg-row">
 
-        <div class="col-12 col-lg-4 pr-lg-5">
+        <div class="col-12 col-lg-4 pr-lg-5 d-flex flex-column-reverse flex-lg-column">
+
+
           <div class="d-none d-lg-block mb-4">
             <%= link_to daily_symptoms_path do  %>
               <span class="feature-name">MON AGENDA</span>
@@ -57,22 +59,61 @@
               </div>
               <div class="col-12">
                 <div class="d-flex justify-content-center align-items-center h-100">
-                  <p class="reset-filters text-center" data-action="click->charts#resetFilters">Effacer les filtres</p>
+                  <p class="mb-0 reset-filters text-center" data-action="click->charts#resetFilters">Effacer les filtres</p>
                 </div>
               </div>
             <% end %>
-
           </div>
+
+          <div class="dropdown-divider dropdown-divider-short mx-auto my-4"></div>
+
+          <div class="row">
+            <div class="col-3 col-lg-6">
+              <%= link_to graph_path(base_period: "week") do %>
+                <div class="d-flex justify-content-center align-items-center flex-column select-period mb-lg-3">
+                  <h3 class="mb-1">Semaine</h3>
+                  <div class="checkbox <%= 'checked' if params[:base_period] == 'week' %>"></div>
+                </div>
+              <% end %>
+            </div>
+            <div class="col-3 col-lg-6">
+              <%= link_to graph_path(base_period: "month") do %>
+                <div class="d-flex justify-content-center align-items-center flex-column select-period mb-lg-3">
+                  <h3 class="mb-1">Mois</h3>
+                  <div class="checkbox <%= 'checked' if params[:base_period] == 'month' %>"></div>
+                </div>
+              <% end %>
+            </div>
+            <div class="col-3 col-lg-6">
+              <%= link_to graph_path(base_period: "trimester") do %>
+                <div class="d-flex justify-content-center align-items-center flex-column select-period mb-lg-3">
+                  <h3 class="mb-1">Trimestre</h3>
+                  <div class="checkbox <%= 'checked' if params[:base_period] == 'trimester' %>"></div>
+                </div>
+              <% end %>
+            </div>
+            <div class="col-3 col-lg-6">
+              <%= link_to graph_path(base_period: "year") do %>
+                <div class="d-flex justify-content-center align-items-center flex-column select-period mb-lg-3">
+                  <h3 class="mb-1">Année</h3>
+                  <div class="checkbox <%= 'checked' if (params[:base_period].nil? || params[:base_period] == 'year') %>"></div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="d-lg-none dropdown-divider dropdown-divider-short mx-auto my-4"></div>
+
         </div>
 
         <%# Graphiques %>
-        <div class="col-12 col-lg-8">
+        <div class="col-12 col-lg-8 px-0 pl-md-2">
           <% if params[:base_period] == "week" %>
             <div class="d-flex align-items-center justify-content-center mb-4">
               <%= link_to graph_path(base_period: "week", base_day: (@monday - 7)) do %>
                 <%= image_tag "arrow-left", class:"day-arrows" %>
               <% end %>
-              <h3 class="px-3 mb-0">Semaine du <%= l(@monday, format:"%d %B") %> au <%= l((@monday + 6), format:"%d %B %Y") %></h3>
+              <h3 class="px-3 mb-0 text-center">Semaine du <%= l(@monday, format:"%d#{" %B" if @monday.month != (@monday + 6).month}") %> au <%= l((@monday + 6), format:"%d %B %Y") %></h3>
               <%= link_to graph_path(base_period: "week", base_day: (@monday + 7)) do %>
                 <%= image_tag "arrow-right", class:"day-arrows" %>
               <% end %>
@@ -87,7 +128,7 @@
                 <%= image_tag "arrow-right", class:"day-arrows" %>
               <% end %>
             </div>
-          <% else #elsif params[:base_period] == "year" %>
+          <% elsif params[:base_period] == "year" %>
             <div class="d-flex align-items-center justify-content-center mb-4">
               <%= link_to graph_path(base_period: "year", base_day: (@base_day - 1.year)) do %>
                 <%= image_tag "arrow-left", class:"day-arrows" %>
@@ -97,32 +138,38 @@
                 <%= image_tag "arrow-right", class:"day-arrows" %>
               <% end %>
             </div>
+          <% else %>
+            <div class="d-flex align-items-center justify-content-center mb-4">
+              <%= link_to graph_path(base_period: "month", base_day: (@base_day - 1.month)) do %>
+                <%= image_tag "arrow-left", class:"day-arrows" %>
+              <% end %>
+              <h3 class="px-3 mb-0"><%= l(@base_day, format:"%B %Y").capitalize %></h3>
+              <%= link_to graph_path(base_period: "month", base_day: (@base_day + 1.month)) do %>
+                <%= image_tag "arrow-right", class:"day-arrows" %>
+              <% end %>
+            </div>
           <% end %>
 
           <div class="graphs-container" data-target="charts.graphs" data-value="<%= @graphs.to_json %>">
             <% @graphs.first(3).each do |graph| %>
-              <div data-symptom-target="<%= graph[:id] %>">
+              <div data-symptom-target="<%= graph[:id] %>" class="mb-2">
                 <div class="d-flex align-items-center">
                   <%= image_tag "agenda/#{graph[:img]}" %>
-                  <div class="flex-grow-1">
-                    <h3 class="mb-0 mt-2"><%= graph[:name] %></h3>
-                    <div class="chart-container">
-                      <canvas id="<%= graph[:id] %>"></canvas>
-                    </div>
-                  </div>
+                  <h3 class="mb-0"><%= graph[:name] %></h3>
+                </div>
+                <div class="chart-container">
+                  <canvas id="<%= graph[:id] %>"></canvas>
                 </div>
               </div>
             <% end %>
             <% @graphs[3..4].each do |graph| %>
-              <div class="d-none" data-symptom-target="<%= graph[:id] %>">
+              <div class="d-none mb-2" data-symptom-target="<%= graph[:id] %>">
                 <div class="d-flex align-items-center">
                   <%= image_tag "agenda/#{graph[:img]}" %>
-                  <div class="flex-grow-1">
-                    <h3 class="mb-0 mt-2"><%= graph[:name] %></h3>
-                    <div class="chart-container">
-                      <canvas id="<%= graph[:id] %>"></canvas>
-                    </div>
-                  </div>
+                  <h3 class="mb-0"><%= graph[:name] %></h3>
+                </div>
+                <div class="chart-container">
+                  <canvas id="<%= graph[:id] %>"></canvas>
                 </div>
               </div>
             <% end %>

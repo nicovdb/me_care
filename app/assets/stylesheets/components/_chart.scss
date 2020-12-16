@@ -8,12 +8,36 @@
 .graphs-container {
   h3 {
     font-size: 14px;
-    padding-left: 40px;
   }
 
   img {
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
     margin-right: 10px;
+    margin-left: 30px;
+  }
+}
+
+@media(max-width: 800px) {
+  .graphs-container img {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+.select-period {
+  h3 {
+    font-size: 16px;
+  }
+
+  .checkbox {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1.5px solid $pink;
+  }
+
+  .checkbox.checked {
+    background-color: $light-pink;
   }
 }

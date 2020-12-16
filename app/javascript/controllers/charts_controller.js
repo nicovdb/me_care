@@ -5,7 +5,6 @@ export default class extends Controller {
   static targets = [ "graphs" ]
 
   connect() {
-    // id"name", label"name", borderColor"#hex", data[array of values], suggestedMax 5 ou 10, stepSize 1 ou 2
     JSON.parse(this.graphsTarget.dataset.value).forEach((graph) => {
       this.displayChart(graph)
     })
@@ -47,10 +46,11 @@ export default class extends Controller {
           borderColor: `${graph['border_color']}`,
           borderWidth: 4,
           data: Array.from(graph['data']),
-          pointRadius: 7,
-          pointHoverRadius: 7,
+          pointRadius: 6,
+          pointHoverRadius: 6,
           pointBackgroundColor: '#EB7099',
-          pointBorderWidth: 0
+          pointBorderWidth: 0,
+          pointBorderColor: '#EB7099'
         }],
       },
 
