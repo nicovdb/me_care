@@ -1,13 +1,34 @@
 import { Controller } from "stimulus"
 import Chart from 'chart.js';
+import { jsPDF } from "jspdf";
 
 export default class extends Controller {
-  static targets = [ "graphs" ]
+  static targets = [ "graphs", "period" ]
 
   connect() {
+    this.initializePDF()
+
     JSON.parse(this.graphsTarget.dataset.value).forEach((graph) => {
+      this.symptomTitlePDF(graph)
       this.displayChart(graph)
     })
+    // this.doc.save("a4.pdf");
+  }
+
+  initializePDF() {
+    this.doc = new jsPDF()
+    this.row = 10
+    this.doc.text(this.periodTarget.textContent, 10, this.row)
+  }
+
+  symptomTitlePDF(graph) {
+    this.row = this.row + 20
+    this.doc.text(graph['name'], 10, this.row)
+    this.row = this.row + 10
+  }
+
+  symptomImagePDF(image) {
+    // this.doc.text(image, 10, this.row)
   }
 
   toggle(e) {
@@ -32,6 +53,7 @@ export default class extends Controller {
   }
 
   displayChart(graph) {
+    let graphDoc = this.doc
     var ctx = document.getElementById(`${graph["id"]}`).getContext('2d');
     Chart.defaults.global.defaultFontFamily = 'Lato';
     var chart = new Chart(ctx, {
@@ -57,6 +79,11 @@ export default class extends Controller {
 
       // Configuration options go here
       options: {
+        animation: {
+          onComplete: function() {
+            document.getElementById(`img-${graph["id"]}`).src = chart.toBase64Image();
+          }
+        },
         responsive: true,
         maintainAspectRatio: false,
         scales: {

@@ -3,7 +3,7 @@
     <%= link_to graph_path(base_period: "week", base_day: (@monday - 7)) do %>
       <%= image_tag "arrow-left", class:"day-arrows" %>
     <% end %>
-    <h3 class="px-3 mb-0 text-center">Semaine du <%= l(@monday, format:"%d#{" %B" if @monday.month != (@monday + 6).month}") %> au <%= l((@monday + 6), format:"%d %B %Y") %></h3>
+    <h3 class="px-3 mb-0 text-center" data-target="charts.period">Semaine du <%= l(@monday, format:"%d#{" %B" if @monday.month != (@monday + 6).month}") %> au <%= l((@monday + 6), format:"%d %B %Y") %></h3>
     <%= link_to graph_path(base_period: "week", base_day: (@monday + 7)) do %>
       <%= image_tag "arrow-right", class:"day-arrows" %>
     <% end %>
@@ -13,7 +13,7 @@
     <%= link_to graph_path(base_period: "trimester", base_day: (@base_day - 3.month)) do %>
       <%= image_tag "arrow-left", class:"day-arrows" %>
     <% end %>
-    <h3 class="px-3 mb-0"><%= l(@base_day, format:"%B").capitalize %> à <%= l((@base_day + 2.month), format:"%B %Y") %></h3>
+    <h3 class="px-3 mb-0" data-target="charts.period"><%= l(@base_day, format:"%B").capitalize %> à <%= l((@base_day + 2.month), format:"%B %Y") %></h3>
     <%= link_to graph_path(base_period: "trimester", base_day: (@base_day + 3.month)) do %>
       <%= image_tag "arrow-right", class:"day-arrows" %>
     <% end %>
@@ -23,7 +23,7 @@
     <%= link_to graph_path(base_period: "year", base_day: (@base_day - 1.year)) do %>
       <%= image_tag "arrow-left", class:"day-arrows" %>
     <% end %>
-    <h3 class="px-3 mb-0"><%= l(@base_day, format:"%Y") %></h3>
+    <h3 class="px-3 mb-0" data-target="charts.period"><%= l(@base_day, format:"%Y") %></h3>
     <%= link_to graph_path(base_period: "year", base_day: (@base_day + 1.year)) do %>
       <%= image_tag "arrow-right", class:"day-arrows" %>
     <% end %>
@@ -33,7 +33,7 @@
     <%= link_to graph_path(base_period: "month", base_day: (@base_day - 1.month)) do %>
       <%= image_tag "arrow-left", class:"day-arrows" %>
     <% end %>
-    <h3 class="px-3 mb-0"><%= l(@base_day, format:"%B %Y").capitalize %></h3>
+    <h3 class="px-3 mb-0" data-target="charts.period"><%= l(@base_day, format:"%B %Y").capitalize %></h3>
     <%= link_to graph_path(base_period: "month", base_day: (@base_day + 1.month)) do %>
       <%= image_tag "arrow-right", class:"day-arrows" %>
     <% end %>
