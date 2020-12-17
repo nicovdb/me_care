@@ -12,8 +12,6 @@
     "coffee-loader": "^1.0.0",
     "coffeescript": "1.12.7",
     "flatpickr": "^4.6.6",
-    "html2canvas": "^1.0.0-rc.7",
-    "ion-rangeslider": "^2.3.1",
     "jquery": "^3.5.1",
     "jspdf": "^2.2.0",
     "popper.js": "^1.16.1",
