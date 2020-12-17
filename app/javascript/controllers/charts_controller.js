@@ -12,9 +12,6 @@ export default class extends Controller {
   }
 
   downloadPDF() {
-    console.log(this.exportTarget.dataset["stressChart"])
-    console.log(this.exportTarget.dataset["stressChart"] != "data:,")
-
     const doc = new jsPDF()
     doc.setTextColor(3,94,112);
     doc.setFont("Helvetica");
