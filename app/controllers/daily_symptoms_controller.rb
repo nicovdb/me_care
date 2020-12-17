@@ -220,10 +220,10 @@ class DailySymptomsController < ApplicationController
     number_of_weeks = (real_date_ending - real_date_beggining + 1).to_i / 7
 
     @labels = []
-    week = 1
     day = real_date_beggining
 
     number_of_weeks.times do
+      @labels << "Sem. #{day.cweek}"
       week_daily_symptoms = @daily_symptoms.where('day >= ?', day).where('day <= ?', (day + 6))
       pain_data_week = []
       blood_data_week = []
@@ -252,15 +252,12 @@ class DailySymptomsController < ApplicationController
         day += 1
       end
 
-      @pain_data << pain_data_week.sum.to_f / 7
-      @blood_data << blood_data_week.sum.to_f / 7
-      @digestive_trouble_data << digestive_trouble_data_week.sum.to_f / 7
-      @stress_data << stress_data_week.sum.to_f / 7
-      @insomnia_data << insomnia_data_week.sum.to_f / 7
+      @pain_data << (pain_data_week.sum.to_f / 7).round(2)
+      @blood_data << (blood_data_week.sum.to_f / 7).round(2)
+      @digestive_trouble_data << (digestive_trouble_data_week.sum.to_f / 7).round(2)
+      @stress_data << (stress_data_week.sum.to_f / 7).round(2)
+      @insomnia_data << (insomnia_data_week.sum.to_f / 7).round(2)
       @sport_data << sport_data_week.count(true)
-
-      @labels << "Sem. #{week}"
-      week += 1
     end
   end
 
@@ -316,10 +313,10 @@ class DailySymptomsController < ApplicationController
     stress_total = daily_symptoms.map(&:stress_level)
     insomnia_total = daily_symptoms.map(&:blood_level)
 
-    @pain_data << (pain_total.sum / number_of_days)
-    @blood_data << (blood_total.sum / number_of_days)
-    @digestive_trouble_data << (digestive_trouble_total.sum / number_of_days)
-    @stress_data << (stress_total.sum / number_of_days)
-    @insomnia_data << (insomnia_total.sum / number_of_days)
+    @pain_data << (pain_total.sum / number_of_days).round(2)
+    @blood_data << (blood_total.sum / number_of_days).round(2)
+    @digestive_trouble_data << (digestive_trouble_total.sum / number_of_days).round(2)
+    @stress_data << (stress_total.sum / number_of_days).round(2)
+    @insomnia_data << (insomnia_total.sum / number_of_days).round(2)
   end
 end
