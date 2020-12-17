@@ -77,22 +77,5 @@
   <% end %>
 </div>
 
-<div class="graphs-container mt-5" id="print">
-  <h1>Test</h1>
-  <% @graphs.each do |graph| %>
-    <div data-symptom-target="<%= graph[:id] %>" class="mb-3 pr-2 pr-lg-3">
-      <div class="d-flex align-items-center">
-        <%= image_tag "agenda/#{graph[:img]}" %>
-        <h3 class="mb-0"><%= graph[:name] %></h3>
-      </div>
-      <div class="chart-container">
-        <img src="" alt="" id="img-<%= graph[:id] %>" class="w-100 h-100 m-0">
-      </div>
-    </div>
-  <% end %>
-  <div class="btn btn-primary btn-ee" id="download-btn">Download</div>
-</div>
-
-<div>
-  <img src="" alt="" id="output-img">
+<div id="data-export" data-target="charts.export">
 </div>
