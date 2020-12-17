@@ -2,12 +2,12 @@
   <div class="container">
     <div class="navbar navbar-light navbar-lewagon col-12 col-md-10 offset-md-1">
       <div class="nav-item dropdown">
-        <%= link_to main_app.profil_path do %>
+        <%= link_to profil_path do %>
           <%= cl_image_tag current_user.profile_picture, width: 120, height: 120, crop: :fill, quality: :auto, fetch_format: :auto, class: "avatar avatar-small" %>
         <% end %>
       </div>
       <% if action_name == "home" %>
-        <%= link_to main_app.root_path, class: "navbar-brand" do %>
+        <%= link_to root_path, class: "navbar-brand" do %>
           <%= image_tag "logo-pink.svg" %>
         <% end %>
       <% elsif controller_name == "pages" %>

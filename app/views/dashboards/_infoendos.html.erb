@@ -14,12 +14,12 @@
         <% end %>
       <% end %>
       <span class='text-mini mb-0 ml-3'><%= l(infoendo.publication_date, format:"%d %b %Y") %> </span>
-      <% if policy(Infoendo).edit? %>
+      <% if policy(infoendo).edit? %>
         <%= link_to edit_dashboards_infoendo_path(infoendo), class:"ml-4" do %>
           <i class="far fa-edit"></i>
         <% end %>
       <% end %>
-      <% if policy(Infoendo).destroy? %>
+      <% if policy(infoendo).destroy? %>
         <%= link_to infoendo_path(infoendo), method: :delete, remote: true, data:{confirm: "Êtes vous sûr.e ?"}, class:"ml-2" do %>
           <i class="far fa-trash-alt"></i>
         <% end %>

@@ -1,0 +1,37 @@
+<div class= 'mb-4'>
+  <h1>Toutes les catégories</h1>
+  <% @forum_categories.each do |fc| %>
+  <div class="d-flex align-items-center">
+    <% if policy(fc).edit? %>
+      <%= link_to edit_dashboards_forum_category_path(fc), class:"mr-2" do %>
+        <i class="far fa-edit"></i>
+      <% end %>
+    <% end %>
+    <h3 class='mb-0'><%= fc.name %></h3>
+  </div>
+  <% end %>
+</div>
+
+<div>
+  <h1>Tous les sujets</h1>
+  <% @subjects.each do |subject| %>
+    <p class="mb-0"><%= subject.forum_category.name %></p>
+    <%= link_to subject_path(subject) do  %>
+      <h3 class="mb-0"><%= subject.title %></h3>
+    <% end %>
+    <em><p class="mb-0"><%= truncate(strip_tags(subject.content.to_s), length: 100) %></p></em>
+    <div class="text-small text-right">
+      <p class='mb-0'><%= subject.answers.count %> commentaires</p>
+      <% if policy(subject).edit? %>
+        <%= link_to edit_dashboards_subject_path(subject), class:"mr-2" do %>
+          <i class="far fa-edit"></i>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="dropdown-divider my-4 mx-auto"></div>
+  <% end %>
+  <div class="d-flex justify-content-center mt-5">
+    <%= will_paginate @subjects, params: { active: 'forum' } %>
+  </div>
+</div>
+

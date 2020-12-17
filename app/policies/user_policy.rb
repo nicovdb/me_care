@@ -13,6 +13,10 @@ class UserPolicy < ApplicationPolicy
     is_current_user_or_admin?
   end
 
+  def forum_consent?
+    is_current_user_or_admin?
+  end
+
   def anonymize?
     is_current_user_or_admin?
   end

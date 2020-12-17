@@ -7,47 +7,47 @@
     <div class="col-6 border-col-footer-mobile text-center">
       <div class="d-inline-block text-left">
         <div class="footer-subtitle pb-2">
-          <%= link_to "Mon agenda", main_app.daily_symptoms_path %>
+          <%= link_to "Mon agenda", daily_symptoms_path %>
         </div>
         <div class="footer-subtitle py-2">
-          <%= link_to "À savoir", main_app.infoendos_path  %>
+          <%= link_to "À savoir", infoendos_path  %>
         </div>
         <div class="footer-subtitle py-2">
-          <%= link_to "News", main_app.articles_path  %>
+          <%= link_to "News", articles_path  %>
         </div>
         <div class="footer-subtitle py-2">
-          <%= link_to "Que faire si...", main_app.algorythm_path, data: { turbolinks: 'false' }  %>
+          <%= link_to "Que faire si...", algorythm_path, data: { turbolinks: 'false' }  %>
         </div>
         <div class="footer-subtitle py-2">
-          <%= link_to "Forum", main_app.root_path  %>
+          <%= link_to "Forum", root_path  %>
         </div>
         <div class="footer-subtitle pt-2">
-          <%= link_to "easy Live", main_app.webinars_path  %>
+          <%= link_to "easy Live", webinars_path  %>
         </div>
       </div>
     </div>
     <div class="col-6 text-center">
       <div class="d-inline-block text-left">
         <div class="footer-subtitle pb-2">
-          <%= link_to "Abonnement", main_app.root_path  %>
+          <%= link_to "Abonnement", root_path  %>
         </div>
         <div class="footer-subtitle py-2">
-          <%= link_to "Équipe", main_app.team_path  %>
+          <%= link_to "Équipe", team_path  %>
         </div>
         <% if user_signed_in? %>
           <div class="footer-subtitle py-2">
-            <%= link_to "Profil", main_app.profil_path  %>
+            <%= link_to "Profil", profil_path  %>
           </div>
         <% else %>
           <div class="footer-subtitle py-2">
-            <%= link_to "Profil", main_app.new_user_session_path %>
+            <%= link_to "Profil", new_user_session_path %>
           </div>
         <% end %>
         <div class="footer-subtitle py-2">
-          <%= link_to "Contact", main_app.new_contact_path  %>
+          <%= link_to "Contact", new_contact_path  %>
         </div>
         <div class="footer-subtitle py-2">
-          <%= link_to "Cadre</br>réglementaire".html_safe, main_app.legals_path  %>
+          <%= link_to "Cadre</br>réglementaire".html_safe, legals_path  %>
         </div>
       </div>
     </div>

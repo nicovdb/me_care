@@ -1,0 +1,58 @@
+<% content_for :meta_title, "Dashboard | easy endo" %>
+<div class="bg padding-top-navbar pb-5 min-100-vh-with-footer" data-controller='active-tab' data-active-tab-name='<%= params[:active] %>'>
+  <div class="container text-green">
+    <div class="col-12 col-md-10 offset-md-1">
+      <div class="d-none d-md-block">
+        <%= link_to forum_path do %>
+          <span class="feature-name">FORUM</span>
+        <% end %>
+      </div>
+      <% if !current_user.forum_consent %>
+        <div class="my-3">
+          <%= simple_form_for current_user, url: consent_path(current_user, method: :patch) do |f| %>
+            <div class="text-center">
+              <%= f.input :forum_consent, as: :boolean, label: 'Cochez la case et validez' %>
+              <%= f.submit "J'accepte les conditions d'utilisation du forum easy endo", class:'btn btn-primary btn-ee mt-4' %>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="col-12 col-md-10 offset-md-1 mt-md-5">
+
+          <div class="d-flex justify-content-between mb-4">
+            <div class='d-flex'>
+              <div>
+                <%= form_tag forum_path, method: :get do %>
+                  <%= collection_select :forum_category, :id, ForumCategory.all.order('name ASC'), :id, :name,{include_blank: 'Sélectionner une catégorie'} %>
+                  <%= button_tag(type: "submit", class:'btn-icon') do %>
+                    <% image_tag 'search.svg', class:'btn-icon-search' %>
+                  <% end %>
+                <% end %>
+                <div class="mt-2">
+                  <u><%= link_to "Effacer les filtres", forum_path, class:'text-small'  %></u>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% @subjects.each do |subject| %>
+            <%= link_to subject_path(subject) do  %>
+              <h1>
+                <%= subject.title %>
+              </h1>
+              <h3>
+                <%= subject.forum_category.name %>
+              </h3>
+              <div class="text-right text-mini">
+                <em><%= subject.answers.count %> commentaire(s)</em>
+              </div>
+              <div class="dropdown-divider my-4 mx-auto"></div>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="d-flex justify-content-center mt-5">
+          <%= will_paginate @subjects %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

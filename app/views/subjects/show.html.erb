@@ -1,0 +1,81 @@
+<% content_for :meta_title, @subject.title %>
+<div class="bg padding-top-navbar pb-5 min-100-vh-with-footer" data-controller='active-tab' data-active-tab-name='<%= params[:active] %>'>
+  <div class="container text-green">
+    <div class="col-12 col-md-10 offset-md-1">
+      <div class="d-none d-md-block">
+        <%= link_to forum_path do %>
+          <span class="feature-name">FORUM</span>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-12 col-md-8 offset-md-2 mt-md-4 position-relative">
+      <p><%= @subject.forum_category.name %></p>
+      <h1><%= @subject.title %></h1>
+      <div class="d-flex align-items-center my-3">
+        <div class='text-center d-none d-md-block'>
+          <%= image_tag 'avatar_default', class:'avatar avatar-mini' %>
+          <p><%= @subject.user.pseudo %> </p>
+        </div>
+        <div class="rounded-lg shadow py-1 px-3 mx-2 w-100 bg-light">
+          <p class="mb-0 d-block d-md-none"><strong><%= @subject.user.pseudo %> a écrit :</strong></p>
+          <p><%= @subject.content %></p>
+        </div>
+      </div>
+      <p class="mb-5"> <em><%= @answers.count %> commentaire(s)</em> </p>
+
+
+      <% if @answers.nil? %>
+      <p>Personne n'a réagit à ce sujet pour le moment, soyez la première !</p>
+      <% else %>
+        <% @answers.each do |answer| %>
+          <% if answer.user == current_user %>
+          <div class="d-flex align-items-center">
+            <% if policy(answer).destroy? %>
+              <%= link_to answer_path(answer), method: :delete, remote: true, data:{confirm: "Êtes vous sûr.e ? Cette action est irréversible."}, class:"" do %>
+                 <i class="far fa-trash-alt"></i>
+              <% end %>
+            <% end %>
+            <div class="rounded-lg shadow py-1 px-3 mb-3 mx-2 w-100 bg-white">
+              <p class="mb-0 d-block d-md-none"><strong>Vous avez écrit :</strong></p>
+              <p><%= answer.content%> </p>
+            </div>
+            <div class='text-center d-none d-md-block'>
+              <%= image_tag 'avatar_default', class:'avatar avatar-mini' %>
+              <p><%= answer.user.pseudo %> </p>
+            </div>
+          </div>
+          <% else %>
+          <div class="d-flex align-items-center">
+            <div class='text-center d-none d-md-block'>
+              <%= image_tag 'avatar_default', class:'avatar avatar-mini' %>
+              <p><%= answer.user.pseudo %> </p>
+            </div>
+            <div class="rounded-lg shadow py-1 px-3 mb-3 mx-2 w-100 bg-white">
+              <p class="mb-0 d-block d-md-none"><strong><%= @subject.user.pseudo %> a écrit :</strong></p>
+              <p><%= answer.content%> </p>
+            </div>
+            <% if policy(answer).destroy? %>
+              <%= link_to answer_path(answer), method: :delete, remote: true, data:{confirm: "Êtes vous sûr.e ? Cette action est irréversible."}, class:"" do %>
+                 <i class="far fa-trash-alt"></i>
+              <% end %>
+            <% end %>
+          </div>
+          <% end %>
+        <% end %>
+      <% end %>
+      <div class="d-flex justify-content-center mt-5">
+        <%= will_paginate @answers %>
+      </div>
+      <p class='mt-5'> <strong>Ajouter un commentaire</strong>  </p>
+      <%= simple_form_for([@subject, @answer], remote: true) do |f| %>
+        <%= f.input :content, as: :rich_text_area, label: 'Votre commentaire' %>
+        <div class="text-center">
+          <%= f.submit "Poster mon commentaire", class: 'btn btn-primary btn-ee mb-4' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
