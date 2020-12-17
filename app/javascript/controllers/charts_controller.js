@@ -12,25 +12,42 @@ export default class extends Controller {
   }
 
   downloadPDF() {
+    console.log(this.exportTarget.dataset["stressChart"])
+    console.log(this.exportTarget.dataset["stressChart"] != "data:,")
+
     const doc = new jsPDF()
+    doc.setTextColor(3,94,112);
+    doc.setFont("Helvetica");
+    doc.setFontSize(22);
     const width = parseInt(this.exportTarget.dataset.graphWidth, 10) / 4
 
-    doc.text(this.periodTarget.textContent, 10, 10)
+    doc.text(this.periodTarget.textContent, 20, 20)
+    doc.setFontSize(12);
 
-    doc.text("Douleurs", 10, 30)
-    doc.addImage(this.exportTarget.dataset["painChart"], "PNG", 10, 35, width, 37.5)
+    if (this.exportTarget.dataset["painChart"] != "data:,") {
+      doc.text("Douleurs", 20, 30)
+      doc.addImage(this.exportTarget.dataset["painChart"], "PNG", 20, 35, width, 37.5)
+    }
 
-    doc.text("Saignements", 10, 80)
-    doc.addImage(this.exportTarget.dataset["bloodChart"], "PNG", 10, 85, width, 37.5)
+    if (this.exportTarget.dataset["bloodChart"] != "data:,") {
+      doc.text("Saignements", 20, 80)
+      doc.addImage(this.exportTarget.dataset["bloodChart"], "PNG", 20, 85, width, 37.5)
+    }
 
-    doc.text("Troubles digestifs", 10, 130)
-    doc.addImage(this.exportTarget.dataset["digestiveTroubleChart"], "PNG", 10, 135, width, 37.5)
+    if (this.exportTarget.dataset["digestiveTroubleChart"] != "data:,") {
+      doc.text("Troubles digestifs", 20, 130)
+      doc.addImage(this.exportTarget.dataset["digestiveTroubleChart"], "PNG", 20, 135, width, 37.5)
+    }
 
-    doc.text("Stress", 10, 180)
-    doc.addImage(this.exportTarget.dataset["stressChart"], "PNG", 10, 185, width, 37.5)
+    if (this.exportTarget.dataset["stressChart"] != "data:,") {
+      doc.text("Stress", 20, 180)
+      doc.addImage(this.exportTarget.dataset["stressChart"], "PNG", 20, 185, width, 37.5)
+    }
 
-    doc.text("Insomnie", 10, 230)
-    doc.addImage(this.exportTarget.dataset["insomniaChart"], "PNG", 10, 235, width, 37.5)
+    if (this.exportTarget.dataset["insomniaChart"] != "data:,") {
+      doc.text("Insomnie", 20, 230)
+      doc.addImage(this.exportTarget.dataset["insomniaChart"], "PNG", 20, 235, width, 37.5)
+    }
 
     doc.save(`${this.periodTarget.textContent}.pdf`);
   }
