@@ -15,13 +15,20 @@
 <div>
   <h1>Tous les sujets</h1>
   <% @subjects.each do |subject| %>
-    <p class="mb-0"><%= subject.forum_category.name %></p>
+    <span class="badge badge-pill badge-light">
+      <%= subject.forum_category.name %>
+    </span>
     <%= link_to subject_path(subject) do  %>
-      <h3 class="mb-0"><%= subject.title %></h3>
+      <h2 class="my-2"><%= subject.title %></h2>
     <% end %>
-    <em><p class="mb-0"><%= truncate(strip_tags(subject.content.to_s), length: 100) %></p></em>
+    <div class="text-mini mt-1">
+      Il y a <%= time_ago_in_words(subject.created_at) %>
+    </div>
+    <em><p class="mb-0">"<%= truncate(strip_tags(subject.content.to_s), length: 100) %>"</p></em>
     <div class="text-small text-right">
-      <p class='mb-0'><%= subject.answers.count %> commentaires</p>
+      <div class="text-mini">
+        <%= subject.answers.count %> commentaires
+      </div>
       <% if policy(subject).edit? %>
         <%= link_to edit_dashboards_subject_path(subject), class:"mr-2" do %>
           <i class="far fa-edit"></i>

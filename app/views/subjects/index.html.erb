@@ -1,7 +1,7 @@
-<% content_for :meta_title, "Dashboard | easy endo" %>
+<% content_for :meta_title, "Forum | easy endo" %>
 <div class="bg padding-top-navbar pb-5 min-100-vh-with-footer" data-controller='active-tab' data-active-tab-name='<%= params[:active] %>'>
   <div class="container text-green">
-    <div class="col-12 col-md-10 offset-md-1">
+    <div class="col-12 col-md-10 offset-md-1 p-0">
       <div class="d-none d-md-block">
         <%= link_to forum_path do %>
           <span class="feature-name">FORUM</span>
@@ -17,37 +17,50 @@
           <% end %>
         </div>
       <% else %>
-        <div class="col-12 col-md-10 offset-md-1 mt-md-5">
-
-          <div class="d-flex justify-content-between mb-4">
-            <div class='d-flex'>
-              <div>
-                <%= form_tag forum_path, method: :get do %>
-                  <%= collection_select :forum_category, :id, ForumCategory.all.order('name ASC'), :id, :name,{include_blank: 'Sélectionner une catégorie'} %>
-                  <%= button_tag(type: "submit", class:'btn-icon') do %>
-                    <% image_tag 'search.svg', class:'btn-icon-search' %>
-                  <% end %>
+        <div class="col-12 mt-md-5 p-0">
+          <div class="btn-group w-100 mb-4">
+            <button type="button" class="btn btn-dropdown w-100 py-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="d-flex">
+                <% if params[:forum_category] %>
+                  <%= params[:forum_category] %>
+                <% else %>
+                  Filtrer
                 <% end %>
-                <div class="mt-2">
-                  <u><%= link_to "Effacer les filtres", forum_path, class:'text-small'  %></u>
-                </div>
-              </div>
+              </span>
+            </button>
+            <div class="dropdown-menu dropdown-menu-light pt-2 pb-3 px-0">
+              <% ForumCategory.all.order('name ASC').each do |category| %>
+                <% unless category == ForumCategory.all.order('name ASC').first %>
+                  <div class="dropdown-divider my-2"></div>
+                <% end %>
+                  <%= link_to category.name, forum_path(forum_category: category.name), class: 'dropdown-item px-3'  %>
+              <% end %>
+                <div class="dropdown-divider my-2"></div>
+                <%= link_to "Effacer les filtres", forum_path, class: 'dropdown-item px-3'  %>
             </div>
           </div>
-          <% @subjects.each do |subject| %>
-            <%= link_to subject_path(subject) do  %>
-              <h1>
-                <%= subject.title %>
-              </h1>
-              <h3>
-                <%= subject.forum_category.name %>
-              </h3>
-              <div class="text-right text-mini">
-                <em><%= subject.answers.count %> commentaire(s)</em>
+          <div class="card-columns">
+            <% @subjects.each do |subject| %>
+              <div class="card-subject my-3 p-3 w-100 shadow">
+                <span class="badge badge-pill badge-light">
+                  <%= subject.forum_category.name %>
+                </span>
+                <h2 class="mt-3 mb-0">
+                  <%= subject.title %>
+                </h2>
+                <div class="text-mini">
+                  Il y a <%= time_ago_in_words(subject.created_at) %>
+                </div>
+                <div class="mt-3">
+                  <%= link_to "Répondre", subject_path(subject), class: 'btn btn-primary btn-small'  %>
+                </div>
+                <div class="dropdown-divider mb-2 mt-3"></div>
+                <div class="text-mini">
+                  <em><%= subject.answers.count %> commentaire(s)</em>
+                </div>
               </div>
-              <div class="dropdown-divider my-4 mx-auto"></div>
             <% end %>
-          <% end %>
+          </div>
         </div>
         <div class="d-flex justify-content-center mt-5">
           <%= will_paginate @subjects %>

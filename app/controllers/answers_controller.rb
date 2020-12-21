@@ -6,7 +6,8 @@ class AnswersController < ApplicationController
     @answer.subject = @subject
     authorize @answer
     if @answer.save
-      redirect_to subject_path(@subject)
+      page = (@subject.answers.count / 10.to_f).ceil
+      redirect_to subject_path(@subject, anchor: "answer-#{@answer.id}", page: page)
     else
       render 'subject/show'
     end

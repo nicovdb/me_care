@@ -1,0 +1,33 @@
+.dropdown-menu.dropdown-menu-light {
+  background-color: white;
+  width: 100%;
+  text-align: left;
+  margin-top: -5px;
+  color: $light-green-gray;
+  border : 1px solid #e9ecef;
+}
+
+.btn-dropdown {
+  border : 1px solid #e9ecef;
+  background-color: white;
+  border-radius: 6px !important;
+  color: $light-green-gray;
+}
+
+.btn-dropdown:focus, input:focus{
+    outline: none;
+    box-shadow: none;
+}
+
+.btn-dropdown:hover {
+  color: $light-green-gray;
+}
+
+.dropdown-item {
+  color: $light-green-gray;
+}
+
+.dropdown-item:hover {
+  font-weight: bolder;
+  background-color: white;
+}
