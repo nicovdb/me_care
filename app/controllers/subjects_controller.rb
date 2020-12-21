@@ -11,7 +11,13 @@ class SubjectsController < ApplicationController
   def show
     @subject = Subject.find(params[:id])
     authorize @subject
+    unless FollowSubject.find_by(user: current_user, subject: @subject).nil?
+      @follow = FollowSubject.find_by(user: current_user, subject: @subject)
+      @follow.seen = true
+      @follow.save
+    end
     @answer = Answer.new
+    @follow_subject = FollowSubject.new
     @answers = @subject.answers.paginate(page: params[:page], per_page: 10).order(created_at: :asc)
   end
 

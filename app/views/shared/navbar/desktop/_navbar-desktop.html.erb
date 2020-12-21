@@ -26,8 +26,11 @@
               <%= link_to "Que faire si...", algorythm_path, class: "nav-link", data: { turbolinks: 'false' } %>
             </li>
             <li class="nav-item">
-              <%= link_to "#", class: "nav-link d-flex align-items-center" do %>
+              <%= link_to forum_path, class: "nav-link d-flex align-items-center" do %>
                 Forum
+                <% if user_signed_in? %>
+                  <span class='notif-pink-bullet'><%= current_user.notification_number %></span>
+                <% end %>
               <% end %>
             </li>
             <li class="nav-item">

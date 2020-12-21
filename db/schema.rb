@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_17_160031) do
+ActiveRecord::Schema.define(version: 2020_12_21_130736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -118,6 +118,16 @@ ActiveRecord::Schema.define(version: 2020_12_17_160031) do
     t.index ["article_id"], name: "index_favorites_on_article_id"
     t.index ["infoendo_id"], name: "index_favorites_on_infoendo_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "follow_subjects", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "subject_id", null: false
+    t.boolean "seen", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["subject_id"], name: "index_follow_subjects_on_subject_id"
+    t.index ["user_id"], name: "index_follow_subjects_on_user_id"
   end
 
   create_table "forum_categories", force: :cascade do |t|
@@ -278,6 +288,8 @@ ActiveRecord::Schema.define(version: 2020_12_17_160031) do
   add_foreign_key "favorites", "articles"
   add_foreign_key "favorites", "infoendos"
   add_foreign_key "favorites", "users"
+  add_foreign_key "follow_subjects", "subjects"
+  add_foreign_key "follow_subjects", "users"
   add_foreign_key "info_alternative_therapies", "alternative_therapies"
   add_foreign_key "info_alternative_therapies", "information"
   add_foreign_key "info_diseases", "diseases"

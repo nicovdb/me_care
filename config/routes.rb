@@ -46,6 +46,7 @@ Rails.application.routes.draw do
     get '/forum', to: 'subjects#index', as: :forum
     resources :subjects, only: [:show, :create, :update] do
       resources :answers, only: [:create]
+      resources :follow_subjects, only: [:create, :destroy]
     end
     resources :answers, only: [:destroy]
     resources :forum_categories, only: [:create, :update]

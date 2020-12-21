@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :webinars, through: :webinar_subscriptions
   has_many :daily_symptoms
   has_one_attached :avatar
+  has_many :follow_subjects
   validate :password_complexity
   validates :pseudo, uniqueness: true
   validates :first_name, :last_name, :pseudo, presence: true
@@ -42,6 +43,10 @@ class User < ApplicationRecord
 
   def full_name
     "#{first_name.capitalize} #{last_name.capitalize}"
+  end
+
+  def notification_number
+    follow_subjects.where(seen: false).count
   end
 
   # def unread_posts_count

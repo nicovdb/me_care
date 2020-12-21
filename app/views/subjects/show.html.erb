@@ -9,7 +9,7 @@
       </div>
     </div>
     <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 mt-md-4 position-relative">
-      <div class="card-subject my-3 px-3 py-4 w-100 shadow">
+      <div class="card-subject my-3 p-3 px-md-5 py-md-4 w-100 shadow">
         <span class="badge badge-pill badge-light"><%= @subject.forum_category.name %></span>
         <div class='d-flex flex-column flex-md-row justify-content-center align-items-start my-4 justify-content-md-start align-items-md-center'>
           <div class="d-flex align-items-end align-items-md-center">
@@ -24,7 +24,18 @@
         <div class="my-3">
           <p><%= @subject.content %></p>
         </div>
-        <div class=" text-mini"> <em><%= @answers.count %> commentaire(s)</em> </div>
+        <div class="d-flex justify-content-between">
+          <div class=" text-mini"> <em><%= @answers.count %> commentaire(s)</em> </div>
+          <% if current_user.follow_subjects.where(user: current_user, subject: @subject).any? %>
+            <%= link_to subject_follow_subject_path(@subject), method: :delete, remote: true do  %>
+              <i class="fas fa-bell"></i>
+            <% end %>
+          <% else %>
+            <%= link_to subject_follow_subjects_path(@subject), method: :post, remote: true do  %>
+              <i class="far fa-bell"></i>
+            <% end %>
+          <% end %>
+        </div>
       </div>
 
       <% if @answers.nil? %>
@@ -32,7 +43,7 @@
       <% else %>
         <% @answers.each do |answer| %>
           <% if answer.user == current_user %>
-          <div id="answer-<%= answer.id %>" class="card-subject my-3 px-3 py-4 w-100 shadow">
+          <div id="answer-<%= answer.id %>" class="card-subject my-3 p-3 px-md-5 py-md-4 w-100 shadow">
             <div class='d-flex flex-column-reverse flex-md-row justify-content-center align-items-end my-4 justify-content-md-end align-items-md-center'>
               <div class="text-mini mt-1">
                 Il y a  <%= time_ago_in_words(answer.created_at) %>
@@ -54,7 +65,7 @@
             </div>
           </div>
           <% else %>
-          <div id= "comment-<%= answer.id %>" class="card-subject my-3 px-3 py-4 w-100 shadow">
+          <div id= "comment-<%= answer.id %>" class="card-subject my-3 p-3 px-md-5 py-md-4 w-100 shadow">
             <div class='d-flex flex-column flex-md-row justify-content-center align-items-start my-4 justify-content-md-start align-items-md-center'>
               <div class="d-flex align-items-end align-items-md-center">
                 <%= image_tag 'avatar_default', class:'avatar avatar-mini' %>

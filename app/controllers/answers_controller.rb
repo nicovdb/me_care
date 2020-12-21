@@ -6,6 +6,11 @@ class AnswersController < ApplicationController
     @answer.subject = @subject
     authorize @answer
     if @answer.save
+      @follows = @answer.subject.follow_subjects
+      @follows.each do |f|
+        f.seen = false
+        f.save
+      end
       page = (@subject.answers.count / 10.to_f).ceil
       redirect_to subject_path(@subject, anchor: "answer-#{@answer.id}", page: page)
     else
