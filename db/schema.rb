@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_11_162851) do
+ActiveRecord::Schema.define(version: 2020_12_21_130736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,16 @@ ActiveRecord::Schema.define(version: 2020_12_11_162851) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "displayed", default: false
+  end
+
+  create_table "answers", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.text "content"
+    t.bigint "subject_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["subject_id"], name: "index_answers_on_subject_id"
+    t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
   create_table "articles", force: :cascade do |t|
@@ -108,6 +118,22 @@ ActiveRecord::Schema.define(version: 2020_12_11_162851) do
     t.index ["article_id"], name: "index_favorites_on_article_id"
     t.index ["infoendo_id"], name: "index_favorites_on_infoendo_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "follow_subjects", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "subject_id", null: false
+    t.boolean "seen", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["subject_id"], name: "index_follow_subjects_on_subject_id"
+    t.index ["user_id"], name: "index_follow_subjects_on_user_id"
+  end
+
+  create_table "forum_categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -195,6 +221,17 @@ ActiveRecord::Schema.define(version: 2020_12_11_162851) do
     t.string "other_alternative_therapy"
     t.string "other_disease"
     t.index ["user_id"], name: "index_information_on_user_id"
+  end
+
+  create_table "subjects", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "forum_category_id", null: false
+    t.string "title"
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["forum_category_id"], name: "index_subjects_on_forum_category_id"
+    t.index ["user_id"], name: "index_subjects_on_user_id"
   end
 
   create_table "subscriptions", force: :cascade do |t|
@@ -456,6 +493,7 @@ ActiveRecord::Schema.define(version: 2020_12_11_162851) do
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.boolean "forum_consent", default: false
     t.index "lower((email)::text) text_pattern_ops", name: "users_email_lower", unique: true
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -487,11 +525,15 @@ ActiveRecord::Schema.define(version: 2020_12_11_162851) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "answers", "subjects"
+  add_foreign_key "answers", "users"
   add_foreign_key "articles", "users"
   add_foreign_key "daily_symptoms", "users"
   add_foreign_key "favorites", "articles"
   add_foreign_key "favorites", "infoendos"
   add_foreign_key "favorites", "users"
+  add_foreign_key "follow_subjects", "subjects"
+  add_foreign_key "follow_subjects", "users"
   add_foreign_key "info_alternative_therapies", "alternative_therapies"
   add_foreign_key "info_alternative_therapies", "information"
   add_foreign_key "info_diseases", "diseases"
@@ -500,6 +542,8 @@ ActiveRecord::Schema.define(version: 2020_12_11_162851) do
   add_foreign_key "info_fam_member_antes", "information"
   add_foreign_key "infoendos", "users"
   add_foreign_key "information", "users"
+  add_foreign_key "subjects", "forum_categories"
+  add_foreign_key "subjects", "users"
   add_foreign_key "subscriptions", "users"
   add_foreign_key "thredded_messageboard_users", "thredded_messageboards", on_delete: :cascade
   add_foreign_key "thredded_messageboard_users", "thredded_user_details", on_delete: :cascade
