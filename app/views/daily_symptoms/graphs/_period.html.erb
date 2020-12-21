@@ -1,41 +1,47 @@
-<% if params[:base_period] == "week" %>
-  <div class="d-flex align-items-center justify-content-center mb-4">
-    <%= link_to graph_path(base_period: "week", base_day: (@monday - 7)) do %>
-      <%= image_tag "arrow-left", class:"day-arrows" %>
-    <% end %>
-    <h3 class="px-3 mb-0 text-center" data-target="charts.period">Semaine du <%= l(@monday, format:"%d#{" %B" if @monday.month != (@monday + 6).month}") %> au <%= l((@monday + 6), format:"%d %B %Y") %></h3>
-    <%= link_to graph_path(base_period: "week", base_day: (@monday + 7)) do %>
-      <%= image_tag "arrow-right", class:"day-arrows" %>
-    <% end %>
-  </div>
-<% elsif params[:base_period] == "trimester" %>
-  <div class="d-flex align-items-center justify-content-center mb-4">
-    <%= link_to graph_path(base_period: "trimester", base_day: (@base_day - 3.month)) do %>
-      <%= image_tag "arrow-left", class:"day-arrows" %>
-    <% end %>
-    <h3 class="px-3 mb-0" data-target="charts.period"><%= l(@base_day, format:"%B").capitalize %> à <%= l((@base_day + 2.month), format:"%B %Y") %></h3>
-    <%= link_to graph_path(base_period: "trimester", base_day: (@base_day + 3.month)) do %>
-      <%= image_tag "arrow-right", class:"day-arrows" %>
-    <% end %>
-  </div>
-<% elsif params[:base_period] == "year" %>
-  <div class="d-flex align-items-center justify-content-center mb-4">
-    <%= link_to graph_path(base_period: "year", base_day: (@base_day - 1.year)) do %>
-      <%= image_tag "arrow-left", class:"day-arrows" %>
-    <% end %>
-    <h3 class="px-3 mb-0" data-target="charts.period"><%= l(@base_day, format:"%Y") %></h3>
-    <%= link_to graph_path(base_period: "year", base_day: (@base_day + 1.year)) do %>
-      <%= image_tag "arrow-right", class:"day-arrows" %>
-    <% end %>
-  </div>
-<% else %>
-  <div class="d-flex align-items-center justify-content-center mb-4">
-    <%= link_to graph_path(base_period: "month", base_day: (@base_day - 1.month)) do %>
-      <%= image_tag "arrow-left", class:"day-arrows" %>
-    <% end %>
-    <h3 class="px-3 mb-0" data-target="charts.period"><%= l(@base_day, format:"%B %Y").capitalize %></h3>
-    <%= link_to graph_path(base_period: "month", base_day: (@base_day + 1.month)) do %>
-      <%= image_tag "arrow-right", class:"day-arrows" %>
-    <% end %>
-  </div>
-<% end %>
+<div class="d-flex align-items-center justify-content-between mb-4">
+  <div class="cross-width"></div>
+  <% if params[:base_period] == "week" %>
+    <div class="px-2 px-lg-0 d-flex align-items-center justify-content-center">
+      <%= link_to graph_path(base_period: "week", base_day: (@monday - 7)) do %>
+        <%= image_tag "arrow-left", class:"day-arrows" %>
+      <% end %>
+      <h3 class="px-lg-3 mb-0 text-center" data-target="charts.period">Semaine du <%= l(@monday, format:"%d#{" %B" if @monday.month != (@monday + 6).month}") %> au <%= l((@monday + 6), format:"%d %B %Y") %></h3>
+      <%= link_to graph_path(base_period: "week", base_day: (@monday + 7)) do %>
+        <%= image_tag "arrow-right", class:"day-arrows" %>
+      <% end %>
+    </div>
+  <% elsif params[:base_period] == "trimester" %>
+    <div class="px-2 px-lg-0 d-flex align-items-center justify-content-center">
+      <%= link_to graph_path(base_period: "trimester", base_day: (@base_day - 3.month)) do %>
+        <%= image_tag "arrow-left", class:"day-arrows" %>
+      <% end %>
+      <h3 class="px-3 mb-0 text-center" data-target="charts.period"><%= l(@base_day, format:"%B").capitalize %> à <%= l((@base_day + 2.month), format:"%B %Y") %></h3>
+      <%= link_to graph_path(base_period: "trimester", base_day: (@base_day + 3.month)) do %>
+        <%= image_tag "arrow-right", class:"day-arrows" %>
+      <% end %>
+    </div>
+  <% elsif params[:base_period] == "year" %>
+    <div class="px-2 px-lg-0 d-flex align-items-center justify-content-center">
+      <%= link_to graph_path(base_period: "year", base_day: (@base_day - 1.year)) do %>
+        <%= image_tag "arrow-left", class:"day-arrows" %>
+      <% end %>
+      <h3 class="px-3 mb-0 text-center" data-target="charts.period"><%= l(@base_day, format:"%Y") %></h3>
+      <%= link_to graph_path(base_period: "year", base_day: (@base_day + 1.year)) do %>
+        <%= image_tag "arrow-right", class:"day-arrows" %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="px-2 px-lg-0 d-flex align-items-center justify-content-center">
+      <%= link_to graph_path(base_period: "month", base_day: (@base_day - 1.month)) do %>
+        <%= image_tag "arrow-left", class:"day-arrows" %>
+      <% end %>
+      <h3 class="px-3 mb-0 text-center" data-target="charts.period"><%= l(@base_day, format:"%B %Y").capitalize %></h3>
+      <%= link_to graph_path(base_period: "month", base_day: (@base_day + 1.month)) do %>
+        <%= image_tag "arrow-right", class:"day-arrows" %>
+      <% end %>
+    </div>
+  <% end %>
+  <%= link_to daily_symptoms_path, class:"d-flex" do  %>
+    <%= image_tag "close-button-green.svg", class:"cross-width" %>
+  <% end %>
+</div>

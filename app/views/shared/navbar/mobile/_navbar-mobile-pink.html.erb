@@ -22,6 +22,10 @@
         <h1>Profil</h1>
       <% elsif controller_name == "contacts"%>
         <h1><%= t("views.controller_name.contacts.action_name.#{action_name}")%></h1>
+      <% elsif controller_name == "daily_symptoms" && (action_name == "new" || action_name == "edit") %>
+        <h1>Mesures</h1>
+      <% elsif controller_name == "daily_symptoms" && action_name == "graph" %>
+        <h1>Synthèse</h1>
       <% else %>
         <h1><%= t("views.controller_name.#{controller_name}")%></h1>
       <% end %>

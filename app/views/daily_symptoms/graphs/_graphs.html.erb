@@ -65,7 +65,7 @@
             <% end %>
           </div>
           <div class="sport-container">
-            <% week = 1 %>
+            <% week = @base_day.cweek %>
             <% @sport_data.each do |number| %>
               <div class="sport-month">Sem. <%= week %></div>
               <% week += 1 %>
