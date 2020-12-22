@@ -5,14 +5,10 @@
   </div>
 </div>
 <div class="range-slider" data-controller="range-slider-blood">
-  <div class="w-100 d-flex justify-content-end">
-    <p class="text-mini mb-0 slider-scale">Hémorragique</p>
-  </div>
   <div class="w-100 d-flex justify-content-between align-items-end">
-    <p class="text-mini mb-0 slider-scale">0</p>
-    <strong><output class="slider-scale text-mini"
-    data-target="range-slider-blood.value"></output></strong>
-    <div></div>
+    <p class="mb-0 slider-scale slider-legend">0</p>
+
+    <p class="mb-0 slider-scale slider-legend">Hémorragique</p>
   </div>
   <input type="range"
    data-target="range-slider-blood.range"
@@ -22,4 +18,8 @@
    max="5"
    step="1">
   <%= f.input :blood_level, as: :hidden, input_html: { data: { target: "range-slider-blood.hidden" } }, collection: 0..5, label: false %>
+  <div class="w-100 d-flex justify-content-center">
+    <strong><output class="slider-scale text-mini slider-output mb-0"
+    data-target="range-slider-blood.value"></output></strong>
+  </div>
 </div>
