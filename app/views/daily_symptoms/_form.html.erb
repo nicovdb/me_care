@@ -9,22 +9,22 @@
       <div class="d-inline-flex align-items-center justify-content-center">
         <% if @previous_daily_symptom.nil? %>
           <%= link_to new_daily_symptom_path(day: @day.prev_day) do %>
-            <%= image_tag "arrow-left", class:"day-arrows" %>
+            <%= image_tag "arrow-left.svg", class:"day-arrows" %>
           <% end %>
         <% elsif @edit_prev_day %>
           <%= link_to edit_daily_symptom_path(@previous_daily_symptom) do %>
-            <%= image_tag "arrow-left", class:"day-arrows" %>
+            <%= image_tag "arrow-left.svg", class:"day-arrows" %>
           <% end %>
         <% end %>
         <h3 class="px-3 mb-0"><%= l(@day, format:"%d %B %Y").capitalize %></h3>
         <% unless @day.next_day > Date.today %>
           <% if @next_daily_symptom.nil? %>
             <%= link_to new_daily_symptom_path(day: @day.next_day) do %>
-              <%= image_tag "arrow-right", class:"day-arrows" %>
+              <%= image_tag "arrow-right.svg", class:"day-arrows" %>
             <% end %>
           <% elsif @edit_next_day %>
             <%= link_to edit_daily_symptom_path(@next_daily_symptom) do %>
-              <%= image_tag "arrow-right", class:"day-arrows" %>
+              <%= image_tag "arrow-right.svg", class:"day-arrows" %>
             <% end %>
           <% end %>
         <% end %>
