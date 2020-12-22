@@ -2,7 +2,7 @@
   <% @graphs.first(3).each do |graph| %>
     <div data-symptom-target="<%= graph[:id] %>" class="mb-3 pr-2 pr-lg-3">
       <div class="d-flex align-items-center">
-        <%= image_tag "agenda/#{graph[:img]}" %>
+        <%= image_tag "agenda/#{graph[:img]}.svg" %>
         <h3 class="mb-0"><%= graph[:name] %></h3>
       </div>
       <div class="chart-container">
@@ -13,7 +13,7 @@
   <% @graphs[3..4].each do |graph| %>
     <div class="d-none mb-3 pr-2 pr-lg-3" data-symptom-target="<%= graph[:id] %>">
       <div class="d-flex align-items-center">
-        <%= image_tag "agenda/#{graph[:img]}" %>
+        <%= image_tag "agenda/#{graph[:img]}.svg" %>
         <h3 class="mb-0"><%= graph[:name] %></h3>
       </div>
       <div class="chart-container">
