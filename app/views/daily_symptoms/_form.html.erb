@@ -67,7 +67,7 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="d-flex align-items-center">
                   <%= image_tag "agenda/emergency.svg", class: 'symptom-icon'%>
-                  <h3 class='mb-0 ml-3'>Consultations/Urgences</h3>
+                  <h3 class='mb-0 ml-3'>Consultations / Urgences</h3>
                 </div>
                 <input name="daily_symptom[emergency]" type="hidden" value="#{@daily_symptom.emergency}">
                 <%= f.input :emergency, as: :boolean, checked_value: "true", unchecked_value: "false", label: 'oui' %>

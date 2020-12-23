@@ -20,5 +20,8 @@
    min="0"
    max="5"
    step="1">
+  <div class="w-100 d-flex justify-content-end">
+    <p class="text-mini mb-0 slider-scale slider-legend">Toute la nuit</p>
+  </div>
   <%= f.input :insomnia_level, as: :hidden, input_html: { data: { target: "range-slider-insomnia.hidden" } }, collection: 0..5, label: false %>
 </div>
