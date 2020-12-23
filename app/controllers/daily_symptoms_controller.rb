@@ -184,8 +184,8 @@ class DailySymptomsController < ApplicationController
     end
 
     week_daily_symptoms = policy_scope(DailySymptom).where('day >= ? AND day <= ?', @monday, (@monday + 6))
-
     day = @monday
+
     7.times do
       daily_symptom = week_daily_symptoms.find_by(day: day)
       if daily_symptom
@@ -216,7 +216,6 @@ class DailySymptomsController < ApplicationController
     last_day = Date.new(@base_day.year, @base_day.month, -1)
     real_date_beggining = @base_day.beginning_of_week
     real_date_ending = last_day.end_of_week
-
     number_of_weeks = (real_date_ending - real_date_beggining + 1).to_i / 7
 
     @labels = []
@@ -225,39 +224,9 @@ class DailySymptomsController < ApplicationController
     number_of_weeks.times do
       @labels << "Sem. #{day.cweek}"
       week_daily_symptoms = policy_scope(DailySymptom).where('day >= ? AND day <= ?', day, (day + 6))
-      pain_data_week = []
-      blood_data_week = []
-      digestive_trouble_data_week = []
-      stress_data_week = []
-      insomnia_data_week = []
-      sport_data_week = []
-
-      7.times do
-        daily_symptom = week_daily_symptoms.find_by(day: day)
-        if daily_symptom
-          pain_data_week << daily_symptom.pain_level
-          blood_data_week << daily_symptom.blood_level
-          digestive_trouble_data_week << daily_symptom.digestive_trouble_level
-          stress_data_week << daily_symptom.stress_level
-          insomnia_data_week << daily_symptom.insomnia_level
-          sport_data_week << daily_symptom.sport
-        else
-          pain_data_week << 0
-          blood_data_week << 0
-          digestive_trouble_data_week << 0
-          stress_data_week << 0
-          insomnia_data_week << 0
-          sport_data_week << false
-        end
-        day += 1
-      end
-
-      @pain_data << (pain_data_week.sum.to_f / 7).round(2)
-      @blood_data << (blood_data_week.sum.to_f / 7).round(2)
-      @digestive_trouble_data << (digestive_trouble_data_week.sum.to_f / 7).round(2)
-      @stress_data << (stress_data_week.sum.to_f / 7).round(2)
-      @insomnia_data << (insomnia_data_week.sum.to_f / 7).round(2)
-      @sport_data << sport_data_week.count(true)
+      push_average(week_daily_symptoms, 7.to_f)
+      @sport_data << week_daily_symptoms.map(&:sport).count(true)
+      day += 1.week
     end
   end
 
@@ -311,7 +280,7 @@ class DailySymptomsController < ApplicationController
     blood_total = daily_symptoms.map(&:blood_level).sum
     digestive_trouble_total = daily_symptoms.map(&:digestive_trouble_level).sum
     stress_total = daily_symptoms.map(&:stress_level).sum
-    insomnia_total = daily_symptoms.map(&:blood_level).sum
+    insomnia_total = daily_symptoms.map(&:insomnia_level).sum
 
     @pain_data << (pain_total / number_of_days).round(2)
     @blood_data << (blood_total / number_of_days).round(2)
