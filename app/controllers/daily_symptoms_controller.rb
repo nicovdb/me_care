@@ -7,7 +7,7 @@ class DailySymptomsController < ApplicationController
 
   def graph
     authorize :daily_symptom
-    @daily_symptoms = policy_scope(DailySymptom)
+    # @daily_symptoms = policy_scope(DailySymptom)
     define_graph_data
   end
 
@@ -183,7 +183,7 @@ class DailySymptomsController < ApplicationController
       @monday = Date.today - (Date.today.cwday - 1)
     end
 
-    week_daily_symptoms = @daily_symptoms.where('day >= ?', @monday).where('day <= ?', (@monday + 6))
+    week_daily_symptoms = policy_scope(DailySymptom).where('day >= ? AND day <= ?', @monday, (@monday + 6))
 
     day = @monday
     7.times do
@@ -224,7 +224,7 @@ class DailySymptomsController < ApplicationController
 
     number_of_weeks.times do
       @labels << "Sem. #{day.cweek}"
-      week_daily_symptoms = @daily_symptoms.where('day >= ?', day).where('day <= ?', (day + 6))
+      week_daily_symptoms = policy_scope(DailySymptom).where('day >= ? AND day <= ?', day, (day + 6))
       pain_data_week = []
       blood_data_week = []
       digestive_trouble_data_week = []
@@ -275,7 +275,7 @@ class DailySymptomsController < ApplicationController
     3.times do
       month_last_day = Date.new(month_first_day.year, month_first_day.month, -1)
       number_of_days_in_month = month_last_day.day.to_f
-      month_daily_symptoms = @daily_symptoms.where('day >= ?', month_first_day).where('day <= ?', month_last_day)
+      month_daily_symptoms = policy_scope(DailySymptom).where('day >= ? AND day <= ?', month_first_day, month_last_day)
 
       push_average(month_daily_symptoms, number_of_days_in_month)
       @labels << l(month_first_day, format:"%B").capitalize
@@ -297,7 +297,7 @@ class DailySymptomsController < ApplicationController
     4.times do
       quarter_last_day = Date.new(quarter_first_day.year, (quarter_first_day.month + 2), -1)
       number_of_days_in_quarter = (quarter_last_day - quarter_first_day).to_f
-      quarter_daily_symptoms = @daily_symptoms.where('day >= ?', quarter_first_day).where('day <= ?', quarter_last_day)
+      quarter_daily_symptoms = policy_scope(DailySymptom).where('day >= ? AND day <= ?', quarter_first_day, quarter_last_day)
 
       push_average(quarter_daily_symptoms, number_of_days_in_quarter)
       @labels << "Trimestre #{trimester}"
@@ -307,16 +307,16 @@ class DailySymptomsController < ApplicationController
   end
 
   def push_average(daily_symptoms, number_of_days)
-    pain_total = daily_symptoms.map(&:pain_level)
-    blood_total = daily_symptoms.map(&:blood_level)
-    digestive_trouble_total = daily_symptoms.map(&:digestive_trouble_level)
-    stress_total = daily_symptoms.map(&:stress_level)
-    insomnia_total = daily_symptoms.map(&:blood_level)
+    pain_total = daily_symptoms.map(&:pain_level).sum
+    blood_total = daily_symptoms.map(&:blood_level).sum
+    digestive_trouble_total = daily_symptoms.map(&:digestive_trouble_level).sum
+    stress_total = daily_symptoms.map(&:stress_level).sum
+    insomnia_total = daily_symptoms.map(&:blood_level).sum
 
-    @pain_data << (pain_total.sum / number_of_days).round(2)
-    @blood_data << (blood_total.sum / number_of_days).round(2)
-    @digestive_trouble_data << (digestive_trouble_total.sum / number_of_days).round(2)
-    @stress_data << (stress_total.sum / number_of_days).round(2)
-    @insomnia_data << (insomnia_total.sum / number_of_days).round(2)
+    @pain_data << (pain_total / number_of_days).round(2)
+    @blood_data << (blood_total / number_of_days).round(2)
+    @digestive_trouble_data << (digestive_trouble_total / number_of_days).round(2)
+    @stress_data << (stress_total / number_of_days).round(2)
+    @insomnia_data << (insomnia_total / number_of_days).round(2)
   end
 end
