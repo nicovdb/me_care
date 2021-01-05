@@ -4,7 +4,7 @@
     <%= link_to daily_symptoms_path(base_day: @first_day_of_month.prev_month) do %>
       <%= image_tag "arrow-left.svg", class:"day-arrows" %>
     <% end %>
-    <h3 class="px-3 mb-0"><%= l(@first_day_of_month, format:"%B %Y").capitalize %></h3>
+    <h3 class="px-3 mb-0 agenda-month"><%= l(@first_day_of_month, format:"%B %Y").capitalize %></h3>
     <%= link_to daily_symptoms_path(base_day: @first_day_of_month.next_month) do %>
       <%= image_tag "arrow-right.svg", class:"day-arrows" %>
     <% end %>
