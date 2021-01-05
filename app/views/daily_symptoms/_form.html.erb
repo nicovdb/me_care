@@ -16,7 +16,7 @@
             <%= image_tag "arrow-left.svg", class:"day-arrows" %>
           <% end %>
         <% end %>
-        <h3 class="px-3 mb-0"><%= l(@day, format:"%d %B %Y").capitalize %></h3>
+        <h3 class="px-3 mb-0 agenda-month"><%= l(@day, format:"%d %B %Y").capitalize %></h3>
         <% unless @day.next_day > Date.today %>
           <% if @next_daily_symptom.nil? %>
             <%= link_to new_daily_symptom_path(day: @day.next_day) do %>
@@ -33,7 +33,7 @@
       </div>
       <div class="d-inline-block">
         <%= link_to daily_symptoms_path do  %>
-          <%= image_tag "close-button-green.svg", class:"cross-width" %>
+          <%= image_tag "close-button-bold.svg", class:"cross-width" %>
         <% end %>
       </div>
     </div>
