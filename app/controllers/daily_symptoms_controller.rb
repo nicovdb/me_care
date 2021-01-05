@@ -7,7 +7,6 @@ class DailySymptomsController < ApplicationController
 
   def graph
     authorize :daily_symptom
-    # @daily_symptoms = policy_scope(DailySymptom)
     define_graph_data
   end
 
