@@ -11,7 +11,7 @@
     </div>
   <% end %>
   <% @graphs[3..4].each do |graph| %>
-    <div class="d-none mb-3 pr-2 pr-lg-3" data-symptom-target="<%= graph[:id] %>">
+    <div class="mb-3 pr-2 pr-lg-3" data-symptom-target="<%= graph[:id] %>">
       <div class="d-flex align-items-center">
         <%= image_tag "agenda/#{graph[:img]}" %>
         <h3 class="mb-0"><%= graph[:name] %></h3>
@@ -23,7 +23,7 @@
   <% end %>
 
   <% if params[:base_period].nil? || params[:base_period] == "month" || params[:base_period] == "week" %>
-    <div class="mb-3 d-none" data-symptom-target="sportChart">
+    <div class="mb-3" data-symptom-target="sportChart">
       <div class="d-flex align-items-center mb-2">
         <%= image_tag "agenda/sport.svg" %>
         <h3 class="mb-0">Sport</h3>

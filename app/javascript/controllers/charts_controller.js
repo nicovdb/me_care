@@ -9,6 +9,8 @@ export default class extends Controller {
     JSON.parse(this.graphsTarget.dataset.value).forEach((graph) => {
       this.displayChart(graph)
     })
+    // enlever si changmeent d'avis
+    this.filteredValue = false
   }
 
   downloadPDF() {
@@ -49,12 +51,27 @@ export default class extends Controller {
     doc.save(`${this.periodTarget.textContent}.pdf`);
   }
 
-
   toggle(e) {
+    // enlever si changement d'avis
+    if (this.filteredValue == false) {
+      this.hideAll()
+      this.filteredValue = true
+    }
+
     e.target.parentElement.classList.toggle("underline")
     const symptom = e.target.dataset.symptom
     const symptomChart = document.querySelector(`[data-symptom-target=${symptom}]`)
     symptomChart.classList.toggle("d-none")
+  }
+
+  // enlever
+  hideAll() {
+    document.querySelectorAll("[data-symptom-target").forEach((target) => {
+      console.log(target)
+      if (!target.classList.contains("d-none")) {
+        target.classList.add("d-none")
+      }
+    })
   }
 
   resetFilters() {
@@ -65,10 +82,13 @@ export default class extends Controller {
     })
     const filterTitles = document.querySelectorAll("h3[data-symptom]")
     filterTitles.forEach((filter) => {
-      if (!filter.classList.contains("underline")) {
-        filter.parentElement.classList.add("underline")
+      // Mettre l'inverse si changement d'avis
+      if (filter.parentElement.classList.contains("underline")) {
+        filter.parentElement.classList.remove("underline")
       }
     })
+    // enlever
+    this.filteredValue = false
   }
 
   displayChart(graph) {
