@@ -1,6 +1,8 @@
 class DashboardsController < ApplicationController
   def show
     authorize :dashboard
+    @subjects = Subject.all.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
+    @forum_categories = ForumCategory.all.order(created_at: :desc)
     @articles = Article.all.order(publication_date: :desc)
     @webinars = policy_scope(Webinar).order(start_at: :desc)
     @infoendos = Infoendo.all.order(publication_date: :desc)

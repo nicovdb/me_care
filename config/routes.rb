@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   mount StripeEvent::Engine, at: '/stripe-webhooks'
   scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do
-    mount Thredded::Engine => '/forum'
     devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
     root to: 'pages#home'
     get '/equipe', to: 'pages#team', as: :team
@@ -36,11 +35,21 @@ Rails.application.routes.draw do
       resources :articles, only: [:new, :edit]
       resources :webinars, only: [:new, :edit]
       resources :infoendos, only: [:new, :edit]
+      resources :forum_categories, only: [:new, :edit]
+      resources :subjects, only: [:new, :edit]
     end
     resources :coupons, only: [:create]
     post '/coupon', to: 'coupons#use', as: :use_coupon
     resources :customer_portal_sessions, only: [:create]
     resources :daily_symptoms, path: 'agenda', only: [:index, :new, :create, :edit, :update]
     get '/graph', to: 'daily_symptoms#graph', as: :graph
+    get '/forum', to: 'subjects#index', as: :forum
+    resources :subjects, only: [:show, :create, :update] do
+      resources :answers, only: [:create]
+      resources :follow_subjects, only: [:create, :destroy]
+    end
+    resources :answers, only: [:destroy]
+    resources :forum_categories, only: [:create, :update]
+    patch '/consentement/:id', to: 'users#forum_consent', as: :consent
   end
 end

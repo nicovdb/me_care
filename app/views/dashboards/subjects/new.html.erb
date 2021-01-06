@@ -1,0 +1,14 @@
+<div class="pb-5 padding-top-navbar min-100-vh-with-footer">
+  <div class="container">
+    <div class="col-12 col-md-10 offset-md-1">
+      <div class="d-none d-md-block mb-md-4">
+        <%= link_to dashboard_path do %>
+          <span class="feature-name">Dashboard</span>
+        <% end %>
+      </div>
+      <h1 class='text-center'>Créer un sujet de discussion</h1>
+      <%# raise %>
+      <%= render 'dashboards/subjects/form', subject: @subject %>
+    </div>
+  </div>
+</div>

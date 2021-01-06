@@ -1,0 +1,8 @@
+<%= simple_form_for subject do |f| %>
+  <%= f.association :forum_category, label: 'Catégorie' %>
+  <%= f.input :title, label: 'Titre' %>
+  <%= f.input :content, as: :rich_text_area, label: 'Contenu' %>
+  <div class="text-center">
+    <%= f.submit "Je valide", class: 'btn btn-primary btn-ee mb-4' %>
+  </div>
+<% end %>

@@ -22,6 +22,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def forum_consent
+    @user = User.find(params[:id])
+    @user.forum_consent = true
+    authorize @user
+    if @user.save
+      redirect_to forum_path
+    else
+      flash[:alert] = "Une erreur est survenue, contactez-nous."
+      redirect_to root_path
+    end
+  end
+
   def anonymize
     @user.email = "#{@user.id}@email.com"
     @user.first_name = "Account deleted"

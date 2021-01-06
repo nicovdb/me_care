@@ -11,9 +11,10 @@
   visibility: visible;
 }
 
-.pink-bullet {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background-color: $light-pink;
+.notif-pink-bullet {
+  background-color: $pink;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 20px;
+  font-size: 9px;
 }

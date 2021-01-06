@@ -12,4 +12,10 @@ class FavoritePolicy < ApplicationPolicy
   def destroy?
     true
   end
+
+  private
+
+  def is_admin?
+    user.admin?
+  end
 end

@@ -1,0 +1,36 @@
+select#forum_category_id {
+  border: 1px solid #8DB4BD;
+  padding: 6px;
+  border-radius: 6px;
+  color: #8DB4BD;
+  font-size: 16px;
+  outline: none;
+}
+
+.card-columns {
+  @include media-breakpoint-only(sm) {
+    column-count: 2;
+  }
+  @include media-breakpoint-only(md) {
+    column-count: 2;
+  }
+  @include media-breakpoint-only(lg) {
+    column-count: 3;
+  }
+  @include media-breakpoint-only(xl) {
+    column-count: 3;
+  }
+}
+
+.card-subject {
+ display: inline-block;
+ background-color: white;
+ border-radius: 16px;
+}
+
+.badge-light {
+  background-color: white;
+  border: 1px solid $green;
+  color: $green;
+  font-weight: lighter;
+}

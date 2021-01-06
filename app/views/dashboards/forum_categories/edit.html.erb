@@ -1,0 +1,13 @@
+<div class="pb-5 padding-top-navbar min-100-vh-with-footer">
+  <div class="container">
+    <div class="col-12 col-md-10 offset-md-1">
+      <div class="d-none d-md-block mb-md-4">
+        <%= link_to dashboard_path do %>
+          <span class="feature-name">Dashboard</span>
+        <% end %>
+      </div>
+      <h1 class='text-center'>Modifier une catégorie</h1>
+      <%= render 'dashboards/forum_categories/form', category: @forum_category %>
+    </div>
+  </div>
+</div>
