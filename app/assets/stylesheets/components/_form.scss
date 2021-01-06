@@ -416,3 +416,15 @@ input[type='radio']:checked:after {
     }
   }
 }
+
+@include media-breakpoint-up(lg) {
+  #user_remember_me.form-check-input {
+   margin-top: 0;
+  }
+}
+
+@include media-breakpoint-up(xs) {
+  #user_remember_me.form-check-input {
+   margin-top: 0.5rem;
+  }
+}
