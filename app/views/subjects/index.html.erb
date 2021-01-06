@@ -28,8 +28,8 @@
               </span>
             </button>
             <div class="dropdown-menu dropdown-menu-light pt-2 pb-3 px-0">
-              <% ForumCategory.all.order('name ASC').each do |category| %>
-                <% unless category == ForumCategory.all.order('name ASC').first %>
+              <% ForumCategory.all.order('name ASC').each_with_index do |category, index| %>
+                <% unless index == 0 %>
                   <div class="dropdown-divider my-2"></div>
                 <% end %>
                   <%= link_to category.name, forum_path(forum_category: category.name), class: 'dropdown-item px-3'  %>
