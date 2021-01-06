@@ -1,10 +1,10 @@
 class SubjectsController < ApplicationController
   def index
     if params[:forum_category].nil? || (params[:forum_category] == "")
-      @subjects = policy_scope(Subject).paginate(page: params[:page], per_page: 12).order(created_at: :desc)
+      @subjects = policy_scope(Subject).order(created_at: :desc).paginate(page: params[:page], per_page: 12)
     else
       forum_category = ForumCategory.find_by(name: params[:forum_category])
-      @subjects = policy_scope(Subject).where(forum_category: forum_category).paginate(page: params[:page], per_page: 10).order(created_at: :desc)
+      @subjects = policy_scope(Subject).where(forum_category: forum_category).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
     end
   end
 
@@ -18,7 +18,7 @@ class SubjectsController < ApplicationController
     end
     @answer = Answer.new
     @follow_subject = FollowSubject.new
-    @answers = @subject.answers.paginate(page: params[:page], per_page: 10).order(created_at: :asc)
+    @answers = @subject.answers.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
   end
 
   def new
