@@ -49,13 +49,6 @@ class User < ApplicationRecord
     follow_subjects.where(seen: false).count
   end
 
-  # def unread_posts_count
-  #   all_unread = self.thredded_topic_read_states.map do |topic|
-  #     topic.unread_posts_count
-  #   end
-  #   all_unread.sum
-  # end
-
   def has_valid_subscription?
     subscription && subscription.end_date >= Date.today && (subscription.status == "active" || subscription.status == "trialing")
   end
