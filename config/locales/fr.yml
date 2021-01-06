@@ -195,6 +195,7 @@ fr:
           algorythm: Que faire si...
           team: Équipe
           legals: Cadre légal
+      subjects: Forum
       webinars: easy Live
   will_paginate:
     previous_label: <i class="fas fa-chevron-left"></i>

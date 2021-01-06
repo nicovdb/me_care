@@ -54,11 +54,11 @@
         <div class="tab-pane fade" id="pills-forum" role="tabpanel" aria-labelledby="pills-forum-tab"  data-target="active-tab.contentForum">
 
           <div class="my-4">
-            <div class="mb-3 d-flex align-items-center">
-              <%= link_to '+ créer une catégorie', new_dashboards_forum_category_path, class:"mb-3" %>
+            <div class="d-flex align-items-center">
+              <%= link_to '+ créer une catégorie', new_dashboards_forum_category_path, class:"mb-2" %>
             </div>
-            <div class="mb-3 d-flex align-items-center">
-              <%= link_to '+ créer un sujet', new_dashboards_subject_path, class:"mb-3" %>
+            <div class="d-flex align-items-center">
+              <%= link_to '+ créer un sujet', new_dashboards_subject_path, class:"mb-2" %>
             </div>
             <%= render 'forum' %>
           </div>

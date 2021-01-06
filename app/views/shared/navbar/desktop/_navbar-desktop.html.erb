@@ -28,8 +28,8 @@
             <li class="nav-item">
               <%= link_to forum_path, class: "nav-link d-flex align-items-center" do %>
                 Forum
-                <% if user_signed_in? %>
-                  <span class='notif-pink-bullet'><%= current_user.notification_number %></span>
+                <% if user_signed_in? && current_user.notification_number >= 1 %>
+                  <span class='ml-1 notif-pink-bullet'><%= current_user.notification_number %></span>
                 <% end %>
               <% end %>
             </li>
