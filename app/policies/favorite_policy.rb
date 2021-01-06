@@ -6,18 +6,14 @@ class FavoritePolicy < ApplicationPolicy
   end
 
   def create?
-    has_valid_subscription? || is_admin?
+    true
   end
 
   def destroy?
-    has_valid_subscription? || is_admin?
+    true
   end
 
   private
-
-  def has_valid_subscription?
-    user.has_valid_subscription?
-  end
 
   def is_admin?
     user.admin?
