@@ -85,6 +85,12 @@
   text-decoration: underline;
 }
 
+@media(max-width: 800px) {
+ .icon-agenda h3 {
+   font-size: 14px;
+ }
+}
+
 p.reset-filters {
   font-family: $headers-font;
   text-decoration: underline;

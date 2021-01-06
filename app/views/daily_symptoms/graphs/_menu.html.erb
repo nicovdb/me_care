@@ -1,18 +1,18 @@
 <div class="row mt-4">
   <div class="col-4 col-lg-6">
-    <div class="icon-agenda d-flex flex-column justify-content-center align-items-center underline">
+    <div class="icon-agenda d-flex flex-column justify-content-center align-items-center">
       <%= image_tag "agenda/pain.svg", class: "symptom-icon", data: { action: "click->charts#toggle", symptom: "painChart" } %>
       <h3 data-action="click->charts#toggle" data-symptom="painChart">Douleurs</h3>
     </div>
   </div>
   <div class="col-4 col-lg-6">
-    <div class="icon-agenda d-flex flex-column justify-content-center align-items-center underline">
+    <div class="icon-agenda d-flex flex-column justify-content-center align-items-center">
       <%= image_tag "agenda/blood.svg", class: "symptom-icon", data: { action: "click->charts#toggle", symptom: "bloodChart" } %>
       <h3 data-action="click->charts#toggle" data-symptom="bloodChart">Saignements</h3>
     </div>
   </div>
   <div class="col-4 col-lg-6">
-    <div class="icon-agenda d-flex flex-column justify-content-center align-items-center underline">
+    <div class="icon-agenda d-flex flex-column justify-content-center align-items-center">
       <%= image_tag "agenda/digestive_trouble.svg", class: "symptom-icon", data: { action: "click->charts#toggle", symptom: "digestiveTroubleChart" } %>
       <h3 data-action="click->charts#toggle" data-symptom="digestiveTroubleChart">Troubles digestifs</h3>
     </div>
@@ -33,7 +33,7 @@
   <% if params[:base_period] == "trimester" || params[:base_period] == "year"  %>
     <div class="col-4 col-lg-6">
       <div class="d-flex justify-content-center align-items-center h-100">
-        <p class="reset-filters text-center" data-action="click->charts#resetFilters">Effacer les filtres</p>
+        <p class="reset-filters text-center" data-action="click->charts#resetFilters">Tout afficher</p>
       </div>
     </div>
   <% else %>
@@ -45,10 +45,13 @@
     </div>
     <div class="col-12">
       <div class="d-flex justify-content-center align-items-center h-100">
-        <p class="mb-0 reset-filters text-center" data-action="click->charts#resetFilters">Effacer les filtres</p>
+        <p class="mb-0 reset-filters text-center" data-action="click->charts#resetFilters">Tout afficher</p>
       </div>
     </div>
   <% end %>
+  <div class="col-12 mt-4 text-center d-lg-none">
+    <span class="btn btn-primary btn-ee px-4" data-action="click->charts#downloadPDF">Générer un PDF</span>
+  </div>
 </div>
 
 <div class="dropdown-divider dropdown-divider-short mx-auto my-4"></div>
@@ -86,6 +89,10 @@
       </div>
     <% end %>
   </div>
+  <div class="col-12 mt-4 text-center d-none d-lg-block">
+    <span class="btn btn-primary btn-ee px-4" data-action="click->charts#downloadPDF">Générer un PDF</span>
+  </div>
 </div>
 
 <div class="d-lg-none dropdown-divider dropdown-divider-short mx-auto my-4"></div>
+

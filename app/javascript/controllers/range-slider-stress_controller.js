@@ -16,7 +16,7 @@ export default class extends Controller {
 
   updateText(element) {
     if (element == 0) {
-      this.valueTarget.innerHTML = 0;
+      this.valueTarget.innerHTML = "";
     }
     else if (element == 1) {
       this.valueTarget.innerHTML = "Léger";

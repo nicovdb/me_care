@@ -1,18 +1,13 @@
 <div class="d-flex justify-content-between align-items-center">
   <div class="d-flex align-items-center">
     <%= image_tag "agenda/stress.svg", class: 'symptom-icon'%>
-    <h3 class='mb-0 ml-2'>Stress</h3>
+    <h3 class='mb-0 ml-3'>Stress</h3>
   </div>
 </div>
 <div class="range-slider" data-controller="range-slider-stress">
-  <div class="w-100 d-flex justify-content-end">
-    <p class="text-mini mb-0 slider-scale">Choc émotionnel</p>
-  </div>
-  <div class="w-100 d-flex justify-content-between align-items-end">
-    <p class="text-mini mb-0 slider-scale">0</p>
-    <strong><output class="slider-scale text-mini"
-    data-target="range-slider-stress.value">0</output></strong>
-    <p class="text-mini mb-0 slider-scale">5</p>
+  <div class="w-100 d-flex justify-content-center">
+    <strong><output class="slider-scale text-mini slider-output"
+    data-target="range-slider-stress.value"></output></strong>
   </div>
   <input type="range"
    data-target="range-slider-stress.range"
@@ -21,5 +16,9 @@
    min="0"
    max="5"
    step="1">
+  <div class="w-100 d-flex justify-content-between align-items-end">
+    <p class="text-mini mb-0 slider-scale slider-legend">0</p>
+    <p class="text-mini mb-0 slider-scale slider-legend">Choc émotionnel</p>
+  </div>
   <%= f.input :stress_level, as: :hidden, input_html: { data: { target: "range-slider-stress.hidden" } }, collection: 0..5, label: false %>
 </div>

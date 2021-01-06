@@ -136,6 +136,18 @@ ActiveRecord::Schema.define(version: 2020_12_21_130736) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string "slug", null: false
+    t.integer "sluggable_id", null: false
+    t.string "sluggable_type", limit: 50
+    t.string "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
+    t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+  end
+
   create_table "info_alternative_therapies", force: :cascade do |t|
     t.bigint "information_id", null: false
     t.bigint "alternative_therapy_id", null: false
@@ -251,6 +263,7 @@ ActiveRecord::Schema.define(version: 2020_12_21_130736) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.boolean "forum_consent", default: false
+    t.index "lower((email)::text) text_pattern_ops", name: "users_email_lower", unique: true
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
