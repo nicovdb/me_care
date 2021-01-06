@@ -8,13 +8,9 @@
         <% end %>
       </div>
       <% if !current_user.forum_consent %>
-        <div class="my-3">
-          <%= simple_form_for current_user, url: consent_path(current_user, method: :patch) do |f| %>
-            <div class="text-center">
-              <%= f.input :forum_consent, as: :boolean, label: 'Cochez la case et validez' %>
-              <%= f.submit "J'accepte les conditions d'utilisation du forum easy endo", class:'btn btn-primary btn-ee mt-4' %>
-            </div>
-          <% end %>
+        <div class="my-3 text-center">
+          <p>Ici se trouveront les conditions d'utilisation du forum de easy endo. </br> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam quam numquam, eaque error totam deserunt magnam cupiditate aliquid quae perspiciatis, rerum ut velit qui! Qui illum eveniet, blanditiis dignissimos dolor.</p>
+          <%= link_to "J'accepte", consent_path(current_user), method: :patch, class:'btn btn-primary btn-ee mt-4'  %>
         </div>
       <% else %>
         <div class="col-12 mt-md-5 p-0">
