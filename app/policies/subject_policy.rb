@@ -4,7 +4,7 @@ class SubjectPolicy < ApplicationPolicy
       if user.has_valid_subscription? || user.admin?
         scope.all
       else
-        false
+        raise Pundit::NotAuthorizedError
       end
     end
   end
