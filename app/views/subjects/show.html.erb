@@ -13,7 +13,7 @@
         <span class="badge badge-pill badge-light"><%= @subject.forum_category.name %></span>
         <div class='d-flex flex-column flex-md-row justify-content-center align-items-start my-4 justify-content-md-start align-items-md-center'>
           <div class="d-flex align-items-end align-items-md-center">
-            <%= image_tag 'avatar_default.svg', class:'avatar avatar-mini' %>
+            <%= cl_image_tag @subject.user.profile_picture, width: 120, height: 120, crop: :fill, quality: :auto, fetch_format: :auto,  class: "avatar avatar-mini" %>
             <p class="mx-2 mb-0"><%= @subject.user.pseudo %> </p>
           </div>
           <div class="text-mini mt-1">
@@ -39,7 +39,7 @@
       </div>
 
       <% if @answers.nil? %>
-      <p>Personne n'a réagit à ce sujet pour le moment, soyez la première !</p>
+      <p>Personne n'a réagi à ce sujet pour le moment, soyez la première !</p>
       <% else %>
         <% @answers.each do |answer| %>
           <% if answer.user == current_user %>
@@ -50,7 +50,7 @@
               </div>
               <div class="d-flex align-items-end align-items-md-center ">
                 <p class="mx-2 mb-0"><%= answer.user.pseudo %> </p>
-                <%= image_tag 'avatar_default.svg', class:'avatar avatar-mini' %>
+                <%= cl_image_tag @subject.user.profile_picture, width: 120, height: 120, crop: :fill, quality: :auto, fetch_format: :auto,  class: "avatar avatar-mini" %>
               </div>
             </div>
             <div class="text-right">
