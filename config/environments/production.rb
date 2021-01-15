@@ -1,5 +1,5 @@
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: "https://me-care-staging.herokuapp.com/" }
+  config.action_mailer.default_url_options = { host: ENV["DEFAULT_URL"] }
   # Settings specified here will take precedence over those in config/application.rb.
   config.action_mailer.delivery_method = :smtp
   # Code is not reloaded between requests.
