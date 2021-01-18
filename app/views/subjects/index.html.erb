@@ -41,29 +41,33 @@
           </div>
           <div class="card-columns">
             <% @subjects.each do |subject| %>
-              <div class="card-subject my-3 p-3 w-100 shadow-sm">
-                <div class="d-flex justify-content-between">
-                  <span class="badge badge-pill badge-light">
-                    <%= subject.forum_category.name %>
-                  </span>
-                  <% if current_user.follow_subjects.find_by(subject: subject, seen: false) %>
-                    <i class="fas fa-bell icon-pink"></i>
-                  <% end %>
+              <%= link_to subject_path(subject) do %>
+                <div class="card-subject my-3 p-3 w-100 shadow-sm">
+                  <div class="d-flex justify-content-between">
+                    <span class="badge badge-pill badge-light">
+                      <%= subject.forum_category.name %>
+                    </span>
+                    <% if current_user.follow_subjects.find_by(subject: subject, seen: false) %>
+                      <i class="fas fa-bell icon-pink"></i>
+                    <% end %>
+                  </div>
+                  <h2 class="mt-3 mb-0">
+                    <%= subject.title %>
+                  </h2>
+                  <div class="text-mini">
+                    Il y a <%= time_ago_in_words(subject.created_at) %>
+                  </div>
+                  <div class="mt-3">
+                    <div class= 'btn btn-ee btn-primary btn-small'>
+                      Répondre
+                    </div>
+                  </div>
+                  <div class="dropdown-divider mb-2 mt-3"></div>
+                  <div class="text-mini">
+                    <em><%= subject.answers.count %> commentaire(s)</em>
+                  </div>
                 </div>
-                <h2 class="mt-3 mb-0">
-                  <%= subject.title %>
-                </h2>
-                <div class="text-mini">
-                  Il y a <%= time_ago_in_words(subject.created_at) %>
-                </div>
-                <div class="mt-3">
-                  <%= link_to "Répondre", subject_path(subject), class: 'btn btn-ee btn-primary btn-small'  %>
-                </div>
-                <div class="dropdown-divider mb-2 mt-3"></div>
-                <div class="text-mini">
-                  <em><%= subject.answers.count %> commentaire(s)</em>
-                </div>
-              </div>
+              <% end %>
             <% end %>
           </div>
         </div>
