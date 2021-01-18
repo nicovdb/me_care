@@ -1,0 +1,24 @@
+{
+  "application.js": "/packs/js/application-f205dde1defeee155ebd.js",
+  "application.js.map": "/packs/js/application-f205dde1defeee155ebd.js.map",
+  "entrypoints": {
+    "application": {
+      "js": [
+        "/packs/js/application-f205dde1defeee155ebd.js"
+      ],
+      "js.map": [
+        "/packs/js/application-f205dde1defeee155ebd.js.map"
+      ]
+    },
+    "social-share-button": {
+      "js": [
+        "/packs/js/social-share-button-9540e9ca3c7760247122.js"
+      ],
+      "js.map": [
+        "/packs/js/social-share-button-9540e9ca3c7760247122.js.map"
+      ]
+    }
+  },
+  "social-share-button.js": "/packs/js/social-share-button-9540e9ca3c7760247122.js",
+  "social-share-button.js.map": "/packs/js/social-share-button-9540e9ca3c7760247122.js.map"
+}

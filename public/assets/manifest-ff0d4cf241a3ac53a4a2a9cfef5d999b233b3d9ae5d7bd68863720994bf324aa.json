@@ -1,0 +1,166 @@
+{
+  "background_color": "white",
+  "description": "Easy Endo",
+  "display": "fullscreen",
+  "name": "Easy Endo",
+  "short_name": "Easy Endo",
+  "icons": [
+    
+    
+      
+      {
+        "src": "/assets/icons/favicon-16x16-8e366aa320049698c2e248e7411f59fc6cf5909b8a1969b82064a6c2c73948f7.png",
+        "sizes": "16x16",
+        "type": "image/png"
+      },
+    
+      
+      {
+        "src": "/assets/icons/apple-icon-144x144-9f744286f51ec5825df0b08453d6caf46b6b237aca5da095d227904f2100504b.png",
+        "sizes": "144x144",
+        "type": "image/png"
+      },
+    
+      
+      {
+        "src": "/assets/icons/android-icon-192x192-2c85e1207cb843a9a107e812c976f1b212ea8bdf827092152386862ee38cbeee.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+    
+      
+      {
+        "src": "/assets/icons/apple-icon-114x114-57d2b9efd47d38d07665b09c50377b215ea0094b3e6da80613fea9b3d7ba5102.png",
+        "sizes": "114x114",
+        "type": "image/png"
+      },
+    
+      
+      {
+        "src": "/assets/icons/ms-icon-310x310-dcdaec1d1cb95013f154c7ccfd8fea761034c76f4c8792feba49ac7c7eff9b29.png",
+        "sizes": "310x310",
+        "type": "image/png"
+      },
+    
+      
+      {
+        "src": "/assets/icons/ms-icon-144x144-9f744286f51ec5825df0b08453d6caf46b6b237aca5da095d227904f2100504b.png",
+        "sizes": "144x144",
+        "type": "image/png"
+      },
+    
+      
+      {
+        "src": "/assets/icons/apple-icon-57x57-dfdd8ca1ee916d735a6475745ca710ffe758415272b2649ce82c909fa157e9fa.png",
+        "sizes": "57x57",
+        "type": "image/png"
+      },
+    
+      
+      {
+        "src": "/assets/icons/apple-icon-152x152-5cf9cc7893c1a9a1bb473f07f966336095f4d7c78e5dcccfd9d0d24f57277941.png",
+        "sizes": "152x152",
+        "type": "image/png"
+      },
+    
+      
+      {
+        "src": "/assets/icons/ms-icon-150x150-cd50e3e13b85ab84a52cb878803e96f8c868a05a6ceaa315dc994bfc3cd6cfd1.png",
+        "sizes": "150x150",
+        "type": "image/png"
+      },
+    
+      
+      {
+        "src": "/assets/icons/android-icon-72x72-34c6b4eb67ed06ba1c38472053f3cbc41ca71a9a74d90868f0bee74af7817777.png",
+        "sizes": "72x72",
+        "type": "image/png"
+      },
+    
+      
+      {
+        "src": "/assets/icons/android-icon-96x96-4765044c62c467911b63d57e3560b19eb6101b2b9893258cdf0c1ccf9ec6c0b3.png",
+        "sizes": "96x96",
+        "type": "image/png"
+      },
+    
+      
+      {
+        "src": "/assets/icons/android-icon-36x36-26a40ba08e67b1995dc1351766d0e7dff53d785e94b8bc248f60e1f595c427c1.png",
+        "sizes": "36x36",
+        "type": "image/png"
+      },
+    
+      
+      {
+        "src": "/assets/icons/apple-icon-180x180-980d5661700723405c88e5b6d72827d11e9554d957738a02f972b6d0c6533cd1.png",
+        "sizes": "180x180",
+        "type": "image/png"
+      },
+    
+      
+      {
+        "src": "/assets/icons/favicon-96x96-4765044c62c467911b63d57e3560b19eb6101b2b9893258cdf0c1ccf9ec6c0b3.png",
+        "sizes": "96x96",
+        "type": "image/png"
+      },
+    
+      
+      {
+        "src": "/assets/icons/android-icon-48x48-5abd708d233848eac810264fa67bf88b5119b6f13c6caf9100e74e662068fc3a.png",
+        "sizes": "48x48",
+        "type": "image/png"
+      },
+    
+      
+      {
+        "src": "/assets/icons/apple-icon-76x76-46a52c6cf3af67c62751ffbefeea148be37eb781ce9d5ba593db57ea6bd3eb8d.png",
+        "sizes": "76x76",
+        "type": "image/png"
+      },
+    
+      
+      {
+        "src": "/assets/icons/apple-icon-60x60-8f259f076689de64cc49bd133fab564954d36bee3186229bda92e12e255b1294.png",
+        "sizes": "60x60",
+        "type": "image/png"
+      },
+    
+      
+      {
+        "src": "/assets/icons/android-icon-144x144-9f744286f51ec5825df0b08453d6caf46b6b237aca5da095d227904f2100504b.png",
+        "sizes": "144x144",
+        "type": "image/png"
+      },
+    
+      
+      {
+        "src": "/assets/icons/apple-icon-72x72-34c6b4eb67ed06ba1c38472053f3cbc41ca71a9a74d90868f0bee74af7817777.png",
+        "sizes": "72x72",
+        "type": "image/png"
+      },
+    
+      
+      {
+        "src": "/assets/icons/apple-icon-120x120-9d8092ea4e8519edc76baaf679f972ed1a72eb9cad8fe6a49c02d24e4c6a0bd8.png",
+        "sizes": "120x120",
+        "type": "image/png"
+      },
+    
+      
+      {
+        "src": "/assets/icons/favicon-32x32-a989377d555a93d8aaf20f44ea2e6250bff289e10e84909d2af4a45a2f933327.png",
+        "sizes": "32x32",
+        "type": "image/png"
+      },
+    
+      
+      {
+        "src": "/assets/icons/ms-icon-70x70-b616b7b2ce333e42eee63492386e6ca8a4ffbb503010ba55cd6b6f4a760ee713.png",
+        "sizes": "70x70",
+        "type": "image/png"
+      }
+    
+  ],
+  "start_url": "/"
+}
