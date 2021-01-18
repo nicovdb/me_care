@@ -1,27 +1,106 @@
-<div class="container padding-top-navbar">
-  <h1>Abonnements</h1>
-  <div class="d-flex justify-content-center mt-4">
-    <% @prices_and_sessions.each do |ps| %>
-      <div class="checkout-card">
-        <h3><%= ps[:name] %></h3>
-        <h1><%= ps[:price] %></h1>
-        <button class="btn btn-primary btn-ee mt-2 checkout-button" role="link" data-session-id="<%= ps[:checkout_id] %>">
-            Je m'abonne
-        </button>
+<div class="bg pb-5 padding-top-navbar min-100-vh-with-footer">
+  <div class="container">
+    <div class="d-md-flex justify-content-between mb-3 col-12 col-md-10 offset-md-1">
+      <div class="d-none d-md-block">
+        <%= link_to products_path do  %>
+          <span class="feature-name">ABONNEMENT</span>
+        <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
-
-
-  <h1 class="mt-5 mb-4">Utiliser un coupon</h1>
-  <%= simple_form_for :coupon, url: use_coupon_path do |f| %>
-    <%= f.input :code, as: :string %>
-    <% if @errors %>
-      <p class="text-mini text-red"> <%= @errors %></p>
-    <% end %>
-    <%= f.submit "Chercher le coupon", class: 'btn btn-primary btn-ee mb-4' %>
-  <% end %>
-
+  <div class="container">
+    <div class="text-center mt-4">
+      <h3>Choississez la formule d'abonnement qui vous convient le mieux !</h3>
+    </div>
+    <div class="row mt-4">
+      <% @prices_and_sessions.each do |ps| %>
+        <div class="col-12 col-lg-4">
+          <div class="checkout-card mx-auto">
+            <div class="checkout-card-top text-center">
+              <h3 class="mb-0">Abonnement <%= ps[:name] %></h3>
+            </div>
+            <div class="checkout-card-body text-center">
+              <div class="card-price my-2">
+                <%= ps[:price] %>
+              </div>
+              <div class="text-mini">
+                <% if ps[:name] == "3 mois" %>
+                  soit 5€ par mois pour 3 mois d'engagement*
+                <% elsif ps[:name] == "6 mois" %>
+                  soit 5€ par mois et 1 mois offert, au lieu de 30€ pour 6 mois d'engagement*
+                <% elsif ps[:name] == "1 an" %>
+                  soit 5€ par mois et 2 mois offerts, au lieu de 60€ pour 1 an d'engagement*
+                <% end %>
+              </div>
+              <h4 class="mt-2">Tous vos services easy endo en accès illimité</h4>
+              <button class="btn btn-primary btn-ee my-3 checkout-button btn-text-small" role="link" data-session-id="<%= ps[:checkout_id] %>">
+                  JE M'ABONNE
+              </button>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="text-mini text-center text-green">
+      * Paiement en une seule fois à la souscription. Renouvellement par tacite reconduction
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="checkout-card mx-auto">
+          <div class="checkout-card-top text-center">
+            <h3 class="mb-0">Code Privilège</h3>
+          </div>
+          <div class="checkout-card-body card-coupon text-center shadow-sm">
+            <div class="text-mini text-left my-3">
+              Si vous faites partie de nos chers donateurs Kiss Kiss Bank Bank et que vous disposez d'un code préférentiel d'abonnement, merci de le renseigner ici
+            </div>
+            <%= simple_form_for :coupon, url: use_coupon_path do |f| %>
+                <%= f.input :code, as: :string, label: false, class: 'input-coupon mx-auto' %>
+              <% if @errors %>
+                <p class="text-mini text-red"> <%= @errors %></p>
+              <% end %>
+              <%= f.submit "JE VALIDE", class: 'btn btn-primary btn-ee btn-text-small mb-3' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-4">
+      <h3 class="mb-5"> <strong>Pour rappel, vos services easy endo</strong></h3>
+    </div>
+    <div class="row mb-4">
+      <div class="col-12 col-md-4 text-center mb-4">
+        <%= image_tag "services/agenda.svg", class:'home-service-logo' %>
+        <h2 class="my-2">Agenda</h2>
+        <p class="text-green text-small">Le tableau de bord quotidien de votre endométriose, vos symptômes</p>
+      </div>
+      <div class="col-12 col-md-4 text-center mb-4">
+        <%= image_tag "services/news.svg", class:'home-service-logo' %>
+        <h2 class="my-2">News</h2>
+        <p class="text-green text-small">Toute l'actualité de l'endométriose, les événnements, les sorties de livres,...</p>
+      </div>
+      <div class="col-12 col-md-4 text-center mb-4">
+        <%= image_tag "services/a-savoir.svg", class:'home-service-logo' %>
+        <h2 class="my-2">À Savoir</h2>
+        <p class="text-green text-small">Tout ce que vous avez toujours voulu savoir sur l'endométriose (diagnostics, examens,...)</p>
+      </div>
+      <div class="col-12 col-md-4 text-center mb-4">
+        <%= image_tag "services/forum.svg", class:'home-service-logo' %>
+        <h2 class="my-2">Forum</h2>
+        <p class="text-green text-small">Votre espace d'échange avec d'autres femmes atteintes d'endométriose</p>
+      </div>
+      <div class="col-12 col-md-4 text-center mb-4">
+        <%= image_tag "services/que-faire-si.svg", class:'home-service-logo' %>
+        <h2 class="my-2">Que faire si ?</h2>
+        <p class="text-green text-small">Les situations les plus courantes décryptées et conseilées</p>
+      </div>
+      <div class="col-12 col-md-4 text-center mb-4">
+        <%= image_tag "services/easy-live.svg", class:'home-service-logo' %>
+        <h2 class="my-2">easy Live</h2>
+        <p class="text-green text-small">Chaque mois accédez à un webinar avec des experts de l'endométriose</p>
+      </div>
+    </div>
+  </div>
 </div>
 
 
