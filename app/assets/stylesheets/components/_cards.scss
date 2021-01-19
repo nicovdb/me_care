@@ -1,12 +1,48 @@
 .checkout-card {
-  width: 200px;
+  width: 275px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  padding: 20px 12px;
-  margin: 0 12px;
+  margin: 25px;
+}
+
+.checkout-card-top {
+  background-color: $green;
+  padding: 10px 20px;
+  border-top-left-radius:16px;
+  border-top-right-radius: 16px;
+  h3 {
+    color: white ;
+  }
+}
+
+.checkout-card-body {
+  color: $green;
+  background-color: white;
   border: 1px solid $green;
-  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
+  border-bottom-left-radius:16px;
+  border-bottom-right-radius: 16px;
+  padding: 10px 20px;
+  .card-price {
+    color: $pink;
+    font-size: 32px;
+    font-weight: bold;
+  }
+  h4 {
+    font-weight: bold;
+    font-size: 16px;
+  }
+}
+
+.card-coupon {
+  background-color: $light-green;
+  border: none;
+}
+
+.coupon_code {
+  .form-control#coupon_code {
+    max-width: 130px;
+    border: 2px solid $green !important;
+    margin: auto;
+  }
 }
