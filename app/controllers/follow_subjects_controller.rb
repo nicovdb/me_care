@@ -20,7 +20,7 @@ class FollowSubjectsController < ApplicationController
     @follow_subject = FollowSubject.find_by(user: current_user, subject: @subject)
     authorize @follow_subject
     @follow_subject.destroy
-    redirect_to subject_path(@subject)
+    redirect_back(fallback_location: root_path)
     flash[:notice] = "Vous ne suivez plus ce sujet, cliquez sur la cloche pour recevoir à nouveau une alerte quand de nouveaux commentaires sont ajoutés à ce sujet."
 
   end

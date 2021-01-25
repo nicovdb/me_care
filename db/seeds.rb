@@ -1,8 +1,7 @@
-# # Users creation
-User.destroy_all
-puts "Create Users"
+puts "Create first admin"
 nico = User.create(email: "nicolasvandenbussche0@gmail.com", password: "Password1%", admin: true, first_name: "Nicolas", last_name: "Vandenbussche", pseudo: "nicovdb" )
-puts "Users created"
+puts "Admin created"
+
 
 FamMemberAnte.destroy_all
 FamMemberAnte.create!(title: 'mère')
