@@ -8,10 +8,10 @@
         <% end %>
       </div>
     </div>
-    <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 mt-md-4 position-relative">
-      <div class="card-subject my-3 p-3 px-md-5 py-md-4 w-100 shadow-sm">
+    <div class="px-0 col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 mt-md-4 position-relative">
+      <div class="card-subject mt-0 mt-md-3 mb-3 p-3 px-md-5 py-md-4 w-100 shadow-sm">
         <span class="badge badge-pill badge-light"><%= @subject.forum_category.name %></span>
-        <div class='d-flex flex-column flex-md-row justify-content-center align-items-start my-4 justify-content-md-start align-items-md-center'>
+        <div class='d-flex flex-column flex-md-row justify-content-center align-items-start mb-4 mt-3 justify-content-md-start align-items-md-center'>
           <div class="d-flex align-items-end align-items-md-center">
             <%= cl_image_tag @subject.user.profile_picture, width: 120, height: 120, crop: :fill, quality: :auto, fetch_format: :auto,  class: "avatar avatar-mini" %>
             <p class="mx-2 mb-0"><%= @subject.user.pseudo %> </p>
@@ -20,7 +20,7 @@
             Il y a <%= time_ago_in_words(@subject.created_at) %>
           </div>
         </div>
-        <h1><%= @subject.title %></h1>
+        <h1 class="subject-title"><%= @subject.title %></h1>
         <div class="my-3">
           <p><%= @subject.content %></p>
         </div>
@@ -44,7 +44,7 @@
         <% @answers.each do |answer| %>
           <% if answer.user == current_user %>
           <div id="answer-<%= answer.id %>" class="card-subject my-3 p-3 px-md-5 py-md-4 w-100 shadow-sm">
-            <div class='d-flex flex-column-reverse flex-md-row justify-content-center align-items-end my-4 justify-content-md-end align-items-md-center'>
+            <div class='d-flex flex-column-reverse flex-md-row justify-content-center align-items-end mb-4 justify-content-md-end align-items-md-center'>
               <div class="text-mini mt-1">
                 Il y a  <%= time_ago_in_words(answer.created_at) %>
               </div>
@@ -66,7 +66,7 @@
           </div>
           <% else %>
           <div id= "comment-<%= answer.id %>" class="card-subject my-3 p-3 px-md-5 py-md-4 w-100 shadow-sm">
-            <div class='d-flex flex-column flex-md-row justify-content-center align-items-start my-4 justify-content-md-start align-items-md-center'>
+            <div class='d-flex flex-column flex-md-row justify-content-center align-items-start mb-4 justify-content-md-start align-items-md-center'>
               <div class="d-flex align-items-end align-items-md-center">
                 <%= cl_image_tag answer.user.profile_picture, width: 120, height: 120, crop: :fill, quality: :auto, fetch_format: :auto,  class: "avatar avatar-mini" %>
                 <p class="mx-2 mb-0"><%= answer.user.pseudo %> </p>
@@ -87,9 +87,12 @@
           <% end %>
         <% end %>
       <% end %>
-      <div class="d-flex justify-content-center mt-5">
-        <%= will_paginate @answers %>
-      </div>
+
+      <% if will_paginate @answers %>
+        <div class="d-flex justify-content-center mt-5">
+          <%= will_paginate @answers %>
+        </div>
+      <% end %>
       <p class='mt-5'> <strong>Je participe à la discussion</strong>  </p>
       <div data-controller="hide-attachment">
         <%= simple_form_for([@subject, @answer], remote: true) do |f| %>

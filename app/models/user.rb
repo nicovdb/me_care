@@ -16,6 +16,7 @@ class User < ApplicationRecord
   has_many :daily_symptoms
   has_one_attached :avatar
   has_many :follow_subjects
+  has_many :subjects, through: :follow_subjects
   validate :password_complexity
   validates :pseudo, uniqueness: true
   validates :first_name, :last_name, :pseudo, presence: true

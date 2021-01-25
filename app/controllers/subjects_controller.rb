@@ -18,7 +18,7 @@ class SubjectsController < ApplicationController
     end
     @answer = Answer.new
     @follow_subject = FollowSubject.new
-    @answers = @subject.answers.order(created_at: :asc).paginate(page: params[:page], per_page: 10)
+    @answers = @subject.answers.includes([:user, :rich_text_content]).order(created_at: :asc).paginate(page: params[:page], per_page: 10)
   end
 
   def new
