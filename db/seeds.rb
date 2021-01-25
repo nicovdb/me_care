@@ -1,3 +1,8 @@
+puts "Create first admin"
+nico = User.create(email: "nicolasvandenbussche0@gmail.com", password: "Password1%", admin: true, first_name: "Nicolas", last_name: "Vandenbussche", pseudo: "nicovdb" )
+puts "Admin created"
+
+
 FamMemberAnte.destroy_all
 FamMemberAnte.create!(title: 'mère')
 FamMemberAnte.create!(title: 'soeur')
