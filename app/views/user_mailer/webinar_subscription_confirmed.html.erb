@@ -1,1 +1,11 @@
-<p>Votre inscription au live "<%= @webinar.title %>" est confirmée.</p>
+<p>Bonjour <%= User.find_by(email: @email).first_name.capitalize %></p>
+
+<p>Nous vous confirmons votre inscrition au webinar : <%= @webinar.title %> </p>
+
+<p>Pour rappel, vous pourrez y accéder le [date et heure du webinar] depuis la fonctionnalité "easy Live" de votre application. </p>
+
+<p>Nous vous remercions pour votre confiance, </p>
+
+<p>Bien à vous, </p>
+<p>L'équipe easy endo</p>
+<%= image_tag 'logo-pink.png' %>

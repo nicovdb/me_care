@@ -13,7 +13,7 @@ class StripeMailer < ApplicationMailer
     @user = params[:user]
     @duration = params[:duration]
     @interval = params[:interval]
-    mail(to: @user.email, subject: "Vous avez changé d'abonnement")
+    mail(to: @user.email, subject: "Votre abonnement > easy endo en accès illimité ! ")
   end
 
   def invoice_payment_failed

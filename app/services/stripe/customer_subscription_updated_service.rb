@@ -33,7 +33,7 @@ module Stripe
           @subscription_duration = @stripe_subscription.items.data[0].plan.interval_count
           @interval = @stripe_subscription.items.data[0].plan.interval
           @interval == "month" ? @interval = "mois" : @interval = "an"
-          StripeMailer.with(user: @user, duration: @subscription_duration, interval: @interval).customer_changed_plan.deliver_now
+          StripeMailer.with(user: @user, duration: @subscription_duration, interval: @interval, subscription: @user.subscription).customer_changed_plan.deliver_now
         end
       end
     end

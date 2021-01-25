@@ -7,7 +7,7 @@ class UserMailer < ApplicationMailer
   #
   def welcome
     @user = params[:user]
-    mail(to: @user.email, subject: 'Bienvenue chez Easy Endo')
+    mail(to: @user.email, subject: 'Bienvenue sur easy endo !')
   end
 
   def webinar_subscription_confirmed
@@ -18,6 +18,6 @@ class UserMailer < ApplicationMailer
 
   def trial_end_soon
     @user = params[:user]
-    mail(to: @user.email, subject: "Votre période d'essai est bientôt terminée")
+    mail(to: @user.email, subject: "Et si vous accédiez à easy endo en illimité ?")
   end
 end

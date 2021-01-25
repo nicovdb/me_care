@@ -1,5 +1,27 @@
-<p><%= t('.greeting', recipient: @email) %></p>
+<style>
+  p {
+    font-family: sans-serif;
+    margin-bottom: 8px;
+    margin-top: 0px;
+  }
+  img {
+    width: 200px;
+  }
+  .mb-5 {
+    margin-bottom: 40px;
+  }
+  .mb-3 {
+    margin-bottom: 20px;
+  }
+</style>
+<p class="mb-5">Bonjour <%= User.find_by(email: @email).first_name.capitalize %>!</p>
 
-<p><%= t('.instruction') %></p>
+<p>Vous venez de vous inscrire sur notre application easy endo.</p>
+<p>Afin d'activer la création de votre compte, merci de confirmer votre adresse email en cliquant ici :</p>
+<p><%= link_to 'Confirmer mon adresse email', confirmation_url(@resource, confirmation_token: @token) %></p>
 
-<p><%= link_to t('.action'), confirmation_url(@resource, confirmation_token: @token) %></p>
+<p class="mb-5">À très vite sur easy endo !</p>
+
+<p>Bien à vous,</p>
+<p class="mb-3">L'équipe easy endo</p>
+<%= image_tag 'logo-pink.png' %>

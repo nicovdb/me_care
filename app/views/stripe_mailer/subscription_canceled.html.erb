@@ -1,2 +1,33 @@
-<p>Bonjour <%= @user.first_name %>,</p>
-<p>Vous aviez annulé votre abonnement easy endo, la fin de votre période d'abonnement est arrivée et vous n'avez désormais plus accès aux services easy endo.</p>
+<style>
+  p {
+    font-family: sans-serif;
+    margin-bottom: 8px;
+    margin-top: 0px;
+  }
+  img {
+    width: 200px;
+  }
+  .mb-5 {
+    margin-bottom: 30px;
+  }
+  .mb-3 {
+    margin-bottom: 20px;
+  }
+</style>
+<p class="mb-5">Bonjour <%= User.find_by(email: @email).first_name.capitalize %>,</p>
+
+<p>Vous avez choisi de résilier votre abonnement à easy endo (www.easyendo.fr).</p>
+
+<p>Votre demande sera effective sous 24h et s'appliquera à la fin de la période d'abonnement que vous aviez souscrite.</p>
+
+<p>Malgré votre résiliation, vous continuez à accéder gratuitement au service News easy endo pour rester informée de l'actualité sur l'endométriose traitée par notre équipe et experts !</p>
+
+<p>N'hésitez pas à nous faire part de tout élément ou information que vous jugeriez utile pour améliorer nos services en nous écrivant à bonjour@easyendo.fr.</p>
+<p>Nous avons à coeur de prendre en considération vos retours.</p>
+
+<p class="mb-5">Nous espérons vous revoir très bientôt sur easy endo.</p>
+
+<p>Bien à vous,</p>
+<p class="mb-3">L'équipe easy endo</p>
+<%= image_tag 'logo-pink.png' %>
+

@@ -1,1 +1,27 @@
-<p>Vous avez pris l'abonnement <%= @duration %> <%= @interval %> </p>
+<style>
+  p {
+    font-family: sans-serif;
+    margin-bottom: 8px;
+    margin-top: 0px;
+  }
+  img {
+    width: 200px;
+  }
+  .mb-5 {
+    margin-bottom: 30px;
+  }
+  .mb-3 {
+    margin-bottom: 20px;
+  }
+</style>
+<p class="mb-5">Bonjour <%= User.find_by(email: @email).first_name.capitalize %>,</p>
+
+<p>Vous venez de souscrire à un abonnement easy endo <%= @duration %> <%= @interval %>.</p>
+
+<p>Nous avons le plaisir de vous faire bénéficier de l'ensemble de nos services en accès illimité jusqu'au <%=  l(@subscription.end_date, format: :short) %> et accéder ainsi à l'accompagnement pour mieux vivre votre endométriose au quotidien.</p>
+
+<p class="mb-5">Nous vous remercions pour votre confiance.</p>
+
+<p>Bien à vous,</p>
+<p class="mb-3">L'équipe easy endo</p>
+<%= image_tag 'logo-pink.png' %>
