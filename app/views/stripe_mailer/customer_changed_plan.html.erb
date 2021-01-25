@@ -1,1 +1,11 @@
-<p>Vous avez pris l'abonnement <%= @duration %> <%= @interval %> </p>
+<p>Bonjour <%= User.find_by(email: @email).first_name.capitalize %>,</p>
+
+<p>Vous venez de souscrire à un abonnement easy endo <%= @duration %> <%= @interval %>.</p>
+
+<p>Nous avons le plaisir de vous faire bénéficier de l'ensemble de nos services en accès illimité jusqu'au <%=  l(@subscription.end_date, format: :short) %> et accéder ainsi à l'accompagnement pour mieux vivre votre endométriose au quotidien.</p>
+
+<p>Nous vous remercions pour votre confiance.</p>
+
+<p>Bien à vous,</p>
+<p>L'équipe easy endo</p>
+LOGO EASY ENDO

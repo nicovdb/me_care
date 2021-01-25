@@ -1,5 +1,11 @@
-<p><%= t('.greeting', recipient: @email) %></p>
+<p>Bonjour <%= User.find_by(email: @email).first_name.capitalize %>!</p>
 
-<p><%= t('.instruction') %></p>
+<p>Vous venez de vous inscrire sur notre application easy endo.</p>
+<p>Afin d'activer la création de votre compte, merci de confirmer votre adresse email en cliquant ici :</p>
+<p><%= link_to 'Confirmer mon adresse email', confirmation_url(@resource, confirmation_token: @token) %></p>
 
-<p><%= link_to t('.action'), confirmation_url(@resource, confirmation_token: @token) %></p>
+<p>À très vite sur easy endo !</p>
+
+<p>Bien à vous,</p>
+<p>L'équipe easy endo</p>
+<%= image_tag 'logo-pink.png' %>
