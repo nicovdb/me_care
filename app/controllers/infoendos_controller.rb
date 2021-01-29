@@ -51,7 +51,7 @@ class InfoendosController < ApplicationController
   end
 
   def infoendo_params
-    params.require(:infoendo).permit(:title, :publication_date, :cover, :content, :media_type, :category, :reading_time, :cover_credit)
+    params.require(:infoendo).permit(:title, :publication_date, :cover, :content, :media_type, :category, :reading_time, :cover_credit, :video)
   end
 
   def redirect_after_create_or_update

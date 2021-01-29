@@ -24,14 +24,21 @@
         <div class="d-flex flex-column-reverse flex-md-column">
           <div class="mb-1">
             <h1><%= @infoendo.title %></h1>
-            <p class="text-info text-small mb-1">Temps de lecture : <%= @infoendo.reading_time %></p>
+            <p class="text-info text-small mb-1"> <%= @infoendo.video? ? "Temps de visionnage" : "Temps de lecture" %> : <%= @infoendo.reading_time %></p>
           </div>
-          <div class="text-center">
-            <% if @infoendo.cover.attached? %>
-              <%= cl_image_tag @infoendo.cover.key, quality: :auto, fetch_format: :auto, width: 600, height: 600, crop: :limit, class:"my-2" %>
-              <p class="text-info text-mini">©<%= @infoendo.cover_credit %></p>
-            <% end %>
-          </div>
+
+          <% if @infoendo.video? %>
+            <div class="text-center">
+              <%= @infoendo.video.html_safe %>
+            </div>
+          <% else %>
+            <div class="text-center">
+              <% if @infoendo.cover.attached? %>
+                <%= cl_image_tag @infoendo.cover.key, quality: :auto, fetch_format: :auto, width: 600, height: 600, crop: :limit, class:"my-2" %>
+                <p class="text-info text-mini">©<%= @infoendo.cover_credit %></p>
+              <% end %>
+            </div>
+          <% end %>
         </div>
       </div>
       <div class="mt-3">

@@ -15,10 +15,11 @@
   </div>
   <small class="form-text text-muted mb-3">Pour de meilleures performances, pensez à utiliser une photo légère (moins de 500 Ko) et de taille adaptée à son usage (environ 500 px de large en format paysage). Vous pouvez les optimiser avec  https://squoosh.app/ par exemple.</small>
   <%= f.input :cover_credit, label: t('.cover_credit'), placeholder: "Robert Doisneau" %>
-
+  <%= f.input :media_type, collection: Infoendo.media_types.keys.map { |m| [t("infoendo.#{m.downcase}"), m] }, label: t('.media_type') %>
+  <%= f.input :video, placeholder: '<iframe src="https://player.vimeo.com/video/505154871" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>', wrapper_html: { class:"mb-1" } %>
+  <small class="form-text text-muted mb-3">Indiquer ici le code d'intégration à récupérer sur Vimeo (uniquement si le type du contenu est Vidéos bien sûr ;)</small>
   <%= f.input :title, label: t('.title'), placeholder: "Alimentation et endométriose" %>
   <%= f.input :reading_time, label: t('.reading_time'), placeholder: "5 minutes" %>
-  <%= f.input :media_type, collection: Infoendo.media_types.keys.map { |m| [t("infoendo.#{m.downcase}"), m] }, label: t('.media_type') %>
   <%= f.input :category, collection: Infoendo.categories.keys.collect { |m| [t("infoendo.#{m.downcase}"), m] }, label: t('.category') %>
   <%= f.input :publication_date, label: t('.publication_date'), hint: "La date sera affichée dans le À savoir. Vous pouvez jouer sur la date et l'heure pour déterminer dans quel ordre les À savoir apparaitront (du plus récent au plus ancien)." %>
   <%= f.input :content, as: :rich_text_area, label: t('.content'), placeholder: "Écrivez votre À savoir ici... ", class: 'form-control' %>
