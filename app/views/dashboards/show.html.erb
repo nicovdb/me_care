@@ -70,17 +70,13 @@
 
           <div class="my-4">
             <div class="d-flex align-items-center">
-              <%= form_tag become_admin_path, method: :patch do %>
+              <%= simple_form_for :user, url: become_admin_path, method: :patch do |f| %>
                 <div>
-                  <%= collection_select :user,
-                    :id,
-                    User.all,
-                    :id,
-                    :full_name
+                  <%= f.input :id, collection: @non_admins, label_method: :full_name, value_method: :id, label: false
                   %>
                 </div>
                 <div>
-                  <%= submit_tag "Donner rôle admin", class: "btn btn-primary" %>
+                  <%= submit_tag "Donner le rôle d'admin à cet utilisateur", class: "btn btn-primary" %>
                 </div>
               <% end %>
             </div>
