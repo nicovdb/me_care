@@ -11,6 +11,7 @@ class Infoendo < ApplicationRecord
   validates :cover, attached: true
   validates :media_type, inclusion: { in: media_types.keys }
   validates :category, inclusion: { in: categories.keys }
+  validates :video, presence: true, if: -> { media_type == "video" }
 
   include PgSearch::Model
   pg_search_scope :search_by_content_and_title,
