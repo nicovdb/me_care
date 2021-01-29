@@ -2,10 +2,9 @@ Bonjour <%= User.find_by(email: @email).first_name.capitalize %>,
 
 Nous vous confirmons votre inscrition au webinar : <%= @webinar.title %>
 
-Pour rappel, vous pourrez y accéder le [date et heure du webinar] depuis la fonctionnalité "easy Live" de votre application.
+Pour rappel, vous pourrez y accéder le <%= @webinar.start_at %> depuis le lien que vous recevrez bientôt par mail.
 
 Nous vous remercions pour votre confiance,
 
 Bien à vous,
 L'équipe easy endo
-LOGO EASY ENDO

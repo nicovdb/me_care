@@ -1,11 +1,28 @@
-<p>Bonjour <%= User.find_by(email: @email).first_name.capitalize %></p>
+<style>
+  p {
+    font-family: sans-serif;
+    margin-bottom: 8px;
+    margin-top: 0px;
+  }
+  img {
+    width: 200px;
+  }
+  .mb-5 {
+    margin-bottom: 30px;
+  }
+  .mb-3 {
+    margin-bottom: 20px;
+  }
+</style>
+
+<p class='mb-5'>Bonjour <%= User.find_by(email: @email).first_name.capitalize %></p>
 
 <p>Nous vous confirmons votre inscrition au webinar : <%= @webinar.title %> </p>
 
-<p>Pour rappel, vous pourrez y accéder le [date et heure du webinar] depuis la fonctionnalité "easy Live" de votre application. </p>
+<p>Pour rappel, vous pourrez y accéder le <%= @webinar.start_at %> depuis le lien que vous recevrez bientôt par mail. </p>
 
-<p>Nous vous remercions pour votre confiance, </p>
+<p class='mb-5'>Nous vous remercions pour votre confiance, </p>
 
 <p>Bien à vous, </p>
-<p>L'équipe easy endo</p>
+<p class='mb-3'>L'équipe easy endo</p>
 <%= image_tag 'logo-pink.png' %>
