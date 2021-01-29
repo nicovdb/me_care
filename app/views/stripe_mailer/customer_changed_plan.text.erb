@@ -1,4 +1,4 @@
-Bonjour <%= User.find_by(email: @email).first_name.capitalize %>,
+Bonjour <%= @user.first_name.capitalize %>,
 
 Vous venez de souscrire à un abonnement easy endo <%= @duration %> <%= @interval %>.
 

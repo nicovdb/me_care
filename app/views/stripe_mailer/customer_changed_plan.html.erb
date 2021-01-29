@@ -14,7 +14,7 @@
     margin-bottom: 20px;
   }
 </style>
-<p class="mb-5">Bonjour <%= User.find_by(email: @email).first_name.capitalize %>,</p>
+<p class="mb-5">Bonjour <%= @user.first_name.capitalize %>,</p>
 
 <p>Vous venez de souscrire à un abonnement easy endo <%= @duration %> <%= @interval %>.</p>
 

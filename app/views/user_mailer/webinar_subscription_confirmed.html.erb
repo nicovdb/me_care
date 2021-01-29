@@ -15,11 +15,11 @@
   }
 </style>
 
-<p class='mb-5'>Bonjour <%= User.find_by(email: @email).first_name.capitalize %></p>
+<p class='mb-5'>Bonjour <%= @user.first_name.capitalize %></p>
 
 <p>Nous vous confirmons votre inscrition au webinar : <%= @webinar.title %> </p>
 
-<p>Pour rappel, vous pourrez y accéder le <%= @webinar.start_at %> depuis le lien que vous recevrez bientôt par mail. </p>
+<p>Pour rappel, vous pourrez y accéder le <%= l(@webinar.start_at, format:"%d %B %Y à %Hh%M") %> depuis le lien que vous recevrez bientôt par mail. </p>
 
 <p class='mb-5'>Nous vous remercions pour votre confiance, </p>
 
