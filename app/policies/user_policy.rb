@@ -17,6 +17,14 @@ class UserPolicy < ApplicationPolicy
     is_current_user_or_admin?
   end
 
+  def become_admin?
+    is_admin?
+  end
+
+  def undo_admin?
+    is_admin?
+  end
+
   def anonymize?
     is_current_user_or_admin?
   end
@@ -25,5 +33,9 @@ class UserPolicy < ApplicationPolicy
 
   def is_current_user_or_admin?
     record == user || user.admin
+  end
+
+  def is_admin?
+    user.admin
   end
 end

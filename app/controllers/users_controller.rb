@@ -34,6 +34,22 @@ class UsersController < ApplicationController
     end
   end
 
+  def become_admin
+    @user = User.find(params[:user][:id])
+    authorize @user
+    @user.admin = true
+    @user.save
+    redirect_to dashboard_path(active: 'users')
+  end
+
+  def undo_admin
+    @user = User.find(params[:id])
+    authorize @user
+    @user.admin = false
+    @user.save
+    redirect_to dashboard_path(active: 'users')
+  end
+
   def anonymize
     @user.email = "#{@user.id}@email.com"
     @user.first_name = "Account deleted"
