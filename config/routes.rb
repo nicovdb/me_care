@@ -51,5 +51,7 @@ Rails.application.routes.draw do
     resources :answers, only: [:destroy]
     resources :forum_categories, only: [:create, :update]
     patch '/consentement/:id', to: 'users#forum_consent', as: :consent
+    patch '/admin', to: "users#become_admin", as: :become_admin
+    patch '/undo-admin/:id', to: "users#undo_admin", as: :undo_admin
   end
 end

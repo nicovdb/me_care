@@ -21,6 +21,9 @@
         <li class="nav-item" role="presentation">
           <a class="nav-link" id="pills-forum-tab" data-toggle="pill" href="#pills-forum" role="tab" aria-controls="pills-forum" aria-selected="false" data-target="active-tab.linkForum"  data-action="click->active-tab#openTab">Forum</a>
         </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="pills-users-tab" data-toggle="pill" href="#pills-users" role="tab" aria-controls="pills-users" aria-selected="false" data-target="active-tab.linkUsers"  data-action="click->active-tab#openTab">Utilisateurs</a>
+        </li>
       </ul>
       <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade active show" id="pills-news" role="tabpanel" aria-labelledby="pills-news-tab" data-target="active-tab.contentNews">
@@ -61,6 +64,29 @@
               <%= link_to '+ créer un sujet', new_dashboards_subject_path, class:"mb-2" %>
             </div>
             <%= render 'forum' %>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="pills-users" role="tabpanel" aria-labelledby="pills-users-tab"  data-target="active-tab.contentUsers">
+
+          <div class="my-4">
+            <div class="d-flex align-items-center">
+              <%= simple_form_for :user, url: become_admin_path, method: :patch do |f| %>
+                <div>
+                  <%= f.input :id, collection: @non_admins, label_method: :full_name, value_method: :id, label: false
+                  %>
+                </div>
+                <div>
+                  <%= submit_tag "Donner le rôle d'admin à cet utilisateur", class: "btn btn-primary" %>
+                </div>
+              <% end %>
+            </div>
+            <h3 class='mt-4'><strong> Utilisateurs avec droits d'administrateur :</strong></h3>
+            <% @admins.each do |user| %>
+            <div class="d-flex">
+              <p class='mb-0 mr-2'><%= user.full_name%></p>
+              <%= link_to "X", undo_admin_path(user), method: :patch, data: {confirm: "Etes vous sûre de vouloir enlever les droit d'administrateur à cet utilisateur ?"}  %>
+            </div>
+            <% end %>
           </div>
         </div>
       </div>

@@ -6,6 +6,8 @@ class DashboardsController < ApplicationController
     @articles = Article.all.order(publication_date: :desc)
     @webinars = policy_scope(Webinar).order(start_at: :desc)
     @infoendos = Infoendo.all.order(publication_date: :desc)
+    @admins = User.where(admin: true)
+    @non_admins = User.where(admin:false)
   end
 
   def publish_article
