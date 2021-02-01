@@ -4,9 +4,9 @@ module Stripe
       @event = event
       @stripe_subscription = event.data.object
       @user = User.find_by(stripe_id: @stripe_subscription.customer)
-      if check_if_first_subscription
-        @first_sub = true
-      end
+
+      check_if_first_subscription
+
       @user.subscription.update(
         stripe_id: @stripe_subscription.id,
         status: @stripe_subscription.status,
@@ -28,11 +28,13 @@ module Stripe
     private
 
     def check_if_first_subscription
-      return true if @user.subscription.stripe_id.nil?
+      if @user.subscription.stripe_id.nil?
+        @first_sub = true
+      end
     end
 
     def send_first_sub_email
-      StripeMailer.with(user: @user, duration: @subscription_duration, interval: @interval, subscription: @user.subscription).customer_first_sub.deliver_now
+      StripeMailer.with(user: @user, duration: @subscription_duration, interval: @interval, subscription: @user.subscription).customer_changed_plan.deliver_now
     end
 
     def check_change_price
