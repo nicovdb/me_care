@@ -1,0 +1,16 @@
+<div class="d-flex">
+  <%= simple_form_for :user, url: become_admin_path, method: :patch do |f| %>
+      <%= f.input :id, collection: @non_admins, label_method: :full_name, value_method: :id, label: false
+      %>
+      <%= submit_tag "Donner le rôle d'admin à cet utilisateur", class: "btn btn-primary" %>
+  <% end %>
+</div>
+<h3 class='mt-4'><strong> Utilisateurs avec droits d'administrateur :</strong></h3>
+<% @admins.each do |user| %>
+  <div class="d-flex">
+    <p class='mb-0 mr-3'><%= user.full_name%></p>
+    <%= link_to undo_admin_path(user), method: :patch, data: {confirm: "Etes vous sûre de vouloir enlever les droit d'administrateur à cet utilisateur ?"} do %>
+      <i class="far fa-trash-alt"></i>
+    <% end %>
+  </div>
+<% end %>
