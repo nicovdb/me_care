@@ -14,6 +14,7 @@ module Stripe
       #     nickname: @stripe_subscription&.items&.data[0]&.price&.nickname
       #     )
       # end
+      check_if_canceled
       check_change_price
     rescue StandardError => e
       channel = Rails.env.development? ? 'DEVELOPMENT' : 'PRODUCTION'
@@ -35,6 +36,12 @@ module Stripe
           @interval == "month" ? @interval = "mois" : @interval = "an"
           StripeMailer.with(user: @user, duration: @subscription_duration, interval: @interval, subscription: @user.subscription).customer_changed_plan.deliver_now
         end
+      end
+    end
+
+    def check_if_canceled
+      if @event.data&.previous_attributes.keys.include?(:cancel_at_period_end) && (@event.data&.previous_attributes[:cancel_at_period_end] == false)
+          StripeMailer.with(user: @user).subscription_canceled.deliver_now
       end
     end
   end

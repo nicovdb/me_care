@@ -9,7 +9,7 @@
 <% else %>
   <p class='text-left text-header text-semibold'>
     <% if @subscription.active? %>
-      Vous êtes abonnée <%= @subscription.nickname %> jusqu'au <%= l(@subscription.end_date) %>.
+      Votre abonnement est actif. Prochaine échéance le <%= l(@subscription.end_date) %>.
     <% elsif @subscription.past_due? || @subscription.unpaid? %>
       Votre abonnement est bloqué car le dernier paiement n'est pas passé. Cliquez sur le bouton ci-dessous pour mettre à jour vos informations de paiement.
     <% elsif @subscription.incomplete? || @subscription.incomplete_expired? %>

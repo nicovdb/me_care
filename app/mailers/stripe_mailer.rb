@@ -13,6 +13,7 @@ class StripeMailer < ApplicationMailer
     @user = params[:user]
     @duration = params[:duration]
     @interval = params[:interval]
+    @subscription = params[:subscription]
     mail(to: @user.email, subject: "Votre abonnement > easy endo en accès illimité ! ")
   end
 
