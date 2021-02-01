@@ -1,2 +1,24 @@
-<p>Votre paiement n'a pas fonctionné.</p>
-<p>Merci de vérifier dans votre profil si votre méthode de paiement est à jour.</p>
+<style>
+  p {
+    font-family: sans-serif;
+    margin-bottom: 8px;
+    margin-top: 0px;
+  }
+  img {
+    width: 200px;
+  }
+  .mb-3 {
+    margin-bottom: 20px;
+  }
+</style>
+<p class="mb-3">Bonjour <%= @user.first_name.capitalize %>,</p>
+
+<p>Nous vous informons que votre paiement d'un montant de X € sur  www.easyendo.fr n'a pu aboutir.</p>
+
+<p>Nous vous invitons à vérifier les informations concernant votre mode de paiement ou contacter votre établissement bancaire,  puis à renouveller votre achat.</p>
+
+<p class="mb-3">Nous vous remercions pour votre confiance, </p>
+
+<p>Bien à vous, </p>
+<p class="mb-3">L'équipe easy endo</p>
+<%= image_tag 'logo-pink.png' %>
