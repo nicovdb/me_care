@@ -1,9 +1,10 @@
 Rails.application.configure do
-  config.hosts << "5de62414844b.ngrok.io"
+  config.hosts << "b3d9c4152220.ngrok.io"
 
   config.action_mailer.default_url_options = { host: "http://localhost:3000" }
   config.action_mailer.delivery_method = :letter_opener
-  config.action_mailer.asset_host = "https://5de62414844b.ngrok.io"
+  config.action_mailer.asset_host = "https://b3d9c4152220.ngrok.io"
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
