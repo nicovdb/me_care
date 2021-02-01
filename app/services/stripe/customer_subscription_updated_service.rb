@@ -4,6 +4,9 @@ module Stripe
       @event = event
       @stripe_subscription = event.data.object
       @user = User.find_by(stripe_id: @stripe_subscription.customer)
+      if check_if_first_subscription
+        @first_sub = true
+      end
       @user.subscription.update(
         stripe_id: @stripe_subscription.id,
         status: @stripe_subscription.status,
@@ -16,12 +19,21 @@ module Stripe
       # end
       check_if_canceled
       check_change_price
+      send_first_sub_email if @first_sub
     rescue StandardError => e
       channel = Rails.env.development? ? 'DEVELOPMENT' : 'PRODUCTION'
       Zapier::StripeError.new({ event: event, error: e.message, channel: channel, service: "CustomerSubscriptionUpdated" }).post_to_zapier
     end
 
     private
+
+    def check_if_first_subscription
+      return true if @user.subscription.stripe_id.nil?
+    end
+
+    def send_first_sub_email
+      StripeMailer.with(user: @user, duration: @subscription_duration, interval: @interval, subscription: @user.subscription).customer_first_sub.deliver_now
+    end
 
     def check_change_price
       #persister le prix chez nous pour retrouver plus facilement ou voir avec le nickname
