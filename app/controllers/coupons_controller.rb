@@ -23,12 +23,6 @@ class CouponsController < ApplicationController
           define_prices_and_sessions
           @errors = "Vous avez déjà un abonnement valide en cours"
           render 'pages/products'
-          # apply coupon on existing strip subscription
-            # current_user.subscription.stripe_id
-            # promotion_code_id = promotion_code_data.first['id']
-            # stripe_subscription = Stripe::Subscription.retrieve(subscription_id)
-            # stripe_subscription.promotion_code = promotion_code_id
-            # stripe_subscription.save
         else
           coupon_id = promotion_code_data.first['coupon']['id']
           stripe_subscription = Stripe::Subscription.create(customer: current_user.stripe_id, plan:"price_1HaHgsBCt2fCpZSzwn5xhsaC", coupon: coupon_id)
@@ -37,7 +31,7 @@ class CouponsController < ApplicationController
           stripe_subscription.save
           free_months = promotion_code_data.first['coupon']['duration_in_months']
           old_end_date = current_user.subscription.end_date
-          subscription = current_user.subscription.update(end_date: old_end_date + free_months.month, status: "active")
+          current_user.subscription.update(end_date: old_end_date + free_months.month, status: "active")
           flash[:notice] = "Vous avez été créditée de #{free_months} mois gratuits"
           redirect_to root_path
         end

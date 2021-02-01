@@ -1,44 +1,35 @@
-<div class= 'mt-3 mb-4'>
-  <h1>Toutes les catégories</h1>
+ <div class="mb-4">
+  <%= link_to '+ créer une catégorie', new_dashboards_forum_category_path %>
   <% @forum_categories.each do |fc| %>
-  <div class="d-flex align-items-center">
-    <% if policy(fc).edit? %>
-      <%= link_to edit_dashboards_forum_category_path(fc), class:"mr-2" do %>
-        <i class="far fa-edit"></i>
-      <% end %>
-    <% end %>
-    <h3 class='mb-0'><%= fc.name %></h3>
-  </div>
-  <% end %>
-</div>
-
-<div>
-  <h1>Tous les sujets</h1>
-  <% @subjects.each do |subject| %>
-    <span class="badge badge-pill badge-light">
-      <%= subject.forum_category.name %>
-    </span>
-    <%= link_to subject_path(subject) do  %>
-      <h2 class="my-2"><%= subject.title %></h2>
-    <% end %>
-    <div class="text-mini mt-1">
-      Il y a <%= time_ago_in_words(subject.created_at) %>
-    </div>
-    <em><p class="mb-0">"<%= truncate(strip_tags(subject.content.to_s), length: 100) %>"</p></em>
-    <div class="text-small mt-2">
-      <div class="text-mini">
-        <%= subject.answers.count %> commentaires
-      </div>
-      <% if policy(subject).edit? %>
-        <%= link_to edit_dashboards_subject_path(subject), class:"mr-2" do %>
+    <div class="d-flex align-items-center mt-2">
+      <h3 class='mb-0'><%= fc.name %></h3>
+      <% if policy(fc).edit? %>
+        <%= link_to edit_dashboards_forum_category_path(fc), class:"ml-3" do %>
           <i class="far fa-edit"></i>
         <% end %>
       <% end %>
     </div>
-    <div class="dropdown-divider my-3 mx-auto"></div>
   <% end %>
-  <div class="d-flex justify-content-center mt-5">
-    <%= will_paginate @subjects, params: { active: 'forum' } %>
-  </div>
+</div>
+
+<div>
+  <%= link_to '+ créer un sujet', new_dashboards_subject_path %>
+  <% @subjects.each do |subject| %>
+    <div class="mt-2">
+      <div class="d-flex align-items-center">
+        <%= link_to subject_path(subject) do  %>
+          <h3 class="my-0"><%= subject.title %></h3>
+        <% end %>
+        <% if policy(subject).edit? %>
+          <%= link_to edit_dashboards_subject_path(subject), class:"ml-3" do %>
+            <i class="far fa-edit"></i>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="text-mini">
+        <%= subject.answers.count %> commentaires
+      </div>
+    </div>
+  <% end %>
 </div>
 
