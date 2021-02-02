@@ -44,3 +44,15 @@ select#forum_category_id {
 .icon-forum-notif {
   height: 22px;
 }
+
+.terms-forum {
+  p {
+    color: $gray;
+    font-size: 14px;
+  }
+  li {
+    font-weight: 400;
+    color: $gray;
+    font-size: 14px;
+  }
+}
