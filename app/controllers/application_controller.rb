@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   # Pundit: white-list approach.
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
+  after_action :set_cookie
   before_action :set_locale
   before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -35,5 +36,13 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     I18n.locale = params.fetch(:locale, I18n.default_locale).to_sym
+  end
+
+  def set_cookie
+    unless cookies[:displayed_consent]
+      cookies[:displayed_consent] = {
+        value: 'true'
+      }
+    end
   end
 end
