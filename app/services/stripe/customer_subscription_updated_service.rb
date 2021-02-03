@@ -19,7 +19,9 @@ module Stripe
       # end
       check_if_canceled
       check_change_price
-      send_first_sub_email if @first_sub
+      if @first_sub
+        send_first_sub_email
+      end
     rescue StandardError => e
       channel = Rails.env.development? ? 'DEVELOPMENT' : 'PRODUCTION'
       Zapier::StripeError.new({ event: event, error: e.message, channel: channel, service: "CustomerSubscriptionUpdated" }).post_to_zapier
