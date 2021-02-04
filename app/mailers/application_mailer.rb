@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'bonjour@easyendo.fr'
+  default from: ENV['DEFAULT_FROM_EMAIL']
   layout 'mailer'
 end
