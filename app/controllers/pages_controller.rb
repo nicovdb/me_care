@@ -36,7 +36,7 @@ class PagesController < ApplicationController
           quantity: 1
         }],
         mode: 'subscription',
-        success_url: 'https://me-care-staging.herokuapp.com/profil',
+        success_url: ENV['SUCCESS_URL_STRIPE'],
         cancel_url: products_url,
         client_reference_id: current_user.id,
         customer: find_or_create_stripe_customer_id
