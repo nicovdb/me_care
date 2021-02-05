@@ -6,6 +6,12 @@
   margin: 25px;
 }
 
+@media (min-width: 992px) and (max-width: 1200px) {
+  .checkout-card {
+    width: 250px;
+  }
+}
+
 .checkout-card-top {
   background-color: $green;
   padding: 10px 20px;
