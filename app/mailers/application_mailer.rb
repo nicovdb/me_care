@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: ENV['DEFAULT_FROM_EMAIL']
+  default from: "L'équipe easy endo <#{ENV['DEFAULT_FROM_EMAIL']}>"
   layout 'mailer'
 end
