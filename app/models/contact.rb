@@ -9,7 +9,7 @@ class Contact < MailForm::Base
     {
       subject: "Message reçu via le site",
       to: "bonjour@easyendo.fr",
-      from: %("#{first_name} #{last_name}" <#{email}>)
+      from: "bonjour@easyendo.fr"
     }
   end
 end
