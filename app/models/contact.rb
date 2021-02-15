@@ -8,8 +8,8 @@ class Contact < MailForm::Base
   def headers
     {
       subject: "Message reçu via le site",
-      to: "bonjour@easyendo.fr",
-      from: "bonjour@easyendo.fr"
+      to: "nicolasvandenbussche0@gmail.com",
+      from: "nicolasvandenbussche0@gmail.com"
     }
   end
 end
