@@ -23,9 +23,9 @@ class PagesController < ApplicationController
 
   def define_prices_and_sessions
     prices = [
-      { name: "3 mois", price: "15€", id: "price_1HaHgsBCt2fCpZSzwn5xhsaC" },
-      { name: "6 mois", price: "25€", id: "price_1HaHgfBCt2fCpZSzZugBICm9" },
-      { name: "1 an", price: "50€", id: "price_1HZXuuBCt2fCpZSzJRp7SKnq" }
+      { name: "3 mois", price: "15€", id: ENV['PRICE_3_MONTHS'] },
+      { name: "6 mois", price: "25€", id: ENV['PRICE_6_MONTHS'] },
+      { name: "1 an", price: "50€", id: ENV['PRICE_12_MONTHS'] }
     ]
 
     @prices_and_sessions = prices.map do |price|
