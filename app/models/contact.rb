@@ -8,8 +8,8 @@ class Contact < MailForm::Base
   def headers
     {
       subject: "Message reçu via le site",
-      to: "bonjour@easyendo.fr",
-      from: "bonjour@easyendo.fr"
+      to: ENV['DEFAULT_FROM_EMAIL'],
+      from: "L'équipe easy endo <#{ENV['DEFAULT_FROM_EMAIL']}>"
     }
   end
 end
