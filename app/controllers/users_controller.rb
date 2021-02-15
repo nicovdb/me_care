@@ -52,13 +52,19 @@ class UsersController < ApplicationController
 
   def anonymize
     @user.email = "#{@user.id}@email.com"
-    @user.first_name = "Account deleted"
-    @user.last_name = "Account deleted"
-    @user.save
-    authorize @user
-    sign_out
-    flash[:alert] = "Votre compte a bien été supprimé."
-    redirect_to root_path
+    @user.first_name = "Compte supprimé"
+    @user.last_name = "Compte supprimé"
+    @user.pseudo = "Anonyme#{@user.id}"
+    @user.avatar.purge
+    if @user.save
+      authorize @user
+      sign_out
+      flash[:alert] = "Votre compte a bien été supprimé."
+      redirect_to root_path
+    else
+      flash[:alert] = "Cela n'a pas fonctionné, veuillez nous contacter."
+      redirect_to root_path
+    end
   end
 
   private

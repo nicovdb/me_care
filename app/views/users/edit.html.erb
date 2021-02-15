@@ -21,6 +21,7 @@
             </div>
             <div class="text-center">
               <%= f.input :avatar, as: :file, input_html: { class: 'd-none', data: { action: "change->photo-preview#display", target:"photo-preview.avatarInput" } }, label: 'Modifier mon image' %>
+              <div class='text-mini text-green mb-3'>Votre photo de profil sera utilisée par défaut dans le forum pour échanger avec la communauté easy endo. Choisissez celle qui vous convient le mieux.</div>
             </div>
             <%= f.input :first_name, required: false, autofocus: true, label: "Prénom" %>
             <%= f.input :last_name, required: false, autofocus: true, label: "Nom" %>
