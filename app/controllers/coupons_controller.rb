@@ -43,9 +43,9 @@ class CouponsController < ApplicationController
 
   def define_prices_and_sessions
     prices = [
-      { name: "3 mois", price: "15€", id: "price_1HaHgsBCt2fCpZSzwn5xhsaC" },
-      { name: "6 mois", price: "25€", id: "price_1HaHgfBCt2fCpZSzZugBICm9" },
-      { name: "1 an", price: "50€", id: "price_1HZXuuBCt2fCpZSzJRp7SKnq" }
+      { name: "3 mois", price: "15€", id: ENV['PRICE_3_MONTHS'] },
+      { name: "6 mois", price: "25€", id: ENV['PRICE_6_MONTHS'] },
+      { name: "1 an", price: "50€", id: ENV['PRICE_12_MONTHS'] }
     ]
 
     @prices_and_sessions = prices.map do |price|
@@ -56,7 +56,7 @@ class CouponsController < ApplicationController
           quantity: 1
         }],
         mode: 'subscription',
-        success_url: profil_url,
+        success_url: ENV['SUCCESS_URL_STRIPE'],
         cancel_url: products_url,
         client_reference_id: current_user.id,
         customer: find_or_create_stripe_customer_id
