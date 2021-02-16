@@ -19,7 +19,14 @@
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
     <script src="https://js.stripe.com/v3/" defer></script>
+    <script async src="<%= ENV['GG_ANALYTICS'] %>"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
+      gtag('config', 'G-YDPZE34KBW');
+    </script>
   </head>
 
   <body>
