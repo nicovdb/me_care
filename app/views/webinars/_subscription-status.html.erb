@@ -1,10 +1,27 @@
 <% if webinar_subscription && webinar_subscription.paid? %>
   <div class="d-flex align-items-center justify-content-center justify-content-md-start"><%= image_tag "confirmation.svg", class:"confirmation-image" %> <div class="d-flex flex-column text-mini text-green text-header"><span>Inscription</span><span>confirmée</span></div></div>
-<% elsif checkout_session_id %>
-  <button id="pay" class="btn btn-primary btn-ee">Je m'inscris</button>
-<% elsif webinar_subscription %>
-  <div class="d-flex flex-column text-mini text-green text-header"><span>Inscription</span><span>en attente</span></div>
-<% else %>
+<% elsif current_user.has_valid_subscription? %>
   <%= button_to "Je m'inscris", webinar_webinar_subscriptions_path(webinar), remote: true, class:"btn btn-primary btn-ee" %>
+<% else %>
+  <button type="button" class="btn btn-primary btn-ee" data-toggle="modal" data-target="#exampleModal">
+    Je m'inscris
+  </button>
 <% end %>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content modal-webinar">
+      <div class="d-flex justify-content-end">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-green text-center">
+        <p class='mt-4'>Vous n'êtes pas abonnée à ce service.</p>
+        <p>Pour assister à ce webinar easy Live, merci de souscrire à cette session en cliquant <span id="pay" class='text-underline' style='cursor: pointer'><strong>ici</strong></span>, ou vous abonner à easy endo en vous rendant sur la page <%= link_to "abonnement", products_path, class: 'text-underline' %>.</p>
+        <p>À très vite !<p>
+      </div>
+    </div>
+  </div>
+</div>
 
