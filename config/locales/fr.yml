@@ -194,7 +194,10 @@ fr:
         action_name:
           algorythm: Que faire si...
           team: Équipe
-          legals: Cadre légal
+          legals: Juridique
+          politics: Juridique
+          use_conditions: Juridique
+          service_conditions: Juridique
           products: Abonnement
       subjects: Forum
       webinars: easy Live
