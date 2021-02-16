@@ -4,7 +4,10 @@ Rails.application.routes.draw do
     devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
     root to: 'pages#home'
     get '/equipe', to: 'pages#team', as: :team
-    get '/cadre-reglementaire', to: 'pages#legals', as: :legals
+    get '/mentions-legales', to: 'pages#legals', as: :legals
+    get '/politique', to: 'pages#politics', as: :politics
+    get '/conditions-generales-utilisation', to: 'pages#use_conditions', as: :use_conditions
+    get '/conditions-generales-service', to: 'pages#service_conditions', as: :service_conditions
     get '/que-faire-si', to: 'pages#algorythm', as: :algorythm
     get '/abonnements', to: 'pages#products', as: :products
     resources :contacts, only: [:new, :create]
