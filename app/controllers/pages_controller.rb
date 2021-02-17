@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   include ProductsAndSessions
-  skip_before_action :authenticate_user!, only: [:home, :team, :legals, :politics, :use_conditions, :service_conditions]
+  skip_before_action :authenticate_user!, only: [:home, :team, :legals]
 
   def home
   end
@@ -11,13 +11,7 @@ class PagesController < ApplicationController
   def legals
   end
 
-  def politics
-  end
-
-  def use_conditions
-  end
-
-  def service_conditions
+  def charte_forum
   end
 
   def algorythm

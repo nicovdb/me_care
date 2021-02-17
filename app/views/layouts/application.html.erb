@@ -45,11 +45,15 @@
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-          <p class="mb-0">En poursuivant votre navigation vous acceptez l’utilisation de nos cookies destinés à vous fournir des services et fonctionnalités optimisés sur notre application web.</p>
-          <p>Nos cookies sont des données qui sont téléchargées ou stockées sur votre ordinateur ou sur tout autre appareil et servant uniquement à votre authentification/connexion sur easy endo.</p>
+          <p class="mb-0">En poursuivant votre navigation vous acceptez l’utilisation de nos cookies à des fins statistiques et destinés à vous fournir des services et fonctionnalités optimisés sur notre application web.</p>
+          <div class="d-flex justify-content-center align-items-center">
+            <button type="button" class="btn btn-primary btn-ee mr-2" data-dismiss="alert" aria-label="Close">
+              J'accepte
+            </button>
+            <%= link_to "En savoir +", asset_path("politique-de-protection-des-donnees-personnelles.pdf"), class:"ml-2 text-mini"  %>
+          </div>
         </div>
       <% end %>
-
     </div>
   </body>
 </html>
