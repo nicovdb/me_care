@@ -5,9 +5,7 @@ Rails.application.routes.draw do
     root to: 'pages#home'
     get '/equipe', to: 'pages#team', as: :team
     get '/mentions-legales', to: 'pages#legals', as: :legals
-    get '/politique', to: 'pages#politics', as: :politics
-    get '/conditions-generales-utilisation', to: 'pages#use_conditions', as: :use_conditions
-    get '/conditions-generales-service', to: 'pages#service_conditions', as: :service_conditions
+    get '/charte-utilisation-forum', to: 'pages#charte_forum', as: :charte_forum
     get '/que-faire-si', to: 'pages#algorythm', as: :algorythm
     get '/abonnements', to: 'pages#products', as: :products
     resources :contacts, only: [:new, :create]
