@@ -5,7 +5,7 @@
         <button id="menu-close" class="navbar-toggler position-absolute" style="right:0; top:0">
           <%= image_tag "close-button.svg" %>
         </button>
-        <%= link_to "JE M'INSCRIS", new_user_registration_path, class: "btn btn-ee btn-pink btn-menu m-2" %>
+        <%= link_to "JE M'INSCRIS", new_user_registration_path, data: {turbolinks: "false"}, class: "btn btn-ee btn-pink btn-menu m-2" %>
         <%= link_to "JE ME CONNECTE", new_user_session_path, class: "btn btn-ee btn-pink btn-menu m-2" %>
       </div>
 
