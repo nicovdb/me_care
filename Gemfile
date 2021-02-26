@@ -37,6 +37,7 @@ gem 'pg_search', '~> 2.3.0'
 gem 'httparty'
 gem "active_storage_validations"
 gem 'sitemap_generator'
+gem 'remote_syslog_logger'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
