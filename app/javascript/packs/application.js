@@ -11,10 +11,10 @@ import "bootstrap";
 import "../plugins/flatpickr";
 
 // Internal imports
-import "controllers";
-import { navbarMenu } from '../components/navbar_menu';
+// import "controllers";
+// import { navbarMenu } from '../components/navbar_menu';
 
 document.addEventListener('turbolinks:load', () => {
-  navbarMenu();
+  // navbarMenu();
 });
 
