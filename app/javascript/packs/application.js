@@ -7,14 +7,14 @@ require("@rails/actiontext");
 require('packs/social-share-button.js.erb');
 
 // External imports
-import "bootstrap";
-import "../plugins/flatpickr";
+// import "bootstrap";
+// import "../plugins/flatpickr";
 
 // Internal imports
 // import "controllers";
 // import { navbarMenu } from '../components/navbar_menu';
 
-document.addEventListener('turbolinks:load', () => {
+// document.addEventListener('turbolinks:load', () => {
   // navbarMenu();
-});
+// });
 
