@@ -31,7 +31,9 @@
         </div>
 
         <p><span class="text-ee">easy endo</span> vous accompagne dans une approche experte et bienveillante dans tous les aspects relatifs à votre maladie.</p>
-        <h2 class="text-center mt-4 mb-5">Rejoignez-nous !</h2>
+        <%= link_to new_user_registration_path, data: {turbolinks: "false"} do %>
+          <h2 class="text-center mt-4 mb-5">Rejoignez-nous !</h2>
+        <% end %>
       </div>
     </div>
     <%= render 'shared/partners' %>

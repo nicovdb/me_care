@@ -1,34 +1,39 @@
 <% content_for :meta_title, "Forum | easy endo" %>
 <div class="bg padding-top-navbar pb-5 min-100-vh-with-footer" data-controller='active-tab' data-active-tab-name='<%= params[:active] %>'>
   <div class="container text-green">
-    <div class="col-12 col-md-10 offset-md-1 p-0">
+    <div class="mb-md-5 col-12 col-md-10 offset-md-1">
       <div class="d-none d-md-block">
         <%= link_to forum_path do %>
           <span class="feature-name">FORUM</span>
         <% end %>
       </div>
-      <% if !current_user.forum_consent %>
+    </div>
+
+    <% if !current_user.forum_consent %>
+      <div class="col-12 col-md-10 offset-md-1 p-0">
         <div class="my-3 text-center text-header">
           <p class='mb-0'>Notre service forum vous permet d’échanger sur votre maladie avec d’autres utilisatrices. Vous pouvez partager ici votre vécu, vos ressentis, vos coups de blues, mais également échanger vos astuces et vos petits bonheurs !</p>
           <p>Bienvenue au cœur d’une véritable communauté !</p>
           <p>En cliquant sur "J'accepte", je reconnais avoir pris connaissance des conditions de bonne utilisation du forum <strong>easy endo</strong> telles que mentionnées dans la <span data-toggle="modal"data-target=".bd-terms-modal-lg" style="cursor:pointer;"> <u><strong>charte d'utilisation du forum</strong></u></span>, et je m’engage à les respecter sans restriction ni réserve. Tout manquement à ces conditions entraînera l’application des mesures restrictives.</p>
           <%= link_to "J'accepte", consent_path(current_user), method: :patch, class:'btn btn-primary btn-ee mt-4'  %>
         </div>
-        <div class="modal fade bd-terms-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-              <div class="container p-5 terms-forum">
-                <%= render 'terms_forum' %>
-              </div>
+      </div>
+      <div class="modal fade bd-terms-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="container p-5 terms-forum">
+              <%= render 'terms_forum' %>
             </div>
           </div>
         </div>
-      <% else %>
-        <div class="my-3 text-center text-header">
-          <p class='mb-0'>Notre service forum vous permet d’échanger sur votre maladie avec d’autres utilisatrices. Vous pouvez partager ici votre vécu, vos ressentis, vos coups de blues, mais également échanger vos astuces et vos petits bonheurs !</p>
-          <p>Bienvenue au cœur d’une véritable communauté !</p>
+      </div>
+    <% else %>
+      <div class="col-12 col-md-8 offset-md-2">
+        <div class="text-green text-header text-intro-webinar">
+          <p>Notre service forum vous permet d’échanger sur votre maladie avec d’autres utilisatrices. Vous pouvez partager ici votre vécu, vos ressentis, vos coups de blues, mais également échanger vos astuces et vos petits bonheurs !</p>
+          <p><b> Bienvenue au cœur d’une véritable communauté !</b></p>
         </div>
-        <div class="col-12 mt-md-5 p-0">
+        <div class="mt-4 mt-md-5">
           <div class="btn-group dropdown-group-light w-100">
             <button type="button" class="btn btn-dropdown w-100 py-3 d-flex justify-content-between align-items-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="d-flex">
@@ -54,42 +59,44 @@
           <div class="mb-3 text-right">
           <%= link_to "Effacer le filtre", forum_path, class: 'filter-link'%>
           </div>
-          <div class="card-columns">
-            <% @subjects.each do |subject| %>
-              <%= link_to subject_path(subject) do %>
-                <div class="card-subject my-3 p-3 w-100 shadow-sm">
-                  <div class="d-flex justify-content-between">
-                    <span class="badge badge-pill badge-light">
-                      <%= subject.forum_category.name %>
-                    </span>
-                    <% if current_user.follow_subjects.find_by(subject: subject, seen: false) %>
-                      <i class="fas fa-bell icon-pink"></i>
-                    <% end %>
-                  </div>
-                  <h2 class="mt-3 mb-0">
-                    <%= subject.title %>
-                  </h2>
-                  <div class="text-mini">
-                    Il y a <%= time_ago_in_words(subject.created_at) %>
-                  </div>
-                  <div class="mt-3">
-                    <div class= 'btn btn-ee btn-primary btn-small'>
-                      Répondre
-                    </div>
-                  </div>
-                  <div class="dropdown-divider mb-2 mt-3"></div>
-                  <div class="text-mini">
-                    <em><%= subject.answers.count %> commentaire(s)</em>
+        </div>
+      </div>
+      <div class="col-12 col-md-10 offset-md-1 p-0">
+        <div class="card-columns">
+          <% @subjects.each do |subject| %>
+            <%= link_to subject_path(subject) do %>
+              <div class="card-subject my-3 p-3 w-100 shadow-sm">
+                <div class="d-flex justify-content-between">
+                  <span class="badge badge-pill badge-light">
+                    <%= subject.forum_category.name %>
+                  </span>
+                  <% if current_user.follow_subjects.find_by(subject: subject, seen: false) %>
+                    <i class="fas fa-bell icon-pink"></i>
+                  <% end %>
+                </div>
+                <h2 class="mt-3 mb-0">
+                  <%= subject.title %>
+                </h2>
+                <div class="text-mini">
+                  Il y a <%= time_ago_in_words(subject.created_at) %>
+                </div>
+                <div class="mt-3">
+                  <div class= 'btn btn-ee btn-primary btn-small'>
+                    Répondre
                   </div>
                 </div>
-              <% end %>
+                <div class="dropdown-divider mb-2 mt-3"></div>
+                <div class="text-mini">
+                  <em><%= subject.answers.count %> commentaire(s)</em>
+                </div>
+              </div>
             <% end %>
-          </div>
+          <% end %>
         </div>
-        <div class="d-flex justify-content-center mt-5">
-          <%= will_paginate @subjects %>
-        </div>
-      <% end %>
-    </div>
+      </div>
+      <div class="d-flex justify-content-center mt-5">
+        <%= will_paginate @subjects %>
+      </div>
+    <% end %>
   </div>
 </div>
