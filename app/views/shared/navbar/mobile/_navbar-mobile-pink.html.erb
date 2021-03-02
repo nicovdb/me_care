@@ -18,16 +18,34 @@
         <% end %>
       <% elsif controller_name == "pages" %>
         <h1><%= t("views.controller_name.pages.action_name.#{action_name}")%></h1>
-        <% elsif controller_name == "users" || controller_name == 'registrations' %>
-        <h1>Profil</h1>
+      <% elsif controller_name == "users" || controller_name == 'registrations' %>
+        <%= link_to profil_path do %>
+          <h1>Profil</h1>
+        <% end %>
       <% elsif controller_name == "contacts"%>
         <h1><%= t("views.controller_name.contacts.action_name.#{action_name}")%></h1>
       <% elsif controller_name == "daily_symptoms" && (action_name == "new" || action_name == "edit") %>
         <h1>Mesures</h1>
       <% elsif controller_name == "daily_symptoms" && action_name == "graph" %>
         <h1>Synthèse</h1>
+      <% elsif controller_name == "articles" %>
+        <%= link_to articles_path do %>
+          <h1>News</h1>
+        <% end %>
+      <% elsif controller_name == "infoendos" %>
+        <%= link_to infoendos_path do %>
+          <h1>À savoir</h1>
+        <% end %>
+      <% elsif controller_name == "webinars" %>
+        <%= link_to webinars_path do %>
+          <h1>easy Live</h1>
+        <% end %>
+      <% elsif controller_name == "subjects" %>
+        <%= link_to forum_path do %>
+          <h1>Forum</h1>
+        <% end %>
       <% else %>
-        <h1><%= t("views.controller_name.#{controller_name}")%></h1>
+         <h1><%= t("views.controller_name.#{controller_name}")%></h1>
       <% end %>
 
       <button id="menu-burger" class="navbar-toggler">
