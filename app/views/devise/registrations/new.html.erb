@@ -31,8 +31,7 @@
                           required: true,
                           autofocus: true ,
                           label: false,
-                          placeholder: "Pseudo pour le forum",
-                          input_html: { autocomplete: "nom" }%>
+                          placeholder: "Pseudo pour le forum" %>
               <%= f.input :email,
                           required: true,
                           autofocus: true ,
@@ -45,7 +44,7 @@
                           label: false,
                           placeholder: "Mot de passe",
                           error: "Votre mot de passe n'est pas assez complexe, il doit contenir au minimum 8 caractères dont 1 caractère spécial, 1 majuscule, 1 chiffre",
-                          hint: "Votre mot de passe doit contenir : <br>- minimum 8 caractères<br>- 1 caractère spécial<br>- 1 majuscule<br>- 1 chiffre".html_safe,
+                          hint: "Votre mot de passe doit contenir : <br>- minimum 8 caractères<br>- 1 caractère spécial (#?.!@$%^&*-_)<br>- 1 majuscule<br>- 1 chiffre".html_safe,
                           input_html: { autocomplete: "new-password" } %>
               <%= f.input :password_confirmation,
                           label: false,
