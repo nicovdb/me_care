@@ -54,7 +54,7 @@
                           input_html: { autocomplete: "new-password" } %>
             </div>
             <div class="text-mini text-green">
-              En cliquant sur le bouton «Je m’inscris», je reconnais avoir lu les CGU et la politique de confidentialité et en accepter pleinement les termes. Je reconnais ainsi avoir été informée du traitement de mes données personnelles opéré par easy endo pour les besoins de l’utilisation de mon compte, des droits que je détiens sur mes données et comment les exercer.
+              En cliquant sur le bouton «Je m’inscris», je reconnais avoir lu les <u> <%= link_to "CGU", asset_path("conditions-generales-utilisation.pdf"), class: 'text-mini-bold' %></u> et la <u><%= link_to "politique de confidentialité", asset_path("politique-de-protection-des-donnees-personnelles.pdf"),class: 'text-mini-bold'  %></u> et en accepter pleinement les termes. Je reconnais ainsi avoir été informée du traitement de mes données personnelles opéré par easy endo pour les besoins de l’utilisation de mon compte, des droits que je détiens sur mes données et comment les exercer.
             </div>
 
             <div class="form-actions text-center mt-4 pt-2">
