@@ -1,10 +1,14 @@
-<% if webinar_subscription && webinar_subscription.paid? %>
-  <div class="d-flex align-items-center justify-content-center justify-content-md-start"><%= image_tag "confirmation.svg", class:"confirmation-image" %> <div class="d-flex flex-column text-mini text-green text-header"><span>Inscription</span><span>confirmée</span></div></div>
-<% elsif current_user.has_valid_subscription? %>
-  <%= button_to "Je m'inscris", webinar_webinar_subscriptions_path(webinar), remote: true, class:"btn btn-primary btn-ee" %>
+<% if webinar.start_at < Date.today %>
+  <div class="text-mini text-green">Ce webinar est passé</div>
 <% else %>
-  <button type="button" class="btn btn-primary btn-ee" data-toggle="modal" data-target="#exampleModal">
-    Je m'inscris
-  </button>
+  <% if webinar_subscription && webinar_subscription.paid? %>
+    <div class="d-flex align-items-center justify-content-center justify-content-md-start"><%= image_tag "confirmation.svg", class:"confirmation-image" %> <div class="d-flex flex-column text-mini text-green text-header"><span>Inscription</span><span>confirmée</span></div></div>
+  <% elsif current_user.has_valid_subscription? %>
+    <%= button_to "Je m'inscris", webinar_webinar_subscriptions_path(webinar), remote: true, class:"btn btn-primary btn-ee" %>
+  <% else %>
+    <button type="button" class="btn btn-primary btn-ee" data-toggle="modal" data-target="#exampleModal">
+      Je m'inscris
+    </button>
+  <% end %>
 <% end %>
 
