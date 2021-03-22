@@ -72,7 +72,7 @@
                 <p class="mx-2 mb-0"><%= answer.user.pseudo %> </p>
               </div>
               <div class="text-mini mt-1">
-                Il y a <%= time_ago_in_words(@subject.created_at)  %>
+                Il y a <%= time_ago_in_words(answer.created_at)  %>
               </div>
             </div>
             <p><%= answer.content %></p>

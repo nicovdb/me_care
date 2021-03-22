@@ -30,7 +30,7 @@
       </div>
 
 
-      <% if params[:base_period] == "week" %>
+      <% if params[:base_period] == "week" || params[:base_period].nil? || params[:base_period] == "month"%>
         <div class="pl-3 pl-lg-2">
           <div class="sport-container border-bottom">
             <% @sport_data.each do |day| %>
@@ -43,34 +43,17 @@
               <% end %>
             <% end %>
           </div>
-          <div class="sport-container">
-            <div class="sport-week">Lu</div>
-            <div class="sport-week">Ma</div>
-            <div class="sport-week">Me</div>
-            <div class="sport-week">Je</div>
-            <div class="sport-week">Ve</div>
-            <div class="sport-week">Sa</div>
-            <div class="sport-week">Di</div>
-          </div>
-        </div>
-      <% elsif params[:base_period].nil? || params[:base_period] == "month" %>
-        <div class="pr-3 pr-lg-2">
-          <div class="sport-container border-bottom pb-2 mb-2">
-            <% @sport_data.each do |number| %>
-              <div class="sport-month">
-                <% number.times do %>
-                  <div class="sport-true"></div>
-                <% end %>
-              </div>
-            <% end %>
-          </div>
-          <div class="sport-container">
-            <% week = @base_day.cweek %>
-            <% @sport_data.each do |number| %>
-              <div class="sport-month">Sem. <%= week %></div>
-              <% week += 1 %>
-            <% end %>
-          </div>
+          <% if params[:base_period] == "week" %>
+            <div class="sport-container">
+              <div class="sport-week">Lu</div>
+              <div class="sport-week">Ma</div>
+              <div class="sport-week">Me</div>
+              <div class="sport-week">Je</div>
+              <div class="sport-week">Ve</div>
+              <div class="sport-week">Sa</div>
+              <div class="sport-week">Di</div>
+            </div>
+          <% end %>
         </div>
       <% end %>
     </div>

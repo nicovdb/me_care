@@ -21,6 +21,10 @@ class SubjectPolicy < ApplicationPolicy
     is_admin?
   end
 
+  def destroy?
+    is_admin?
+  end
+
   private
 
   def has_valid_subscription?
