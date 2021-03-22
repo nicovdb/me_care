@@ -37,7 +37,7 @@ Rails.application.routes.draw do
       resources :webinars, only: [:new, :edit]
       resources :infoendos, only: [:new, :edit]
       resources :forum_categories, only: [:new, :edit]
-      resources :subjects, only: [:new, :edit]
+      resources :subjects, only: [:new, :edit, :destroy]
     end
     resources :coupons, only: [:create]
     post '/coupon', to: 'coupons#use', as: :use_coupon

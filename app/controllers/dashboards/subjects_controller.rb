@@ -9,4 +9,11 @@ class Dashboards::SubjectsController < ApplicationController
     @subject = Subject.find(params[:id])
     authorize @subject
   end
+
+  def destroy
+    @subject = Subject.find(params[:id])
+    authorize @subject
+    @subject.destroy
+    redirect_to dashboard_path(active: 'forum')
+  end
 end

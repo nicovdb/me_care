@@ -25,6 +25,11 @@
             <i class="far fa-edit"></i>
           <% end %>
         <% end %>
+        <% if policy(subject).destroy? %>
+          <%= link_to dashboards_subject_path(subject), method: :delete, data: {confirm: "Cette action est irréversible, toutes les réponses à ce sujet seront également supprimées, êtes vous sûre de vouloir supprimer ce sujet ?"}, class:"ml-3" do %>
+            <i class="far fa-trash-alt"></i>
+          <% end %>
+        <% end %>
       </div>
       <div class="text-mini">
         <%= subject.answers.count %> commentaires
