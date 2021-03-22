@@ -1,0 +1,60 @@
+<div class="pb-5 padding-top-navbar min-100-vh-with-footer">
+  <div class="container">
+    <div class="col-12 col-md-10 offset-md-1">
+      <div class="d-none d-md-block mb-md-4">
+        <%= link_to dashboard_path do %>
+          <span class="feature-name">Dashboard</span>
+        <% end %>
+      </div>
+      <div class='my-3'>
+        <%= link_to " + créer un code promo", new_dashboards_coupon_code_path, class: 'text-green'  %>
+      </div>
+      <h3 class='mt-3'>Coupons un mois</h3>
+      <% @coupon_codes.where(free_months: 1).each do |coupon| %>
+        <div class='text-green text-mini mt-2'>
+          <%= coupon.code %>
+          <% if coupon.used %>
+            <span class='published'> utilisé</span>
+          <% else %>
+            <span class='unpublished'> non utilisé</span>
+          <% end %>
+        </div>
+      <% end %>
+      <h3 class='mt-3'>Coupons deux mois</h3>
+      <% @coupon_codes.where(free_months: 2).each do |coupon| %>
+        <div class='text-green text-mini mt-2'>
+          <%= coupon.code %>
+          <% if coupon.used %>
+            <span class='published'> utilisé</span>
+          <% else %>
+            <span class='unpublished'> non utilisé</span>
+          <% end %>
+        </div>
+      <% end %>
+      <h3 class='mt-3'>Coupons trois mois</h3>
+      <% @coupon_codes.where(free_months: 3).each do |coupon| %>
+        <div class='text-green text-mini mt-2'>
+          <div class='mt-2'>
+            <%= coupon.code %>
+            <% if coupon.used %>
+              <span class='published'> utilisé</span>
+            <% else %>
+              <span class='unpublished'> non utilisé</span>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      <h3 class='mt-3'>Coupons quatre mois</h3>
+      <% @coupon_codes.where(free_months: 4).each do |coupon| %>
+        <div class='text-green text-mini mt-2'>
+          <%= coupon.code %>
+          <% if coupon.used %>
+            <span class='published'> utilisé</span>
+          <% else %>
+            <span class='unpublished'> non utilisé</span>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

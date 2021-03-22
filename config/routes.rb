@@ -37,10 +37,13 @@ Rails.application.routes.draw do
       resources :webinars, only: [:new, :edit]
       resources :infoendos, only: [:new, :edit]
       resources :forum_categories, only: [:new, :edit]
+      resources :coupon_codes, only: [:new, :index]
       resources :subjects, only: [:new, :edit, :destroy]
     end
-    resources :coupons, only: [:create]
-    post '/coupon', to: 'coupons#use', as: :use_coupon
+    #resources :coupons, only: [:create]
+    #post '/coupon', to: 'coupons#use', as: :use_coupon
+    resources :coupon_codes, only: [:create]
+    post '/coupon', to: 'coupon_codes#use', as: :use_coupon
     resources :customer_portal_sessions, only: [:create]
     resources :daily_symptoms, path: 'agenda', only: [:index, :new, :create, :edit, :update]
     get '/graph', to: 'daily_symptoms#graph', as: :graph

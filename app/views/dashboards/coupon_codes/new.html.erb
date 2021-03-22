@@ -1,0 +1,16 @@
+<div class="pb-5 padding-top-navbar min-100-vh-with-footer">
+  <div class="container">
+    <div class="col-12 col-md-10 offset-md-1">
+      <div class="d-none d-md-block mb-md-4">
+        <%= link_to dashboard_path do %>
+          <span class="feature-name">Dashboard</span>
+        <% end %>
+      </div>
+      <%= simple_form_for @coupon_code do |f| %>
+        <%= f.input :code, label: 'Code' %>
+        <%= f.input :free_months, label: 'Nombre de mois offerts' %>
+        <%=  f.submit "Créer", class: 'btn btn-primary btn-ee mb-4' %>
+      <% end %>
+    </div>
+  </div>
+</div>

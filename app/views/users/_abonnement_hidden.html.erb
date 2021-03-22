@@ -4,7 +4,15 @@
   </p>
 <% elsif  @subscription.trialing? %>
   <p class='text-left text-header text-semibold'>
-    Vous êtes actuellement en période d'essai. Celle-ci se terminera le <%= l(@subscription.end_date, format: :short) %>. Vous pouvez vous abonner pour la suite <%= link_to "ici", products_path, class:"text-underline" %>.
+    <% if @subscription.end_date < Date.today  %>
+      Votre période d'essai à expiré. Vous pouvez vous abonner pour la suite <%= link_to "ici", products_path, class:"text-underline" %>.
+    <% else %>
+      Vous êtes actuellement en période d'essai. Celle-ci se terminera le <%= l(@subscription.end_date, format: :short) %>. Vous pouvez vous abonner pour la suite <%= link_to "ici", products_path, class:"text-underline" %>.
+    <% end %>
+  </p>
+<% elsif @subscription.trial_coupon_code? %>
+  <p class='text-left text-header text-semibold'>
+    Vous avez utilisé un code Kiss Kiss Bank Bank et votre abonnement se termine le <%= l(@subscription.end_date, format: :short) %>. Vous pouvez vous abonner pour la suite <%= link_to "ici", products_path, class:"text-underline" %>.
   </p>
 <% else %>
   <p class='text-left text-header text-semibold'>

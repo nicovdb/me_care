@@ -51,7 +51,7 @@ class User < ApplicationRecord
   end
 
   def has_valid_subscription?
-    subscription && subscription.end_date >= Date.today && (subscription.status == "active" || subscription.status == "trialing")
+    subscription && subscription.end_date >= Date.today && (subscription.status == "active" || subscription.status == "trialing" || subscription.status == "trial_coupon_code")
   end
 
   private
