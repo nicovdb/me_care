@@ -213,27 +213,11 @@ class DailySymptomsController < ApplicationController
       @base_day = Date.new(Date.today.year, Date.today.month, 1)
     end
     last_day = Date.new(@base_day.year, @base_day.month, -1)
-    # real_date_beggining = @base_day.beginning_of_week
-    # real_date_ending = last_day.end_of_week
-
-    #number_of_weeks = (real_date_ending - real_date_beggining + 1).to_i / 7
-
     @labels = []
-    # day = real_date_beggining
-    day = @base_day
 
-    # ancienne façon de faire avec la moyenne
-    # number_of_weeks.times do
-      # @labels << "Sem. #{day.cweek}"
-      # week_daily_symptoms = policy_scope(DailySymptom).where('day >= ? AND day <= ?', day, (day + 6))
-      # push_average(week_daily_symptoms, 7.to_f)
-      # @sport_data << week_daily_symptoms.map(&:sport).count(true)
-      # day += 1.week
-    # end
-
-    # nouvelle façon de faire sans moyenne
     month_daily_symptoms = policy_scope(DailySymptom).where('day >= ? AND day <= ?', @base_day, last_day)
 
+    day = @base_day
     until day == last_day
       daily_symptom = month_daily_symptoms.find_by(day: day)
       @labels << "#{day.day}"
@@ -264,21 +248,8 @@ class DailySymptomsController < ApplicationController
     end
 
     @base_day = base_day.beginning_of_quarter
-    #month_first_day = @base_day
     @labels = []
 
-    # ancienne façon de faire
-    # 3.times do
-    #   month_last_day = Date.new(month_first_day.year, month_first_day.month, -1)
-    #   number_of_days_in_month = month_last_day.day.to_f
-    #   month_daily_symptoms = policy_scope(DailySymptom).where('day >= ? AND day <= ?', month_first_day, month_last_day)
-
-    #   push_average(month_daily_symptoms, number_of_days_in_month)
-    #   @labels << l(month_first_day, format:"%B").capitalize
-    #   month_first_day += 1.month
-    # end
-
-    # nouvelle façon de faire sans moyenne
     trimester_first_day = base_day.beginning_of_quarter
     trimester_last_day = Date.new(trimester_first_day.year, trimester_first_day.month + 2, -1)
     trimester_daily_symptoms = policy_scope(DailySymptom).where('day >= ? AND day <= ?', @base_day, trimester_last_day)
@@ -311,21 +282,7 @@ class DailySymptomsController < ApplicationController
       @base_day = Date.today
     end
 
-    #quarter_first_day = @base_day.beginning_of_year
-    #trimester = 1
     @labels = []
-
-    # 4.times do
-    #   quarter_last_day = Date.new(quarter_first_day.year, (quarter_first_day.month + 2), -1)
-    #   number_of_days_in_quarter = (quarter_last_day - quarter_first_day).to_f
-    #   quarter_daily_symptoms = policy_scope(DailySymptom).where('day >= ? AND day <= ?', quarter_first_day, quarter_last_day)
-
-    #   push_average(quarter_daily_symptoms, number_of_days_in_quarter)
-    #   @labels << "Trimestre #{trimester}"
-    #   trimester += 1
-    #   quarter_first_day += 3.month
-    # end
-
     year_first_day = @base_day.beginning_of_year
     year_last_day = Date.new(year_first_day.year, 12, 31)
     year_daily_symptoms = policy_scope(DailySymptom).where('day >= ? AND day <= ?', year_first_day, year_last_day)
@@ -350,18 +307,4 @@ class DailySymptomsController < ApplicationController
       day += 1
     end
   end
-
-  # def push_average(daily_symptoms, number_of_days)
-  #   pain_total = daily_symptoms.map(&:pain_level).sum
-  #   blood_total = daily_symptoms.map(&:blood_level).sum
-  #   digestive_trouble_total = daily_symptoms.map(&:digestive_trouble_level).sum
-  #   stress_total = daily_symptoms.map(&:stress_level).sum
-  #   insomnia_total = daily_symptoms.map(&:insomnia_level).sum
-
-  #   @pain_data << (pain_total / number_of_days).round(2)
-  #   @blood_data << (blood_total / number_of_days).round(2)
-  #   @digestive_trouble_data << (digestive_trouble_total / number_of_days).round(2)
-  #   @stress_data << (stress_total / number_of_days).round(2)
-  #   @insomnia_data << (insomnia_total / number_of_days).round(2)
-  # end
 end

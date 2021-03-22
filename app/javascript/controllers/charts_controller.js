@@ -9,7 +9,6 @@ export default class extends Controller {
     JSON.parse(this.graphsTarget.dataset.value).forEach((graph) => {
       this.displayChart(graph)
     })
-    // enlever si changmeent d'avis
     this.filteredValue = false
   }
 
@@ -70,7 +69,6 @@ export default class extends Controller {
   }
 
   toggle(e) {
-    // enlever si changement d'avis
     if (this.filteredValue == false) {
       this.hideAll()
       this.filteredValue = true
@@ -82,7 +80,6 @@ export default class extends Controller {
     symptomChart.classList.toggle("d-none")
   }
 
-  // enlever
   hideAll() {
     document.querySelectorAll("[data-symptom-target").forEach((target) => {
       console.log(target)
@@ -100,12 +97,10 @@ export default class extends Controller {
     })
     const filterTitles = document.querySelectorAll("h3[data-symptom]")
     filterTitles.forEach((filter) => {
-      // Mettre l'inverse si changement d'avis
       if (filter.parentElement.classList.contains("underline")) {
         filter.parentElement.classList.remove("underline")
       }
     })
-    // enlever
     this.filteredValue = false
   }
 
@@ -113,10 +108,8 @@ export default class extends Controller {
     var ctx = document.getElementById(`${graph["id"]}`).getContext('2d');
     Chart.defaults.global.defaultFontFamily = 'Lato';
     var chart = new Chart(ctx, {
-      // The type of chart we want to create
       type: 'line',
 
-      // The data for our dataset
       data: {
         labels: Array.from(graph['labels']),
         datasets: [{
@@ -125,15 +118,10 @@ export default class extends Controller {
           borderColor: `${graph['border_color']}`,
           borderWidth: 3,
           data: Array.from(graph['data']),
-          pointRadius: 0,
-          // pointHoverRadius: 6,
-          // pointBackgroundColor: '#EB7099',
-          // pointBorderWidth: 0,
-          // pointBorderColor: '#EB7099'
+          pointRadius: 0
         }],
       },
 
-      // Configuration options go here
       options: {
         animation: {
           onComplete: function() {
