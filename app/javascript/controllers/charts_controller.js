@@ -123,13 +123,13 @@ export default class extends Controller {
           label: `${graph['name']}`,
           backgroundColor: 'transparent',
           borderColor: `${graph['border_color']}`,
-          borderWidth: 4,
+          borderWidth: 3,
           data: Array.from(graph['data']),
-          pointRadius: 6,
-          pointHoverRadius: 6,
-          pointBackgroundColor: '#EB7099',
-          pointBorderWidth: 0,
-          pointBorderColor: '#EB7099'
+          pointRadius: 0,
+          // pointHoverRadius: 6,
+          // pointBackgroundColor: '#EB7099',
+          // pointBorderWidth: 0,
+          // pointBorderColor: '#EB7099'
         }],
       },
 
