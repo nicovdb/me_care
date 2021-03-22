@@ -2,7 +2,7 @@
   <p class='text-left text-header text-semibold'>
     Vous avez annulé votre abonnement. Vous pouvez vous réabonner en cliquant <%= link_to "ici", products_path, class:"text-underline" %>.
   </p>
-<% elsif  @subscription.trialing? %>
+<% elsif  @subscription.trialing? || @subscription.trial_coupon_code?%>
   <p class='text-left text-header text-semibold'>
     Vous êtes actuellement en période d'essai. Celle-ci se terminera le <%= l(@subscription.end_date, format: :short) %>. Vous pouvez vous abonner pour la suite <%= link_to "ici", products_path, class:"text-underline" %>.
   </p>

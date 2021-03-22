@@ -34,7 +34,7 @@ class CouponCodesController < ApplicationController
           render 'pages/products'
         else
           old_end_date = current_user.subscription.end_date
-          current_user.subscription.update(end_date: old_end_date + @coupon.free_months.month)
+          current_user.subscription.update(end_date: old_end_date + @coupon.free_months.month, status: "trial_coupon_code")
           current_user.subscription.save
           @coupon.used = true
           @coupon.save
