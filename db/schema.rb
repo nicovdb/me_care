@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_29_123741) do
+ActiveRecord::Schema.define(version: 2021_03_22_102917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,14 @@ ActiveRecord::Schema.define(version: 2021_01_29_123741) do
     t.boolean "published", default: false
     t.datetime "publication_date"
     t.index ["user_id"], name: "index_articles_on_user_id"
+  end
+
+  create_table "coupon_codes", force: :cascade do |t|
+    t.string "code"
+    t.boolean "used", default: false
+    t.integer "free_months"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "daily_symptoms", force: :cascade do |t|
@@ -495,6 +503,7 @@ ActiveRecord::Schema.define(version: 2021_01_29_123741) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.boolean "forum_consent", default: false
+    t.boolean "superadmin", default: false
     t.index "lower((email)::text) text_pattern_ops", name: "users_email_lower", unique: true
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true

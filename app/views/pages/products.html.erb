@@ -55,7 +55,7 @@
             <div class="text-mini text-left my-3">
               Si vous faites partie de nos chers donateurs Kiss Kiss Bank Bank et que vous disposez d'un code préférentiel d'abonnement, merci de le renseigner ici
             </div>
-            <%= simple_form_for :coupon, url: use_coupon_path do |f| %>
+            <%= simple_form_for :coupon_code, url: use_coupon_path do |f| %>
                 <%= f.input :code, as: :string, label: false, class: 'input-coupon mx-auto' %>
               <% if @errors %>
                 <p class="text-mini text-red"> <%= @errors %></p>
