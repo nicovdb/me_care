@@ -12,7 +12,7 @@
   </p>
 <% elsif @subscription.trial_coupon_code? %>
   <p class='text-left text-header text-semibold'>
-    Vous avez utilisé un code Kiss Kiss Bank Bank et votre abonnement se termine la <%= l(@subscription.end_date, format: :short) %>. Vous pouvez vous abonner pour la suite <%= link_to "ici", products_path, class:"text-underline" %>.
+    Vous avez utilisé un code Kiss Kiss Bank Bank et votre abonnement se termine le <%= l(@subscription.end_date, format: :short) %>. Vous pouvez vous abonner pour la suite <%= link_to "ici", products_path, class:"text-underline" %>.
   </p>
 <% else %>
   <p class='text-left text-header text-semibold'>
