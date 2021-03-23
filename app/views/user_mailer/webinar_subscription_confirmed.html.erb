@@ -14,11 +14,12 @@
 
 <p class='mb-3'>Bonjour <%= @user.first_name.capitalize %></p>
 
-<p>Nous vous confirmons votre inscrition au webinar : <%= @webinar.title %> </p>
+<p>Nous avons bien reçu votre demande d'inscription au webinar easy Live : <%= @webinar.title %>  avec  <%= @webinar.title %>, qui se déroulera le <%= l(@webinar.start_at, format:"%d %B %Y à %Hh%M") %>.</p>
 
-<p>Pour rappel, vous pourrez y accéder le <%= l(@webinar.start_at, format:"%d %B %Y à %Hh%M") %> depuis le lien que vous recevrez bientôt par mail. </p>
+<p>Vous recevrez très prochainement un mail pour confirmer votre présence. Surveillez bien votre boîte de réception !
+Et le jour de l'événement, nous vous enverrons le lien d'accès pour vous connecter au webinar.</p>
 
-<p>Nous vous invitons, si vous le souhaitez, à nous faire parvenir d'ores et déjà vos questions par le formulaire de contact au sein de notre application ou par mail à bonjour@easyendo.fr.</p>
+<p>Si vous le souhaitez, nous vous invitons à nous faire parvenir d'ores et déjà vos questions par le <%= link_to "formulaire de contact", new_contact_url %> au sein d'easy endo ou par mail à bonjour@easyendo.fr.</p>
 
 <p class='mb-3'>Nous vous remercions pour votre confiance, </p>
 
