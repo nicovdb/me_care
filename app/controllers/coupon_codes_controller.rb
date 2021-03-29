@@ -42,7 +42,7 @@ class CouponCodesController < ApplicationController
           current_user.subscription.save
           @coupon.used = true
           @coupon.save
-          flash[:notice] = "Vous avez été créditée de #{@coupon.free_months} mois gratuits"
+          flash[:notice] = "Vous bénéficiez de #{@coupon.free_months} mois d'abonnement offerts à easy endo."
           redirect_to root_path
         end
       end
