@@ -5,7 +5,7 @@ class WebhooksController < ApplicationController
   def check_trial
     subscriptions = Subscription.where(status: "trialing")
     subscriptions.each do |sub|
-      if sub.end_date == Date.today + 15
+      if sub.end_date == Date.today
         UserMailer.with(user: sub.user).trial_end_soon.deliver_now
       elsif sub.end_date < Date.today
         sub.update(status: "trial_ended")
