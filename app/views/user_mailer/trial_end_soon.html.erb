@@ -11,7 +11,7 @@
     margin-bottom: 20px;
   }
 </style>
-<p class='mb-3'>Bonjour <%= User.find_by(email: @email).first_name.capitalize %></p>
+<p class='mb-3'>Bonjour <%= @user.first_name.capitalize %></p>
 
 <p>Votre essai gratuit d'easy endo de 15 jours touche à sa fin ...</p>
 
