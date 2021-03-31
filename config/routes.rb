@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   mount StripeEvent::Engine, at: '/stripe-webhooks'
+  get '/check_trial' => 'webhooks#check_trial', as: :check_trial
   scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do
     devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
     root to: 'pages#home'

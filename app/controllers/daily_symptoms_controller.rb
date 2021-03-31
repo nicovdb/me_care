@@ -218,7 +218,7 @@ class DailySymptomsController < ApplicationController
     month_daily_symptoms = policy_scope(DailySymptom).where('day >= ? AND day <= ?', @base_day, last_day)
 
     day = @base_day
-    until day == last_day
+    until day == last_day + 1
       daily_symptom = month_daily_symptoms.find_by(day: day)
       @labels << "#{day.day}"
       if daily_symptom
@@ -255,7 +255,7 @@ class DailySymptomsController < ApplicationController
     trimester_daily_symptoms = policy_scope(DailySymptom).where('day >= ? AND day <= ?', @base_day, trimester_last_day)
 
     day = trimester_first_day
-    until day == trimester_last_day
+    until day == trimester_last_day + 1
       daily_symptom = trimester_daily_symptoms.find_by(day: day)
       @labels << "#{day.day}/#{day.month}"
       if daily_symptom
@@ -288,7 +288,7 @@ class DailySymptomsController < ApplicationController
     year_daily_symptoms = policy_scope(DailySymptom).where('day >= ? AND day <= ?', year_first_day, year_last_day)
 
     day = year_first_day
-    until day == year_last_day
+    until day == year_last_day + 1
       daily_symptom = year_daily_symptoms.find_by(day: day)
       @labels << "#{day.day}/#{day.month}"
       if daily_symptom
