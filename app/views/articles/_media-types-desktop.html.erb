@@ -1,9 +1,9 @@
 <div class="d-md-flex justify-content-center d-none d-md-block">
   <% Article.media_types.keys.each do |media| %>
-    <%= link_to articles_path(media_type: media) do %>
+    <%= link_to articles_path(media_type: media, categories: @categories, media_types: @media_types) do %>
       <div class="d-flex align-items-center justify-content-center my-3 my-md-0 mx-4">
         <%= image_tag "#{media}.svg", class: 'media-type-icon' %>
-        <% if params[:media_type].present? && params[:media_type] == media %>
+        <% if @media_types.include?(media) %>
           <h3 class="ml-2 mb-0 text-underline"><%= t("article.#{media}")%></h3>
         <% else %>
             <h3 class="ml-2 mb-0 category-link"><%= t("article.#{media}")%></h3>

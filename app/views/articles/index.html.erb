@@ -18,11 +18,11 @@
   <%= render "categories-mobile" %>
 
   <div class="container">
-    <% if params[:query].present? || params[:category].present? %>
-      <%= render "ordered-articles", articles: @articles %>
-    <% else %>
+    <%# if params[:query].present? || params[:category].present? %>
+      <%#= render "ordered-articles", articles: @articles %>
+    <%# else %>
       <%= render "unordered-articles", articles: @articles %>
-    <% end %>
+    <%# end %>
 
     <div class="d-flex justify-content-center mt-5">
       <%= will_paginate @articles %>
