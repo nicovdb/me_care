@@ -7,7 +7,7 @@ class ArticlesController < ApplicationController
 
     dynamic_filters
 
-    @articles = @articles.search_by_content_and_title_and_author(params[:query]) if params[:query].present?
+    @articles = @articles.search_by_content_and_title_and_author_and_tags(params[:query]) if params[:query].present?
     @articles = @articles.where(category: @categories) if (@categories != [] && @categories != "")
     @articles = @articles.where(media_type: @media_types) if (@media_types != [] && @media_types != "")
 
@@ -52,7 +52,7 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :cover, :content, :publication_date, :author, :media_type, :category, :reading_time, :cover_credit)
+    params.require(:article).permit(:title, :cover, :content, :publication_date, :author, :media_type, :category, :reading_time, :cover_credit, :tags)
   end
 
   def redirect_after_create_or_update
