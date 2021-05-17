@@ -1,17 +1,35 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-   skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    if params[:query].present?
-      @articles = policy_scope(Article).includes([:cover_attachment]).search_by_content_and_title_and_author(params[:query]).paginate(page: params[:page], per_page: 8).order(publication_date: :desc)
-    elsif params[:category].present?
-      @articles = policy_scope(Article).includes([:cover_attachment]).where(category: params[:category]).paginate(page: params[:page], per_page: 8).order(publication_date: :desc)
-    elsif params[:media_type].present?
-      @articles = policy_scope(Article).includes([:cover_attachment]).where(media_type: params[:media_type]).paginate(page: params[:page], per_page: 8).order(publication_date: :desc)
+    @articles = policy_scope(Article).includes([:cover_attachment])
+
+    if params[:categories].present? && params[:categories] != ""
+      @categories = params[:categories]
     else
-      @articles = policy_scope(Article).includes([:cover_attachment]).paginate(page: params[:page], per_page: 8).order(publication_date: :desc)
+      @categories = []
     end
+
+    if params[:media_types].present? && params[:media_types] != ""
+      @media_types = params[:media_types]
+    else
+      @media_types = []
+    end
+
+    if params[:category].present?
+      if @categories.include?(params[:category])
+        @categories.delete(params[:category])
+      else
+        @categories << params[:category]
+      end
+    end
+
+    @articles = @articles.search_by_content_and_title_and_author(params[:query]) if params[:query].present?
+    @articles = @articles.where(category: @categories) if (@categories != [] && @categories != "")
+    @articles = @articles.where(media_type: params[:media_type]) if params[:media_type].present?
+
+    @articles = @articles.paginate(page: params[:page], per_page: 8).order(publication_date: :desc)
   end
 
   def show

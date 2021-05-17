@@ -19,10 +19,12 @@
 </div>
 
 <div class="d-flex flex-column align-items-center mb-4">
-  <div class="text-center">
-    <%= image_tag "services/news.svg", class:"home-service-logo" %>
-    <p class="home-service my-1">News</p>
-  </div>
+  <%= link_to articles_path do %>
+    <div class="text-center">
+      <%= image_tag "services/news.svg", class:"home-service-logo" %>
+      <p class="home-service my-1">News</p>
+    </div>
+  <% end %>
   <p>
     Afin de rester au cœur de l’info sur l’endo, <span class="text-ee">easy endo</span> joue les reporters rien que pour vous !
   </p>
