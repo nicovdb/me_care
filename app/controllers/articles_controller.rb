@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     if params[:query].present?
@@ -15,7 +16,7 @@ class ArticlesController < ApplicationController
 
   def show
     authorize @article
-    @favorite = current_user.favorites.find_by(article: @article)
+    @favorite = current_user.favorites.find_by(article: @article) if current_user
   end
 
   def create
