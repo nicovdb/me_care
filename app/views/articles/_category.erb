@@ -1,7 +1,7 @@
-<%= link_to articles_path(category: category) do %>
+<%= link_to articles_path(category: category, categories: @categories, media_types: @media_types) do %>
   <div class="d-flex align-items-center mb-2 mx-2">
     <span class="category-bullet <%= category %>"></span>
-    <% if params[:category].present? && params[:category] == category %>
+    <% if @categories.include?(category) %>
       <h3 class="ml-2 mb-0 text-underline"><%= t("article.#{category}") %></h3>
     <% else %>
       <h3 class="category-link ml-2 mb-0">  <%= t("article.#{category}") %></h3>

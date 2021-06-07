@@ -13,8 +13,8 @@ class Article < ApplicationRecord
   validates :category, inclusion: { in: categories.keys }
 
   include PgSearch::Model
-  pg_search_scope :search_by_content_and_title_and_author,
-    against: [:title, :author],
+  pg_search_scope :search_by_content_and_title_and_author_and_tags,
+    against: [:title, :author, :tags],
     associated_against: {
       rich_text_content: [:body]
     },

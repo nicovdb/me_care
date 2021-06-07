@@ -21,6 +21,7 @@
   <%= f.input :reading_time, label: t('.reading_time'), placeholder: "5 minutes" %>
   <%= f.input :media_type, collection: Article.media_types.keys.map { |m| [t("article.#{m.downcase}"), m] }, label: t('.media_type') %>
   <%= f.input :category, collection: Article.categories.keys.collect { |m| [t("article.#{m.downcase}"), m] }, label: t('.category') %>
+  <%= f.input :tags, label: "Tags", hint: "Écrire ici les mots qui permettront d'affiner les recherches sans apparaitre dans l'article.", placeholder: "CBD, Sexe, Fromage..." %>
   <%= f.input :publication_date, label: t('.publication_date'), hint: "La date sera affichée dans l'article. Vous pouvez jouer sur la date et l'heure pour déterminer dans quel ordre les articles apparaitront (du plus récent au plus ancien)." %>
   <%= f.input :content, as: :rich_text_area, label: t('.content'), placeholder: "Écrivez votre article ici... ", hint: "Max. 30 000 caractères", class: 'form-control' %>
   <%= f.submit "Enregistrer et publier", class: 'btn btn-primary btn-ee mb-4 mr-3' %>
