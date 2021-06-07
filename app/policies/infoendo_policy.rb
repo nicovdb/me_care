@@ -10,7 +10,7 @@ class InfoendoPolicy < ApplicationPolicy
   end
 
   def show?
-    (record_is_published? && has_valid_subscription?) || is_admin?
+    (record_is_published?) || is_admin?
   end
 
   def create?

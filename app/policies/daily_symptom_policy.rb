@@ -6,15 +6,15 @@ class DailySymptomPolicy < ApplicationPolicy
   end
 
   def create?
-    has_valid_subscription? || is_admin?
+    true
   end
 
   def update?
-    has_valid_subscription? || is_admin?
+    true
   end
 
   def graph?
-    has_valid_subscription? || is_admin?
+    true
   end
 
   private

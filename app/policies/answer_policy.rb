@@ -6,7 +6,7 @@ class AnswerPolicy < ApplicationPolicy
   end
 
   def create?
-    has_valid_subscription? || is_admin?
+    true
   end
 
   def destroy?

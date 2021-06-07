@@ -10,7 +10,7 @@ class SubjectPolicy < ApplicationPolicy
   end
 
   def show?
-    has_valid_subscription? || is_admin?
+    true
   end
 
   def create?
