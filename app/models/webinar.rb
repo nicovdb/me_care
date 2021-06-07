@@ -4,7 +4,10 @@ class Webinar < ApplicationRecord
   has_one_attached :speaker_picture
   has_many :webinar_subscriptions
   monetize :price_cents
+  extend FriendlyId
+  friendly_id :title, use: :slugged
 
   validates :speaker_picture, attached: true
   validates :title, :start_at, :category, :speaker_name, :description, presence: true
+  validates :title, uniqueness: true
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_17_145627) do
+ActiveRecord::Schema.define(version: 2021_06_07_102958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,8 @@ ActiveRecord::Schema.define(version: 2021_05_17_145627) do
     t.boolean "published", default: false
     t.datetime "publication_date"
     t.string "tags"
+    t.string "slug"
+    t.index ["slug"], name: "index_articles_on_slug", unique: true
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
@@ -153,8 +155,7 @@ ActiveRecord::Schema.define(version: 2021_05_17_145627) do
     t.datetime "created_at"
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
-    t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
-    t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+    t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
   create_table "info_alternative_therapies", force: :cascade do |t|
@@ -197,6 +198,8 @@ ActiveRecord::Schema.define(version: 2021_05_17_145627) do
     t.boolean "published", default: false
     t.datetime "publication_date"
     t.string "video"
+    t.string "slug"
+    t.index ["slug"], name: "index_infoendos_on_slug", unique: true
     t.index ["user_id"], name: "index_infoendos_on_user_id"
   end
 
@@ -274,7 +277,6 @@ ActiveRecord::Schema.define(version: 2021_05_17_145627) do
     t.datetime "confirmation_sent_at"
     t.boolean "forum_consent", default: false
     t.boolean "superadmin", default: false
-    t.index "lower((email)::text) text_pattern_ops", name: "users_email_lower", unique: true
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -302,6 +304,8 @@ ActiveRecord::Schema.define(version: 2021_05_17_145627) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "price_cents", default: 500, null: false
     t.boolean "published", default: false
+    t.string "slug"
+    t.index ["slug"], name: "index_webinars_on_slug", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

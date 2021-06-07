@@ -1,5 +1,5 @@
 class WebinarsController < ApplicationController
-  before_action :set_webinar, only: [:show, :edit, :update, :destroy]
+  before_action :set_webinar, only: [:edit, :update, :destroy]
 
   def index
     @webinars = policy_scope(Webinar).includes([:speaker_picture_attachment]).order(start_at: :desc)
@@ -17,6 +17,7 @@ class WebinarsController < ApplicationController
   end
 
   def show
+    @webinar = Webinar.friendly.find(params[:id])
     authorize @webinar
     @webinar_subscription = current_user.webinar_subscriptions.find_by(webinar: @webinar)
 

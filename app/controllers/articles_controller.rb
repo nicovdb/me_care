@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :set_article, only: [:edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
@@ -15,6 +15,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @article = Article.friendly.find(params[:id])
     authorize @article
     @favorite = current_user.favorites.find_by(article: @article) if current_user
   end

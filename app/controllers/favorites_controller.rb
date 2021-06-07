@@ -3,13 +3,13 @@ class FavoritesController < ApplicationController
     @favorite = Favorite.new(user: current_user)
     authorize @favorite
     if params[:article].present?
-      article = Article.find(params[:article])
+      article = Article.find_by(slug: params[:article])
       @favorite.article = article
       @favorite.save
       redirect_to article_path(article)
     end
     if params[:infoendo].present?
-      infoendo = Infoendo.find(params[:infoendo])
+      infoendo = Infoendo.find_by(slug: params[:infoendo])
       @favorite.infoendo = infoendo
       @favorite.save
       redirect_to infoendo_path(infoendo)
