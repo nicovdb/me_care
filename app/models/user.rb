@@ -71,7 +71,7 @@ class User < ApplicationRecord
     self.update_attributes(stripe_id: customer.id)
   end
 
-  def set_trial
-    Subscription.create(user: self, start_date: Date.today, end_date: Date.today + 15, status: "trialing")
-  end
+  # def set_trial
+  #   Subscription.create(user: self, start_date: Date.today, end_date: Date.today + 15, status: "trialing")
+  # end
 end
