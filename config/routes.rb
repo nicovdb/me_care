@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     get '/mentions-legales', to: 'pages#legals', as: :legals
     get '/charte-utilisation-forum', to: 'pages#charte_forum', as: :charte_forum
     get '/que-faire-si', to: 'pages#algorythm', as: :algorythm
-    get '/abonnements', to: 'pages#products', as: :products
+    #get '/abonnements', to: 'pages#products', as: :products
     resources :contacts, only: [:new, :create]
     get '/confirmation-envoi', to: 'contacts#message_sent', as: :message_sent
     resources :subscriptions, only: [:index, :destroy]
