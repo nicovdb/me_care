@@ -1,5 +1,5 @@
 class InfoendosController < ApplicationController
-  before_action :set_infoendo, only: [:show, :edit, :update, :destroy]
+  before_action :set_infoendo, only: [:edit, :update, :destroy]
 
   def index
     @infoendos = policy_scope(Infoendo).includes([:cover_attachment])
@@ -13,6 +13,7 @@ class InfoendosController < ApplicationController
   end
 
   def show
+    @infoendo = Infoendo.friendly.find(params[:id])
     authorize @infoendo
     @favorite = current_user.favorites.find_by(infoendo: @infoendo)
   end
