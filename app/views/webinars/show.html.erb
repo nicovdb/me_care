@@ -13,7 +13,7 @@
         <%= cl_image_tag @webinar.speaker_picture.key, width: 120, height: 120, crop: :fill, quality: :auto, fetch_format: :auto, class:"avatar avatar-xl" %>
       <% end %>
       <h1 class="mt-3 mb-2"><%= @webinar.title %></h1>
-      <p class="text-green mb-2"><span class="text-pink">Invitée : </span><%= @webinar.speaker_name %></p>
+      <p class="text-green mb-2"><span class="text-pink">Invité(e) : </span><%= @webinar.speaker_name %></p>
       <p class="text-info text-small"><%= l(@webinar.start_at, format:"%d %B %Y - %Hh%M") %></p>
 
       <div class="d-block d-md-none">

@@ -1,5 +1,5 @@
 class InfoendosController < ApplicationController
-  before_action :set_infoendo, only: [:edit, :update, :destroy]
+  before_action :set_infoendo, only: [:show, :edit, :update, :destroy]
 
   def index
     @infoendos = policy_scope(Infoendo).includes([:cover_attachment])
@@ -13,7 +13,6 @@ class InfoendosController < ApplicationController
   end
 
   def show
-    @infoendo = Infoendo.friendly.find(params[:id])
     authorize @infoendo
     @favorite = current_user.favorites.find_by(infoendo: @infoendo)
   end
@@ -48,11 +47,11 @@ class InfoendosController < ApplicationController
   private
 
   def set_infoendo
-    @infoendo = Infoendo.find(params[:id])
+    @infoendo = Infoendo.friendly.find(params[:id])
   end
 
   def infoendo_params
-    params.require(:infoendo).permit(:title, :publication_date, :cover, :content, :media_type, :category, :reading_time, :cover_credit, :video)
+    params.require(:infoendo).permit(:title, :publication_date, :cover, :alt_text, :content, :media_type, :category, :reading_time, :cover_credit, :video)
   end
 
   def redirect_after_create_or_update

@@ -13,6 +13,6 @@ class Dashboards::WebinarsController < ApplicationController
   private
 
   def set_webinar
-    @webinar = Webinar.find(params[:id])
+    @webinar = Webinar.friendly.find(params[:id])
   end
 end

@@ -13,6 +13,6 @@ class Dashboards::InfoendosController < ApplicationController
   private
 
   def set_infoendo
-    @infoendo = Infoendo.find(params[:id])
+    @infoendo = Infoendo.friendly.find(params[:id])
   end
 end

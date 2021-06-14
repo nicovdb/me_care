@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_07_102958) do
+ActiveRecord::Schema.define(version: 2021_06_14_164543) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 2021_06_07_102958) do
     t.datetime "publication_date"
     t.string "tags"
     t.string "slug"
+    t.string "alt_text", default: ""
     t.index ["slug"], name: "index_articles_on_slug", unique: true
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
@@ -199,6 +200,7 @@ ActiveRecord::Schema.define(version: 2021_06_07_102958) do
     t.datetime "publication_date"
     t.string "video"
     t.string "slug"
+    t.string "alt_text", default: ""
     t.index ["slug"], name: "index_infoendos_on_slug", unique: true
     t.index ["user_id"], name: "index_infoendos_on_user_id"
   end

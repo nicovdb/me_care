@@ -35,7 +35,7 @@
           </div>
           <div class="text-center">
             <% if @article.cover.attached? %>
-              <%= cl_image_tag @article.cover.key, quality: :auto, fetch_format: :auto, width: 600, height: 600, crop: :limit, class:"my-2" %>
+              <%= cl_image_tag @article.cover.key, quality: :auto, fetch_format: :auto, width: 600, height: 600, crop: :limit, class:"my-2", alt: @article.alt_text %>
               <p class="text-info text-mini">©<%= @article.cover_credit %></p>
             <% end %>
           </div>

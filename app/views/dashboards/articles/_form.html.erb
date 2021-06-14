@@ -15,6 +15,7 @@
   </div>
   <small class="form-text text-muted mb-3">Pour de meilleures performances, pensez à utiliser une photo légère (moins de 500 Ko) et de taille adaptée à son usage (environ 500 px de large en format paysage). Vous pouvez les optimiser avec  https://squoosh.app/ par exemple.</small>
 
+  <%= f.input :alt_text, label: "Balise alt", placeholder: "Femme ayant mal au ventre", hint: "Décrire la photo succintement pour le référencement et l'accessibilité." %>
   <%= f.input :cover_credit, label: t('.cover_credit'), placeholder: "Robert Doisneau" %>
   <%= f.input :title, label: t('.title'), placeholder: "Alimentation et endométriose" %>
   <%= f.input :author, label: t('.author'), placeholder: "L'équipe easy endo" %>
