@@ -9,7 +9,15 @@
         <div class="text-info d-none d-md-block">
           <%= t("infoendo.#{infoendo.category}") %>
         </div>
-        <h2 class="my-1 pr-0"><b><%= infoendo.title %></b></h2>
+        <div class="d-flex align-items-center">
+          <h2 class="my-1 pr-0"><b><%= infoendo.title %></b></h2>
+          <% if current_user %>
+            <% @seen_infoendo = SeenInfoendo.find_by(user: current_user, infoendo: infoendo) %>
+            <% if @seen_infoendo && @seen_infoendo.seen == false  %>
+              <div class="unseen"></div>
+            <% end %>
+          <% end %>
+        </div>
         <div class="text-mini text-info d-none d-md-block"><%= l(infoendo.publication_date, format:"%d %B %Y") %> - Temps de lecture : <%= infoendo.reading_time %>
         </div>
         <div class="text-mini text-info d-block d-md-none"> durée : <%= infoendo.reading_time %>

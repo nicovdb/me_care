@@ -16,6 +16,13 @@ class ArticlesController < ApplicationController
 
   def show
     authorize @article
+    if current_user
+      @seen_article = SeenArticle.find_by(user: current_user, article: @article)
+      if !@seen_article.nil? && @seen_article.seen == false
+        @seen_article.seen = true
+        @seen_article.save
+      end
+    end
     @favorite = current_user.favorites.find_by(article: @article) if current_user
   end
 
@@ -24,6 +31,9 @@ class ArticlesController < ApplicationController
     authorize @article
     @article.user = current_user
     if @article.save
+      User.all.each do |u|
+        SeenArticle.create(user: u, article: @article, seen: false)
+      end
       redirect_after_create_or_update
     else
       render 'dashboards/articles/new'

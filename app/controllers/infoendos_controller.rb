@@ -14,6 +14,13 @@ class InfoendosController < ApplicationController
 
   def show
     authorize @infoendo
+    if current_user
+      @seen_infoendo = SeenInfoendo.find_by(user: current_user, infoendo: @infoendo)
+      if !@seen_infoendo.nil? && @seen_infoendo.seen == false
+        @seen_infoendo.seen = true
+        @seen_infoendo.save
+      end
+    end
     @favorite = current_user.favorites.find_by(infoendo: @infoendo)
   end
 
@@ -23,6 +30,9 @@ class InfoendosController < ApplicationController
 
     @infoendo.user = current_user
     if @infoendo.save
+       User.all.each do |u|
+        SeenInfoendo.create(user: u, infoendo: @infoendo, seen: false)
+      end
       redirect_after_create_or_update
     else
       render 'dashboards/infoendos/new'

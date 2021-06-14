@@ -15,8 +15,11 @@ class User < ApplicationRecord
   has_many :webinars, through: :webinar_subscriptions
   has_many :daily_symptoms, dependent: :destroy
   has_one_attached :avatar
-  has_many :follow_subjects
+  has_many :follow_subjects, dependent: :destroy
   has_many :subjects, through: :follow_subjects
+  has_many :seen_articles, dependent: :destroy
+  has_many :seen_infoendos, dependent: :destroy
+  has_many :seen_webinars, dependent: :destroy
   validate :password_complexity
   validates :pseudo, uniqueness: true
   validates :first_name, :last_name, :pseudo, presence: true
@@ -48,6 +51,18 @@ class User < ApplicationRecord
 
   def notification_number
     follow_subjects.where(seen: false).count
+  end
+
+  def unseen_news_number
+    seen_articles.where(seen: false).count
+  end
+
+  def unseen_infoendos_number
+    seen_infoendos.where(seen: false).count
+  end
+
+  def unseen_webinars_number
+    seen_webinars.where(seen: false).count
   end
 
   def has_valid_subscription?

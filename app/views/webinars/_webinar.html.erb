@@ -9,7 +9,15 @@
         <div class="text-info">
           <%= t("webinar.#{webinar.category}") %>
         </div>
-        <h2 class="my-1 pr-0"><b><%= webinar.title %></b></h2>
+        <div class="d-flex align-items-center">
+          <h2 class="my-1 pr-0"><b><%= webinar.title %></b></h2>
+          <% if current_user %>
+            <% @seen_webinar = SeenWebinar.find_by(user: current_user, webinar: webinar) %>
+            <% if @seen_webinar && @seen_webinar.seen == false  %>
+              <div class="unseen"></div>
+            <% end %>
+          <% end %>
+        </div>
         <div class="text-mini text-info">
           <%= l(webinar.start_at, format:"%d %B %Y - %Hh%M") %>
         </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_14_164543) do
+ActiveRecord::Schema.define(version: 2021_06_14_182737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -238,6 +238,36 @@ ActiveRecord::Schema.define(version: 2021_06_14_164543) do
     t.index ["user_id"], name: "index_information_on_user_id"
   end
 
+  create_table "seen_articles", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "article_id", null: false
+    t.boolean "seen", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["article_id"], name: "index_seen_articles_on_article_id"
+    t.index ["user_id"], name: "index_seen_articles_on_user_id"
+  end
+
+  create_table "seen_infoendos", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "infoendo_id", null: false
+    t.boolean "seen", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["infoendo_id"], name: "index_seen_infoendos_on_infoendo_id"
+    t.index ["user_id"], name: "index_seen_infoendos_on_user_id"
+  end
+
+  create_table "seen_webinars", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "webinar_id", null: false
+    t.boolean "seen", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_seen_webinars_on_user_id"
+    t.index ["webinar_id"], name: "index_seen_webinars_on_webinar_id"
+  end
+
   create_table "subjects", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "forum_category_id", null: false
@@ -328,6 +358,12 @@ ActiveRecord::Schema.define(version: 2021_06_14_164543) do
   add_foreign_key "info_fam_member_antes", "information"
   add_foreign_key "infoendos", "users"
   add_foreign_key "information", "users"
+  add_foreign_key "seen_articles", "articles"
+  add_foreign_key "seen_articles", "users"
+  add_foreign_key "seen_infoendos", "infoendos"
+  add_foreign_key "seen_infoendos", "users"
+  add_foreign_key "seen_webinars", "users"
+  add_foreign_key "seen_webinars", "webinars"
   add_foreign_key "subjects", "forum_categories"
   add_foreign_key "subjects", "users"
   add_foreign_key "subscriptions", "users"

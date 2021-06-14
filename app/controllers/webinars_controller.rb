@@ -10,6 +10,9 @@ class WebinarsController < ApplicationController
     authorize @webinar
 
     if @webinar.save
+       User.all.each do |u|
+        SeenWebinar.create(user: u, webinar: @webinar, seen: false)
+      end
       redirect_after_create_or_update
     else
       render 'dashboards/webinars/new'
@@ -18,6 +21,13 @@ class WebinarsController < ApplicationController
 
   def show
     authorize @webinar
+    if current_user
+      @seen_webinar = SeenWebinar.find_by(user: current_user, webinar: @webinar)
+      if !@seen_webinar.nil? && @seen_webinar.seen == false
+        @seen_webinar.seen = true
+        @seen_webinar.save
+      end
+    end
     @webinar_subscription = current_user.webinar_subscriptions.find_by(webinar: @webinar)
 
     unless @webinar_subscription || current_user.has_valid_subscription?
