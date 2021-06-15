@@ -9,7 +9,15 @@
         <div class="text-info d-none d-md-block">
           <%= t("article.#{article.category}") %>
         </div>
-        <h2 class="my-1 pr-0"><b><%= article.title %></b></h2>
+        <div class="d-flex align-items-center">
+          <h2 class="my-1 pr-0"><b><%= article.title %></b></h2>
+          <% if current_user %>
+            <% @seen_article = SeenArticle.find_by(user: current_user, article: article) %>
+            <% if @seen_article && @seen_article.seen == false  %>
+              <div class="unseen"></div>
+            <% end %>
+          <% end %>
+        </div>
         <div class="text-mini text-info d-none d-md-block"><%= l(article.publication_date, format:"%d %B %Y") %> - Temps de lecture : <%= article.reading_time %>
         </div>
         <div class="text-mini text-info d-block d-md-none"> Temps de lecture : <%= article.reading_time %>
@@ -20,7 +28,7 @@
     <div class="my-auto">
       <%= link_to article_path(article) do %>
         <% if article.cover.attached? %>
-          <%= cl_image_tag article.cover.key, quality: :auto, fetch_format: :auto, width: 400, height: 400, crop: :limit %>
+          <%= cl_image_tag article.cover.key, quality: :auto, fetch_format: :auto, width: 400, height: 400, crop: :limit, alt: article.alt_text %>
         <% end %>
       <% end %>
     </div>

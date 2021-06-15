@@ -17,10 +17,20 @@
               <%= link_to "Mon agenda", daily_symptoms_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
-              <%= link_to "À savoir", infoendos_path, class: "nav-link" %>
+              <%= link_to infoendos_path, class: "nav-link d-flex align-items-center" do %>
+                À savoir
+                <% if user_signed_in? && current_user.unseen_infoendos_number >= 1 %>
+                  <span class='ml-1 notif-pink-bullet'></span>
+                <% end %>
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "News", articles_path, class: "nav-link" %>
+              <%= link_to articles_path, class: "nav-link d-flex align-items-center" do %>
+                News
+                <% if user_signed_in? && current_user.unseen_news_number >= 1 %>
+                  <span class='ml-1 notif-pink-bullet'></span>
+                <% end %>
+              <% end %>
             </li>
             <li class="nav-item">
               <%= link_to "Que faire si...", algorythm_path, class: "nav-link", data: { turbolinks: 'false' } %>
@@ -29,12 +39,17 @@
               <%= link_to forum_path, class: "nav-link d-flex align-items-center" do %>
                 Forum
                 <% if user_signed_in? && current_user.notification_number >= 1 %>
-                  <span class='ml-1 notif-pink-bullet'><%= current_user.notification_number %></span>
+                  <span class='ml-1 notif-pink-bullet'></span>
                 <% end %>
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "easy Live", webinars_path, class: "nav-link" %>
+              <%= link_to webinars_path, class: "nav-link d-flex align-items-center" do %>
+                easy Live
+                <% if user_signed_in? && current_user.unseen_webinars_number >= 1 %>
+                  <span class='ml-1 notif-pink-bullet'></span>
+                <% end %>
+              <% end %>
             </li>
           <% else %>
             <li class="nav-item">

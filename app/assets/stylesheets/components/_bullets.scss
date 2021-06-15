@@ -13,8 +13,19 @@
 
 .notif-pink-bullet {
   background-color: $pink;
-  color: white;
-  padding: 3px 8px;
-  border-radius: 20px;
-  font-size: 9px;
+  // color: white;
+  // padding: 3px 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  // font-size: 9px;
+}
+
+.unseen {
+  width: 10px;
+  height: 10px;
+  margin-left: 10px;
+  background-color: $pink;
+  border-radius: 50%;
+  flex-shrink: 0;
 }

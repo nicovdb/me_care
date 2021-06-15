@@ -34,7 +34,7 @@
           <% else %>
             <div class="text-center">
               <% if @infoendo.cover.attached? %>
-                <%= cl_image_tag @infoendo.cover.key, quality: :auto, fetch_format: :auto, width: 600, height: 600, crop: :limit, class:"my-2" %>
+                <%= cl_image_tag @infoendo.cover.key, quality: :auto, fetch_format: :auto, width: 600, height: 600, crop: :limit, class:"my-2", alt: @infoendo.alt_text %>
                 <p class="text-info text-mini">©<%= @infoendo.cover_credit %></p>
               <% end %>
             </div>

@@ -3,6 +3,7 @@ class Webinar < ApplicationRecord
   enum category: { generalities: 0, diagnostic: 1, treatment: 2, food: 3, fertility: 4, sexuality: 5, sport: 6, administrative: 7, research: 8 }
   has_one_attached :speaker_picture
   has_many :webinar_subscriptions
+  has_many :seen_webinars, dependent: :destroy
   monetize :price_cents
   extend FriendlyId
   friendly_id :title, use: :slugged

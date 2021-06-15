@@ -1,5 +1,5 @@
 class WebinarsController < ApplicationController
-  before_action :set_webinar, only: [:edit, :update, :destroy]
+  before_action :set_webinar, only: [:show, :edit, :update, :destroy]
 
   def index
     @webinars = policy_scope(Webinar).includes([:speaker_picture_attachment]).order(start_at: :desc)
@@ -10,6 +10,9 @@ class WebinarsController < ApplicationController
     authorize @webinar
 
     if @webinar.save
+       User.all.each do |u|
+        SeenWebinar.create(user: u, webinar: @webinar, seen: false)
+      end
       redirect_after_create_or_update
     else
       render 'dashboards/webinars/new'
@@ -17,8 +20,14 @@ class WebinarsController < ApplicationController
   end
 
   def show
-    @webinar = Webinar.friendly.find(params[:id])
     authorize @webinar
+    if current_user
+      @seen_webinar = SeenWebinar.find_by(user: current_user, webinar: @webinar)
+      if !@seen_webinar.nil? && @seen_webinar.seen == false
+        @seen_webinar.seen = true
+        @seen_webinar.save
+      end
+    end
     @webinar_subscription = current_user.webinar_subscriptions.find_by(webinar: @webinar)
 
     unless @webinar_subscription || current_user.has_valid_subscription?
@@ -60,7 +69,7 @@ class WebinarsController < ApplicationController
   private
 
   def set_webinar
-    @webinar = Webinar.find(params[:id])
+    @webinar = Webinar.friendly.find(params[:id])
   end
 
   def webinar_params

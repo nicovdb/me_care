@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:edit, :update, :destroy]
+  before_action :set_article, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
@@ -15,8 +15,14 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.friendly.find(params[:id])
     authorize @article
+    if current_user
+      @seen_article = SeenArticle.find_by(user: current_user, article: @article)
+      if !@seen_article.nil? && @seen_article.seen == false
+        @seen_article.seen = true
+        @seen_article.save
+      end
+    end
     @favorite = current_user.favorites.find_by(article: @article) if current_user
   end
 
@@ -25,6 +31,9 @@ class ArticlesController < ApplicationController
     authorize @article
     @article.user = current_user
     if @article.save
+      User.all.each do |u|
+        SeenArticle.create(user: u, article: @article, seen: false)
+      end
       redirect_after_create_or_update
     else
       render 'dashboards/articles/new'
@@ -49,11 +58,11 @@ class ArticlesController < ApplicationController
   private
 
   def set_article
-    @article = Article.find(params[:id])
+    @article = Article.friendly.find(params[:id])
   end
 
   def article_params
-    params.require(:article).permit(:title, :cover, :content, :publication_date, :author, :media_type, :category, :reading_time, :cover_credit, :tags)
+    params.require(:article).permit(:title, :cover, :alt_text, :content, :publication_date, :author, :media_type, :category, :reading_time, :cover_credit, :tags)
   end
 
   def redirect_after_create_or_update

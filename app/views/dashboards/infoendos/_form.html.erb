@@ -14,6 +14,7 @@
     </div>
   </div>
   <small class="form-text text-muted mb-3">Pour de meilleures performances, pensez à utiliser une photo légère (moins de 500 Ko) et de taille adaptée à son usage (environ 500 px de large en format paysage). Vous pouvez les optimiser avec  https://squoosh.app/ par exemple.</small>
+  <%= f.input :alt_text, label: "Balise alt", placeholder: "Femme ayant mal au ventre", hint: "Décrire la photo succintement pour le référencement et l'accessibilité." %>
   <%= f.input :cover_credit, label: t('.cover_credit'), placeholder: "Robert Doisneau" %>
   <%= f.input :media_type, collection: Infoendo.media_types.keys.map { |m| [t("infoendo.#{m.downcase}"), m] }, label: t('.media_type') %>
   <%= f.input :video, placeholder: '<iframe src="https://player.vimeo.com/video/505154871" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>', wrapper_html: { class:"mb-1" } %>
