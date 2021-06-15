@@ -10,7 +10,7 @@ class Article < ApplicationRecord
   enum media_type: { article: 0, event: 1, media: 3 }
   enum category: { generalities: 0, sexuality: 5, treatment: 2, food: 3, fertility: 4, diagnostic: 1, administrative: 7, sport: 6, research: 8 }
 
-  validates :title, :content, :category, :media_type, :reading_time, :author, :cover_credit, presence: true
+  validates :title, :content, :category, :media_type, :reading_time, :author, :cover_credit, :alt_text, presence: true
   validates :title, uniqueness: true
   validates :cover, attached: true
   validates :media_type, inclusion: { in: media_types.keys }
