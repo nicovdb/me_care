@@ -6,6 +6,9 @@ MIGRATION_CLASS =
   end
 
 class CreateFriendlyIdSlugs < MIGRATION_CLASS
+  def up
+    drop_table(:friendly_id_slugs, if_exists: true)
+  end
   def change
     create_table :friendly_id_slugs do |t|
       t.string   :slug,           :null => false
