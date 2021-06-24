@@ -6,7 +6,7 @@ class ArticlePolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    record_is_published?
   end
 
   def create?
