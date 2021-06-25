@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
-  after_create :set_stripe_customer, :set_trial
+  after_create :set_stripe_customer #, :set_trial
   after_create :send_to_mailchimp if Rails.env.production?
   after_update :send_welcome_email
   has_one :subscription, dependent: :destroy
@@ -86,7 +86,7 @@ class User < ApplicationRecord
     self.update_attributes(stripe_id: customer.id)
   end
 
-  def set_trial
-    Subscription.create(user: self, start_date: Date.today, end_date: Date.today + 15, status: "trialing")
-  end
+  # def set_trial
+  #   Subscription.create(user: self, start_date: Date.today, end_date: Date.today + 15, status: "trialing")
+  # end
 end

@@ -1,16 +1,16 @@
 class InfoendoPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      if user.admin? || user.has_valid_subscription?
+      #if user.admin? || user.has_valid_subscription?
         scope.where(published: true)
-      else
-        raise Pundit::NotAuthorizedError
-      end
+      # else
+      #   raise Pundit::NotAuthorizedError
+      # end
     end
   end
 
   def show?
-    (record_is_published? && has_valid_subscription?) || is_admin?
+    (record_is_published?) || is_admin?
   end
 
   def create?

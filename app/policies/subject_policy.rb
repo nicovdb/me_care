@@ -1,16 +1,16 @@
 class SubjectPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      if user.has_valid_subscription? || user.admin?
+      #if user.has_valid_subscription? || user.admin?
         scope.all
-      else
-        raise Pundit::NotAuthorizedError
-      end
+      # else
+      #   raise Pundit::NotAuthorizedError
+      # end
     end
   end
 
   def show?
-    has_valid_subscription? || is_admin?
+    true
   end
 
   def create?

@@ -6,7 +6,7 @@ class PagePolicy < ApplicationPolicy
   end
 
   def algorythm?
-    has_valid_subscription? || is_admin?
+    true
   end
 
   private
