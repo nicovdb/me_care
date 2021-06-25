@@ -1,6 +1,6 @@
 class WebinarSubscriptionsController < ApplicationController
   def create
-    @webinar = Webinar.find(params[:webinar_id])
+    @webinar = Webinar.friendly.find(params[:webinar_id])
     @webinar_subscription = WebinarSubscription.new(user: current_user, webinar: @webinar, state: "paid")
     authorize @webinar_subscription
     @webinar_subscription.save #if current_user.has_valid_subscription?
