@@ -88,11 +88,19 @@
             </div>
           <%# end %>
         </div> -->
-        <div class="col-6 offset-3 col-md-4 offset-md-4 mb-3 mb-md-4">
+        <div class="col-6 col-md-4 mb-3 mb-md-4">
           <%= link_to new_contact_path do %>
             <div class="home-service-category d-flex flex-column align-items-center justify-content-center text-center">
               <%= image_tag "services/contact.svg", class:"home-service-logo" %>
               <p class="home-service my-1">Contact</p>
+            </div>
+          <% end %>
+        </div>
+        <div class="col-6 col-md-4 mb-3 mb-md-4">
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <div class="h-100 d-flex flex-column align-items-center justify-content-center text-center">
+              <%= image_tag "sign-out.svg", style:"width: 40px;" %>
+              <p class="my-1" style="color: white; font-family: 'Quicksand';">Déconnexion</p>
             </div>
           <% end %>
         </div>
