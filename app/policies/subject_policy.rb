@@ -14,11 +14,11 @@ class SubjectPolicy < ApplicationPolicy
   end
 
   def create?
-    is_admin?
+    true
   end
 
   def update?
-    is_admin?
+    is_admin_or_owner?
   end
 
   def destroy?
@@ -33,5 +33,9 @@ class SubjectPolicy < ApplicationPolicy
 
   def is_admin?
     user.admin?
+  end
+
+  def is_admin_or_owner?
+    record.user == user || user.admin
   end
 end
