@@ -5,6 +5,10 @@ fr:
         last_name: Nom
         first_name: Prénom
         email: Email
+      subject:
+        forum_category: Catégorie
+        content: Contenu
+        title: Titre
   date:
     abbr_day_names:
     - dim
@@ -159,6 +163,10 @@ fr:
     sport: Sport
     administrative: Administratif
     research: Recherche
+  subject:
+    forum_category: Catégorie
+    content: Contenu
+    title: Titre
   infoendo:
     food: Alimentation
     generalities: Généralités

@@ -22,7 +22,7 @@ class SubjectPolicy < ApplicationPolicy
   end
 
   def destroy?
-    is_admin?
+    is_admin_or_owner?
   end
 
   private

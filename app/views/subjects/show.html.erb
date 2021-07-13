@@ -12,9 +12,6 @@
       <div class="card-subject mt-0 mt-md-3 mb-3 p-3 px-md-5 py-md-4 w-100 shadow-sm">
         <div class="d-flex justify-content-between align-items-center">
           <span class="badge badge-pill badge-light"><%= @subject.forum_category.name %></span>
-          <%# if current_user && @subject.user == current_user %>
-            <%#= link_to "edit", edit_subject_path(@subject) %>
-          <%# end %>
           <div>
             <% if current_user && @subject.user == current_user  %>
               <%= link_to edit_subject_path(@subject), class:"ml-4" do %>
