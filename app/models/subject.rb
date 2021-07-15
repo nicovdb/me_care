@@ -5,4 +5,5 @@ class Subject < ApplicationRecord
   belongs_to :user
   belongs_to :forum_category
   validates :title, uniqueness: true
+  validates :title, :forum_category, :content, presence: true
 end

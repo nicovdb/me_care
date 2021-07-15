@@ -30,21 +30,49 @@ class SubjectsController < ApplicationController
     @subject = Subject.new(subject_params)
     authorize @subject
     @subject.user = current_user
-    if @subject.save
-      redirect_to dashboard_path(active: 'forum')
+    if current_user.admin?
+      if @subject.save
+        redirect_to dashboard_path(active: 'forum')
+      else
+        render 'dashboards/subjects/new'
+      end
     else
-      render 'dashboards/subjects/new'
+      if @subject.save
+        redirect_to subject_path(@subject)
+      else
+        render 'subjects/new'
+      end
     end
+  end
+
+  def edit
+    @subject = Subject.find(params[:id])
+    authorize @subject
   end
 
   def update
     @subject = Subject.find(params[:id])
     authorize @subject
-    if @subject.update(subject_params)
-      redirect_to subject_path(@subject)
+    if current_user.admin?
+      if @subject.update(subject_params)
+        redirect_to subject_path(@subject)
+      else
+        render 'dashboards/subjects/edit'
+      end
     else
-      render 'dashboards/subjects/edit'
+      if @subject.update(subject_params)
+        redirect_to subject_path(@subject)
+      else
+        render 'subjects/edit'
+      end
     end
+  end
+
+  def destroy
+    @subject = Subject.find(params[:id])
+    authorize @subject
+    @subject.destroy
+    redirect_to forum_path
   end
 
   private

@@ -49,7 +49,7 @@ Rails.application.routes.draw do
     resources :daily_symptoms, path: 'agenda', only: [:index, :new, :create, :edit, :update]
     get '/graph', to: 'daily_symptoms#graph', as: :graph
     get '/forum', to: 'subjects#index', as: :forum
-    resources :subjects, only: [:show, :create, :update] do
+    resources :subjects, only: [:show, :create, :update, :new, :edit, :destroy] do
       resources :answers, only: [:create]
       resources :follow_subjects, only: [:create, :destroy]
     end

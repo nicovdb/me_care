@@ -7,7 +7,7 @@
 // We need to override trix.css’s image gallery styles to accommodate the
 // <action-text-attachment> element we wrap around attachments. Otherwise,
 // images in galleries will be squished by the max-width: 33%; rule.
-.answer_content {
+.answer_content, .subject_content {
   .trix-button-group--file-tools, .trix-button--icon-code, .trix-button--icon-quote, .trix-button-group--history-tools, .trix-button--icon-heading-1, .trix-button--icon-link {
     display: none !important;
   }
