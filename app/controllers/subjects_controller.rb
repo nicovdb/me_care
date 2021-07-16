@@ -1,15 +1,18 @@
 class SubjectsController < ApplicationController
+  before_action :set_subject, only: [:show, :edit, :update, :destroy]
+
   def index
-    if params[:forum_category].nil? || (params[:forum_category] == "")
-      @subjects = policy_scope(Subject).includes([:forum_category]).order(created_at: :desc).paginate(page: params[:page], per_page: 12)
-    else
+    @subjects = policy_scope(Subject)
+                .includes([:forum_category, :answers])
+                .order(created_at: :desc)
+                .paginate(page: params[:page], per_page: 12)
+    unless params[:forum_category].nil? || (params[:forum_category] == "")
       forum_category = ForumCategory.find_by(name: params[:forum_category])
-      @subjects = policy_scope(Subject).where(forum_category: forum_category).includes([:forum_category]).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
+      @subjects = @subjects.where(forum_category: forum_category)
     end
   end
 
   def show
-    @subject = Subject.find(params[:id])
     authorize @subject
     unless FollowSubject.find_by(user: current_user, subject: @subject).nil?
       @follow = FollowSubject.find_by(user: current_user, subject: @subject)
@@ -18,7 +21,10 @@ class SubjectsController < ApplicationController
     end
     @answer = Answer.new
     @follow_subject = FollowSubject.new
-    @answers = @subject.answers.includes([:user, :rich_text_content]).order(created_at: :asc).paginate(page: params[:page], per_page: 10)
+    @answers = @subject.answers
+                       .includes([:user, :rich_text_content])
+                       .order(created_at: :asc)
+                       .paginate(page: params[:page], per_page: 10)
   end
 
   def new
@@ -46,12 +52,10 @@ class SubjectsController < ApplicationController
   end
 
   def edit
-    @subject = Subject.find(params[:id])
     authorize @subject
   end
 
   def update
-    @subject = Subject.find(params[:id])
     authorize @subject
     if current_user.admin?
       if @subject.update(subject_params)
@@ -69,7 +73,6 @@ class SubjectsController < ApplicationController
   end
 
   def destroy
-    @subject = Subject.find(params[:id])
     authorize @subject
     @subject.destroy
     redirect_to forum_path
@@ -79,5 +82,9 @@ class SubjectsController < ApplicationController
 
   def subject_params
     params.require(:subject).permit(:content, :title, :forum_category_id, :forum_category)
+  end
+
+  def set_subject
+    @subject = Subject.find(params[:id])
   end
 end
