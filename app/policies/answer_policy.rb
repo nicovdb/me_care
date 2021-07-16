@@ -10,7 +10,7 @@ class AnswerPolicy < ApplicationPolicy
   end
 
   def destroy?
-    is_admin?
+    is_admin_or_owner?
   end
 
   private
@@ -19,7 +19,7 @@ class AnswerPolicy < ApplicationPolicy
     user.has_valid_subscription?
   end
 
-  def is_admin?
-    user.admin?
+  def is_admin_or_owner?
+    user.admin? || record.user == user
   end
 end
