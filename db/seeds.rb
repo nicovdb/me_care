@@ -26,4 +26,3 @@
 # AlternativeTherapy.create!(name:'Acupuncture', displayed: true)
 # AlternativeTherapy.create!(name:'Alimentation anti-inflammatoire', displayed: true)
 # puts "Therapies created"
-User.where('email like ?', '%@mail.ru').destroy_all
