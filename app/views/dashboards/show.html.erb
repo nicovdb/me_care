@@ -8,15 +8,6 @@
         <% end %>
       </div>
 
-      <% if policy(CouponCode).create? %>
-        <div class='mt-3'>
-          <%= link_to "+ créer un code promo", new_dashboards_coupon_code_path, class: 'text-green text-mini'  %>
-        </div>
-        <div class='mt-0'>
-          <%= link_to "> voir les codes promos", dashboards_coupon_codes_path, class: 'text-green text-mini'  %>
-        </div>
-      <% end %>
-
       <ul class="nav nav-tabs mt-md-4 mb-3" id="pills-tab" role="tablist">
         <li class="nav-item" role="presentation">
           <a class="nav-link active" id="pills-news-tab" data-toggle="pill" href="#pills-news" role="tab" aria-controls="pills-news" aria-selected="true" data-target="active-tab.linkNews" data-action="click->active-tab#openTab">News</a>
