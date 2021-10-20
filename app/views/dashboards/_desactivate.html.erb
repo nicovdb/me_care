@@ -7,7 +7,7 @@
       <td><b>Action</b></td>
     </tr>
     <% @all_users.each do |u| %>
-      <tr>
+      <tr id="user-<%= u.id %>">
         <td><%= u.full_name %></td>
         <td><%= u.email %></td>
         <% if u.active %>

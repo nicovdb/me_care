@@ -55,7 +55,7 @@ class UsersController < ApplicationController
     authorize @user
     @user.active = false
     @user.save
-    redirect_to dashboard_path(active: 'users')
+    redirect_to dashboard_path(active: 'users', anchor: "user-#{@user.id}")
   end
 
   def reactivate
@@ -63,7 +63,7 @@ class UsersController < ApplicationController
     authorize @user
     @user.active = true
     @user.save
-    redirect_to dashboard_path(active: 'users')
+    redirect_to dashboard_path(active: 'users', anchor: "user-#{@user.id}")
   end
 
   def anonymize
