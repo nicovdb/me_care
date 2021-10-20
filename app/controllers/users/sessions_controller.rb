@@ -2,7 +2,8 @@
 
 class Users::SessionsController < Devise::SessionsController
   prepend_before_action(only: [:create, :destroy]) { request.env["devise.skip_timeout"] = true }
-  # before_action :configure_sign_in_params, only: [:create]
+  before_action :check_if_active, only: [:create]
+
   #after_action :check_trial_end_date, only: [:create]
   # GET /resource/sign_in
   # def new
@@ -18,6 +19,15 @@ class Users::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
+
+  private
+
+  def check_if_active
+    if User.find_by(email: params[:user][:email]) &&  User.find_by(email: params[:user][:email]).active == false
+      flash[:alert] =  "Votre compte a été désactivé"
+      redirect_to root_path
+    end
+  end
 
   # protected
 

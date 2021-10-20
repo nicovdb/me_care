@@ -25,6 +25,14 @@ class UserPolicy < ApplicationPolicy
     is_admin?
   end
 
+  def desactivate?
+    is_admin?
+  end
+
+  def reactivate?
+    is_admin?
+  end
+
   def anonymize?
     is_current_user_or_admin?
   end

@@ -1,0 +1,31 @@
+<div>
+  Liste des utilisateurs :
+  <table class="table-active-users mt-3">
+    <tr>
+      <td><b> Nom</b></td>
+      <td><b>Email</b></td>
+      <td><b>Action</b></td>
+    </tr>
+    <% @all_users.each do |u| %>
+      <tr>
+        <td><%= u.full_name %></td>
+        <td><%= u.email %></td>
+        <% if u.active %>
+          <td><%= link_to "Désactiver", desactivate_path(u), method: :patch, class: "btn btn-danger", remote: true %></td>
+        <% else %>
+          <td><%= link_to "Réactiver", reactivate_path(u), method: :patch, class: "btn btn-info", remote: true %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<style>
+  .table-active-users td {
+    border: 1px solid #035E70;
+    padding: 10px 5px;
+    min-width: 150px;
+    max-width: 400px;
+    overflow: scroll;
+  }
+</style>
