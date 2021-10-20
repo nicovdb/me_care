@@ -58,5 +58,7 @@ Rails.application.routes.draw do
     patch '/consentement/:id', to: 'users#forum_consent', as: :consent
     patch '/admin', to: "users#become_admin", as: :become_admin
     patch '/undo-admin/:id', to: "users#undo_admin", as: :undo_admin
+    patch '/desactivate/:id', to: "users#desactivate", as: :desactivate
+    patch '/reactivate/:id', to: "users#reactivate", as: :reactivate
   end
 end

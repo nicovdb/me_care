@@ -8,6 +8,7 @@ class DashboardsController < ApplicationController
     @infoendos = Infoendo.all.order(publication_date: :desc)
     @admins = User.where(admin: true)
     @non_admins = User.where(admin:false)
+    @all_users = User.all.order(created_at: :desc)
   end
 
   def publish_article

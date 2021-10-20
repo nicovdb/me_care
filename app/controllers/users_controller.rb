@@ -47,6 +47,22 @@ class UsersController < ApplicationController
     authorize @user
     @user.admin = false
     @user.save
+    redirect_to dashboard_path(active: 'admins')
+  end
+
+  def desactivate
+    @user = User.find(params[:id])
+    authorize @user
+    @user.active = false
+    @user.save
+    redirect_to dashboard_path(active: 'users')
+  end
+
+  def reactivate
+    @user = User.find(params[:id])
+    authorize @user
+    @user.active = true
+    @user.save
     redirect_to dashboard_path(active: 'users')
   end
 

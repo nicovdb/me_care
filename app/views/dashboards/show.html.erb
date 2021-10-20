@@ -31,6 +31,9 @@
           <a class="nav-link" id="pills-forum-tab" data-toggle="pill" href="#pills-forum" role="tab" aria-controls="pills-forum" aria-selected="false" data-target="active-tab.linkForum"  data-action="click->active-tab#openTab">Forum</a>
         </li>
         <li class="nav-item" role="presentation">
+          <a class="nav-link" id="pills-admins-tab" data-toggle="pill" href="#pills-admins" role="tab" aria-controls="pills-admins" aria-selected="false" data-target="active-tab.linkAdmins"  data-action="click->active-tab#openTab">Admins</a>
+        </li>
+        <li class="nav-item" role="presentation">
           <a class="nav-link" id="pills-users-tab" data-toggle="pill" href="#pills-users" role="tab" aria-controls="pills-users" aria-selected="false" data-target="active-tab.linkUsers"  data-action="click->active-tab#openTab">Utilisateurs</a>
         </li>
       </ul>
@@ -68,9 +71,14 @@
             <%= render 'forum' %>
           </div>
         </div>
-        <div class="tab-pane fade" id="pills-users" role="tabpanel" aria-labelledby="pills-users-tab"  data-target="active-tab.contentUsers">
+        <div class="tab-pane fade" id="pills-admins" role="tabpanel" aria-labelledby="pills-admins-tab"  data-target="active-tab.contentAdmins">
           <div class="my-4">
             <%= render 'admin' %>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="pills-users" role="tabpanel" aria-labelledby="pills-users-tab"  data-target="active-tab.contentUsers">
+          <div class="my-4">
+            <%= render 'desactivate' %>
           </div>
         </div>
       </div>
