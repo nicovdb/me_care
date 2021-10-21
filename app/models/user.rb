@@ -22,8 +22,9 @@ class User < ApplicationRecord
   has_many :seen_webinars, dependent: :destroy
   validate :password_complexity
   validates :pseudo, uniqueness: true
-  validates :first_name, :last_name, presence: true, format: { with: /\A[a-zA-Z\s]+\z/,
-    message: "doit être composé de lettres uniquement" }
+  validates :first_name, :last_name, presence: true
+  validates :first_name, :last_name, format: { with: /\A[a-zA-Z\s]+\z/,
+    message: "doit être composé de lettres uniquement" }, on: :create
   validates :pseudo, presence: true
   def profile_picture
     if avatar.attached?
