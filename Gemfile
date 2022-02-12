@@ -10,7 +10,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'factory_bot_rails'
 
 # Use Puma as the app server
-gem 'puma', '~> 4.3.6'
+gem 'puma', '~> 4.3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 gem 'stripe-ruby-mock', '~> 3.0.1', :require => 'stripe_mock'
